@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>李耀飞 (F1are) - 项目目录与归档</title>
+  <style>
+    :root {
+      --bg: #FFFFFF;
+      --text: #1A1A1A;
+      --text-desc: #333333;
+      --text-muted: #666666;
+      --line: #E5E5E5;
+      --tag-bg: #F3F3F3;
+      --tag-text: #444444;
+      --link: #0044BB;
+      --link-border: #CCCCCC;
+      --alert-color: #CC0000;
+      --font: "Source Han Sans SC", "Noto Sans CJK SC", "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --mono: "JetBrains Mono", Consolas, Menlo, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 14px;
+      line-height: 1.6;
+      padding: 40px 20px 80px 20px;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    body.dark-mode {
+      --bg: #121212;
+      --text: #E5E5E5;
+      --text-desc: #C5C5C5;
+      --text-muted: #888888;
+      --line: #2A2A2A;
+      --tag-bg: #222222;
+      --tag-text: #B5B5B5;
+      --link: #58A6FF;
+      --link-border: #444444;
+      --alert-color: #FF6B6B;
+    }
+
+    body.dark-mode .tag:hover {
+      background: #333333;
+      color: #FFFFFF;
+    }
+
+    body.dark-mode .filter-tag.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    body.dark-mode .tag.active-tag {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .star-badge {
+      color: #D48800;
+      font-size: 13px;
+      margin-right: 4px;
+      user-select: none;
+      display: inline-block;
+      vertical-align: baseline;
+    }
+
+    body.dark-mode .star-badge {
+      color: #F5A623;
+    }
+
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* 顶部信息头 */
+    header {
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.2px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .action-btn {
+      background: transparent;
+      border: 1px solid var(--text);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .action-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .meta a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .meta a:hover {
+      text-decoration: underline;
+    }
+
+    /* 标签过滤控制栏 */
+    .filter-bar {
+      margin-bottom: 28px;
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--line);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .filter-label {
+      color: var(--text-muted);
+      font-family: var(--mono);
+      margin-right: 4px;
+    }
+
+    .filter-tag {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-family: var(--mono);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .filter-tag:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    .filter-tag.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    .clear-filter {
+      font-size: 12px;
+      color: var(--alert-color);
+      cursor: pointer;
+      margin-left: 8px;
+      display: none;
+      font-family: var(--mono);
+    }
+
+    /* 年份分组与列表 */
+    .year-group {
+      margin-bottom: 32px;
+    }
+
+    .year-title {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--mono);
+      color: var(--text);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 4px;
+      margin-bottom: 14px;
+    }
+
+    .project-list {
+      list-style: none;
+    }
+
+    .project-item {
+      padding: 10px 0;
+      border-bottom: 1px dotted var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .project-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .project-name {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .project-name a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--link-border);
+    }
+
+    .project-name a:hover {
+      color: var(--link);
+      border-bottom-color: var(--link);
+    }
+
+    .external-badge {
+      font-size: 11px;
+      font-family: var(--mono);
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+
+    .item-desc {
+      font-size: 13.5px;
+      color: var(--text-desc);
+      line-height: 1.5;
+    }
+
+    .item-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 3px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 11.5px;
+      font-family: var(--mono);
+      padding: 1px 6px;
+      border-radius: 2px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .tag:hover {
+      background: #E5E5E5;
+      color: #000000;
+    }
+
+    .tag.active-tag {
+      background: var(--text);
+      color: #FFFFFF;
+    }
+
+    /* 底部信息 */
+    footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 10mm 14mm 10mm 14mm;
+      }
+      body {
+        background: #FFFFFF !important;
+        color: #1A1A1A !important;
+        padding: 0;
+        font-size: 11px;
+        line-height: 1.45;
+      }
+      .wrapper {
+        max-width: 100%;
+        margin: 0;
+      }
+      .filter-bar, .header-actions {
+        display: none !important;
+      }
+      header {
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1.5px solid #1A1A1A;
+      }
+      .year-group {
+        margin-bottom: 12px;
+      }
+      .year-title {
+        page-break-after: avoid;
+        break-after: avoid;
+        font-size: 12.5px;
+        padding-bottom: 2px;
+        margin-bottom: 6px;
+        border-bottom: 1px solid #CCCCCC;
+      }
+      .project-item {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        padding: 4px 0;
+        border-bottom: 1px dotted #E0E0E0;
+      }
+      .star-badge {
+        color: #B8860B !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .project-name {
+        font-size: 12.5px;
+      }
+      .item-desc {
+        color: #2D2D2D !important;
+        font-size: 10.5px;
+        line-height: 1.4;
+      }
+      .item-tags {
+        margin-top: 2px;
+        gap: 4px;
+      }
+      .tag {
+        border: 1px solid #E0E0E0;
+        background: #F8F8F8 !important;
+        color: #444444 !important;
+        font-size: 9.5px;
+        padding: 0 4px;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      a {
+        text-decoration: none;
+        color: #1A1A1A;
+      }
+      footer {
+        margin-top: 12px;
+        padding-top: 6px;
+        font-size: 10px;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        border-top: 1px solid #CCCCCC;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <header>
+      <div class="header-top">
+        <h1 id="pageTitle">李耀飞 (F1are) — 开发项目索引与归档</h1>
+        <div class="header-actions">
+          <button class="action-btn" id="themeBtn" title="Toggle dark mode / 切换夜间模式">夜间</button>
+          <button class="action-btn" id="langBtn" title="Switch language / 切换语言">EN</button>
+        </div>
+      </div>
+      <div class="meta">
+        <span>GitHub: <a href="https://github.com/lyf266" target="_blank">github.com/lyf266</a></span>
+        <span>Email: <a href="mailto:lyf2517034828@outlook.com">lyf2517034828@outlook.com</a></span>
+        <span id="pageFocus">主攻: AI Agent / Linux / 全栈工具</span>
+        <span>PDF: <a href="portfolio.pdf" target="_blank" data-zh="[PDF 简版]" data-en="[PDF Version]">[PDF 简版]</a></span>
+      </div>
+    </header>
+
+    <!-- 交互式标签过滤器 -->
+    <div class="filter-bar">
+      <span class="filter-label" id="filterLabel">筛选:</span>
+      <button class="filter-tag active" data-filter="all" id="btnFilterAll">全部</button>
+      <button class="filter-tag" data-filter="featured" id="btnFilterFeatured">★ 精选</button>
+      <button class="filter-tag" data-filter="agent" id="btnFilterAgent">AI智能体</button>
+      <button class="filter-tag" data-filter="linux" id="btnFilterLinux">Linux/系统</button>
+      <button class="filter-tag" data-filter="quant" id="btnFilterQuant">金融/量化</button>
+      <button class="filter-tag" data-filter="web" id="btnFilterWeb">Web/工具</button>
+      <button class="filter-tag" data-filter="net" id="btnFilterNet">网络/基建</button>
+      <span class="clear-filter" id="clearBtn">[清除筛选 ×]</span>
+    </div>
+
+    <div id="projectContainer">
+
+      <!-- 2026 年 -->
+      <section class="year-group" data-year="2026">
+        <div class="year-title" id="yearTitle2026">2026</div>
+        <ul class="project-list">
+
+          <li class="project-item" data-tags="web,ai">
+            <div class="item-header">
+              <span class="project-name">
+                <span data-zh="银行业职业资格 1:1 机考模拟系统"
+                   data-en="Banking Qualification 1:1 Exam Simulator">银行业职业资格 1:1 机考模拟系统</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="仿官方机考界面的真题模考网页，内置考场专用金融计算器，支持单选/多选/判断交互、自定义试卷导入与自动判分。"
+                 data-en="Browser-based mock exam simulator replicating official banking certification software, with built-in financial calculator, multi-type questions, custom JSON imports, and auto-grading.">仿官方机考界面的真题模考网页，内置考场专用金融计算器，支持单选/多选/判断交互、自定义试卷导入与自动判分。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="JavaScript">JavaScript</span>
+              <span class="tag" data-tag="HTML/CSS">HTML/CSS</span>
+              <span class="tag" data-tag="web">Web</span>
+              <span class="tag" data-tag="Python">Python</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="linux,ai">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/linux-whisper-input" target="_blank"
+                   data-zh="Linux Whisper Input"
+                   data-en="Linux Whisper Input">Linux Whisper Input</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="本地语音听写后台服务。将 Whisper 模型和 CUDA 上下文常驻显存，全局快捷键触发端到端输入，延迟约 300ms。"
+                 data-en="Local voice-to-text dictation daemon. Whisper model and CUDA context permanently reside in GPU VRAM, triggered via global hotkey with ~300ms latency.">本地语音听写后台服务。将 Whisper 模型和 CUDA 上下文常驻显存，全局快捷键触发端到端输入，延迟约 300ms。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="CTranslate2">CTranslate2</span>
+              <span class="tag" data-tag="Wayland">Wayland</span>
+              <span class="tag" data-tag="PipeWire">PipeWire</span>
+              <span class="tag" data-tag="linux">Linux</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="linux">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/desktop-timetracker" target="_blank"
+                   data-zh="Desktop TimeTracker (timetrack)"
+                   data-en="Desktop TimeTracker (timetrack)">Desktop TimeTracker (timetrack)</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="KDE Plasma 6 Wayland 下的自动窗口活动与时间追踪工具，通过 KWin 脚本与 D-Bus 获取活动窗口，内存开销约 13MB，自动生成每日 Markdown 报告。"
+                 data-en="Automatic window activity and time tracker for KDE Plasma 6 on Wayland. Hooks into KWin scripts and D-Bus with ~13MB RAM footprint; auto-generates daily Markdown reports.">KDE Plasma 6 Wayland 下的自动窗口活动与时间追踪工具，通过 KWin 脚本与 D-Bus 获取活动窗口，内存开销约 13MB，自动生成每日 Markdown 报告。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="KWin">KWin</span>
+              <span class="tag" data-tag="D-Bus">D-Bus</span>
+              <span class="tag" data-tag="SQLite">SQLite</span>
+              <span class="tag" data-tag="linux">Linux</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="agent,featured">
+            <div class="item-header">
+              <span class="project-name">
+                <span class="star-badge" title="重点关注 / Featured">★</span>
+                <a href="https://github.com/lyf266/project-pai" target="_blank"
+                   data-zh="Personal LifeOS (Project PAI)"
+                   data-en="Personal LifeOS (Project PAI)">Personal LifeOS (Project PAI)</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="个人目标、日志与反思管理系统。本地与远程云服务器双端运行，通过定时任务调用模型生成周期复盘。"
+                 data-en="Personal goal, journal, and reflection operating system. Runs across local Arch and remote VPS, running automated periodic review pipelines with LLMs.">个人目标、日志与反思管理系统。本地与远程云服务器双端运行，通过定时任务调用模型生成周期复盘。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="featured" data-zh="★ 精选" data-en="★ Featured">★ 精选</span>
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="FastAPI">FastAPI</span>
+              <span class="tag" data-tag="SQLite">SQLite</span>
+              <span class="tag" data-tag="agent">Agent</span>
+              <span class="tag" data-tag="MCP">MCP</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="agent,net,featured">
+            <div class="item-header">
+              <span class="project-name">
+                <span class="star-badge" title="重点关注 / Featured">★</span>
+                <a href="https://github.com/lyf266/personal-opportunity-agent" target="_blank"
+                   data-zh="Personal Opportunity Intelligence (POI)"
+                   data-en="Personal Opportunity Intelligence (POI)">Personal Opportunity Intelligence (POI)</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="资讯与项目机会过滤脚本。解析多源 RSS，通过加权公式对内容进行初筛，将高分条目自动推送到 Telegram 和 Notion。"
+                 data-en="Feed intelligence and opportunity filter. Parses RSS feeds, scores items using a weighted formula, and pushes high-scoring opportunities to Telegram and Notion.">资讯与项目机会过滤脚本。解析多源 RSS，通过加权公式对内容进行初筛，将高分条目自动推送到 Telegram 和 Notion。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="featured" data-zh="★ 精选" data-en="★ Featured">★ 精选</span>
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="RSS">RSS</span>
+              <span class="tag" data-tag="Telegram">Telegram</span>
+              <span class="tag" data-tag="agent">Agent</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="net,agent,linux,featured">
+            <div class="item-header">
+              <span class="project-name">
+                <span class="star-badge" title="重点关注 / Featured">★</span>
+                <a href="https://github.com/lyf266/hermes" target="_blank"
+                   data-zh="Hermes 多智能体网络与 Vless 节点"
+                   data-en="Hermes Multi-Agent Network & Vless Node">Hermes 多智能体网络与 Vless 节点</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="云端 VPS 自动化运行环境，升级配置 Vless 网络协议，托管 18 个定时任务（晨报抓取、持仓监控、服务器巡检）。"
+                 data-en="Automated VPS agent environment with Vless proxy protocol, hosting 18 scheduled cron pipelines (morning briefs, portfolio tracking, server health).">云端 VPS 自动化运行环境，升级配置 Vless 网络协议，托管 18 个定时任务（晨报抓取、持仓监控、服务器巡检）。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="featured" data-zh="★ 精选" data-en="★ Featured">★ 精选</span>
+              <span class="tag" data-tag="VPS">VPS</span>
+              <span class="tag" data-tag="Vless">Vless</span>
+              <span class="tag" data-tag="Debian">Debian</span>
+              <span class="tag" data-tag="Cron">Cron</span>
+              <span class="tag" data-tag="net">网络</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="quant">
+            <div class="item-header">
+              <span class="project-name">
+                <span data-zh="A股自动化交易系统 (Auto-Trading)"
+                   data-en="A-Share ETF Auto-Trading System">A股自动化交易系统 (Auto-Trading)</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="用于模拟赛的 A 股 ETF 交易程序。基于 akshare 获取行情，包含箱体与趋势信号判断、半凯利公式仓位计算与止损控制。"
+                 data-en="Automated ETF trading engine for a simulation tournament. Pulls data via akshare, implements box/breakout signals, half-Kelly position sizing, and hard stop-loss.">用于模拟赛的 A 股 ETF 交易程序。基于 akshare 获取行情，包含箱体与趋势信号判断、半凯利公式仓位计算与止损控制。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="akshare">akshare</span>
+              <span class="tag" data-tag="pandas">pandas</span>
+              <span class="tag" data-tag="quant">量化</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="quant">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/finance-intel" target="_blank"
+                   data-zh="Finance-Intel 市场情报管线"
+                   data-en="Finance-Intel Market Intelligence Pipeline">Finance-Intel 市场情报管线</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="财经数据与行情监控脚本。聚合多源数据自动生成早间摘要，捕捉市场异动并通过 Webhook 发送提醒。"
+                 data-en="Multi-source financial market monitoring pipeline. Automatically aggregates data into morning summaries and pushes volatility anomaly alerts via webhooks.">财经数据与行情监控脚本。聚合多源数据自动生成早间摘要，捕捉市场异动并通过 Webhook 发送提醒。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="TradingView">TradingView</span>
+              <span class="tag" data-tag="quant">金融</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="agent,web">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/obsidian-notebooklm-bridge" target="_blank"
+                   data-zh="Obsidian-NotebookLM Bridge"
+                   data-en="Obsidian-NotebookLM Bridge">Obsidian-NotebookLM Bridge</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="本地 Markdown 知识库与 NotebookLM 的同步脚本。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件。"
+                 data-en="Synchronization bridge between local Obsidian notes and NotebookLM. Writes via local REST API when Obsidian is open; falls back to direct filesystem append when closed.">本地 Markdown 知识库与 NotebookLM 的同步脚本。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="Obsidian">Obsidian</span>
+              <span class="tag" data-tag="REST API">REST API</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="linux">
+            <div class="item-header">
+              <span class="project-name">
+                <span data-zh="OBS Studio 推流与摄像头驱动加固"
+                   data-en="OBS Studio Stream & V4L2 Driver Hardening">OBS Studio 推流与摄像头驱动加固</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="Linux 环境推流配置。锁定 YUYV 原始像素避免解码崩溃，配置 udev 规则防挂起，编写 Lua 脚本在画面实时显示时间和待办。"
+                 data-en="Linux streaming setup. Locks uncompressed YUYV 4:2:2 to prevent decoder crash loops, hardens udev against sleep, and drives dynamic text overlays via Lua scripts.">Linux 环境推流配置。锁定 YUYV 原始像素避免解码崩溃，配置 udev 规则防挂起，编写 Lua 脚本在画面实时显示时间和待办。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="V4L2">V4L2</span>
+              <span class="tag" data-tag="Lua">Lua</span>
+              <span class="tag" data-tag="OBS">OBS</span>
+              <span class="tag" data-tag="linux">Linux</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="linux">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/wtf" target="_blank"
+                   data-zh="WTF 终端看板组件定制"
+                   data-en="WTF Terminal Cockpit Widgets (Fork)">WTF 终端看板组件定制</a>
+                <span class="external-badge" id="forkBadge" data-zh="(Fork 定制)" data-en="(Fork Custom)">(Fork 定制)</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在终端渲染。"
+                 data-en="Custom Go TUI modules for wtfutil to display personal PAI sprint goal progress and POI curated opportunities inside the terminal.">基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在终端渲染。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Go">Go</span>
+              <span class="tag" data-tag="TUI">TUI</span>
+              <span class="tag" data-tag="linux">Linux</span>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- 2025 年 (休学沉淀期) -->
+      <section class="year-group" data-year="2025">
+        <div class="year-title" id="yearTitle2025" data-zh="2025 (Gap Year)" data-en="2025 (Gap Year)">2025 (Gap Year)</div>
+        <ul class="project-list">
+
+          <li class="project-item" data-tags="web">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/WriteMap" target="_blank"
+                   data-zh="WriteMap (Visual Writing Coach)"
+                   data-en="WriteMap (Visual Writing Coach)">WriteMap (Visual Writing Coach)</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。"
+                 data-en="Full-stack English essay writing web app. Features rich text editing, structural tree breakdown, and multidimensional radar chart evaluation using Next.js & Prisma.">英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Next.js">Next.js</span>
+              <span class="tag" data-tag="React">React</span>
+              <span class="tag" data-tag="TypeScript">TypeScript</span>
+              <span class="tag" data-tag="Prisma">Prisma</span>
+              <span class="tag" data-tag="web">Web</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="agent">
+            <div class="item-header">
+              <span class="project-name">
+                <span data-zh="被动式 AI 笔记系统"
+                   data-en="Passive AI Note-Taking System">被动式 AI 笔记系统</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记，同步至 Notion 和 Obsidian。"
+                 data-en="Telegram bot for zero-friction note ingestion. Accepts text/voice messages, classifies them using Gemini, and dispatches them to Notion and Obsidian.">Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记，同步至 Notion 和 Obsidian。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="Docker">Docker</span>
+              <span class="tag" data-tag="Telegram">Telegram</span>
+              <span class="tag" data-tag="Gemini">Gemini</span>
+              <span class="tag" data-tag="agent">Agent</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="web">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/vitals-skill" target="_blank"
+                   data-zh="Vitals-Skill 家庭健康数据管理"
+                   data-en="Vitals-Skill Family Health Data Tracker">Vitals-Skill 家庭健康数据管理</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="整理家庭成员体检指标与用药记录的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行异常指标比对。"
+                 data-en="Python automation workflow that structures physical exam reports and medication records into clean Markdown tables for longitudinal health tracking.">整理家庭成员体检指标与用药记录的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行异常指标比对。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="Obsidian">Obsidian</span>
+              <span class="tag" data-tag="OCR">OCR</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="linux,net">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/mc118-cloud-suite" target="_blank"
+                   data-zh="mc118-cloud-suite 部署与低带宽优化"
+                   data-en="mc118-cloud-suite Low-Bandwidth Cloud Deployment">mc118-cloud-suite 部署与低带宽优化</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低 75% 出网流量，配置零私钥暴露的反向备份脚本。"
+                 data-en="Hardened Minecraft Paper 1.18.1 cloud deployment. Protocol-level tracking tuning cuts outbound traffic by >75%; includes zero-trust reverse-pull SSH backups.">Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低 75% 出网流量，配置零私钥暴露的反向备份脚本。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Docker">Docker</span>
+              <span class="tag" data-tag="Debian">Debian</span>
+              <span class="tag" data-tag="Bash">Bash</span>
+              <span class="tag" data-tag="linux">Linux</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="linux">
+            <div class="item-header">
+              <span class="project-name">
+                <span data-zh="课程录音批量切分与 Whisper 转录"
+                   data-en="Lecture Audio Batch Chunking & Whisper Transcription">课程录音批量切分与 Whisper 转录</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。"
+                 data-en="Batch audio transcription pipeline using faster-whisper and FFmpeg, routing hours of lecture recordings into organized transcripts by course name.">课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="Whisper">Whisper</span>
+              <span class="tag" data-tag="FFmpeg">FFmpeg</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="linux,net">
+            <div class="item-header">
+              <span class="project-name"
+                    data-zh="Linux 工作站与 VPS 网络搭建 (工程积累)"
+                    data-en="Linux Workstation & VPS Network Infrastructure">Linux 工作站与 VPS 网络搭建 (工程积累)</span>
+            </div>
+            <div class="item-desc"
+                 data-zh="主力系统自建调优为 Arch Linux，采购维护 Debian VPS；配置 Trojan 代理网络、Cloudflare 域名解析、CDN 与 Let's Encrypt 证书自动化。"
+                 data-en="Tuned Arch Linux workstation and Debian cloud VPS; engineered Trojan network proxies, Cloudflare CDN/DNS edge routing, and automated Let's Encrypt TLS certs.">主力系统自建调优为 Arch Linux，采购维护 Debian VPS；配置 Trojan 代理网络、Cloudflare 域名解析、CDN 与 Let's Encrypt 证书自动化。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Arch Linux">Arch Linux</span>
+              <span class="tag" data-tag="Debian">Debian</span>
+              <span class="tag" data-tag="Cloudflare">Cloudflare</span>
+              <span class="tag" data-tag="SSL/TLS">SSL/TLS</span>
+              <span class="tag" data-tag="net">网络</span>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- 2023 ~ 2024 年 -->
+      <section class="year-group" data-year="2024">
+        <div class="year-title" id="yearTitle2024">2023 ~ 2024</div>
+        <ul class="project-list">
+
+          <li class="project-item" data-tags="quant">
+            <div class="item-header">
+              <span class="project-name">
+                <a href="https://github.com/lyf266/Gaokao" target="_blank"
+                   data-zh="Gaokao 高考志愿填报数据系统"
+                   data-en="Gaokao College Admission Data Scraper">Gaokao 高考志愿填报数据系统</a>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="爬取 gaokao.cn 接口，清洗各大学专业历年投档分、录取最低位次与招生计划，输出 CSV 便于多维对比与填报决策。"
+                 data-en="Scrapes and normalizes historical university admission cutoffs, rankings, and quotas from gaokao.cn into clean CSVs for data-driven college application decisions.">爬取 gaokao.cn 接口，清洗各大学专业历年投档分、录取最低位次与招生计划，输出 CSV 便于多维对比与填报决策。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Python">Python</span>
+              <span class="tag" data-tag="Requests">Requests</span>
+              <span class="tag" data-tag="Pandas">Pandas</span>
+              <span class="tag" data-tag="quant">数据</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="web">
+            <div class="item-header">
+              <span class="project-name">
+                <span data-zh="Unipus Helper 刷课答题助手"
+                   data-en="Unipus Helper Userscript">Unipus Helper 刷课答题助手</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="外语学习平台油猴脚本。定时模拟心跳自动处理确认弹窗防掉线，遍历 DOM 提取题目后调用接口获取参考答案。"
+                 data-en="Tampermonkey userscript for courseware platform. Automates heartbeat pings to dismiss timeouts, extracts DOM questions, and autofills model responses.">外语学习平台油猴脚本。定时模拟心跳自动处理确认弹窗防掉线，遍历 DOM 提取题目后调用接口获取参考答案。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="JavaScript">JavaScript</span>
+              <span class="tag" data-tag="Tampermonkey">Tampermonkey</span>
+              <span class="tag" data-tag="web">Web</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="net">
+            <div class="item-header">
+              <span class="project-name">
+                <span data-zh="Timezone Spoofer 浏览器扩展"
+                   data-en="Timezone Spoofer Browser Extension">Timezone Spoofer 浏览器扩展</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="基于 WebExtension 的浏览器插件，在页面加载时重写 Date 与 Intl 接口的时区返回值，防范跨区代理时的指纹检测。"
+                 data-en="WebExtension that overrides Date and Intl prototype methods at document_start to spoof browser timezone based on proxy exit nodes, preventing fingerprinting.">基于 WebExtension 的浏览器插件，在页面加载时重写 Date 与 Intl 接口的时区返回值，防范跨区代理时的指纹检测。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="JavaScript">JavaScript</span>
+              <span class="tag" data-tag="WebExtension">WebExtension</span>
+              <span class="tag" data-tag="net">安全</span>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="web">
+            <div class="item-header">
+              <span class="project-name"
+                    data-zh="商业演示文稿排版外包 & 校园调度模型"
+                    data-en="Freelance Information Design & Dispatching Tokenomics">商业演示文稿排版外包 & 校园调度模型</span>
+            </div>
+            <div class="item-desc"
+                 data-zh="承接商业 PPT 外包设计；兼职校园即时跑腿，推演设计过一套基于代币经济的去中心化互助跑腿与知识库方案。"
+                 data-en="Freelance slide deck information layout design, paired with physical errand courier dispatching experience that inspired a tokenomics-driven campus knowledge network draft.">承接商业 PPT 外包设计；兼职校园即时跑腿，推演设计过一套基于代币经济的去中心化互助跑腿与知识库方案。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="设计">设计</span>
+              <span class="tag" data-tag="信息排版">信息排版</span>
+              <span class="tag" data-tag="模型设计">模型设计</span>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- 2014 ~ 2015 年 -->
+      <section class="year-group" data-year="2015">
+        <div class="year-title" id="yearTitle2015" data-zh="2014 ~ 2015 (童年启蒙)" data-en="2014 ~ 2015 (Childhood)">2014 ~ 2015 (童年启蒙)</div>
+        <ul class="project-list">
+
+          <li class="project-item" data-tags="net,linux">
+            <div class="item-header">
+              <span class="project-name">
+                <span data-zh="百人 Minecraft 联机社区服务器"
+                   data-en="100-Player Minecraft Server Community">百人 Minecraft 联机社区服务器</span>
+              </span>
+            </div>
+            <div class="item-desc"
+                 data-zh="10岁小学时自学宽带 PPPoE 拨号获取公网 IP，在路由器配置端口映射搭建 Spigot 服务器，在论坛发帖运营至 100+ 人游戏社区。"
+                 data-en="At age 10, self-taught PPPoE dynamic IP routing and router port forwarding to host a Spigot server; grew a forum-based community to 100+ players with holiday events.">10岁小学时自学宽带 PPPoE 拨号获取公网 IP，在路由器配置端口映射搭建 Spigot 服务器，在论坛发帖运营至 100+ 人游戏社区。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="PPPoE">PPPoE</span>
+              <span class="tag" data-tag="端口映射">端口映射</span>
+              <span class="tag" data-tag="Java">Java</span>
+              <span class="tag" data-tag="net">网络启蒙</span>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+    </div>
+
+    <footer>
+      <span id="footerAuthor" data-zh="李耀飞 (Yaofei Li) · 个人开发项目清单" data-en="Yaofei Li (F1are) · Project Directory">李耀飞 (Yaofei Li) · 个人开发项目清单</span>
+      <span id="footerDate" data-zh="更新时间: 2026 年 10 月" data-en="Updated: October 2026">更新时间: 2026 年 10 月</span>
+    </footer>
+
+  </div>
+
+  <script>
+    // 语言与国际化配置
+    let currentLang = 'zh';
+    let isDark = localStorage.getItem('theme') === 'dark';
+
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+    }
+
+    const i18n = {
+      zh: {
+        pageTitle: "李耀飞 (F1are) — 开发项目索引与归档",
+        pageFocus: "主攻: AI Agent / Linux / 全栈工具",
+        filterLabel: "筛选:",
+        btnFilterAll: "全部",
+        btnFilterFeatured: "★ 精选",
+        btnFilterAgent: "AI智能体",
+        btnFilterLinux: "Linux/系统",
+        btnFilterQuant: "金融/量化",
+        btnFilterWeb: "Web/工具",
+        btnFilterNet: "网络/基建",
+        clearBtn: "[清除筛选 ×]",
+        langBtn: "EN",
+        themeDark: "夜间",
+        themeLight: "日间",
+        footerAuthor: "李耀飞 (Yaofei Li) · 个人开发项目清单",
+        footerDate: "更新时间: 2026 年 10 月",
+        year2025: "2025 (Gap Year)",
+        year2015: "2014 ~ 2015 (童年启蒙)"
+      },
+      en: {
+        pageTitle: "Yaofei Li (F1are) — Project Directory & Archive",
+        pageFocus: "Focus: AI Agents / Linux Systems / Full-Stack Tooling",
+        filterLabel: "Filter:",
+        btnFilterAll: "All",
+        btnFilterFeatured: "★ Featured",
+        btnFilterAgent: "AI/Agents",
+        btnFilterLinux: "Linux/Systems",
+        btnFilterQuant: "Finance/Quant",
+        btnFilterWeb: "Web/Tools",
+        btnFilterNet: "Network/Infra",
+        clearBtn: "[Clear filter ×]",
+        langBtn: "中文",
+        themeDark: "Dark",
+        themeLight: "Light",
+        footerAuthor: "Yaofei Li (F1are) · Project Directory",
+        footerDate: "Updated: October 2026",
+        year2025: "2025 (Gap Year)",
+        year2015: "2014 ~ 2015 (Childhood)"
+      }
+    };
+
+    const langBtn = document.getElementById('langBtn');
+    const themeBtn = document.getElementById('themeBtn');
+
+    function updateThemeBtn() {
+      const t = i18n[currentLang];
+      themeBtn.textContent = isDark ? t.themeLight : t.themeDark;
+    }
+
+    updateThemeBtn();
+
+    themeBtn.addEventListener('click', () => {
+      isDark = !isDark;
+      document.body.classList.toggle('dark-mode', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeBtn();
+    });
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'zh' ? 'en' : 'zh';
+      const t = i18n[currentLang];
+
+      // 更新顶部与控制条文本
+      document.getElementById('pageTitle').textContent = t.pageTitle;
+      document.getElementById('pageFocus').textContent = t.pageFocus;
+      document.getElementById('filterLabel').textContent = t.filterLabel;
+      document.getElementById('btnFilterAll').textContent = t.btnFilterAll;
+      const featBtn = document.getElementById('btnFilterFeatured');
+      if (featBtn) featBtn.textContent = t.btnFilterFeatured;
+      document.getElementById('btnFilterAgent').textContent = t.btnFilterAgent;
+      document.getElementById('btnFilterLinux').textContent = t.btnFilterLinux;
+      document.getElementById('btnFilterQuant').textContent = t.btnFilterQuant;
+      document.getElementById('btnFilterWeb').textContent = t.btnFilterWeb;
+      document.getElementById('btnFilterNet').textContent = t.btnFilterNet;
+      document.getElementById('clearBtn').textContent = t.clearBtn;
+      langBtn.textContent = t.langBtn;
+      updateThemeBtn();
+      document.getElementById('footerAuthor').textContent = t.footerAuthor;
+      document.getElementById('footerDate').textContent = t.footerDate;
+      document.getElementById('yearTitle2025').textContent = t.year2025;
+      document.getElementById('yearTitle2015').textContent = t.year2015;
+
+      // 更新每个项目卡片的标题与描述
+      document.querySelectorAll('[data-' + currentLang + ']').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+      });
+    }
+
+    langBtn.addEventListener('click', toggleLanguage);
+
+    // 纯原生极简标签筛选逻辑
+    const filterBtns = document.querySelectorAll('.filter-tag');
+    const projectItems = document.querySelectorAll('.project-item');
+    const clearBtn = document.getElementById('clearBtn');
+    const allTags = document.querySelectorAll('.tag');
+
+    let activeFilter = 'all';
+
+    function applyFilter(filterVal) {
+      activeFilter = filterVal;
+
+      filterBtns.forEach(btn => {
+        if (btn.getAttribute('data-filter') === filterVal) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      allTags.forEach(t => {
+        const tagText = t.getAttribute('data-tag');
+        if (tagText && tagText.toLowerCase() === filterVal.toLowerCase()) {
+          t.classList.add('active-tag');
+        } else {
+          t.classList.remove('active-tag');
+        }
+      });
+
+      projectItems.forEach(item => {
+        const itemTags = (item.getAttribute('data-tags') || '').split(',');
+        const textTags = Array.from(item.querySelectorAll('.tag')).map(el => (el.getAttribute('data-tag') || '').toLowerCase());
+        
+        const isMatch = (filterVal === 'all') || 
+                        itemTags.includes(filterVal) || 
+                        textTags.includes(filterVal.toLowerCase());
+
+        if (isMatch) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      document.querySelectorAll('.year-group').forEach(group => {
+        const visibleItems = group.querySelectorAll('.project-item[style*="display: flex"]');
+        if (visibleItems.length === 0 && filterVal !== 'all') {
+          group.style.display = 'none';
+        } else {
+          group.style.display = 'block';
+        }
+      });
+
+      if (filterVal !== 'all') {
+        clearBtn.style.display = 'inline';
+      } else {
+        clearBtn.style.display = 'none';
+      }
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyFilter(btn.getAttribute('data-filter'));
+      });
+    });
+
+    allTags.forEach(tagEl => {
+      tagEl.addEventListener('click', (e) => {
+        const selectedTag = e.target.getAttribute('data-tag');
+        if (selectedTag) {
+          applyFilter(selectedTag);
+        }
+      });
+    });
+
+    clearBtn.addEventListener('click', () => {
+      applyFilter('all');
+    });
+  </script>
+</body>
+</html>
