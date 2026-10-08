@@ -395,6 +395,104 @@
       color: var(--text);
     }
 
+        .architecture-diagram {
+      margin: 4px 0 8px 0;
+      padding: 10px 12px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+    }
+
+    body.dark-mode .architecture-diagram {
+      background: #181818;
+      border-color: #2E2E2E;
+    }
+
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--tag-bg);
+      padding: 6px 10px;
+      border-radius: 3px;
+      border: 1px solid var(--line);
+      min-width: 120px;
+      flex: 1;
+    }
+
+    body.dark-mode .flow-step {
+      background: #222222;
+      border-color: #2E2E2E;
+    }
+
+    .step-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--link);
+      opacity: 0.9;
+    }
+
+    .step-name {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .step-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: var(--mono);
+    }
+
+    .flow-arrow {
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .flow-branch {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .branch-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--tag-bg);
+      padding: 4px 8px;
+      border-radius: 3px;
+      border: 1px solid var(--line);
+    }
+
+    body.dark-mode .branch-item {
+      background: #222222;
+      border-color: #2E2E2E;
+    }
+
+    .branch-tag {
+      font-size: 10.5px;
+      font-family: var(--mono);
+      color: var(--link);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .branch-target {
+      font-size: 11px;
+      color: var(--text-desc);
+    }
+
     .detail-content {
       color: var(--text-desc);
       font-size: 12.5px;
@@ -612,7 +710,7 @@
               <span class="tag" data-tag="Anki / FSRS">Anki / FSRS</span>
               <span class="tag" data-tag="Mobile-Ready">Mobile-Ready</span>
               <span class="tag" data-tag="quant" data-zh="金融" data-en="Finance">金融</span>
-              <span class="tag" data-tag="web">Web</span>
+              <span class="tag" data-tag="web">web</span>
             </div>
             <div class="project-detail-box" id="detail-bank-exam" style="display: none;">
               <span class="ai-indicator has-ai"
@@ -624,15 +722,15 @@
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="AI 目标、规划与提示词设定" data-en="AI Agent Goals & Prompting">AI 目标、规划与提示词设定</div>
-                <div class="detail-content" data-zh="设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 591+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。" data-en="Set 3 goals: 1) End-to-end zero-dependency native JS exam & TVM calculator generation; 2) Clean 591+ questions to 2026 NFRA & M1 regulatory standards; 3) Standardize KaTeX 4-step math derivations.">设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 591+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。</div>
+                <div class="detail-content" data-zh="设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。" data-en="Set 3 goals: 1) End-to-end zero-dependency native JS exam & TVM calculator generation; 2) Clean 710+ questions to 2026 NFRA & M1 regulatory standards; 3) Standardize KaTeX 4-step math derivations.">设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。</div>
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="架构设计与硬性约束" data-en="Architecture & Hard Constraints">架构设计与硬性约束</div>
                 <div class="detail-content" data-zh="纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。" data-en="Pure Vanilla JS/HTML5 zero-dependency architecture. Fisher-Yates in-browser shuffle prevents position-memorization. TVM calculator with END/BGN modes. Paired with Anki FSRS decks.">纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="目前重点深耕法规与理财两门高频科目，后续需扩展更多专业科目的真题解析覆盖。" data-en="Currently focused on Core Regulations and Wealth Management; roadmap includes expanding to other sub-specialties.">目前重点深耕法规与理财两门高频科目，后续需扩展更多专业科目的真题解析覆盖。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。" data-en="Official exams do not release past papers and commercial question banks are paywalled; questions are currently synthesized from textbook paradigms. Roadmap: 1) Build an adaptive evaluation agent plotting knowledge growth curves to pinpoint weak domains; 2) Drive AI to target weaknesses with dynamic generative quizzes, tracking performance improvement over time.">核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。</div>
               </div>
             </div>
           </li>
@@ -659,13 +757,10 @@
               <span class="tag" data-tag="CTranslate2">CTranslate2</span>
               <span class="tag" data-tag="Wayland">Wayland</span>
               <span class="tag" data-tag="PipeWire">PipeWire</span>
-              <span class="tag" data-tag="linux">Linux</span>
+              <span class="tag" data-tag="linux">linux</span>
             </div>
             <div class="project-detail-box" id="detail-linux-whisper" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯系统工程：无 AI Agent（C/S 底层模型显存驻留推理与 Linux 桌面集成）"
-                    data-en="Pure Engineering: No AI Agent (Low-level C/S Inference & Linux IPC)">纯系统工程：无 AI Agent（C/S 底层模型显存驻留推理与 Linux 桌面集成）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="云端听写受制于网络往返延迟（>1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。" data-en="Cloud dictation suffers from latency (>1s) and privacy risks; traditional local scripts reload multi-GB models on every keypress, destroying focus.">云端听写受制于网络往返延迟（>1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。</div>
               </div>
@@ -675,10 +770,10 @@
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="架构设计与关键约束" data-en="Architecture & Key Constraints">架构设计与关键约束</div>
-                <div class="detail-content" data-zh="对本地显存占用与推理速度平衡严格要求；VAD 语音活动检测精准裁切首尾静音，避免尾音重复幻觉。" data-en="Strict balance between VRAM allocation and inference speed. Precise VAD trimming prevents trailing repetition artifacts.">对本地显存占用与推理速度平衡严格要求；VAD 语音活动检测精准裁切首尾静音，避免尾音重复幻觉。</div>
+                <div class="detail-content" data-zh="显存占用与推理速度极致平衡；VAD 语音活动检测精准裁切首尾静音，避免尾音重复幻觉；Unix Domain Socket 进程间通信隔离监听与推理。" data-en="Strict balance between VRAM allocation and inference speed. Precise VAD trimming prevents trailing repetition artifacts; UDS isolates capture and inference.">显存占用与推理速度极致平衡；VAD 语音活动检测精准裁切首尾静音，避免尾音重复幻觉；Unix Domain Socket 进程间通信隔离监听与推理。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
                 <div class="detail-content" data-zh="硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。" data-en="Requires dedicated NVIDIA GPU VRAM; long-speech pause segmentation requires further threshold tuning.">硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。</div>
               </div>
             </div>
@@ -706,13 +801,10 @@
               <span class="tag" data-tag="KWin">KWin</span>
               <span class="tag" data-tag="D-Bus">D-Bus</span>
               <span class="tag" data-tag="SQLite">SQLite</span>
-              <span class="tag" data-tag="linux">Linux</span>
+              <span class="tag" data-tag="linux">linux</span>
             </div>
             <div class="project-detail-box" id="detail-desktop-timetracker" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯系统工程：无 AI Agent（KWin 脚本 + D-Bus 监听 + 零外部 pip 依赖）"
-                    data-en="Pure Engineering: No AI Agent (KWin Scripts + D-Bus IPC + Zero pip Dependencies)">纯系统工程：无 AI Agent（KWin 脚本 + D-Bus 监听 + 零外部 pip 依赖）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。" data-en="Wayland security sandbox blocks legacy X11 window loggers; commercial alternatives rely on bloated Electron processes (>300MB RAM) and cloud telemetry.">KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。</div>
               </div>
@@ -722,11 +814,11 @@
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="架构设计与关键约束" data-en="Architecture & Key Constraints">架构设计与关键约束</div>
-                <div class="detail-content" data-zh="内存占用极限压缩至 ~13MB，CPU 消耗 <0.1%，夜间自动离线生成图文并茂的 Markdown 时间复盘报告。" data-en="Ultra-low memory footprint (~13MB RAM) and <0.1% CPU. Nightly automated generation of Markdown activity review reports.">内存占用极限压缩至 ~13MB，CPU 消耗 <0.1%，夜间自动离线生成图文并茂的 Markdown 时间复盘报告。</div>
+                <div class="detail-content" data-zh="内存占用极限压缩至 ~13MB，CPU 消耗 <0.1%，全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。" data-en="Ultra-low memory footprint (~13MB RAM) and <0.1% CPU. Nightly automated generation of Markdown activity review reports.">内存占用极限压缩至 ~13MB，CPU 消耗 <0.1%，全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境需适配不同合成器 IPC 接口。" data-en="Tightly integrated with KDE Plasma 6 Wayland; adapting to GNOME/Sway requires corresponding IPC bridges.">深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境需适配不同合成器 IPC 接口。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。" data-en="Tightly integrated with KDE Plasma 6 Wayland; adapting to GNOME/Sway requires corresponding IPC bridges.">深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。</div>
               </div>
             </div>
           </li>
@@ -754,13 +846,38 @@
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="FastAPI">FastAPI</span>
               <span class="tag" data-tag="SQLite">SQLite</span>
-              <span class="tag" data-tag="agent">Agent</span>
+              <span class="tag" data-tag="agent">agent</span>
               <span class="tag" data-tag="MCP">MCP</span>
             </div>
             <div class="project-detail-box" id="detail-project-pai" style="display: none;">
               <span class="ai-indicator has-ai"
                     data-zh="自主 AI Agent：个人长期智能体与多维度动态生命建模系统"
                     data-en="Autonomous AI Agent: Long-Term Personal Intelligence & Life Modeling">自主 AI Agent：个人长期智能体与多维度动态生命建模系统</span>
+              <div class="architecture-diagram" aria-label="Project PAI Architecture Flow">
+                <div class="flow-step">
+                  <span class="step-num">01 / CAPTURE</span>
+                  <span class="step-name" data-zh="日常感知与事件捕获" data-en="Daily Capture &amp; Ingestion">日常感知与事件捕获</span>
+                  <span class="step-desc" data-zh="Telegram · 多端生活日志 · 碎片记录" data-en="Telegram · Multi-device journal streams">Telegram · 多端生活日志 · 碎片记录</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <span class="step-num">02 / MEMORY</span>
+                  <span class="step-name" data-zh="双轨事实与向量记忆" data-en="Dual-Track Long-Term Memory">双轨事实与向量记忆</span>
+                  <span class="step-desc" data-zh="PostgreSQL (事实) + Qdrant (语义向量)" data-en="PostgreSQL (Facts) + Qdrant (Vectors)">PostgreSQL (事实) + Qdrant (语义向量)</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <span class="step-num">03 / COGNITION</span>
+                  <span class="step-name" data-zh="PAI 认知建模与推理" data-en="PAI Cognitive Modeling">PAI 认知建模与推理</span>
+                  <span class="step-desc" data-zh="FastAPI 单体 · Retrieval Before Reasoning" data-en="FastAPI Monolith · Retrieval First">FastAPI 单体 · Retrieval Before Reasoning</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <span class="step-num">04 / GATE &amp; ACTION</span>
+                  <span class="step-name" data-zh="目标校准与人类确认" data-en="Review &amp; Human Approval Gate">目标校准与人类确认</span>
+                  <span class="step-desc" data-zh="周期复盘追踪 · 高影响动作强制确认" data-en="Periodic reviews · High-impact action gate">周期复盘追踪 · 高影响动作强制确认</span>
+                </div>
+              </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。" data-en="Chatbots suffer from session amnesia, context drift, and lack of persistent modeling of user goals and growth over time.">传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。</div>
@@ -774,8 +891,8 @@
                 <div class="detail-content" data-zh="FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。" data-en="FastAPI + PostgreSQL + Qdrant + OpenRouter. Core constraints: 'Retrieval before reasoning' (structured memory over raw chats); human confirmation for high-impact actions; strict resource bounds.">FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="目前跨端数据同步部分依赖定时脚本，下一步规划引入基于遗忘曲线的轻量记忆动态衰减算法。" data-en="Cross-device sync partly relies on cron scripts; developing memory half-life decay algorithms.">目前跨端数据同步部分依赖定时脚本，下一步规划引入基于遗忘曲线的轻量记忆动态衰减算法。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="目前系统已打通‘个人目标追踪 - 日志复盘 - 决策反思’的内生闭环。核心痛点在于：LifeOS 涉及现实生活的多元领域（金融市场、行为习惯、情绪心理等），当前缺乏统一且具备深度感知预测能力的‘世界模型 (World Model)’，且缺乏跨领域的严谨 Agent Harness 评测工程进行多维校准与安全约束。实现对客观世界的全局感知与高置信度前瞻指导，是系统下一阶段的核心演进方向。" data-en="The internal loop of personal goal tracking, journaling, and reflection is fully operational. The current bottleneck is that LifeOS spans diverse real-world domains (markets, habits, psychology), lacking a unified World Model for holistic perception/prediction, as well as multi-domain Agent Harness engineering to calibrate and constrain agent advice. Grounding the agent with world models and safety harnesses is the primary roadmap.">目前系统已打通‘个人目标追踪 - 日志复盘 - 决策反思’的内生闭环。核心痛点在于：LifeOS 涉及现实生活的多元领域（金融市场、行为习惯、情绪心理等），当前缺乏统一且具备深度感知预测能力的‘世界模型 (World Model)’，且缺乏跨领域的严谨 Agent Harness 评测工程进行多维校准与安全约束。实现对客观世界的全局感知与高置信度前瞻指导，是系统下一阶段的核心演进方向。</div>
               </div>
             </div>
           </li>
@@ -803,7 +920,7 @@
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="RSS">RSS</span>
               <span class="tag" data-tag="Telegram">Telegram</span>
-              <span class="tag" data-tag="agent">Agent</span>
+              <span class="tag" data-tag="agent">agent</span>
             </div>
             <div class="project-detail-box" id="detail-poi" style="display: none;">
               <span class="ai-indicator has-ai"
@@ -822,8 +939,8 @@
                 <div class="detail-content" data-zh="Python 原生轻量 HTTP 服务 (server.py) + 并发多源 RSS/Atom 抓取引擎 (fetch_feeds.py) + Vanilla CSS/JS 响应式单页 + SVG 蛛网雷达图。核心硬约束：独创 7 维加权决策评估公式 (7D Formula)，长期价值/技能/未来帮助加权正向，时间成本/风险控制惩罚扣减；仅加权得分 ≥ 8.0 的机会才触发 Telegram/Notion 深度推送。" data-en="Native Python server + concurrent feed fetcher + SVG spider radar + Notion sync. Constrained by 7D formula (value 1.5, skill 1.5, future 1.5, network 1.0, income 1.0 vs time -0.8, risk -0.8); threshold ≥ 8.0 triggers alert.">Python 原生轻量 HTTP 服务 (server.py) + 并发多源 RSS/Atom 抓取引擎 (fetch_feeds.py) + Vanilla CSS/JS 响应式单页 + SVG 蛛网雷达图。核心硬约束：独创 7 维加权决策评估公式 (7D Formula)，长期价值/技能/未来帮助加权正向，时间成本/风险控制惩罚扣减；仅加权得分 ≥ 8.0 的机会才触发 Telegram/Notion 深度推送。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="早期依赖固定关键词匹配与启发式打分，后续计划引入轻量 LLM 对非结构化长文网页进行语义重排。" data-en="Currently heuristic + rule-based; adding LLM semantic reranking for unstructured web articles on roadmap.">早期依赖固定关键词匹配与启发式打分，后续计划引入轻量 LLM 对非结构化长文网页进行语义重排。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="当前已实现全球官方奖学金、开源项目资助与远程岗位的 7 维加权初筛。后续演进规划：1) 新增针对主流招聘平台的‘AI Agent 与大模型领域优质实习机会’定向抓取与动态匹配模块，精准满足青年开发者在 AI 时代的实习与实战积累需求；2) 引入轻量 LLM 对非结构化长文进行意图重排与岗位信噪比深度过滤。" data-en="Currently filters global grants, open-source stipends, and remote jobs. Next steps: 1) Add targeted crawling and matching for premium AI Agent & LLM internship opportunities across recruitment platforms to serve emerging student needs; 2) Introduce lightweight LLM semantic reranking for unstructured long-form postings.">当前已实现全球官方奖学金、开源项目资助与远程岗位的 7 维加权初筛。后续演进规划：1) 新增针对主流招聘平台的‘AI Agent 与大模型领域优质实习机会’定向抓取与动态匹配模块，精准满足青年开发者在 AI 时代的实习与实战积累需求；2) 引入轻量 LLM 对非结构化长文进行意图重排与岗位信噪比深度过滤。</div>
               </div>
             </div>
           </li>
@@ -845,14 +962,14 @@
             </div>
             <div class="item-desc"
                  data-zh="云端 VPS 自动化运行环境，升级配置 Vless 网络协议，托管 18 个定时任务（晨报抓取、持仓监控、服务器巡检）。"
-                 data-en="Automated VPS agent environment with Vless proxy protocol, hosting 18 scheduled cron pipelines (morning briefs, portfolio tracking, server health).">云端 VPS 自动化运行环境，升级配置 Vless 网络协议，托管 18 个定时任务（晨报抓取、持仓监控、服务器巡检）。</div>
+                 data-en="Cloud VPS automated operational supervisor with hardened Vless protocol, hosting 18 scheduled cron tasks including market intelligence, portfolio monitoring, and health checks.">云端 VPS 自动化运行环境，升级配置 Vless 网络协议，托管 18 个定时任务（晨报抓取、持仓监控、服务器巡检）。</div>
             <div class="item-tags">
               <span class="tag" data-tag="featured" data-zh="★ 精选" data-en="★ Featured">★ 精选</span>
               <span class="tag" data-tag="VPS">VPS</span>
               <span class="tag" data-tag="Vless">Vless</span>
               <span class="tag" data-tag="Debian">Debian</span>
               <span class="tag" data-tag="Cron">Cron</span>
-              <span class="tag" data-tag="net">网络</span>
+              <span class="tag" data-tag="net">net</span>
             </div>
             <div class="project-detail-box" id="detail-hermes" style="display: none;">
               <span class="ai-indicator has-ai"
@@ -871,57 +988,19 @@
                 <div class="detail-content" data-zh="Debian VPS + Vless 协议通信网络 + Systemd/Cron + Telegram Webhook 报警管道。践行四核分工边界（Main 战略参谋、Ops 自动化运维、Innovate 前沿实验、Intel 情报感知），任务无异常时绝对静默（杜绝无意义 Token 消耗），一旦异常截断立即全量报警。" data-en="Debian VPS + Vless network + Systemd/Cron + Telegram Webhook. Quad-core role separation (Main, Ops, Innovate, Intel); strict zero-noise policy on routine success, full alerts on interruption.">Debian VPS + Vless 协议通信网络 + Systemd/Cron + Telegram Webhook 报警管道。践行四核分工边界（Main 战略参谋、Ops 自动化运维、Innovate 前沿实验、Intel 情报感知），任务无异常时绝对静默（杜绝无意义 Token 消耗），一旦异常截断立即全量报警。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
                 <div class="detail-content" data-zh="节点间多依赖文件系统与消息钩子交互，计划沉淀更统一的跨节点事件总线。" data-en="Nodes currently coordinate via filesystem and webhook hooks; unified lightweight event bus planned.">节点间多依赖文件系统与消息钩子交互，计划沉淀更统一的跨节点事件总线。</div>
               </div>
             </div>
           </li>
 
-          <li class="project-item" data-tags="quant">
-            <div class="item-header">
-              <span class="project-name">
-                <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-auto-trading')" aria-expanded="false" aria-controls="detail-auto-trading">
-                  <span class="project-title-text"
-                        data-zh="A股自动化交易系统 (Auto-Trading)"
-                        data-en="A-Share ETF Auto-Trading System">A股自动化交易系统 (Auto-Trading)</span>
-                  <span class="expand-btn" id="btn-detail-auto-trading">[详情 +]</span>
-                </button>
-              </span>
-              <div class="header-links">
-                <span class="local-badge" data-zh="[本地量化]" data-en="[Local Quant]">[本地量化]</span>
-              </div>
-            </div>
-            <div class="item-desc"
-                 data-zh="用于模拟赛的 A 股 ETF 交易程序。基于 akshare 获取行情，包含箱体与趋势信号判断、半凯利公式仓位计算与止损控制。"
-                 data-en="Automated ETF trading engine for a simulation tournament. Pulls data via akshare, implements box/breakout signals, half-Kelly position sizing, and hard stop-loss.">用于模拟赛的 A 股 ETF 交易程序。基于 akshare 获取行情，包含箱体与趋势信号判断、半凯利公式仓位计算与止损控制。</div>
-            <div class="item-tags">
-              <span class="tag" data-tag="Python">Python</span>
-              <span class="tag" data-tag="akshare">akshare</span>
-              <span class="tag" data-tag="pandas">pandas</span>
-              <span class="tag" data-tag="quant">量化</span>
-            </div>
-            <div class="project-detail-box" id="detail-auto-trading" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯量化工程：无 AI Agent（多因子共振策略 + 半凯利公式动态风控）"
-                    data-en="Pure Quantitative Engineering: No AI Agent (Multi-Factor Strategy & Half-Kelly Sizing)">纯量化工程：无 AI Agent（多因子共振策略 + 半凯利公式动态风控）</span>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
-                <div class="detail-content" data-zh="个人盯盘受情绪波动干扰，无法严格执行既定止损；多品种行情下缺乏多指标共振确认机制。" data-en="Manual trading suffers from emotional hesitation, failure to cut losses, and lack of systematic multi-indicator confirmation.">个人盯盘受情绪波动干扰，无法严格执行既定止损；多品种行情下缺乏多指标共振确认机制。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="方法策略与工程实现" data-en="Methodology & Implementation">方法策略与工程实现</div>
-                <div class="detail-content" data-zh="Python + akshare + pandas + scipy + 半凯利公式动态算仓 + schedule 定时调度。多维度技术指标共振确认（RSI+布林带+MACD+量比）；动态半凯利公式控制单笔下注敞口；硬止损（-5%）、跟踪止盈与累计回撤 30% 熔断停机机制。" data-en="Python + akshare + pandas + scipy + Half-Kelly sizing. Multi-indicator technical confirmation (RSI+Bollinger+MACD+Volume); hard stop (-5%), trailing profit lock, and 30% drawdown breaker.">Python + akshare + pandas + scipy + 半凯利公式动态算仓 + schedule 定时调度。多维度技术指标共振确认（RSI+布林带+MACD+量比）；动态半凯利公式控制单笔下注敞口；硬止损（-5%）、跟踪止盈与累计回撤 30% 熔断停机机制。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="架构设计与关键约束" data-en="Architecture & Key Constraints">架构设计与关键约束</div>
-                <div class="detail-content" data-zh="严格按照 90 天量化攻坚规范编写，全流程实现回测分析、模拟盘实机跑通与风控日志留存。" data-en="Built under structured 90-day quant syllabus; complete backtesting, paper trading execution, and risk logging.">严格按照 90 天量化攻坚规范编写，全流程实现回测分析、模拟盘实机跑通与风控日志留存。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="运行于模拟盘环境，未接入实盘柜台 API（受限于券商高门槛机构接入限制）。" data-en="Tested in paper trading; real-money execution awaits institutional brokerage gateway eligibility.">运行于模拟盘环境，未接入实盘柜台 API（受限于券商高门槛机构接入限制）。</div>
-              </div>
-            </div>
-          </li>
+        </ul>
+      </section>
+
+      <!-- 2025 年 (Gap Year) -->
+      <section class="year-group" data-year="2025">
+        <div class="year-title" id="yearTitle2025" data-zh="2025 (Gap Year)" data-en="2025 (Gap Year)">2025 (Gap Year)</div>
+        <ul class="project-list">
 
           <li class="project-item" data-tags="quant">
             <div class="item-header">
@@ -943,13 +1022,10 @@
             <div class="item-tags">
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="TradingView">TradingView</span>
-              <span class="tag" data-tag="quant">金融</span>
+              <span class="tag" data-tag="quant" data-zh="金融" data-en="Finance">金融</span>
             </div>
             <div class="project-detail-box" id="detail-finance-intel" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯数据管线：无 AI Agent（跨资产订单流爬虫与自动化晨报生成）"
-                    data-en="Pure Data Pipeline: No AI Agent (Cross-Asset Order Flow Scraper & Briefs)">纯数据管线：无 AI Agent（跨资产订单流爬虫与自动化晨报生成）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="每日清晨需手动逐个打开各大金融终端与资讯网站核对宏观订单流、大宗商品与主要指数走势，耗时耗力且信噪比低。" data-en="Manual tracking of morning macro order flows and global market indices is tedious and fragmented.">每日清晨需手动逐个打开各大金融终端与资讯网站核对宏观订单流、大宗商品与主要指数走势，耗时耗力且信噪比低。</div>
               </div>
@@ -962,8 +1038,8 @@
                 <div class="detail-content" data-zh="单进程轻量无头运行，异常状态自动降级重试，输出纯 Markdown 与卡片化数据源。" data-en="Headless single-process design with graceful error fallback; exports clean Markdown summary feeds.">单进程轻量无头运行，异常状态自动降级重试，输出纯 Markdown 与卡片化数据源。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="受限于公开数据源 API 的频次限制，后续可接入更多高频行情通道。" data-en="Bound by public API rate limits; potential integration with higher-frequency data feeds.">受限于公开数据源 API 的频次限制，后续可接入更多高频行情通道。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="痛点在于缺乏金融垂直领域的专业大模型与严格的量化 Financial Harness 评测工程。目前系统主要实现‘盯盘与数据异常即时报警、新闻事件严重程度初筛推送’；对于深度的宏观归因与研报多因子推演能力依然受限。下一步需引入金融评测 Harness 与高阶意图分级模型，提升极端市场行情下的研判准确度。" data-en="Lacks specialized financial domain LLMs and rigorous Financial Harness evaluation suites. Currently delivers automated price-tracking, anomaly triggers, and news severity filtering; deep macro-factor reasoning remains constrained. Roadmap: incorporate financial eval harnesses and high-tier classification models for resilient extreme-market analysis.">痛点在于缺乏金融垂直领域的专业大模型与严格的量化 Financial Harness 评测工程。目前系统主要实现‘盯盘与数据异常即时报警、新闻事件严重程度初筛推送’；对于深度的宏观归因与研报多因子推演能力依然受限。下一步需引入金融评测 Harness 与高阶意图分级模型，提升极端市场行情下的研判准确度。</div>
               </div>
             </div>
           </li>
@@ -973,8 +1049,8 @@
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-obsidian-notebooklm')" aria-expanded="false" aria-controls="detail-obsidian-notebooklm">
                   <span class="project-title-text"
-                        data-zh="Obsidian-NotebookLM Bridge"
-                        data-en="Obsidian-NotebookLM Bridge">Obsidian-NotebookLM Bridge</span>
+                        data-zh="知识库同步桥与双智能体工作流 (Knowledge Bridge & Dual-Agent Workflow)"
+                        data-en="Knowledge Bridge & Dual-Agent Workflow">知识库同步桥与双智能体工作流 (Knowledge Bridge & Dual-Agent Workflow)</span>
                   <span class="expand-btn" id="btn-detail-obsidian-notebooklm">[详情 +]</span>
                 </button>
               </span>
@@ -983,32 +1059,33 @@
               </div>
             </div>
             <div class="item-desc"
-                 data-zh="本地 Markdown 知识库与 NotebookLM 的同步脚本。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件。"
-                 data-en="Synchronization bridge between local Obsidian notes and NotebookLM. Writes via local REST API when Obsidian is open; falls back to direct filesystem append when closed.">本地 Markdown 知识库与 NotebookLM 的同步脚本。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件。</div>
+                 data-zh="本地 Markdown 知识库与本地-云端双智能体协同桥。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件，协同云端管理看板。"
+                 data-en="Synchronization bridge linking local Obsidian notes with local-cloud dual-agent workflows. Writes via REST API when open; falls back to direct filesystem writes.">本地 Markdown 知识库与本地-云端双智能体协同桥。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件，协同云端管理看板。</div>
             <div class="item-tags">
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="Obsidian">Obsidian</span>
               <span class="tag" data-tag="REST API">REST API</span>
+              <span class="tag" data-tag="agent">agent</span>
             </div>
             <div class="project-detail-box" id="detail-obsidian-notebooklm" style="display: none;">
               <span class="ai-indicator has-ai"
-                    data-zh="AI 工具链管线：双链知识库与大模型多文档合成桥"
-                    data-en="AI Tooling Pipeline: Bidirectional Knowledge Vault & LLM Synthesis Bridge">AI 工具链管线：双链知识库与大模型多文档合成桥</span>
+                    data-zh="AI 工具链管线：双链知识库与本地-云端双智能体协同桥"
+                    data-en="AI Tooling Pipeline: Bidirectional Knowledge Vault & Dual-Agent Bridge">AI 工具链管线：双链知识库与本地-云端双智能体协同桥</span>
               <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
-                <div class="detail-content" data-zh="Obsidian 本地双链知识库无法直接调用 Google NotebookLM 强大的多文档事实溯源与长文本交叉分析能力，手动复制粘贴极其繁琐。" data-en="Local Obsidian vaults cannot directly leverage Google NotebookLM's multi-document grounding without manual copy-pasting.">Obsidian 本地双链知识库无法直接调用 Google NotebookLM 强大的多文档事实溯源与长文本交叉分析能力，手动复制粘贴极其繁琐。</div>
+                <div class="detail-content" data-zh="本地知识文档、云端项目看板与 AI Agent 工具链彼此割裂，手动搬运同步消耗大量认知带宽；本地双链知识库缺乏与云端高阶分析及智能体的自动化实时流转。" data-en="Local knowledge notes, cloud project boards, and AI agents are siloed, creating friction during context handoff and synthesis.">本地知识文档、云端项目看板与 AI Agent 工具链彼此割裂，手动搬运同步消耗大量认知带宽；本地双链知识库缺乏与云端高阶分析及智能体的自动化实时流转。</div>
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="AI 目标、规划与提示词设定" data-en="AI Agent Goals & Prompting">AI 目标、规划与提示词设定</div>
-                <div class="detail-content" data-zh="开发 Python 混合同步桥，打通本地双链 Markdown 笔记与 Google NotebookLM CLI / API 的自动化双向流转。" data-en="Automated hybrid bridge syncing local bidirectional markdown notes with Google NotebookLM CLI / API.">开发 Python 混合同步桥，打通本地双链 Markdown 笔记与 Google NotebookLM CLI / API 的自动化双向流转。</div>
+                <div class="detail-content" data-zh="打通‘本地沉淀 + 云端协作’的双智能体端到端协同流：本地以 Obsidian 作为事实底座，由本地 Agent (Antigravity) 负责研发与深度处理；云端以 Notion 负责看板与项目追踪，由云端 Agent (Muse AI) 负责情报感知与整理，通过自动化脚本与 REST API 实现结构化数据回流本地。" data-en="Architect an end-to-end Dual-Agent pipeline: Obsidian as local truth managed by Antigravity (Local Agent), Notion as project tracking managed by Muse AI (Cloud Agent), with automated REST bridges syncing structured context.">打通‘本地沉淀 + 云端协作’的双智能体端到端协同流：本地以 Obsidian 作为事实底座，由本地 Agent (Antigravity) 负责研发与深度处理；云端以 Notion 负责看板与项目追踪，由云端 Agent (Muse AI) 负责情报感知与整理，通过自动化脚本与 REST API 实现结构化数据回流本地。</div>
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="架构设计与硬性约束" data-en="Architecture & Hard Constraints">架构设计与硬性约束</div>
-                <div class="detail-content" data-zh="独创“混合写入策略（Hybrid Write & Fallback）”：Obsidian 运行时走本地 REST API 触发毫秒级编辑器无刷新重载，关闭时安全降级为直接写入文件系统，确保数据一致性且绝不损坏本地索引。" data-en="Hybrid write strategy: leverages Obsidian Local REST API for zero-reload live editor updates when open; safely falls back to direct filesystem writes when closed.">独创“混合写入策略（Hybrid Write & Fallback）”：Obsidian 运行时走本地 REST API 触发毫秒级编辑器无刷新重载，关闭时安全降级为直接写入文件系统，确保数据一致性且绝不损坏本地索引。</div>
+                <div class="detail-content" data-zh="独创“混合写入策略（Hybrid Write & Fallback）”：Obsidian 运行时走本地 REST API 触发毫秒级编辑器无刷新重载，关闭时安全降级为直接写入文件系统，确保数据一致性且绝不损坏本地索引；本地与云端职责清晰边界隔离。" data-en="Hybrid write strategy: leverages Obsidian Local REST API for zero-reload live editor updates when open; safely falls back to direct filesystem writes when closed; strictly isolates local and cloud agent role boundaries.">独创“混合写入策略（Hybrid Write & Fallback）”：Obsidian 运行时走本地 REST API 触发毫秒级编辑器无刷新重载，关闭时安全降级为直接写入文件系统，确保数据一致性且绝不损坏本地索引；本地与云端职责清晰边界隔离。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="依赖非官方 NotebookLM CLI 会话 Cookie，需定期维护认证凭证刷新。" data-en="Relies on unofficial session cookies; requires periodic auth credential renewal.">依赖非官方 NotebookLM CLI 会话 Cookie，需定期维护认证凭证刷新。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="早期脚本依赖 NotebookLM CLI 凭据，当前全面推进升级为统一的 Antigravity (本地) + Muse AI (云端) + Obsidian + Notion 跨端双智能体全自动化工作流。" data-en="Transitioning legacy single-purpose NotebookLM scripts into a unified Antigravity + Muse AI + Obsidian + Notion cross-environment dual-agent pipeline.">早期脚本依赖 NotebookLM CLI 凭据，当前全面推进升级为统一的 Antigravity (本地) + Muse AI (云端) + Obsidian + Notion 跨端双智能体全自动化工作流。</div>
               </div>
             </div>
           </li>
@@ -1034,13 +1111,10 @@
               <span class="tag" data-tag="V4L2">V4L2</span>
               <span class="tag" data-tag="Lua">Lua</span>
               <span class="tag" data-tag="OBS">OBS</span>
-              <span class="tag" data-tag="linux">Linux</span>
+              <span class="tag" data-tag="linux">linux</span>
             </div>
             <div class="project-detail-box" id="detail-obs-studio" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯底层多媒体工程：无 AI Agent（V4L2 驱动防崩硬化 + 坐标不变量合成）"
-                    data-en="Pure Multimedia Engineering: No AI Agent (V4L2 Driver Hardening & Coordinate Invariants)">纯底层多媒体工程：无 AI Agent（V4L2 驱动防崩硬化 + 坐标不变量合成）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="Linux 下 USB 摄像头在默认 MJPG 采集时遇坏包触发 FFmpeg 软件解码崩溃死循环；叠加 WebM 透明动效时 GPU 硬解码（NVDEC）会剥离 alpha 通道导致抠像全黑；OBS 重载场景时坐标漂移到画布中心。" data-en="V4L2 USB camera crash loops in MJPG decode on bus dropouts; NVDEC hardware decode strips WebM alpha channel (rendering black opaque cutouts); OBS pos_rel coordinates drift to screen center on reload.">Linux 下 USB 摄像头在默认 MJPG 采集时遇坏包触发 FFmpeg 软件解码崩溃死循环；叠加 WebM 透明动效时 GPU 硬解码（NVDEC）会剥离 alpha 通道导致抠像全黑；OBS 重载场景时坐标漂移到画布中心。</div>
               </div>
@@ -1053,7 +1127,7 @@
                 <div class="detail-content" data-zh="实现广播级画质与零外部常驻后台进程，彻底免疫 USB 总线丢包与驱动崩溃。" data-en="Broadcast-grade output with zero external background daemons, immune to USB bus packet corruption.">实现广播级画质与零外部常驻后台进程，彻底免疫 USB 总线丢包与驱动崩溃。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
                 <div class="detail-content" data-zh="硬件参数针对特定型号深度加固，跨机使用需根据摄像头 VID/PID 重新绑定 udev 规则。" data-en="Hardware parameters tuned for specific webcam VID/PID; multi-device migration requires adapting udev rules.">硬件参数针对特定型号深度加固，跨机使用需根据摄像头 VID/PID 重新绑定 udev 规则。</div>
               </div>
             </div>
@@ -1075,17 +1149,14 @@
             </div>
             <div class="item-desc"
                  data-zh="基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在终端渲染。"
-                 data-en="Custom Go TUI modules for wtfutil to display personal PAI sprint goal progress and POI curated opportunities inside the terminal.">基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在终端渲染。</div>
+                 data-en="Terminal dashboard customization on wtfutil. Custom Go widgets fetching and rendering PAI target milestones and POI opportunities directly inside tmux.">基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在终端渲染。</div>
             <div class="item-tags">
               <span class="tag" data-tag="Go">Go</span>
               <span class="tag" data-tag="TUI">TUI</span>
-              <span class="tag" data-tag="linux">Linux</span>
+              <span class="tag" data-tag="linux">linux</span>
             </div>
             <div class="project-detail-box" id="detail-wtf" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯终端 TUI 工程：无 AI Agent（Go 语言 / tview 组件深度定制）"
-                    data-en="Pure Terminal Engineering: No AI Agent (Go / tview Component Customization)">纯终端 TUI 工程：无 AI Agent（Go 语言 / tview 组件深度定制）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="开发过程中频繁切换浏览器查看 PAI 目标进度与 POI 机会榜单容易产生视觉干扰、分散编码心流。" data-en="Switching to browser dashboards to check goals and opportunity feeds interrupts terminal coding flow.">开发过程中频繁切换浏览器查看 PAI 目标进度与 POI 机会榜单容易产生视觉干扰、分散编码心流。</div>
               </div>
@@ -1098,63 +1169,8 @@
                 <div class="detail-content" data-zh="原生编译为单个轻量二进制，运行于 tmux 终端窗格，内存开销极低、零额外界面渲染负担。" data-en="Statically compiled Go binary running inside tmux; minimal memory footprint and zero GUI overhead.">原生编译为单个轻量二进制，运行于 tmux 终端窗格，内存开销极低、零额外界面渲染负担。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
                 <div class="detail-content" data-zh="当前为只读展示卡片，后续可扩展轻量键盘交互式状态勾选。" data-en="Currently read-only; interactive keybinding toggles could be added.">当前为只读展示卡片，后续可扩展轻量键盘交互式状态勾选。</div>
-              </div>
-            </div>
-          </li>
-
-        </ul>
-      </section>
-
-      <!-- 2025 年 (休学沉淀期) -->
-      <section class="year-group" data-year="2025">
-        <div class="year-title" id="yearTitle2025" data-zh="2025 (Gap Year)" data-en="2025 (Gap Year)">2025 (Gap Year)</div>
-        <ul class="project-list">
-
-          <li class="project-item" data-tags="web">
-            <div class="item-header">
-              <span class="project-name">
-                <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-writemap')" aria-expanded="false" aria-controls="detail-writemap">
-                  <span class="project-title-text"
-                        data-zh="WriteMap (Visual Writing Coach)"
-                        data-en="WriteMap (Visual Writing Coach)">WriteMap (Visual Writing Coach)</span>
-                  <span class="expand-btn" id="btn-detail-writemap">[详情 +]</span>
-                </button>
-              </span>
-              <div class="header-links">
-                <a href="https://github.com/lyf266/WriteMap" target="_blank" rel="noopener noreferrer" class="repo-badge-link" title="View Source on GitHub"><svg class="octicon" height="13" viewBox="0 0 16 16" width="13" aria-hidden="true" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg><span>GitHub ↗</span></a>
-              </div>
-            </div>
-            <div class="item-desc"
-                 data-zh="英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。"
-                 data-en="Full-stack English essay writing web app. Features rich text editing, structural tree breakdown, and multidimensional radar chart evaluation using Next.js & Prisma.">英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。</div>
-            <div class="item-tags">
-              <span class="tag" data-tag="Next.js">Next.js</span>
-              <span class="tag" data-tag="React">React</span>
-              <span class="tag" data-tag="TypeScript">TypeScript</span>
-              <span class="tag" data-tag="Prisma">Prisma</span>
-              <span class="tag" data-tag="web">Web</span>
-            </div>
-            <div class="project-detail-box" id="detail-writemap" style="display: none;">
-              <span class="ai-indicator has-ai"
-                    data-zh="AI 原生 Web 应用：大模型辅助写作评测与五维雷达图"
-                    data-en="AI-Native Web App: LLM-Driven Writing Feedback & Radar Scoring">AI 原生 Web 应用：大模型辅助写作评测与五维雷达图</span>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
-                <div class="detail-content" data-zh="英语专业学生在练习议论文写作时，传统批改缺乏对词汇多样性、篇章连贯性与论点逻辑的多维度直观量化，反馈周期过长。" data-en="ESL writing students lack multi-dimensional, immediate visual feedback on vocabulary variety, syntax, and discourse coherence.">英语专业学生在练习议论文写作时，传统批改缺乏对词汇多样性、篇章连贯性与论点逻辑的多维度直观量化，反馈周期过长。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="AI 目标、规划与提示词设定" data-en="AI Agent Goals & Prompting">AI 目标、规划与提示词设定</div>
-                <div class="detail-content" data-zh="结合自身商务英语专业与全栈技术底牌，构建基于 Next.js 的视觉化写作教练系统，提供即时多维能力打分与结构树拆解。" data-en="Full-stack writing coach providing 5-axis radar chart scoring and discourse tree visualization using LLM grading prompts.">结合自身商务英语专业与全栈技术底牌，构建基于 Next.js 的视觉化写作教练系统，提供即时多维能力打分与结构树拆解。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="架构设计与硬性约束" data-en="Architecture & Hard Constraints">架构设计与硬性约束</div>
-                <div class="detail-content" data-zh="Next.js App Router + React + TypeScript + Tailwind CSS + Recharts + Prisma ORM + SQLite。设计精准的评估 Prompt 规则矩阵，从词汇广度、语法多样性、篇章连贯性、任务完成度等维度输出标准化 JSON 评分与结构树。" data-en="Next.js App Router + React + TypeScript + Recharts + Prisma. Structured rubric prompts extracting standardized JSON scores for radar visualization and tree structures.">Next.js App Router + React + TypeScript + Tailwind CSS + Recharts + Prisma ORM + SQLite。设计精准的评估 Prompt 规则矩阵，从词汇广度、语法多样性、篇章连贯性、任务完成度等维度输出标准化 JSON 评分与结构树。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="当前支持单篇作文批改，后续规划加入长期写作历史演进追踪与同义词替换知识库。" data-en="Supports single-essay grading; longitudinal writing improvement tracking planned.">当前支持单篇作文批改，后续规划加入长期写作历史演进追踪与同义词替换知识库。</div>
               </div>
             </div>
           </li>
@@ -1170,23 +1186,47 @@
                 </button>
               </span>
               <div class="header-links">
-                <span class="local-badge" data-zh="[个人服务]" data-en="[Personal Service]">[个人服务]</span>
+                <span class="local-badge" data-zh="[已归档]" data-en="[Archived]">[已归档]</span>
               </div>
             </div>
             <div class="item-desc"
-                 data-zh="Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记，同步至 Notion 和 Obsidian。"
-                 data-en="Telegram bot for zero-friction note ingestion. Accepts text/voice messages, classifies them using Gemini, and dispatches them to Notion and Obsidian.">Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记，同步至 Notion 和 Obsidian。</div>
+                 data-zh="Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记，同步至 Notion 和 Obsidian。（已归档，由成熟云端方案替代）"
+                 data-en="Telegram bot for zero-friction note ingestion. Accepts text/voice messages, classifies them using Gemini, and dispatches them to Notion and Obsidian. (Archived; superseded by OpenCloud).">Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记，同步至 Notion 和 Obsidian。（已归档，由成熟云端方案替代）</div>
             <div class="item-tags">
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="Docker">Docker</span>
               <span class="tag" data-tag="Telegram">Telegram</span>
               <span class="tag" data-tag="Gemini">Gemini</span>
-              <span class="tag" data-tag="agent">Agent</span>
+              <span class="tag" data-tag="agent">agent</span>
             </div>
             <div class="project-detail-box" id="detail-passive-ai-notes" style="display: none;">
               <span class="ai-indicator has-ai"
                     data-zh="AI Agent / 意图识别：极简输入与多端知识库自动分流"
                     data-en="AI Agent / Intent Routing: Zero-Friction Capture & Multi-Vault Dispatch">AI Agent / 意图识别：极简输入与多端知识库自动分流</span>
+              <div class="architecture-diagram" aria-label="Passive Notes Routing Flow">
+                <div class="flow-step">
+                  <span class="step-num">INPUT</span>
+                  <span class="step-name" data-zh="极简零心智输入" data-en="Zero-Friction Ingestion">极简零心智输入</span>
+                  <span class="step-desc" data-zh="Telegram 语音听写 / 随手文字" data-en="Telegram Voice / Text messages">Telegram 语音听写 / 随手文字</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <span class="step-num">ROUTER</span>
+                  <span class="step-name" data-zh="Gemini 意图感知与提炼" data-en="Gemini Intent Routing">Gemini 意图感知与提炼</span>
+                  <span class="step-desc" data-zh="单次轻量分类 · 标题/标签结构化" data-en="Single-shot prompt · Tag extraction">单次轻量分类 · 标题/标签结构化</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-branch">
+                  <div class="branch-item">
+                    <span class="branch-tag" data-zh="待办任务" data-en="Tasks">待办任务</span>
+                    <span class="branch-target" data-zh="Notion 任务看板 (REST API)" data-en="Notion Tasks Board">Notion 任务看板 (REST API)</span>
+                  </div>
+                  <div class="branch-item">
+                    <span class="branch-tag" data-zh="反思日记" data-en="Journals">反思日记</span>
+                    <span class="branch-target" data-zh="Obsidian 每日日记 (REST API)" data-en="Obsidian Daily Logs">Obsidian 每日日记 (REST API)</span>
+                  </div>
+                </div>
+              </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="随手灵感与临时任务若需打开重型笔记软件手动排版建卡，会产生巨大的启动阻力（Initiation Friction），导致大量关键想法流失遗忘。" data-en="High initiation friction of heavy note apps leads to lost ideas and fragmented fleeting tasks.">随手灵感与临时任务若需打开重型笔记软件手动排版建卡，会产生巨大的启动阻力（Initiation Friction），导致大量关键想法流失遗忘。</div>
@@ -1200,8 +1240,8 @@
                 <div class="detail-content" data-zh="Python 3.11+ / Docker / Telegram Bot API / Gemini 模型 / Notion API / Obsidian REST API。单一消息单次分类路由——任务项注入 Notion 待办看板，思考日记项注入 Obsidian 每日日记流，实现零心智负担沉淀。" data-en="Python + Docker + Telegram Bot + Gemini API + Notion + Obsidian. Single-shot intent classification routing tasks to Notion and reflections to Obsidian daily logs.">Python 3.11+ / Docker / Telegram Bot API / Gemini 模型 / Notion API / Obsidian REST API。单一消息单次分类路由——任务项注入 Notion 待办看板，思考日记项注入 Obsidian 每日日记流，实现零心智负担沉淀。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="受限于网络环境对 Telegram 的依赖，后续可补充本地离线录音队列缓冲机制。" data-en="Relies on Telegram connectivity; offline local audio queue buffer planned.">受限于网络环境对 Telegram 的依赖，后续可补充本地离线录音队列缓冲机制。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="本项目为 2025 年初构思探索的极简被动记录雏形，探索了意图自动分流机制；后续随着移动端成熟方案（如 OpenCloud 等生态）的普及，核心功能已被更成熟的工具链完整替代，本项目已正式归档（Archived）。" data-en="This project served as an early 2025 proof-of-concept exploring zero-friction passive capture and intent routing. As mature mobile and cloud solutions (such as OpenCloud) evolved to cover this workflow, this project was formally superseded and archived.">本项目为 2025 年初构思探索的极简被动记录雏形，探索了意图自动分流机制；后续随着移动端成熟方案（如 OpenCloud 等生态）的普及，核心功能已被更成熟的工具链完整替代，本项目已正式归档（Archived）。</div>
               </div>
             </div>
           </li>
@@ -1222,17 +1262,14 @@
             </div>
             <div class="item-desc"
                  data-zh="整理家庭成员体检指标与用药记录的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行异常指标比对。"
-                 data-en="Python automation workflow that structures physical exam reports and medication records into clean Markdown tables for longitudinal health tracking.">整理家庭成员体检指标与用药记录的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行异常指标比对。</div>
+                 data-en="Python scripts organizing family medical checkups and prescriptions. Digitizes paper archives into structured Markdown for historical trend comparisons.">整理家庭成员体检指标与用药记录的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行异常指标比对。</div>
             <div class="item-tags">
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="Obsidian">Obsidian</span>
               <span class="tag" data-tag="OCR">OCR</span>
             </div>
             <div class="project-detail-box" id="detail-vitals-skill" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯数据自动化：无 AI Agent（OCR 数据清洗与家庭健康趋势结构化）"
-                    data-en="Pure Data Automation: No AI Agent (OCR Cleaning & Health Trend Digitization)">纯数据自动化：无 AI Agent（OCR 数据清洗与家庭健康趋势结构化）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="长辈患有慢性疾病，历年纸质体检报告分散且用药记录混乱，无法直观进行跨年度指标比对与异常预警。" data-en="Family members' chronic health checkup reports are scattered on paper, making multi-year biomarker comparison difficult.">长辈患有慢性疾病，历年纸质体检报告分散且用药记录混乱，无法直观进行跨年度指标比对与异常预警。</div>
               </div>
@@ -1245,8 +1282,8 @@
                 <div class="detail-content" data-zh="数据清洗脚本 + 正则归一化 + Obsidian Health 知识库联动，实现跨年度血压、血脂、血糖指标历史曲线比对与异常红线自动高亮。" data-en="Data cleaning script + regex normalization + Obsidian Health Vault, plotting historical biomarkers and flagging thresholds.">数据清洗脚本 + 正则归一化 + Obsidian Health 知识库联动，实现跨年度血压、血脂、血糖指标历史曲线比对与异常红线自动高亮。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="部分手写体用药处方 OCR 识别率有限，需结合人工复核校准。" data-en="Handwritten prescriptions still require occasional manual review.">部分手写体用药处方 OCR 识别率有限，需结合人工复核校准。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="痛点在于缺乏医药专业领域的垂直大模型，且缺乏严谨的医疗级 Agent Harness 评估工程（指导意见置信度难以把控）。后续演进规划：构建专业医疗检索与评测框架（Medical Harness），主动对接权威医学指南、药典与权威医学网站，输出必须具备可直接跳转、可追溯查验的官方文献引用，支持严格的人工核验，确保健康建议安全可信。" data-en="The primary pain point is the absence of medical-domain models and a rigorous Medical Agent Harness to guarantee clinical-grade confidence. Roadmap: develop a specialized medical retrieval & eval harness querying authoritative medical guidelines and pharmacopeias, mandating traceable citations and links to authoritative portals for human verification.">痛点在于缺乏医药专业领域的垂直大模型，且缺乏严谨的医疗级 Agent Harness 评估工程（指导意见置信度难以把控）。后续演进规划：构建专业医疗检索与评测框架（Medical Harness），主动对接权威医学指南、药典与权威医学网站，输出必须具备可直接跳转、可追溯查验的官方文献引用，支持严格的人工核验，确保健康建议安全可信。</div>
               </div>
             </div>
           </li>
@@ -1267,18 +1304,15 @@
             </div>
             <div class="item-desc"
                  data-zh="Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低 75% 出网流量，配置零私钥暴露的反向备份脚本。"
-                 data-en="Hardened Minecraft Paper 1.18.1 cloud deployment. Protocol-level tracking tuning cuts outbound traffic by >75%; includes zero-trust reverse-pull SSH backups.">Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低 75% 出网流量，配置零私钥暴露的反向备份脚本。</div>
+                 data-en="Paper 1.18.1 server setup on 1C2G cloud VPS. Suppressed view distances and entity tracking to cut egress bandwidth by >75%; zero-trust reverse SSH backup.">Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低 75% 出网流量，配置零私钥暴露的反向备份脚本。</div>
             <div class="item-tags">
               <span class="tag" data-tag="Docker">Docker</span>
               <span class="tag" data-tag="Debian">Debian</span>
               <span class="tag" data-tag="Bash">Bash</span>
-              <span class="tag" data-tag="linux">Linux</span>
+              <span class="tag" data-tag="linux">linux</span>
             </div>
             <div class="project-detail-box" id="detail-mc118-cloud-suite" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯系统与网络工程：无 AI Agent（内核协议压降 >75% 流量与零信任备份）"
-                    data-en="Pure Systems & Network: No AI Agent (>75% Bandwidth Reduction & Zero-Trust Backup)">纯系统与网络工程：无 AI Agent（内核协议压降 >75% 流量与零信任备份）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="国内云主机免费套餐具有严格的 20GB/月 出网流量上限，传统 MC 服务器极度消耗带宽且公网暴露面临扫描渗透风险。" data-en="Strict 20GB/month egress bandwidth cap on cloud instances; public server exposure to scanning and brute-force attacks.">国内云主机免费套餐具有严格的 20GB/月 出网流量上限，传统 MC 服务器极度消耗带宽且公网暴露面临扫描渗透风险。</div>
               </div>
@@ -1291,7 +1325,7 @@
                 <div class="detail-content" data-zh="Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 极限压降至 5GB~9GB（降幅超 75%）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。" data-en="Debian 12 + Docker + Paper 1.18.1 + BBR + UFW + Fail2ban. View distance=4, simulation=3, suppressed entity tracking (monsters 24, animals 16, players 32), >75% bandwidth cut; zero-trust reverse SSH pull backup.">Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 极限压降至 5GB~9GB（降幅超 75%）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
                 <div class="detail-content" data-zh="牺牲了远距离视距渲染以换取极致低带宽，适合局域或固定小圈子联机场景。" data-en="Compromised extreme render distance for ultra-low bandwidth consumption.">牺牲了远距离视距渲染以换取极致低带宽，适合局域或固定小圈子联机场景。</div>
               </div>
             </div>
@@ -1308,22 +1342,19 @@
                 </button>
               </span>
               <div class="header-links">
-                <span class="local-badge" data-zh="[批处理流]" data-en="[Batch Pipeline]">[批处理流]</span>
+                <span class="local-badge" data-zh="[已归档]" data-en="[Archived]">[已归档]</span>
               </div>
             </div>
             <div class="item-desc"
-                 data-zh="课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。"
-                 data-en="Batch audio transcription pipeline using faster-whisper and FFmpeg, routing hours of lecture recordings into organized transcripts by course name.">课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。</div>
+                 data-zh="课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。（已由实时智能速记工作流取代并归档）"
+                 data-en="Batch audio transcription pipeline using faster-whisper and FFmpeg, routing hours of lecture recordings into organized transcripts. (Archived; superseded by real-time meeting AI).">课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。（已由实时智能速记工作流取代并归档）</div>
             <div class="item-tags">
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="Whisper">Whisper</span>
               <span class="tag" data-tag="FFmpeg">FFmpeg</span>
             </div>
             <div class="project-detail-box" id="detail-transcribe-records" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯数据批处理管线：无 AI Agent（语音模型批量推理与规则分流）"
-                    data-en="Pure Batch Pipeline: No AI Agent (Speech Model Batch Inference & Rules)">纯数据批处理管线：无 AI Agent（语音模型批量推理与规则分流）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="大学各专业课动辄数小时的随堂录音文件堆积，课后手动重听耗时过长，难以快速定位核心考点与板书笔记。" data-en="Hours of raw university lecture audio recordings accumulate without quick indexing of key lecture points.">大学各专业课动辄数小时的随堂录音文件堆积，课后手动重听耗时过长，难以快速定位核心考点与板书笔记。</div>
               </div>
@@ -1336,8 +1367,8 @@
                 <div class="detail-content" data-zh="Python 3 + faster-whisper (CTranslate2) + FFmpeg + Shell 脚本。内置 GPU/CPU 自动探测降级机制、关键字课程分流路由表与 JSONL 运行日志，一键批量转出高质量课堂讲义。" data-en="Python 3 + faster-whisper + FFmpeg + Shell. Hardware auto-detection, keyword routing table, and JSONL run logger for automated transcription.">Python 3 + faster-whisper (CTranslate2) + FFmpeg + Shell 脚本。内置 GPU/CPU 自动探测降级机制、关键字课程分流路由表与 JSONL 运行日志，一键批量转出高质量课堂讲义。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="在嘈杂阶梯教室环境下偶有底噪干扰，后续可加入前置降噪滤镜。" data-en="Classroom ambient noise can affect accuracy; audio pre-filtering can be introduced.">在嘈杂阶梯教室环境下偶有底噪干扰，后续可加入前置降噪滤镜。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="随着通义千问等现代智能会议软件（具备实时高精度转写与分钟级核心要点提炼）的普及，该离线批处理脚本流水线目前已被现代云端速记工作流完全取代并归档（Archived）；当前重心已全面转移至结构化导出文本的本地知识库沉淀与 AI Agent 自动化管理。" data-en="With the emergence of modern intelligent meeting tools (providing real-time high-accuracy transcription and minute-level key summaries), this local offline batch pipeline has been formally superseded and archived; focus has transitioned to local vault archiving and AI Agent knowledge curation.">随着通义千问等现代智能会议软件（具备实时高精度转写与分钟级核心要点提炼）的普及，该离线批处理脚本流水线目前已被现代云端速记工作流完全取代并归档（Archived）；当前重心已全面转移至结构化导出文本的本地知识库沉淀与 AI Agent 自动化管理。</div>
               </div>
             </div>
           </li>
@@ -1364,13 +1395,10 @@
               <span class="tag" data-tag="Debian">Debian</span>
               <span class="tag" data-tag="Cloudflare">Cloudflare</span>
               <span class="tag" data-tag="SSL/TLS">SSL/TLS</span>
-              <span class="tag" data-tag="net">网络</span>
+              <span class="tag" data-tag="net">net</span>
             </div>
             <div class="project-detail-box" id="detail-linux-vps-infra" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯系统与网络基建：无 AI Agent（Arch Linux 主力机 + 云端代理与证书自动化）"
-                    data-en="Pure Systems & Network: No AI Agent (Arch Linux Workstation + Cloud Proxy & SSL)">纯系统与网络基建：无 AI Agent（Arch Linux 主力机 + 云端代理与证书自动化）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。" data-en="Transitioning from Windows to Linux; building a secure, uncensored, high-availability workstation and cloud environment.">脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。</div>
               </div>
@@ -1383,8 +1411,51 @@
                 <div class="detail-content" data-zh="pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。" data-en="Arch Linux + Zen kernel + pacman/yay + UFW + end-to-end TLS encryption, establishing a rock-solid developer workstation.">pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
                 <div class="detail-content" data-zh="滚动升级需定期检查 Arch 内核与驱动兼容性。" data-en="Rolling-release requires routine kernel and driver compatibility checks.">滚动升级需定期检查 Arch 内核与驱动兼容性。</div>
+              </div>
+            </div>
+          </li>
+
+          <li class="project-item" data-tags="net">
+            <div class="item-header">
+              <span class="project-name">
+                <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-timezone-spoofer')" aria-expanded="false" aria-controls="detail-timezone-spoofer">
+                  <span class="project-title-text"
+                        data-zh="浏览器反指纹与网络隐私防护套件"
+                        data-en="Browser Anti-Fingerprinting & Privacy Hardening Suite">浏览器反指纹与网络隐私防护套件</span>
+                  <span class="expand-btn" id="btn-detail-timezone-spoofer">[详情 +]</span>
+                </button>
+              </span>
+              <div class="header-links">
+                <span class="local-badge" data-zh="[隐私防护]" data-en="[Privacy Stack]">[隐私防护]</span>
+              </div>
+            </div>
+            <div class="item-desc"
+                 data-zh="工作站浏览器隐私防泄漏与反指纹配置套件。组合运用时区模拟、WebRTC 泄漏封堵、Canvas 指纹隔离与 GPS 伪装，全方位防止跨区网络访问时的数字指纹识别。"
+                 data-en="Workstation browser privacy defense and anti-fingerprinting stack. Orchestrates timezone spoofing, WebRTC leak prevention, Canvas isolation, and GPS masking to thwart digital profiling.">工作站浏览器隐私防泄漏与反指纹配置套件。组合运用时区模拟、WebRTC 泄漏封堵、Canvas 指纹隔离与 GPS 伪装，全方位防止跨区网络访问时的数字指纹识别。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="反指纹" data-zh="反指纹" data-en="Anti-Fingerprint">反指纹</span>
+              <span class="tag" data-tag="WebRTC">WebRTC</span>
+              <span class="tag" data-tag="Canvas">Canvas</span>
+              <span class="tag" data-tag="net" data-zh="安全" data-en="Security">安全</span>
+            </div>
+            <div class="project-detail-box" id="detail-timezone-spoofer" style="display: none;">
+                            <div class="detail-row">
+                <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
+                <div class="detail-content" data-zh="在完成 Arch Linux 与 VPS 代理基建后，跨区访问时浏览器仍会通过 JavaScript 原生 Date、WebRTC、Canvas 与地理位置接口暴露真实系统与硬件指纹，导致流量被关联追踪与风控识别。" data-en="Even after deploying VPS proxies, client browsers leak real hardware and location fingerprints via JavaScript Date, WebRTC, Canvas, and Geolocation APIs, triggering security flags and correlation tracking.">在完成 Arch Linux 与 VPS 代理基建后，跨区访问时浏览器仍会通过 JavaScript 原生 Date、WebRTC、Canvas 与地理位置接口暴露真实系统与硬件指纹，导致流量被关联追踪与风控识别。</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label" data-zh="方法策略与工程实现" data-en="Methodology & Implementation">方法策略与工程实现</div>
+                <div class="detail-content" data-zh="系统化配置与部署浏览器隐私防护扩展链，全面封堵 WebRTC IP 泄漏，深度重写时区与定位偏移，并对 Canvas/WebGL 渲染指纹增加微量扰动噪音，阻断数字身份关联。" data-en="Systematically orchestrates browser privacy protection extensions: plugs WebRTC IP leaks, spoofs timezone and geolocation offsets, and injects subtle noise into Canvas/WebGL render pipelines to prevent fingerprinting.">系统化配置与部署浏览器隐私防护扩展链，全面封堵 WebRTC IP 泄漏，深度重写时区与定位偏移，并对 Canvas/WebGL 渲染指纹增加微量扰动噪音，阻断数字身份关联。</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label" data-zh="架构设计与关键约束" data-en="Architecture & Key Constraints">架构设计与关键约束</div>
+                <div class="detail-content" data-zh="深度结合系统代理网络；严格确保在阻断指纹侦测的同时不破坏现代复杂 Web 应用的正常渲染、数学计算与日常使用心流。" data-en="Tightly integrated with workstation proxy routes; ensures robust anti-tracking defense without breaking complex web apps, math operations, or browsing UX.">深度结合系统代理网络；严格确保在阻断指纹侦测的同时不破坏现代复杂 Web 应用的正常渲染、数学计算与日常使用心流。</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="针对更深层的复杂浏览器指纹追踪（如高级音频上下文枚举与系统字体探测），后续配合专用隔离配置文件（Firefox Profile Isolation / 反指纹多开环境）进一步加固。" data-en="To defend against deeper advanced vector probing (audio context enumeration, installed font inspection), paired with Firefox Profile Isolation and containerized environments on the roadmap.">针对更深层的复杂浏览器指纹追踪（如高级音频上下文枚举与系统字体探测），后续配合专用隔离配置文件（Firefox Profile Isolation / 反指纹多开环境）进一步加固。</div>
               </div>
             </div>
           </li>
@@ -1396,6 +1467,53 @@
       <section class="year-group" data-year="2024">
         <div class="year-title" id="yearTitle2024">2023 ~ 2024</div>
         <ul class="project-list">
+
+          <li class="project-item" data-tags="web">
+            <div class="item-header">
+              <span class="project-name">
+                <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-writemap')" aria-expanded="false" aria-controls="detail-writemap">
+                  <span class="project-title-text"
+                        data-zh="WriteMap (Visual Writing Coach)"
+                        data-en="WriteMap (Visual Writing Coach)">WriteMap (Visual Writing Coach)</span>
+                  <span class="expand-btn" id="btn-detail-writemap">[详情 +]</span>
+                </button>
+              </span>
+              <div class="header-links">
+                <a href="https://github.com/lyf266/WriteMap" target="_blank" rel="noopener noreferrer" class="repo-badge-link" title="View Source on GitHub"><svg class="octicon" height="13" viewBox="0 0 16 16" width="13" aria-hidden="true" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg><span>GitHub ↗</span></a>
+              </div>
+            </div>
+            <div class="item-desc"
+                 data-zh="英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。"
+                 data-en="Full-stack English essay writing web app. Features rich text editing, structural tree breakdown, and multidimensional radar chart evaluation using Next.js & Prisma.">英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。</div>
+            <div class="item-tags">
+              <span class="tag" data-tag="Next.js">Next.js</span>
+              <span class="tag" data-tag="React">React</span>
+              <span class="tag" data-tag="TypeScript">TypeScript</span>
+              <span class="tag" data-tag="Prisma">Prisma</span>
+              <span class="tag" data-tag="web">web</span>
+            </div>
+            <div class="project-detail-box" id="detail-writemap" style="display: none;">
+              <span class="ai-indicator has-ai"
+                    data-zh="AI 原生 Web 应用：大模型辅助写作评测与五维雷达图"
+                    data-en="AI-Native Web App: LLM-Driven Writing Feedback & Radar Scoring">AI 原生 Web 应用：大模型辅助写作评测与五维雷达图</span>
+              <div class="detail-row">
+                <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
+                <div class="detail-content" data-zh="英语专业学生在练习议论文写作时，传统批改缺乏对词汇多样性、篇章连贯性与论点逻辑的多维度直观量化，反馈周期过长。" data-en="ESL writing students lack multi-dimensional, immediate visual feedback on vocabulary variety, syntax, and discourse coherence.">英语专业学生在练习议论文写作时，传统批改缺乏对词汇多样性、篇章连贯性与论点逻辑的多维度直观量化，反馈周期过长。</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label" data-zh="AI 目标、规划与提示词设定" data-en="AI Agent Goals & Prompting">AI 目标、规划与提示词设定</div>
+                <div class="detail-content" data-zh="结合自身商务英语专业与全栈技术底牌，构建基于 Next.js 的视觉化写作教练系统，提供即时多维能力打分与结构树拆解。" data-en="Full-stack writing coach providing 5-axis radar chart scoring and discourse tree visualization using LLM grading prompts.">结合自身商务英语专业与全栈技术底牌，构建基于 Next.js 的视觉化写作教练系统，提供即时多维能力打分与结构树拆解。</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label" data-zh="架构设计与硬性约束" data-en="Architecture & Hard Constraints">架构设计与硬性约束</div>
+                <div class="detail-content" data-zh="Next.js App Router + React + TypeScript + Tailwind CSS + Recharts + Prisma ORM + SQLite。设计精准的评估 Prompt 规则矩阵，从词汇广度、语法多样性、篇章连贯性、任务完成度等维度输出标准化 JSON 评分与结构树。" data-en="Next.js App Router + React + TypeScript + Recharts + Prisma. Structured rubric prompts extracting standardized JSON scores for radar visualization and tree structures.">Next.js App Router + React + TypeScript + Tailwind CSS + Recharts + Prisma ORM + SQLite。设计精准的评估 Prompt 规则矩阵，从词汇广度、语法多样性、篇章连贯性、任务完成度等维度输出标准化 JSON 评分与结构树。</div>
+              </div>
+              <div class="detail-row">
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="当前支持单篇作文批改，后续规划加入长期写作历史演进追踪与同义词替换知识库。" data-en="Supports single-essay grading; longitudinal writing improvement tracking planned.">当前支持单篇作文批改，后续规划加入长期写作历史演进追踪与同义词替换知识库。</div>
+              </div>
+            </div>
+          </li>
 
           <li class="project-item" data-tags="quant">
             <div class="item-header">
@@ -1418,13 +1536,10 @@
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="Requests">Requests</span>
               <span class="tag" data-tag="Pandas">Pandas</span>
-              <span class="tag" data-tag="quant">数据</span>
+              <span class="tag" data-tag="quant" data-zh="数据" data-en="Data">数据</span>
             </div>
             <div class="project-detail-box" id="detail-gaokao" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯数据工程：无 AI Agent（高考投档线接口爬虫与清洗决策系统）"
-                    data-en="Pure Data Engineering: No AI Agent (College Cutoff Score Scraper & Analytics)">纯数据工程：无 AI Agent（高考投档线接口爬虫与清洗决策系统）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="高考志愿填报涉及全国数千所高校历年投档分与位次，官方平台数据碎片化且缺乏多维对比工具，信息极度不对称。" data-en="College admissions data is scattered and fragmented across opaque official portals, hindering comparative decision-making.">高考志愿填报涉及全国数千所高校历年投档分与位次，官方平台数据碎片化且缺乏多维对比工具，信息极度不对称。</div>
               </div>
@@ -1437,7 +1552,7 @@
                 <div class="detail-content" data-zh="Python + Requests + Pandas 数据清洗流水线，建立位次换算模型与多维交叉筛选比对逻辑。" data-en="Python + Requests + Pandas pipeline calculating percentile ranges and historical cutoff differentials.">Python + Requests + Pandas 数据清洗流水线，建立位次换算模型与多维交叉筛选比对逻辑。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
                 <div class="detail-content" data-zh="为静态单年度抓取分析脚本，接口变动需人工更新解析逻辑。" data-en="Static annual scraping pipeline; API endpoint changes require script maintenance.">为静态单年度抓取分析脚本，接口变动需人工更新解析逻辑。</div>
               </div>
             </div>
@@ -1448,8 +1563,8 @@
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-unipus-helper')" aria-expanded="false" aria-controls="detail-unipus-helper">
                   <span class="project-title-text"
-                        data-zh="Unipus Helper 刷课答题助手"
-                        data-en="Unipus Helper Userscript">Unipus Helper 刷课答题助手</span>
+                        data-zh="Unipus Helper 平台学习体验增强助手"
+                        data-en="Unipus Helper Platform UX Assistant">Unipus Helper 平台学习体验增强助手</span>
                   <span class="expand-btn" id="btn-detail-unipus-helper">[详情 +]</span>
                 </button>
               </span>
@@ -1458,77 +1573,29 @@
               </div>
             </div>
             <div class="item-desc"
-                 data-zh="外语学习平台油猴脚本。定时模拟心跳自动处理确认弹窗防掉线，遍历 DOM 提取题目后调用接口获取参考答案。"
-                 data-en="Tampermonkey userscript for courseware platform. Automates heartbeat pings to dismiss timeouts, extracts DOM questions, and autofills model responses.">外语学习平台油猴脚本。定时模拟心跳自动处理确认弹窗防掉线，遍历 DOM 提取题目后调用接口获取参考答案。</div>
+                 data-zh="外语学习平台用户脚本。定时发送心跳包维持会话状态，自动确认防掉线弹窗，提供界面快捷键导航与沉浸式自习环境。"
+                 data-en="Tampermonkey userscript for courseware platform. Automates heartbeat pings to dismiss idle timeouts and provides streamlined navigation.">外语学习平台用户脚本。定时发送心跳包维持会话状态，自动确认防掉线弹窗，提供界面快捷键导航与沉浸式自习环境。</div>
             <div class="item-tags">
               <span class="tag" data-tag="JavaScript">JavaScript</span>
               <span class="tag" data-tag="Tampermonkey">Tampermonkey</span>
-              <span class="tag" data-tag="web">Web</span>
+              <span class="tag" data-tag="web">web</span>
             </div>
             <div class="project-detail-box" id="detail-unipus-helper" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯前端自动化脚本：无 AI Agent（油猴脚本 / DOM 遍历与心跳防掉线）"
-                    data-en="Pure Frontend Automation: No AI Agent (Tampermonkey Userscript & DOM Traversal)">纯前端自动化脚本：无 AI Agent（油猴脚本 / DOM 遍历与心跳防掉线）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
-                <div class="detail-content" data-zh="大学外语自主学习平台操作繁琐、长时间无操作强制掉线，重复性机械点击消耗大量自习时间。" data-en="University language learning portal frequently times out on inactivity and requires tedious repetitive manual clicking.">大学外语自主学习平台操作繁琐、长时间无操作强制掉线，重复性机械点击消耗大量自习时间。</div>
+                <div class="detail-content" data-zh="大学外语自主学习平台操作繁琐、长时间无操作强制掉线，重复性机械弹窗频繁打断自习心流。" data-en="University language learning platform frequently times out on inactivity, with repetitive confirmation modals interrupting study flow.">大学外语自主学习平台操作繁琐、长时间无操作强制掉线，重复性机械弹窗频繁打断自习心流。</div>
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="方法策略与工程实现" data-en="Methodology & Implementation">方法策略与工程实现</div>
-                <div class="detail-content" data-zh="编写 Tampermonkey 油猴用户脚本，定时模拟心跳自动处理确认弹窗防掉线，遍历 DOM 提取题目后调用接口获取参考答案辅助学习。" data-en="Tampermonkey JavaScript userscript maintaining activity heartbeats, auto-dismissing modal popups, and extracting questions for answer references.">编写 Tampermonkey 油猴用户脚本，定时模拟心跳自动处理确认弹窗防掉线，遍历 DOM 提取题目后调用接口获取参考答案辅助学习。</div>
+                <div class="detail-content" data-zh="编写 Tampermonkey 油猴用户脚本，异步模拟心跳维持会话活跃状态，自动处理防掉线确认弹窗，实现无干扰沉浸学习。" data-en="Tampermonkey JavaScript userscript maintaining activity heartbeats, auto-dismissing idle modal popups for distraction-free study.">编写 Tampermonkey 油猴用户脚本，异步模拟心跳维持会话活跃状态，自动处理防掉线确认弹窗，实现无干扰沉浸学习。</div>
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="架构设计与关键约束" data-en="Architecture & Key Constraints">架构设计与关键约束</div>
-                <div class="detail-content" data-zh="原生 JavaScript + Tampermonkey API。异步定时器维持连接会话，MutationObserver 监听 DOM 树变化并高亮参考答案。" data-en="Vanilla JavaScript + Tampermonkey API. Async heartbeat timers and MutationObserver DOM listeners.">原生 JavaScript + Tampermonkey API。异步定时器维持连接会话，MutationObserver 监听 DOM 树变化并高亮参考答案。</div>
+                <div class="detail-content" data-zh="原生 JavaScript + Tampermonkey API。异步定时器维持连接会话，MutationObserver 监听 DOM 树变化并自动确认弹窗，不触碰任何答题接口与网络发包，严守前端合规边界。" data-en="Vanilla JavaScript + Tampermonkey API. Async heartbeat timers and MutationObserver DOM listeners without touching any network exam endpoints.">原生 JavaScript + Tampermonkey API。异步定时器维持连接会话，MutationObserver 监听 DOM 树变化并自动确认弹窗，不触碰任何答题接口与网络发包，严守前端合规边界。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="平台前端大版本重构时需同步维护选择器与接口适配。" data-en="Platform UI updates require selector and API maintenance.">平台前端大版本重构时需同步维护选择器与接口适配。</div>
-              </div>
-            </div>
-          </li>
-
-          <li class="project-item" data-tags="net">
-            <div class="item-header">
-              <span class="project-name">
-                <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-timezone-spoofer')" aria-expanded="false" aria-controls="detail-timezone-spoofer">
-                  <span class="project-title-text"
-                        data-zh="Timezone Spoofer 浏览器扩展"
-                        data-en="Timezone Spoofer Browser Extension">Timezone Spoofer 浏览器扩展</span>
-                  <span class="expand-btn" id="btn-detail-timezone-spoofer">[详情 +]</span>
-                </button>
-              </span>
-              <div class="header-links">
-                <span class="local-badge" data-zh="[浏览器扩展]" data-en="[WebExtension]">[浏览器扩展]</span>
-              </div>
-            </div>
-            <div class="item-desc"
-                 data-zh="基于 WebExtension 的浏览器插件，在页面加载时重写 Date 与 Intl 接口的时区返回值，防范跨区代理时的指纹检测。"
-                 data-en="WebExtension that overrides Date and Intl prototype methods at document_start to spoof browser timezone based on proxy exit nodes, preventing fingerprinting.">基于 WebExtension 的浏览器插件，在页面加载时重写 Date 与 Intl 接口的时区返回值，防范跨区代理时的指纹检测。</div>
-            <div class="item-tags">
-              <span class="tag" data-tag="JavaScript">JavaScript</span>
-              <span class="tag" data-tag="WebExtension">WebExtension</span>
-              <span class="tag" data-tag="net">安全</span>
-            </div>
-            <div class="project-detail-box" id="detail-timezone-spoofer" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="纯浏览器扩展工程：无 AI Agent（WebExtension 原型链劫持与防指纹探测）"
-                    data-en="Pure Browser Engineering: No AI Agent (WebExtension Prototype Hooking & Anti-Fingerprinting)">纯浏览器扩展工程：无 AI Agent（WebExtension 原型链劫持与防指纹探测）</span>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
-                <div class="detail-content" data-zh="跨国代理访问或跨境电商账号管理时，浏览器通过 JavaScript 原生 Date 与 Intl 接口暴露真实系统时区，导致时区与代理 IP 不匹配被风控判定为异常流量。" data-en="Browser fingerprinting detects discrepancies between system timezone and proxy IP location, triggering security flags.">跨国代理访问或跨境电商账号管理时，浏览器通过 JavaScript 原生 Date 与 Intl 接口暴露真实系统时区，导致时区与代理 IP 不匹配被风控判定为异常流量。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="方法策略与工程实现" data-en="Methodology & Implementation">方法策略与工程实现</div>
-                <div class="detail-content" data-zh="开发轻量 WebExtension 浏览器插件，在页面脚本加载前（document_start）重写底层 Date 与 Intl 原型链返回值，防范跨区时区指纹检测。" data-en="Lightweight WebExtension overriding Date and Intl prototype methods at document_start to spoof client-side timezone offsets.">开发轻量 WebExtension 浏览器插件，在页面脚本加载前（document_start）重写底层 Date 与 Intl 原型链返回值，防范跨区时区指纹检测。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="架构设计与关键约束" data-en="Architecture & Key Constraints">架构设计与关键约束</div>
-                <div class="detail-content" data-zh="JavaScript + WebExtensions API。在页面上下文注入内容脚本，深度拦截 Date.prototype.getTimezoneOffset 与 Intl.DateTimeFormat().resolvedOptions().timeZone，保持原生数学计算逻辑不变。" data-en="JavaScript + WebExtensions Manifest V2/V3 injecting hooks into prototype methods without breaking native math.">JavaScript + WebExtensions API。在页面上下文注入内容脚本，深度拦截 Date.prototype.getTimezoneOffset 与 Intl.DateTimeFormat().resolvedOptions().timeZone，保持原生数学计算逻辑不变。</div>
-              </div>
-              <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="仅能防范基础 JavaScript API 探测，针对更深层的 WebRTC 与 Canvas 综合指纹需结合更全面的反指纹浏览器方案。" data-en="Focuses on JS API spoofing; full defense requires WebRTC and Canvas fingerprinting isolation.">仅能防范基础 JavaScript API 探测，针对更深层的 WebRTC 与 Canvas 综合指纹需结合更全面的反指纹浏览器方案。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="仅作为界面交互与自习体验优化辅助工具；平台前端大版本重构时需同步维护选择器。" data-en="Focused exclusively on UI keepalive and study experience enhancement; UI overhauls require selector updates.">仅作为界面交互与自习体验优化辅助工具；平台前端大版本重构时需同步维护选择器。</div>
               </div>
             </div>
           </li>
@@ -1551,15 +1618,12 @@
                  data-zh="承接商业 PPT 外包设计；兼职校园即时跑腿，推演设计过一套基于代币经济的去中心化互助跑腿与知识库方案。"
                  data-en="Freelance slide deck information layout design, paired with physical errand courier dispatching experience that inspired a tokenomics-driven campus knowledge network draft.">承接商业 PPT 外包设计；兼职校园即时跑腿，推演设计过一套基于代币经济的去中心化互助跑腿与知识库方案。</div>
             <div class="item-tags">
-              <span class="tag" data-tag="设计">设计</span>
-              <span class="tag" data-tag="信息排版">信息排版</span>
-              <span class="tag" data-tag="模型设计">模型设计</span>
+              <span class="tag" data-tag="设计" data-zh="设计" data-en="Design">设计</span>
+              <span class="tag" data-tag="信息排版" data-zh="信息排版" data-en="Typography">信息排版</span>
+              <span class="tag" data-tag="模型设计" data-zh="模型设计" data-en="Modeling">模型设计</span>
             </div>
             <div class="project-detail-box" id="detail-deck-errand" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="信息架构与机制设计：无 AI Agent（视觉层级规范与去中心化代币模型）"
-                    data-en="Information & Mechanism Design: No AI Agent (Visual Hierarchy & Incentive Model)">信息架构与机制设计：无 AI Agent（视觉层级规范与去中心化代币模型）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="商业汇报缺乏清晰的信息降噪与视觉层级；大学校园即时互助缺乏公允的激励与履约机制。" data-en="Commercial presentations lack clean information hierarchy; campus peer errand-sharing lacks viable incentive mechanisms.">商业汇报缺乏清晰的信息降噪与视觉层级；大学校园即时互助缺乏公允的激励与履约机制。</div>
               </div>
@@ -1572,7 +1636,7 @@
                 <div class="detail-content" data-zh="遵循思源黑体规范与网格排版系统；提出任务时间戳、代币质押与信用衰减机制模型。" data-en="Grid typography system + theoretical campus economic token stake and credit decay model.">遵循思源黑体规范与网格排版系统；提出任务时间戳、代币质押与信用衰减机制模型。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
                 <div class="detail-content" data-zh="跑腿调度模型处于纸面机制设计与经济学推演阶段，未进行生产代码部署。" data-en="Theoretical economic mechanism design; not deployed in production code.">跑腿调度模型处于纸面机制设计与经济学推演阶段，未进行生产代码部署。</div>
               </div>
             </div>
@@ -1586,13 +1650,13 @@
         <div class="year-title" id="yearTitle2015" data-zh="2014 ~ 2015 (童年启蒙)" data-en="2014 ~ 2015 (Childhood)">2014 ~ 2015 (童年启蒙)</div>
         <ul class="project-list">
 
-          <li class="project-item" data-tags="net,linux">
+          <li class="project-item" data-tags="net">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-minecraft-community')" aria-expanded="false" aria-controls="detail-minecraft-community">
                   <span class="project-title-text"
-                        data-zh="百人 Minecraft 联机社区服务器"
-                        data-en="100-Player Minecraft Server Community">百人 Minecraft 联机社区服务器</span>
+                        data-zh="百人 Minecraft 联机社区网络打通与社群运维"
+                        data-en="100-Player Minecraft Server Network & Community Ops">百人 Minecraft 联机社区网络打通与社群运维</span>
                   <span class="expand-btn" id="btn-detail-minecraft-community">[详情 +]</span>
                 </button>
               </span>
@@ -1601,33 +1665,31 @@
               </div>
             </div>
             <div class="item-desc"
-                 data-zh="10岁小学时自学宽带 PPPoE 拨号获取公网 IP，在路由器配置端口映射搭建 Spigot 服务器，在论坛发帖运营至 100+ 人游戏社区。"
-                 data-en="At age 10, self-taught PPPoE dynamic IP routing and router port forwarding to host a Spigot server; grew a forum-based community to 100+ players with holiday events.">10岁小学时自学宽带 PPPoE 拨号获取公网 IP，在路由器配置端口映射搭建 Spigot 服务器，在论坛发帖运营至 100+ 人游戏社区。</div>
+                 data-zh="10岁小学时自学宽带 PPPoE 拨号获取动态公网 IP，在路由器配置端口映射打通多端口入站网络，并在论坛发帖运营至 100+ 人活跃游戏社区。"
+                 data-en="At age 10, self-taught residential PPPoE dynamic public IP routing and router NAT port forwarding; grew and managed a forum-based gaming community of 100+ active players.">10岁小学时自学宽带 PPPoE 拨号获取动态公网 IP，在路由器配置端口映射打通多端口入站网络，并在论坛发帖运营至 100+ 人活跃游戏社区。</div>
             <div class="item-tags">
               <span class="tag" data-tag="PPPoE">PPPoE</span>
-              <span class="tag" data-tag="端口映射">端口映射</span>
-              <span class="tag" data-tag="Java">Java</span>
-              <span class="tag" data-tag="net">网络启蒙</span>
+              <span class="tag" data-tag="端口映射" data-zh="端口映射" data-en="Port Forward">端口映射</span>
+              <span class="tag" data-tag="公网穿透" data-zh="公网穿透" data-en="NAT Traversal">公网穿透</span>
+              <span class="tag" data-tag="社区运营" data-zh="社区运营" data-en="Community Ops">社区运营</span>
+              <span class="tag" data-tag="net" data-zh="网络启蒙" data-en="Networking">网络启蒙</span>
             </div>
             <div class="project-detail-box" id="detail-minecraft-community" style="display: none;">
-              <span class="ai-indicator no-ai"
-                    data-zh="网络启蒙与社区运维：无 AI Agent（PPPoE 动态拨号 / 端口映射 / Spigot 架构）"
-                    data-en="Early Networking & Operations: No AI Agent (PPPoE Dynamic IP / NAT Port Forward / Spigot)">网络启蒙与社区运维：无 AI Agent（PPPoE 动态拨号 / 端口映射 / Spigot 架构）</span>
-              <div class="detail-row">
+                            <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="10 岁小学阶段渴望与众多伙伴联机游戏，受限于资金无法购买昂贵的商业云服务器。" data-en="Childhood initiative to host multi-player gaming without access to expensive cloud hosting.">10 岁小学阶段渴望与众多伙伴联机游戏，受限于资金无法购买昂贵的商业云服务器。</div>
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="方法策略与工程实现" data-en="Methodology & Implementation">方法策略与工程实现</div>
-                <div class="detail-content" data-zh="自学网络通信原理，利用家庭宽带搭建并运维 Spigot 服务器，在各大论坛自主发帖运营至 100+ 人活跃社区。" data-en="Self-taught networking using home broadband to host and operate a Spigot Minecraft server, scaling to 100+ players.">自学网络通信原理，利用家庭宽带搭建并运维 Spigot 服务器，在各大论坛自主发帖运营至 100+ 人活跃社区。</div>
+                <div class="detail-content" data-zh="自学网络通信原理，利用家庭宽带 PPPoE 拨号获取动态公网 IP，在路由器/光猫配置 NAT 端口映射实现公网穿透；在各大游戏论坛发帖自主召集伙伴，运营维护 100+ 人活跃社区与节假日活动。" data-en="Self-taught networking using home broadband PPPoE dynamic public IP, configured router NAT port forwarding; recruited players on gaming forums, scaling and managing a 100+ active player community.">自学网络通信原理，利用家庭宽带 PPPoE 拨号获取动态公网 IP，在路由器/光猫配置 NAT 端口映射实现公网穿透；在各大游戏论坛发帖自主召集伙伴，运营维护 100+ 人活跃社区与节假日活动。</div>
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="架构设计与关键约束" data-en="Architecture & Key Constraints">架构设计与关键约束</div>
-                <div class="detail-content" data-zh="PPPoE 动态公网 IP 拨号 + 路由器 NAT 端口映射 + DDNS 动态域名解析 + Spigot Java 服务端与权限插件调校 + 论坛社区自治管理。" data-en="Residential PPPoE dynamic IP + router NAT port forwarding + DDNS + Spigot server tuning and community governance.">PPPoE 动态公网 IP 拨号 + 路由器 NAT 端口映射 + DDNS 动态域名解析 + Spigot Java 服务端与权限插件调校 + 论坛社区自治管理。</div>
+                <div class="detail-content" data-zh="动态公网 IP 嗅探 + 路由器 NAT 多端口映射转发 + 论坛社区自治管理，以零资金投入打通多人联机网络。" data-en="Dynamic public IP routing + router NAT multi-port forwarding + forum community governance, achieving multiplayer connectivity with zero funding.">动态公网 IP 嗅探 + 路由器 NAT 多端口映射转发 + 论坛社区自治管理，以零资金投入打通多人联机网络。</div>
               </div>
               <div class="detail-row">
-                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs & Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="童年技术启蒙实践，奠定了后续计算机网络与系统架构的基础认知。" data-en="Foundational childhood technical exploration, igniting long-term passion for systems and networks.">童年技术启蒙实践，奠定了后续计算机网络与系统架构的基础认知。</div>
+                <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
+                <div class="detail-content" data-zh="童年纯网络与社区实践启蒙，奠定了后续计算机网络与系统架构的基础认知。" data-en="Foundational childhood technical exploration, igniting long-term passion for systems and networks.">童年纯网络与社区实践启蒙，奠定了后续计算机网络与系统架构的基础认知。</div>
               </div>
             </div>
           </li>
