@@ -450,6 +450,49 @@
       font-family: var(--mono);
     }
 
+    .feature-triad {
+      margin: 4px 0 8px 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      font-size: 11.5px;
+    }
+
+    .triad-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    body.dark-mode .triad-card {
+      background: #181818;
+      border-color: #2E2E2E;
+    }
+
+    .triad-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--link);
+      opacity: 0.9;
+    }
+
+    .triad-title {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 12px;
+    }
+
+    .triad-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
     .flow-arrow {
       color: var(--text-muted);
       font-family: var(--mono);
@@ -716,6 +759,23 @@
               <span class="ai-indicator has-ai"
                     data-zh="AI 工具链应用：Prompt 规则引擎 / 题库合规校准 / 原生代码全流程生成"
                     data-en="AI Applied: Prompt Engineering / 2026 Regulation Calibration / Full-Stack Generation">AI 工具链应用：Prompt 规则引擎 / 题库合规校准 / 原生代码全流程生成</span>
+              <div class="feature-triad" aria-label="Bank Exam Core Capabilities">
+                <div class="triad-card">
+                  <span class="triad-tag">01 / QUESTION BANK</span>
+                  <span class="triad-title" data-zh="710+ 真题与合规校准" data-en="710+ Calibrated Questions">710+ 真题与合规校准</span>
+                  <span class="triad-desc" data-zh="2026 金监总局 (NFRA) 现行规章 · 央行 M1 统计新口径 · KaTeX 四步推导公式" data-en="2026 NFRA regulations · Jan 2025 PBOC M1 standards · KaTeX 4-step math proofs">2026 金监总局 (NFRA) 现行规章 · 央行 M1 统计新口径 · KaTeX 四步推导公式</span>
+                </div>
+                <div class="triad-card">
+                  <span class="triad-tag">02 / SIMULATOR</span>
+                  <span class="triad-title" data-zh="1:1 ATA 考场与双模计算器" data-en="1:1 ATA Interface &amp; TVM Calc">1:1 ATA 考场与双模计算器</span>
+                  <span class="triad-desc" data-zh="120 分钟倒计时 · 动态洗牌防作弊 · 考场标准科学计算器 + TVM 货币时间价值五键金融计算器" data-en="120min countdown · Dynamic anti-cheat shuffling · Standard scientific &amp; TVM financial calculators">120 分钟倒计时 · 动态洗牌防作弊 · 考场标准科学计算器 + TVM 货币时间价值五键金融计算器</span>
+                </div>
+                <div class="triad-card">
+                  <span class="triad-tag">03 / RETENTION</span>
+                  <span class="triad-title" data-zh="瞬时判分与 Anki FSRS 闭环" data-en="Instant Grading &amp; Anki FSRS">瞬时判分与 Anki FSRS 闭环</span>
+                  <span class="triad-desc" data-zh="考场自动批改与错题归因 · 配套一键导出 Anki FSRS 科学间隔复习卡包" data-en="Automated grading and score breakdown · One-click exportable Anki FSRS spaced repetition flashcards">考场自动批改与错题归因 · 配套一键导出 Anki FSRS 科学间隔复习卡包</span>
+                </div>
+              </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。" data-en="Preparing for banking certificates was hindered by ad-heavy tools with outdated regulations and no true-to-exam ATA interface simulation.">备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。</div>
@@ -760,7 +820,32 @@
               <span class="tag" data-tag="linux">linux</span>
             </div>
             <div class="project-detail-box" id="detail-linux-whisper" style="display: none;">
-                            <div class="detail-row">
+              <div class="architecture-diagram" aria-label="Linux Whisper Input Pipeline Flow">
+                <div class="flow-step">
+                  <span class="step-num">01 / TRIGGER</span>
+                  <span class="step-name" data-zh="全局快捷键唤醒" data-en="Global Hotkey Trigger">全局快捷键唤醒</span>
+                  <span class="step-desc" data-zh="Meta+H 热键监听 · 心流零打断" data-en="Meta+H Hotkey · Zero interruption">Meta+H 热键监听 · 心流零打断</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <span class="step-num">02 / AUDIO</span>
+                  <span class="step-name" data-zh="PipeWire 音频流捕获" data-en="PipeWire Audio Capture">PipeWire 音频流捕获</span>
+                  <span class="step-desc" data-zh="低延迟脉冲流 · VAD 静音切除" data-en="Low-latency stream · VAD trimming">低延迟脉冲流 · VAD 静音切除</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <span class="step-num">03 / INFERENCE</span>
+                  <span class="step-name" data-zh="显存驻留 CUDA 推理" data-en="VRAM Resident CUDA">显存驻留 CUDA 推理</span>
+                  <span class="step-desc" data-zh="large-v3-turbo · 端到端 &lt;300ms" data-en="large-v3-turbo · &lt;300ms latency">large-v3-turbo · 端到端 &lt;300ms</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                  <span class="step-num">04 / INJECT</span>
+                  <span class="step-name" data-zh="Wayland 虚拟键注入" data-en="Wayland Keystroke Injection">Wayland 虚拟键注入</span>
+                  <span class="step-desc" data-zh="UDS 进程隔离 · 文本秒级上屏" data-en="UDS IPC · Instant active-focus typing">UDS 进程隔离 · 文本秒级上屏</span>
+                </div>
+              </div>
+              <div class="detail-row">
                 <div class="detail-label" data-zh="核心痛点与问题" data-en="Core Problem">核心痛点与问题</div>
                 <div class="detail-content" data-zh="云端听写受制于网络往返延迟（>1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。" data-en="Cloud dictation suffers from latency (>1s) and privacy risks; traditional local scripts reload multi-GB models on every keypress, destroying focus.">云端听写受制于网络往返延迟（>1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。</div>
               </div>
