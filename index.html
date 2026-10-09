@@ -220,7 +220,7 @@
     }
 
     .project-item {
-      padding: 10px 0;
+      padding: 12px 0;
       border-bottom: 1px dotted var(--line);
       display: flex;
       flex-direction: column;
@@ -229,6 +229,81 @@
 
     .project-item:last-child {
       border-bottom: none;
+    }
+
+    .project-item:not(.tool-item) .project-title-btn {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .project-item:not(.tool-item) .project-title-text {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.1px;
+    }
+
+    .project-item:not(.tool-item) .item-desc {
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    /* 小工具精简排版 (轻量、紧凑、不喧宾夺主) */
+    .project-item.tool-item {
+      padding: 6px 0;
+      gap: 2px;
+    }
+
+    .project-item.tool-item .project-name {
+      font-size: 13px;
+    }
+
+    .project-item.tool-item .project-title-btn {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .project-item.tool-item .project-title-text {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      opacity: 0.92;
+    }
+
+    .project-item.tool-item .item-desc {
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--text-desc);
+      opacity: 0.88;
+    }
+
+    .project-item.tool-item .item-tags {
+      margin-top: 1px;
+      gap: 4px;
+    }
+
+    .project-item.tool-item .tag {
+      font-size: 10.5px;
+      padding: 0 5px;
+    }
+
+    .tool-badge {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--text-muted);
+      background: var(--tag-bg);
+      border: 1px solid var(--line);
+      padding: 0 4px;
+      border-radius: 2px;
+      line-height: 1.35;
+      font-weight: normal;
+      user-select: none;
+    }
+
+    body.dark-mode .tool-badge {
+      background: #1C2128;
+      border-color: #30363D;
+      color: #8B949E;
     }
 
     .item-header {
@@ -672,6 +747,22 @@
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
+      .project-item.tool-item {
+        padding: 2px 0 !important;
+      }
+      .project-item.tool-item .project-title-text {
+        font-size: 11px !important;
+        font-weight: 500 !important;
+      }
+      .project-item.tool-item .item-desc {
+        font-size: 9.5px !important;
+      }
+      .tool-badge {
+        font-size: 8.5px !important;
+        border: none !important;
+        padding: 0 !important;
+        color: #777777 !important;
+      }
       a {
         text-decoration: none;
         color: #1A1A1A;
@@ -702,7 +793,7 @@
       <div class="meta">
         <span>GitHub: <a href="https://github.com/lyf266" target="_blank">github.com/lyf266</a></span>
         <span>Email: <a href="mailto:lyf2517034828@outlook.com">lyf2517034828@outlook.com</a></span>
-        <span id="pageFocus">主攻: AI Agent / Linux / 全栈工具</span>
+        <span id="pageFocus">主攻: 发现问题并设计框架与约束，让 AI 解决问题</span>
         <span>PDF: <a href="portfolio.pdf" target="_blank" data-zh="[PDF 简版]" data-en="[PDF Version]">[PDF 简版]</a></span>
       </div>
     </header>
@@ -713,9 +804,10 @@
       <button class="filter-tag active" data-filter="all" id="btnFilterAll">全部</button>
       <button class="filter-tag" data-filter="featured" id="btnFilterFeatured">★ 精选</button>
       <button class="filter-tag" data-filter="agent" id="btnFilterAgent">AI智能体</button>
+      <button class="filter-tag" data-filter="tool" id="btnFilterTool">小工具</button>
       <button class="filter-tag" data-filter="linux" id="btnFilterLinux">Linux/系统</button>
       <button class="filter-tag" data-filter="quant" id="btnFilterQuant">金融/量化</button>
-      <button class="filter-tag" data-filter="web" id="btnFilterWeb">Web/工具</button>
+      <button class="filter-tag" data-filter="web" id="btnFilterWeb">Web/应用</button>
       <button class="filter-tag" data-filter="net" id="btnFilterNet">网络/基建</button>
       <span class="clear-filter" id="clearBtn">[清除筛选 ×]</span>
     </div>
@@ -795,13 +887,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="linux,ai">
+          <li class="project-item tool-item" data-tags="linux,ai,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-linux-whisper')" aria-expanded="false" aria-controls="detail-linux-whisper">
                   <span class="project-title-text"
                         data-zh="Linux Whisper Input"
                         data-en="Linux Whisper Input">Linux Whisper Input</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-linux-whisper">[详情 +]</span>
                 </button>
               </span>
@@ -813,6 +906,7 @@
                  data-zh="本地语音听写后台服务。将 Whisper 模型和 CUDA 上下文常驻显存，全局快捷键触发端到端输入，延迟约 300ms。"
                  data-en="Local voice-to-text dictation daemon. Whisper model and CUDA context permanently reside in GPU VRAM, triggered via global hotkey with ~300ms latency.">本地语音听写后台服务。将 Whisper 模型和 CUDA 上下文常驻显存，全局快捷键触发端到端输入，延迟约 300ms。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="CTranslate2">CTranslate2</span>
               <span class="tag" data-tag="Wayland">Wayland</span>
@@ -864,13 +958,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="linux">
+          <li class="project-item tool-item" data-tags="linux,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-desktop-timetracker')" aria-expanded="false" aria-controls="detail-desktop-timetracker">
                   <span class="project-title-text"
                         data-zh="Desktop TimeTracker (timetrack)"
                         data-en="Desktop TimeTracker (timetrack)">Desktop TimeTracker (timetrack)</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-desktop-timetracker">[详情 +]</span>
                 </button>
               </span>
@@ -882,6 +977,7 @@
                  data-zh="KDE Plasma 6 Wayland 下的自动窗口活动与时间追踪工具，通过 KWin 脚本与 D-Bus 获取活动窗口，内存开销约 13MB，自动生成每日 Markdown 报告。"
                  data-en="Automatic window activity and time tracker for KDE Plasma 6 on Wayland. Hooks into KWin scripts and D-Bus with ~13MB RAM footprint; auto-generates daily Markdown reports.">KDE Plasma 6 Wayland 下的自动窗口活动与时间追踪工具，通过 KWin 脚本与 D-Bus 获取活动窗口，内存开销约 13MB，自动生成每日 Markdown 报告。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="KWin">KWin</span>
               <span class="tag" data-tag="D-Bus">D-Bus</span>
@@ -1087,13 +1183,14 @@
         <div class="year-title" id="yearTitle2025" data-zh="2025 (Gap Year)" data-en="2025 (Gap Year)">2025 (Gap Year)</div>
         <ul class="project-list">
 
-          <li class="project-item" data-tags="quant">
+          <li class="project-item tool-item" data-tags="quant,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-finance-intel')" aria-expanded="false" aria-controls="detail-finance-intel">
                   <span class="project-title-text"
                         data-zh="Finance-Intel 市场情报管线"
                         data-en="Finance-Intel Market Intelligence Pipeline">Finance-Intel 市场情报管线</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-finance-intel">[详情 +]</span>
                 </button>
               </span>
@@ -1105,6 +1202,7 @@
                  data-zh="财经数据与行情监控脚本。聚合多源数据自动生成早间摘要，捕捉市场异动并通过 Webhook 发送提醒。"
                  data-en="Multi-source financial market monitoring pipeline. Automatically aggregates data into morning summaries and pushes volatility anomaly alerts via webhooks.">财经数据与行情监控脚本。聚合多源数据自动生成早间摘要，捕捉市场异动并通过 Webhook 发送提醒。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="TradingView">TradingView</span>
               <span class="tag" data-tag="quant" data-zh="金融" data-en="Finance">金融</span>
@@ -1175,13 +1273,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="linux">
+          <li class="project-item tool-item" data-tags="linux,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-obs-studio')" aria-expanded="false" aria-controls="detail-obs-studio">
                   <span class="project-title-text"
                         data-zh="OBS Studio 推流与摄像头驱动加固"
                         data-en="OBS Studio Stream & V4L2 Driver Hardening">OBS Studio 推流与摄像头驱动加固</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-obs-studio">[详情 +]</span>
                 </button>
               </span>
@@ -1193,6 +1292,7 @@
                  data-zh="Linux 环境推流配置。锁定 YUYV 原始像素避免解码崩溃，配置 udev 规则防挂起，编写 Lua 脚本在画面实时显示时间和待办。"
                  data-en="Linux streaming setup. Locks uncompressed YUYV 4:2:2 to prevent decoder crash loops, hardens udev against sleep, and drives dynamic text overlays via Lua scripts.">Linux 环境推流配置。锁定 YUYV 原始像素避免解码崩溃，配置 udev 规则防挂起，编写 Lua 脚本在画面实时显示时间和待办。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="V4L2">V4L2</span>
               <span class="tag" data-tag="Lua">Lua</span>
               <span class="tag" data-tag="OBS">OBS</span>
@@ -1218,13 +1318,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="linux">
+          <li class="project-item tool-item" data-tags="linux,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-wtf')" aria-expanded="false" aria-controls="detail-wtf">
                   <span class="project-title-text"
                         data-zh="WTF 终端看板组件定制"
                         data-en="WTF Terminal Cockpit Widgets (Fork)">WTF 终端看板组件定制</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-wtf">[详情 +]</span>
                 </button>
               </span>
@@ -1236,6 +1337,7 @@
                  data-zh="基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在终端渲染。"
                  data-en="Terminal dashboard customization on wtfutil. Custom Go widgets fetching and rendering PAI target milestones and POI opportunities directly inside tmux.">基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在终端渲染。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="Go">Go</span>
               <span class="tag" data-tag="TUI">TUI</span>
               <span class="tag" data-tag="linux">linux</span>
@@ -1331,13 +1433,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="web">
+          <li class="project-item tool-item" data-tags="web,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-vitals-skill')" aria-expanded="false" aria-controls="detail-vitals-skill">
                   <span class="project-title-text"
                         data-zh="Vitals-Skill 家庭健康数据管理"
                         data-en="Vitals-Skill Family Health Data Tracker">Vitals-Skill 家庭健康数据管理</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-vitals-skill">[详情 +]</span>
                 </button>
               </span>
@@ -1349,6 +1452,7 @@
                  data-zh="整理家庭成员体检指标与用药记录的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行异常指标比对。"
                  data-en="Python scripts organizing family medical checkups and prescriptions. Digitizes paper archives into structured Markdown for historical trend comparisons.">整理家庭成员体检指标与用药记录的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行异常指标比对。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="Obsidian">Obsidian</span>
               <span class="tag" data-tag="OCR">OCR</span>
@@ -1373,13 +1477,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="linux,net">
+          <li class="project-item tool-item" data-tags="linux,net,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-mc118-cloud-suite')" aria-expanded="false" aria-controls="detail-mc118-cloud-suite">
                   <span class="project-title-text"
                         data-zh="mc118-cloud-suite 部署与低带宽优化"
                         data-en="mc118-cloud-suite Low-Bandwidth Cloud Deployment">mc118-cloud-suite 部署与低带宽优化</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-mc118-cloud-suite">[详情 +]</span>
                 </button>
               </span>
@@ -1391,6 +1496,7 @@
                  data-zh="Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低 75% 出网流量，配置零私钥暴露的反向备份脚本。"
                  data-en="Paper 1.18.1 server setup on 1C2G cloud VPS. Suppressed view distances and entity tracking to cut egress bandwidth by >75%; zero-trust reverse SSH backup.">Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低 75% 出网流量，配置零私钥暴露的反向备份脚本。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="Docker">Docker</span>
               <span class="tag" data-tag="Debian">Debian</span>
               <span class="tag" data-tag="Bash">Bash</span>
@@ -1416,13 +1522,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="linux">
+          <li class="project-item tool-item" data-tags="linux,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-transcribe-records')" aria-expanded="false" aria-controls="detail-transcribe-records">
                   <span class="project-title-text"
                         data-zh="课程录音批量切分与 Whisper 转录"
                         data-en="Lecture Audio Batch Chunking & Whisper Transcription">课程录音批量切分与 Whisper 转录</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-transcribe-records">[详情 +]</span>
                 </button>
               </span>
@@ -1434,6 +1541,7 @@
                  data-zh="课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。（已由实时智能速记工作流取代并归档）"
                  data-en="Batch audio transcription pipeline using faster-whisper and FFmpeg, routing hours of lecture recordings into organized transcripts. (Archived; superseded by real-time meeting AI).">课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。（已由实时智能速记工作流取代并归档）</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="Whisper">Whisper</span>
               <span class="tag" data-tag="FFmpeg">FFmpeg</span>
@@ -1497,18 +1605,19 @@
               </div>
               <div class="detail-row">
                 <div class="detail-label" data-zh="局限权衡与后续演进" data-en="Trade-offs &amp; Roadmap">局限权衡与后续演进</div>
-                <div class="detail-content" data-zh="滚动升级需定期检查 Arch 内核与驱动兼容性。" data-en="Rolling-release requires routine kernel and driver compatibility checks.">滚动升级需定期检查 Arch 内核与驱动兼容性。</div>
+                <div class="detail-content" data-zh="早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。" data-en="Originally heavily reliant on manual CLI tuning and troubleshooting; now deeply automated via AI Agents for config generation, dependency resolution, validation scripting, and routine health checks, transforming low-level maintenance into high-leverage human-agent workflows.">早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。</div>
               </div>
             </div>
           </li>
 
-          <li class="project-item" data-tags="net">
+          <li class="project-item tool-item" data-tags="net,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-timezone-spoofer')" aria-expanded="false" aria-controls="detail-timezone-spoofer">
                   <span class="project-title-text"
                         data-zh="浏览器反指纹与网络隐私防护套件"
                         data-en="Browser Anti-Fingerprinting & Privacy Hardening Suite">浏览器反指纹与网络隐私防护套件</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-timezone-spoofer">[详情 +]</span>
                 </button>
               </span>
@@ -1520,6 +1629,7 @@
                  data-zh="工作站浏览器隐私防泄漏与反指纹配置套件。组合运用时区模拟、WebRTC 泄漏封堵、Canvas 指纹隔离与 GPS 伪装，全方位防止跨区网络访问时的数字指纹识别。"
                  data-en="Workstation browser privacy defense and anti-fingerprinting stack. Orchestrates timezone spoofing, WebRTC leak prevention, Canvas isolation, and GPS masking to thwart digital profiling.">工作站浏览器隐私防泄漏与反指纹配置套件。组合运用时区模拟、WebRTC 泄漏封堵、Canvas 指纹隔离与 GPS 伪装，全方位防止跨区网络访问时的数字指纹识别。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="反指纹" data-zh="反指纹" data-en="Anti-Fingerprint">反指纹</span>
               <span class="tag" data-tag="WebRTC">WebRTC</span>
               <span class="tag" data-tag="Canvas">Canvas</span>
@@ -1600,13 +1710,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="quant">
+          <li class="project-item tool-item" data-tags="quant,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-gaokao')" aria-expanded="false" aria-controls="detail-gaokao">
                   <span class="project-title-text"
                         data-zh="Gaokao 高考志愿填报数据系统"
                         data-en="Gaokao College Admission Data Scraper">Gaokao 高考志愿填报数据系统</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-gaokao">[详情 +]</span>
                 </button>
               </span>
@@ -1618,6 +1729,7 @@
                  data-zh="爬取 gaokao.cn 接口，清洗各大学专业历年投档分、录取最低位次与招生计划，输出 CSV 便于多维对比与填报决策。"
                  data-en="Scrapes and normalizes historical university admission cutoffs, rankings, and quotas from gaokao.cn into clean CSVs for data-driven college application decisions.">爬取 gaokao.cn 接口，清洗各大学专业历年投档分、录取最低位次与招生计划，输出 CSV 便于多维对比与填报决策。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="Python">Python</span>
               <span class="tag" data-tag="Requests">Requests</span>
               <span class="tag" data-tag="Pandas">Pandas</span>
@@ -1643,13 +1755,14 @@
             </div>
           </li>
 
-          <li class="project-item" data-tags="web">
+          <li class="project-item tool-item" data-tags="web,tool">
             <div class="item-header">
               <span class="project-name">
                 <button type="button" class="project-title-btn" onclick="toggleProjectDetail('detail-unipus-helper')" aria-expanded="false" aria-controls="detail-unipus-helper">
                   <span class="project-title-text"
                         data-zh="Unipus Helper 平台学习体验增强助手"
                         data-en="Unipus Helper Platform UX Assistant">Unipus Helper 平台学习体验增强助手</span>
+                  <span class="tool-badge" data-zh="[小工具]" data-en="[Tool]">[小工具]</span>
                   <span class="expand-btn" id="btn-detail-unipus-helper">[详情 +]</span>
                 </button>
               </span>
@@ -1661,6 +1774,7 @@
                  data-zh="外语学习平台用户脚本。定时发送心跳包维持会话状态，自动确认防掉线弹窗，提供界面快捷键导航与沉浸式自习环境。"
                  data-en="Tampermonkey userscript for courseware platform. Automates heartbeat pings to dismiss idle timeouts and provides streamlined navigation.">外语学习平台用户脚本。定时发送心跳包维持会话状态，自动确认防掉线弹窗，提供界面快捷键导航与沉浸式自习环境。</div>
             <div class="item-tags">
+              <span class="tag" data-tag="tool" data-zh="小工具" data-en="Tool">小工具</span>
               <span class="tag" data-tag="JavaScript">JavaScript</span>
               <span class="tag" data-tag="Tampermonkey">Tampermonkey</span>
               <span class="tag" data-tag="web">web</span>
@@ -1803,14 +1917,15 @@
     const i18n = {
       zh: {
         pageTitle: "李耀飞 (F1are) — 开发项目索引与归档",
-        pageFocus: "主攻: AI Agent / Linux / 全栈工具",
+        pageFocus: "主攻: 发现问题并设计框架与约束，让 AI 解决问题",
         filterLabel: "筛选:",
         btnFilterAll: "全部",
         btnFilterFeatured: "★ 精选",
         btnFilterAgent: "AI智能体",
+        btnFilterTool: "小工具",
         btnFilterLinux: "Linux/系统",
         btnFilterQuant: "金融/量化",
-        btnFilterWeb: "Web/工具",
+        btnFilterWeb: "Web/应用",
         btnFilterNet: "网络/基建",
         clearBtn: "[清除筛选 ×]",
         langBtn: "EN",
@@ -1825,14 +1940,15 @@
       },
       en: {
         pageTitle: "Yaofei Li (F1are) — Project Directory & Archive",
-        pageFocus: "Focus: AI Agents / Linux Systems / Full-Stack Tooling",
+        pageFocus: "Focus: Problem Framing & Constraint Design · Directing AI Solutions",
         filterLabel: "Filter:",
         btnFilterAll: "All",
         btnFilterFeatured: "★ Featured",
         btnFilterAgent: "AI/Agents",
+        btnFilterTool: "Tools",
         btnFilterLinux: "Linux/Systems",
         btnFilterQuant: "Finance/Quant",
-        btnFilterWeb: "Web/Tools",
+        btnFilterWeb: "Web/Apps",
         btnFilterNet: "Network/Infra",
         clearBtn: "[Clear filter ×]",
         langBtn: "中文",
@@ -1892,6 +2008,8 @@
       const featBtn = document.getElementById('btnFilterFeatured');
       if (featBtn) featBtn.textContent = t.btnFilterFeatured;
       document.getElementById('btnFilterAgent').textContent = t.btnFilterAgent;
+      const toolBtn = document.getElementById('btnFilterTool');
+      if (toolBtn) toolBtn.textContent = t.btnFilterTool;
       document.getElementById('btnFilterLinux').textContent = t.btnFilterLinux;
       document.getElementById('btnFilterQuant').textContent = t.btnFilterQuant;
       document.getElementById('btnFilterWeb').textContent = t.btnFilterWeb;
