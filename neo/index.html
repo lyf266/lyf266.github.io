@@ -1,182 +1,1354 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light dark">
-<title>李耀飞 (F1are) — 作品集 / Portfolio</title>
-<style>
-  :root{
-    --bg:#f7f7f4; --paper:#fff; --paper-2:#f0f1ed; --ink:#19211e; --muted:#66716b;
-    --line:#dfe3dc; --line-strong:#c6cec4; --accent:#245c4b; --accent-hi:#d7f078;
-    --accent-soft:#e8efe9; --code:#e9ede8; --shadow:0 18px 55px rgba(28,42,33,.08);
-    --serif:Georgia,"Times New Roman",serif; --sans:Inter,"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",sans-serif;
-    --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; --radius:22px;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:90px}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-  button{font:inherit;cursor:pointer}
-  button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #7a9c32;outline-offset:3px}
-  svg{display:block}
-  .icon{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
-  .wrap{width:min(1160px,calc(100% - 44px));margin-inline:auto}
-  .topbar{height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px;border-bottom:1px solid var(--line)}
-  .brand{display:flex;align-items:center;gap:11px;font-weight:750;letter-spacing:-.04em}
-  .brand-mark{width:35px;height:35px;border-radius:11px;background:var(--accent);color:white;display:grid;place-items:center;font-size:14px;font-family:var(--mono);letter-spacing:-.08em}
-  .brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.17em;font-weight:650;margin-top:-2px}
-  .nav{display:flex;gap:24px;align-items:center;color:var(--muted);font-size:13px}
-  .nav a:hover{color:var(--accent)}
-  .actions{display:flex;align-items:center;gap:8px}
-  .icon-btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);width:37px;height:37px;border-radius:50%;display:grid;place-items:center}
-  .lang-btn{height:37px;padding:0 12px;border:1px solid var(--line);background:var(--paper);border-radius:99px;color:var(--ink);font-size:12px;font-weight:700}
-  .hero{padding:83px 0 68px;display:grid;grid-template-columns:minmax(0,1.07fr) minmax(320px,.93fr);align-items:center;gap:58px}
-  .eyebrow{display:flex;align-items:center;gap:10px;text-transform:uppercase;font:700 11px var(--mono);letter-spacing:.14em;color:var(--accent);margin-bottom:20px}
-  .eyebrow:before{content:"";width:25px;height:1px;background:currentColor}
-  h1,h2,h3,p{margin-top:0}
-  h1{font-size:clamp(42px,5.5vw,72px);line-height:1.09;letter-spacing:-.065em;font-weight:760;margin-bottom:23px;max-width:720px}
-  h1 .serif{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.07em;color:var(--accent)}
-  .hero-copy{font-size:17px;line-height:1.85;color:var(--muted);max-width:590px;margin-bottom:25px}
-  .hero-copy strong{color:var(--ink);font-weight:650}
-  .pills{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 30px}
-  .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:rgba(255,255,255,.55);padding:7px 11px;border-radius:99px;font-size:12px;color:var(--muted)}
-  .pill .dot{width:6px;height:6px;background:var(--accent);border-radius:50%}
-  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 16px;border-radius:11px;border:1px solid transparent;font-size:13px;font-weight:700;transition:transform .18s,background .18s,border-color .18s}
-  .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:var(--accent);color:#fff}
-  .btn-secondary{background:var(--paper);border-color:var(--line);color:var(--ink)}
-  .hero-art{position:relative;border:1px solid var(--line);border-radius:26px;background:var(--paper);padding:20px;box-shadow:var(--shadow);min-height:420px;overflow:hidden}
-  .art-head{display:flex;justify-content:space-between;align-items:center;font:11px var(--mono);color:var(--muted);padding:0 2px 17px;border-bottom:1px solid var(--line)}
-  .art-status{display:flex;align-items:center;gap:6px}.art-status:before{content:"";width:6px;height:6px;border-radius:50%;background:#58966e}
-  .art-canvas{position:relative;height:330px;padding:22px 6px 10px}
-  .art-grid{position:absolute;inset:16px 0 0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);background-size:36px 36px;opacity:.48;mask-image:linear-gradient(black,transparent 95%)}
-  .node{position:absolute;background:var(--paper);border:1px solid var(--line-strong);border-radius:13px;padding:12px 13px;box-shadow:0 7px 20px rgba(20,35,27,.06);z-index:2}
-  .node-top{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:750}
-  .node .mini{width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
-  .node p{font-size:10px;line-height:1.45;color:var(--muted);margin:7px 0 0 39px}
-  .node-a{top:32px;left:7%;width:47%}.node-b{top:125px;right:2%;width:49%}.node-c{top:220px;left:5%;width:48%}
-  .connector{position:absolute;z-index:1;border-color:#89a58e;border-style:dashed;border-width:0 0 1.5px 1.5px}
-  .conn-a{left:39%;top:91px;width:24%;height:39%;border-radius:0 0 0 15px;transform:skewY(-14deg)}
-  .conn-b{right:28%;top:190px;width:26%;height:27%;border-width:1.5px 1.5px 0 0;border-radius:0 12px 0 0;transform:skewY(13deg)}
-  .art-stamp{position:absolute;right:18px;bottom:8px;transform:rotate(-7deg);border:1px solid var(--accent);color:var(--accent);border-radius:50%;width:76px;height:76px;display:grid;place-items:center;text-align:center;font:700 9px/1.4 var(--mono);letter-spacing:.08em;background:var(--accent-soft)}
-  .section{padding:58px 0}
-  .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:25px}
-  .section-kicker{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-  h2{font-size:clamp(28px,3.4vw,42px);line-height:1.15;letter-spacing:-.055em;margin-bottom:0}
-  .section-note{max-width:410px;font-size:13px;color:var(--muted);margin:0}
-  .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
-  .project-card{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;min-width:0}
-  .project-card:hover{transform:translateY(-3px);border-color:var(--line-strong);box-shadow:0 15px 38px rgba(28,42,33,.06)}
-  .project-visual{height:210px;background:var(--paper-2);padding:18px 22px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-  .visual-label{font:10px var(--mono);letter-spacing:.13em;color:var(--muted);text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
-  .visual-flow{display:flex;align-items:center;justify-content:center;gap:12px;height:145px}
-  .flow-unit{width:84px;height:83px;border:1px solid var(--line-strong);border-radius:16px;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;box-shadow:0 5px 14px rgba(0,0,0,.025)}
-  .flow-unit .icon{width:24px;height:24px;color:var(--accent)}
-  .flow-unit span{font-size:10px;font-weight:650;color:var(--muted);white-space:nowrap}
-  .flow-arrow{color:#83978a;width:17px;height:17px}
-  .visual-index{position:absolute;right:19px;bottom:8px;font:italic 38px var(--serif);color:rgba(36,92,75,.14)}
-  .card-body{padding:22px 24px 21px}
-  .card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-  .category{font:700 10px var(--mono);letter-spacing:.11em;color:var(--accent);text-transform:uppercase}
-  .status{font-size:10px;padding:4px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:700}
-  .card-body h3{font-size:22px;letter-spacing:-.045em;line-height:1.25;margin-bottom:9px}
-  .card-body p{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:16px;min-height:45px}
-  .techs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-  .tech{font:10px var(--mono);color:var(--muted);background:var(--paper-2);padding:5px 7px;border-radius:6px}
-  .text-link{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:750;color:var(--accent);border:0;background:transparent;padding:0}
-  .text-link:hover{text-decoration:underline;text-underline-offset:4px}
-  .work-section{background:#e9eee8;border-block:1px solid #dce4da}
-  .work-section .section{padding:60px 0}
-  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:31px}
-  .step{padding:0 21px 0 0;position:relative}
-  .step:not(:last-child):after{content:"";position:absolute;left:51px;right:17px;top:24px;border-top:1px dashed #a7b9a7}
-  .step-head{display:flex;align-items:center;gap:13px;position:relative;z-index:1;margin-bottom:15px}
-  .step-no{width:49px;height:49px;border-radius:15px;background:var(--paper);border:1px solid #d3ded1;display:grid;place-items:center;color:var(--accent)}
-  .step-no .icon{width:22px;height:22px}
-  .step-num{font:11px var(--mono);color:#718174}
-  .step h3{font-size:16px;margin-bottom:7px;letter-spacing:-.02em}
-  .step p{font-size:12px;line-height:1.7;color:#5e6d61;margin-bottom:0;max-width:220px}
-  .archive{padding-top:64px}
-  .filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:19px}
-  .filter{border:1px solid var(--line);background:transparent;border-radius:99px;padding:7px 12px;color:var(--muted);font-size:12px}
-  .filter:hover,.filter.active{border-color:var(--accent);background:var(--accent);color:white}
-  .archive-list{border-top:1px solid var(--line)}
-  .archive-item{display:grid;grid-template-columns:55px minmax(0,1fr) 120px 110px;align-items:center;gap:17px;padding:17px 4px;border-bottom:1px solid var(--line);transition:background .15s}
-  .archive-item:hover{background:rgba(255,255,255,.4)}
-  .archive-item[hidden]{display:none}
-  .archive-index{font:12px var(--mono);color:#9aa49b}
-  .archive-title{font-weight:750;font-size:14px;letter-spacing:-.02em;margin-bottom:3px}
-  .archive-desc{font-size:12px;color:var(--muted);line-height:1.55}
-  .archive-type{font:10px var(--mono);color:var(--muted);text-align:left}
-  .archive-link{justify-self:end;font-size:11px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:5px}
-  .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:start;border-top:1px solid var(--line);padding-top:54px}
-  .about-label{font:700 11px var(--mono);letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:13px}
-  .about h2{max-width:360px}
-  .about-copy{font-size:14px;color:var(--muted);line-height:1.9;max-width:680px}
-  .about-copy strong{color:var(--ink)}
-  .about-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:23px}
-  .about-point{border:1px solid var(--line);background:var(--paper);border-radius:13px;padding:14px;display:flex;gap:11px;align-items:flex-start}
-  .about-point .icon{color:var(--accent);margin-top:2px}
-  .about-point strong{font-size:12px;display:block;margin-bottom:2px}
-  .about-point span{font-size:11px;color:var(--muted);display:block;line-height:1.5}
-  .contact{margin-top:64px;margin-bottom:35px;background:var(--accent);color:#fff;border-radius:25px;padding:34px 38px;display:flex;justify-content:space-between;align-items:center;gap:24px;overflow:hidden;position:relative}
-  .contact:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.15);border-radius:50%;right:20%;top:-180px;box-shadow:0 0 0 25px rgba(255,255,255,.035),0 0 0 50px rgba(255,255,255,.025)}
-  .contact h2{font-size:29px;max-width:530px;margin-bottom:7px;position:relative;z-index:1}
-  .contact p{font-size:13px;color:rgba(255,255,255,.72);margin-bottom:0;position:relative;z-index:1}
-  .contact .btn{background:var(--accent-hi);color:#1e3325;position:relative;z-index:1;white-space:nowrap}
-  footer{display:flex;justify-content:space-between;gap:20px;padding:0 0 32px;color:var(--muted);font:11px var(--mono)}
-  .modal{position:fixed;inset:0;display:none;z-index:20;background:rgba(18,29,23,.56);backdrop-filter:blur(7px);padding:22px;overflow:auto}
-  .modal.open{display:flex;align-items:flex-start;justify-content:center}
-  .modal-panel{width:min(850px,100%);margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:23px;box-shadow:0 28px 100px rgba(0,0,0,.25);overflow:hidden}
-  .modal-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 28px;border-bottom:1px solid var(--line)}
-  .modal-eyebrow{font:700 10px var(--mono);letter-spacing:.13em;color:var(--accent);margin-bottom:7px}
-  .modal-top h2{font-size:29px}
-  .modal-close{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);background:var(--paper-2);border-radius:50%;color:var(--ink)}
-  .modal-content{padding:26px 28px 30px}
-  .modal-intro{color:var(--muted);font-size:14px;max-width:680px;margin-bottom:23px}
-  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-  .case-box{border:1px solid var(--line);border-radius:14px;padding:17px;background:var(--paper)}
-  .case-box.full{grid-column:1/-1}
-  .case-box h3{font-size:12px;color:var(--accent);font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:8px}
-  .case-box p,.case-box li{font-size:12px;line-height:1.8;color:var(--muted)}
-  .case-box p{margin-bottom:0}.case-box ul{padding-left:18px;margin:0}
-  .case-flow{display:flex;align-items:center;justify-content:space-around;gap:10px;flex-wrap:wrap;margin-top:13px}
-  .case-flow span{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--paper-2);padding:8px 11px;border-radius:9px;font-size:11px;font-weight:700}
-  .case-flow .icon{width:15px;height:15px;color:var(--accent)}
-  .honesty-note{margin-top:17px;padding:13px 15px;border-left:3px solid #b3bf78;background:var(--paper-2);font-size:11px;color:var(--muted);line-height:1.7}
-  .handoff{margin:60px 0 40px;border:1px dashed var(--line-strong);border-radius:15px;padding:0 18px;background:rgba(255,255,255,.36)}
-  .handoff summary{padding:16px 0;font-weight:750;font-size:13px;cursor:pointer}
-  .handoff-content{padding:0 0 20px;color:var(--muted);font-size:12px;line-height:1.8}
-  .handoff-content h3{font-size:13px;color:var(--ink);margin:18px 0 5px}
-  .handoff-content ul{padding-left:19px;margin-top:5px}
-  .handoff-content code{font-family:var(--mono);background:var(--code);padding:2px 5px;border-radius:4px;color:var(--ink)}
-  body.dark{--bg:#111713;--paper:#171f19;--paper-2:#202a22;--ink:#ecf1ea;--muted:#a3afa4;--line:#2b392e;--line-strong:#405244;--accent:#a6d6ae;--accent-hi:#d7f078;--accent-soft:#263a2b;--code:#263329;--shadow:0 18px 55px rgba(0,0,0,.18)}
-  body.dark .brand-mark{background:#a6d6ae;color:#142017} body.dark .btn-primary{background:#a6d6ae;color:#142017}
-  body.dark .hero-art,body.dark .project-card,body.dark .about-point,body.dark .node,body.dark .flow-unit{box-shadow:none}
-  body.dark .work-section{background:#1b261e;border-color:#2b392e} body.dark .step p{color:#a3afa4}
-  body.dark .pill{background:rgba(255,255,255,.025)} body.dark .contact{background:#294b36}
-  body.dark .archive-item:hover{background:rgba(255,255,255,.025)} body.dark .modal{background:rgba(0,0,0,.7)}
-  @media(max-width:850px){
-    .nav{display:none}.hero{grid-template-columns:1fr;gap:35px;padding-top:58px}.hero-art{min-height:400px}.art-canvas{height:310px}
-    .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 12px}.step:not(:last-child):after{display:none}
-    .archive-item{grid-template-columns:36px minmax(0,1fr) 95px;gap:12px}.archive-link{display:none}.about{grid-template-columns:1fr;gap:22px}
-  }
-  @media(max-width:600px){
-    .wrap{width:min(100% - 28px,1160px)}.topbar{height:65px}.brand{font-size:14px}.brand-mark{width:32px;height:32px}.actions{gap:5px}.icon-btn{width:34px;height:34px}.lang-btn{height:34px;padding:0 10px}
-    .hero{padding:48px 0 40px;gap:29px}h1{font-size:clamp(40px,12vw,58px)}.hero-copy{font-size:15px}.hero-art{padding:15px;min-height:360px}.art-canvas{height:280px}.node-a{left:1%;width:51%}.node-b{right:0;width:53%}.node-c{left:1%;width:51%}.node{padding:10px}.node-top{font-size:10px}.node .mini{width:26px;height:26px}.node p{font-size:9px;margin-left:35px}
-    .section{padding:43px 0}.section-head{align-items:flex-start;flex-direction:column;gap:12px}.section-note{max-width:none}.project-grid{grid-template-columns:1fr}.project-visual{height:190px}.card-body{padding:19px}.card-body p{min-height:0}
-    .steps{grid-template-columns:1fr 1fr;gap:23px 14px}.step{padding-right:0}.step-head{gap:9px}.step-no{width:42px;height:42px;border-radius:12px}.step h3{font-size:14px}.step p{font-size:11px}
-    .archive{padding-top:43px}.archive-item{grid-template-columns:28px minmax(0,1fr);gap:10px;padding:15px 1px}.archive-type{display:none}.archive-title{font-size:13px}.archive-desc{font-size:11px}
-    .about{padding-top:38px}.about-points{grid-template-columns:1fr}.contact{margin-top:42px;padding:27px 22px;align-items:flex-start;flex-direction:column}.contact h2{font-size:25px}.contact:after{right:-60px}
-    footer{flex-direction:column;gap:7px}.modal{padding:9px}.modal-top{padding:18px 18px}.modal-top h2{font-size:24px}.modal-content{padding:18px}.case-grid{grid-template-columns:1fr}.case-box.full{grid-column:auto}.case-flow{justify-content:flex-start}.handoff{margin-top:42px;padding-inline:13px}
-  }
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
-  @media print{.topbar .actions,.nav,.cta-row,.text-link,.filter-row,.contact,.handoff,.modal{display:none!important}body{background:white;color:#111}.wrap{width:100%}.hero{padding:30px 0}.project-card{break-inside:avoid;box-shadow:none}.project-grid{grid-template-columns:1fr 1fr}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>李耀飞 (F1are) — 个人作品集与工程案例 | Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --paper: #ffffff;
+      --paper-2: #f0f1ed;
+      --ink: #19211e;
+      --muted: #66716b;
+      --line: #dfe3dc;
+      --line-strong: #c6cec4;
+      --accent: #245c4b;
+      --accent-hi: #d7f078;
+      --accent-soft: #e8efe9;
+      --code: #e9ede8;
+      --shadow: 0 18px 55px rgba(28, 42, 33, 0.08);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Source Han Sans SC", "Noto Sans CJK SC", "Noto Sans SC", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button:focus-visible, a:focus-visible, summary:focus-visible {
+      outline: 3px solid #7a9c32;
+      outline-offset: 3px;
+    }
+
+    svg {
+      display: block;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: none;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 44px));
+      margin-inline: auto;
+    }
+
+    /* 顶部导航 */
+    .topbar {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 750;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-mark {
+      width: 35px;
+      height: 35px;
+      border-radius: 11px;
+      background: var(--accent);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-family: var(--mono);
+      letter-spacing: -0.08em;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.17em;
+      font-weight: 650;
+      margin-top: -2px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav a {
+      transition: color 0.15s ease;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-1px);
+    }
+
+    .pill-btn {
+      height: 37px;
+      padding: 0 13px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 99px;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+    }
+
+    .pill-btn:hover {
+      border-color: var(--line-strong);
+      transform: translateY(-1px);
+    }
+
+    /* 首屏 Hero */
+    .hero {
+      padding: 76px 0 64px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      align-items: center;
+      gap: 52px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      font: 700 11px var(--mono);
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow:before {
+      content: "";
+      width: 25px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 1.1;
+      letter-spacing: -0.06em;
+      font-weight: 760;
+      margin-bottom: 22px;
+      max-width: 720px;
+    }
+
+    h1 .serif {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -0.07em;
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 590px;
+      margin-bottom: 24px;
+    }
+
+    .hero-copy strong {
+      color: var(--ink);
+      font-weight: 650;
+    }
+
+    .pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 24px 0 28px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.65);
+      padding: 6px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .pill .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 11px 17px;
+      border-radius: 11px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.18s, background 0.18s, border-color 0.18s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: var(--paper);
+      border-color: var(--line);
+      color: var(--ink);
+    }
+
+    /* Hero 右侧流程画布 */
+    .hero-art {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: var(--paper);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    .art-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font: 11px var(--mono);
+      color: var(--muted);
+      padding: 0 2px 17px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .art-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .art-status:before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #58966e;
+    }
+
+    .art-canvas {
+      position: relative;
+      height: 330px;
+      padding: 22px 6px 10px;
+    }
+
+    .art-grid {
+      position: absolute;
+      inset: 16px 0 0;
+      background-image: linear-gradient(to right, var(--line) 1px, transparent 1px),
+                        linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+      background-size: 36px 36px;
+      opacity: 0.48;
+      mask-image: linear-gradient(black, transparent 95%);
+    }
+
+    .node {
+      position: absolute;
+      background: var(--paper);
+      border: 1px solid var(--line-strong);
+      border-radius: 13px;
+      padding: 12px 13px;
+      box-shadow: 0 7px 20px rgba(20, 35, 27, 0.06);
+      z-index: 2;
+    }
+
+    .node-top {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .node .mini {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: grid;
+      place-items: center;
+    }
+
+    .node p {
+      font-size: 10px;
+      line-height: 1.45;
+      color: var(--muted);
+      margin: 7px 0 0 39px;
+    }
+
+    .node-a { top: 32px; left: 6%; width: 48%; }
+    .node-b { top: 125px; right: 2%; width: 50%; }
+    .node-c { top: 220px; left: 4%; width: 49%; }
+
+    .connector {
+      position: absolute;
+      z-index: 1;
+      border-color: #89a58e;
+      border-style: dashed;
+      border-width: 0 0 1.5px 1.5px;
+    }
+
+    .conn-a {
+      left: 39%;
+      top: 91px;
+      width: 24%;
+      height: 39%;
+      border-radius: 0 0 0 15px;
+      transform: skewY(-14deg);
+    }
+
+    .conn-b {
+      right: 28%;
+      top: 190px;
+      width: 26%;
+      height: 27%;
+      border-width: 1.5px 1.5px 0 0;
+      border-radius: 0 12px 0 0;
+      transform: skewY(13deg);
+    }
+
+    .art-stamp {
+      position: absolute;
+      right: 18px;
+      bottom: 8px;
+      transform: rotate(-7deg);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      border-radius: 50%;
+      width: 76px;
+      height: 76px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font: 700 9px/1.4 var(--mono);
+      letter-spacing: 0.08em;
+      background: var(--accent-soft);
+    }
+
+    /* 通用 Section */
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      font: 700 11px var(--mono);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 3.2vw, 42px);
+      line-height: 1.15;
+      letter-spacing: -0.05em;
+      font-weight: 750;
+      margin-bottom: 0;
+    }
+
+    .section-note {
+      max-width: 440px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* 01 / 精选项目卡片网格 */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--line-strong);
+      box-shadow: 0 15px 38px rgba(28, 42, 33, 0.06);
+    }
+
+    .project-visual {
+      height: 200px;
+      background: var(--paper-2);
+      padding: 16px 20px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .visual-label {
+      font: 10px var(--mono);
+      letter-spacing: 0.13em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .visual-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      height: 140px;
+    }
+
+    .flow-unit {
+      width: 86px;
+      height: 82px;
+      border: 1px solid var(--line-strong);
+      border-radius: 16px;
+      background: var(--paper);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.025);
+    }
+
+    .flow-unit .icon {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+    }
+
+    .flow-unit span {
+      font-size: 10px;
+      font-weight: 650;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .flow-arrow {
+      color: #83978a;
+      width: 16px;
+      height: 16px;
+    }
+
+    .visual-index {
+      position: absolute;
+      right: 18px;
+      bottom: 6px;
+      font: italic 38px var(--serif);
+      color: rgba(36, 92, 75, 0.12);
+    }
+
+    .card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .category {
+      font: 700 10px var(--mono);
+      letter-spacing: 0.11em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .status-badge {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 99px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .card-body h3 {
+      font-size: 21px;
+      letter-spacing: -0.04em;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .card-body p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+      flex: 1;
+    }
+
+    .techs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tech {
+      font: 10px var(--mono);
+      color: var(--muted);
+      background: var(--paper-2);
+      padding: 4px 7px;
+      border-radius: 6px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: auto;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 750;
+      color: var(--accent);
+      border: 0;
+      background: transparent;
+      padding: 0;
+      transition: color 0.15s;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .ext-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ext-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.15s;
+    }
+
+    .ext-badge:hover {
+      color: var(--accent);
+    }
+
+    /* 02 / 工作方式 */
+    .work-section {
+      background: #e9eee8;
+      border-block: 1px solid #dce4da;
+    }
+
+    .work-section .section {
+      padding: 60px 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      margin-top: 32px;
+    }
+
+    .step {
+      padding: 0 24px 0 0;
+      position: relative;
+    }
+
+    .step:not(:last-child):after {
+      content: "";
+      position: absolute;
+      left: 54px;
+      right: 17px;
+      top: 24px;
+      border-top: 1px dashed #a7b9a7;
+    }
+
+    .step-head {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 16px;
+    }
+
+    .step-no {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      background: var(--paper);
+      border: 1px solid #d3ded1;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+    }
+
+    .step-no .icon {
+      width: 22px;
+      height: 22px;
+    }
+
+    .step-num {
+      font: 11px var(--mono);
+      color: #718174;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+      letter-spacing: -0.02em;
+      font-weight: 750;
+    }
+
+    .step p {
+      font-size: 12px;
+      line-height: 1.7;
+      color: #5e6d61;
+      max-width: 220px;
+    }
+
+    /* 03 / 项目档案目录 */
+    .archive {
+      padding-top: 64px;
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: transparent;
+      border-radius: 99px;
+      padding: 7px 14px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .filter:hover, .filter.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: white;
+    }
+
+    .archive-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .archive-item {
+      display: grid;
+      grid-template-columns: 50px minmax(0, 1.8fr) 140px 140px;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 4px;
+      border-bottom: 1px solid var(--line);
+      transition: background 0.15s ease;
+    }
+
+    .archive-item:hover {
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .archive-item[hidden] {
+      display: none;
+    }
+
+    .archive-index {
+      font: 12px var(--mono);
+      color: #9aa49b;
+    }
+
+    .archive-main {
+      min-width: 0;
+    }
+
+    .archive-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .archive-title {
+      font-weight: 750;
+      font-size: 14px;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .archive-star {
+      color: #d48800;
+      font-size: 11px;
+    }
+
+    .archive-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .archive-type {
+      font: 10px var(--mono);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .archive-actions {
+      justify-self: end;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .archive-link {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: color 0.15s;
+    }
+
+    .archive-link:hover {
+      color: var(--accent);
+    }
+
+    .archive-case-btn {
+      font-size: 11px;
+      font-weight: 750;
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid var(--line);
+      padding: 4px 9px;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+
+    .archive-case-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    /* 04 / 关于我与原则 */
+    .about {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 50px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      padding-top: 54px;
+    }
+
+    .about-label {
+      font: 700 11px var(--mono);
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .about h2 {
+      max-width: 360px;
+    }
+
+    .about-copy {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 680px;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .about-point {
+      border: 1px solid var(--line);
+      background: var(--paper);
+      border-radius: 13px;
+      padding: 15px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .about-point .icon {
+      color: var(--accent);
+      margin-top: 2px;
+    }
+
+    .about-point strong {
+      font-size: 12px;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .about-point span {
+      font-size: 11px;
+      color: var(--muted);
+      display: block;
+      line-height: 1.5;
+    }
+
+    .contact {
+      margin-top: 60px;
+      margin-bottom: 35px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 25px;
+      padding: 36px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .contact:after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      right: 20%;
+      top: -180px;
+      box-shadow: 0 0 0 25px rgba(255, 255, 255, 0.035), 0 0 0 50px rgba(255, 255, 255, 0.025);
+    }
+
+    .contact h2 {
+      font-size: 28px;
+      max-width: 530px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-btns {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact .btn-accent {
+      background: var(--accent-hi);
+      color: #1e3325;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .contact .btn-trans {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.3);
+      white-space: nowrap;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 0 32px;
+      color: var(--muted);
+      font: 11px var(--mono);
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+
+    /* 案例弹窗 Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      z-index: 100;
+      background: rgba(18, 29, 23, 0.58);
+      backdrop-filter: blur(8px);
+      padding: 24px;
+      overflow-y: auto;
+    }
+
+    .modal.open {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .modal-panel {
+      width: min(860px, 100%);
+      margin: auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 23px;
+      box-shadow: 0 28px 100px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.97) translateY(8px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-eyebrow {
+      font: 700 10px var(--mono);
+      letter-spacing: 0.13em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .modal-top h2 {
+      font-size: 26px;
+      letter-spacing: -0.04em;
+    }
+
+    .modal-close {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      border-radius: 50%;
+      color: var(--ink);
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .modal-close:hover {
+      background: var(--line);
+      transform: scale(1.05);
+    }
+
+    .modal-content {
+      padding: 26px 28px 32px;
+    }
+
+    .modal-intro {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 720px;
+      margin-bottom: 22px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .case-box {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      background: var(--paper);
+    }
+
+    .case-box.full {
+      grid-column: 1 / -1;
+    }
+
+    .case-box h3 {
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.03em;
+    }
+
+    .case-box p, .case-box li {
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .case-box p {
+      margin-bottom: 0;
+    }
+
+    .case-box ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .case-flow {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .case-flow span {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      padding: 8px 12px;
+      border-radius: 9px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .case-flow .icon {
+      width: 14px;
+      height: 14px;
+      color: var(--accent);
+    }
+
+    .case-links-row {
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .case-link-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid var(--line-strong);
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--paper-2);
+    }
+
+    .case-link-item:hover {
+      text-decoration: underline;
+    }
+
+    .honesty-note {
+      margin-top: 18px;
+      padding: 13px 16px;
+      border-left: 3px solid #b3bf78;
+      background: var(--paper-2);
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.7;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* 暗黑模式 */
+    body.dark {
+      --bg: #111713;
+      --paper: #171f19;
+      --paper-2: #202a22;
+      --ink: #ecf1ea;
+      --muted: #a3afa4;
+      --line: #2b392e;
+      --line-strong: #405244;
+      --accent: #a6d6ae;
+      --accent-hi: #d7f078;
+      --accent-soft: #263a2b;
+      --code: #263329;
+      --shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+    }
+
+    body.dark .brand-mark {
+      background: #a6d6ae;
+      color: #142017;
+    }
+
+    body.dark .btn-primary {
+      background: #a6d6ae;
+      color: #142017;
+    }
+
+    body.dark .hero-art,
+    body.dark .project-card,
+    body.dark .about-point,
+    body.dark .node,
+    body.dark .flow-unit {
+      box-shadow: none;
+    }
+
+    body.dark .work-section {
+      background: #1b261e;
+      border-color: #2b392e;
+    }
+
+    body.dark .step p {
+      color: #a3afa4;
+    }
+
+    body.dark .pill {
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    body.dark .contact {
+      background: #23432e;
+    }
+
+    body.dark .archive-item:hover {
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    body.dark .modal {
+      background: rgba(0, 0, 0, 0.72);
+    }
+
+    /* 移动端与自适应断点 */
+    @media (max-width: 850px) {
+      .nav { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 54px; }
+      .hero-art { min-height: 400px; }
+      .art-canvas { height: 310px; }
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 14px; }
+      .step:not(:last-child):after { display: none; }
+      .archive-item { grid-template-columns: 36px minmax(0, 1fr) 110px; gap: 12px; }
+      .archive-type { display: none; }
+      .about { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, 1160px); }
+      .topbar { height: 65px; }
+      .brand { font-size: 14px; }
+      .brand-mark { width: 32px; height: 32px; }
+      .actions { gap: 5px; }
+      .icon-btn { width: 34px; height: 34px; }
+      .pill-btn { height: 34px; padding: 0 10px; }
+      .hero { padding: 42px 0 36px; gap: 28px; }
+      h1 { font-size: clamp(34px, 10vw, 52px); }
+      .hero-copy { font-size: 14px; }
+      .hero-art { padding: 15px; min-height: 350px; }
+      .art-canvas { height: 270px; }
+      .node-a { left: 2%; width: 52%; }
+      .node-b { right: 0; width: 54%; }
+      .node-c { left: 2%; width: 52%; }
+      .node { padding: 10px; }
+      .node-top { font-size: 10px; }
+      .node .mini { width: 26px; height: 26px; }
+      .node p { font-size: 9px; margin-left: 35px; }
+      .section { padding: 42px 0; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .section-note { max-width: none; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-visual { height: 180px; }
+      .card-body { padding: 20px; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 20px 12px; }
+      .step { padding-right: 0; }
+      .step-head { gap: 9px; }
+      .step-no { width: 42px; height: 42px; border-radius: 12px; }
+      .step h3 { font-size: 14px; }
+      .step p { font-size: 11px; }
+      .archive { padding-top: 42px; }
+      .archive-item { grid-template-columns: 28px minmax(0, 1fr); gap: 10px; padding: 14px 2px; }
+      .archive-actions { grid-column: 2; justify-self: start; margin-top: 4px; }
+      .about { padding-top: 36px; }
+      .about-points { grid-template-columns: 1fr; }
+      .contact { margin-top: 40px; padding: 28px 22px; align-items: flex-start; flex-direction: column; }
+      .contact h2 { font-size: 24px; }
+      .contact:after { right: -60px; }
+      footer { flex-direction: column; gap: 8px; }
+      .modal { padding: 10px; }
+      .modal-top { padding: 18px 20px; }
+      .modal-top h2 { font-size: 22px; }
+      .modal-content { padding: 18px 20px; }
+      .case-grid { grid-template-columns: 1fr; }
+      .case-box.full { grid-column: auto; }
+      .case-flow { justify-content: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *:before, *:after { transition: none !important; animation: none !important; }
+    }
+
+    @media print {
+      .topbar .actions, .nav, .cta-row, .text-link, .filter-row, .contact, .modal { display: none !important; }
+      body { background: white; color: #111; font-size: 12pt; }
+      .wrap { width: 100%; max-width: none; }
+      .hero { padding: 20px 0; grid-template-columns: 1fr; }
+      .hero-art { display: none; }
+      .project-card { break-inside: avoid; box-shadow: none; border-color: #ccc; margin-bottom: 20px; }
+      .project-grid { grid-template-columns: 1fr 1fr; gap: 15px; }
+      .work-section { background: white; border: none; }
+      .steps { grid-template-columns: repeat(4, 1fr); }
+      .archive-item { break-inside: avoid; }
+      .archive-actions { display: none; }
+    }
+  </style>
 </head>
 <body>
+
+<!-- SVG 语义图标集合 -->
 <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
   <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
   <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
@@ -202,100 +1374,1402 @@
   <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a5 5 0 0 0-6.9 6.9L3 18l3 3 4.8-4.8a5 5 0 0 0 6.9-6.9L14 13l-3-3Z"/></symbol>
   <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M8 15l4-4 4 3 5-7"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="m18 6-12 12M6 6l12 12"/></symbol>
-  <symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v11h14V9m-9 4h4"/></symbol>
+  <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></symbol>
   <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
+  <symbol id="i-printer" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
 </svg>
+
+<!-- 顶部导航栏 -->
 <header class="wrap topbar">
-  <a class="brand" href="#top" aria-label="F1are Portfolio 首页"><span class="brand-mark">F.</span><span>F1are <small>PORTFOLIO / 2026</small></span></a>
-  <nav class="nav" aria-label="主导航"><a href="#work" data-zh="精选项目" data-en="Selected work">精选项目</a><a href="#process" data-zh="工作方式" data-en="How I work">工作方式</a><a href="#archive" data-zh="项目档案" data-en="Archive">项目档案</a><a href="#about" data-zh="关于我" data-en="About">关于我</a></nav>
-  <div class="actions"><button class="icon-btn" id="themeToggle" aria-label="切换深色模式" title="切换深色模式"><svg class="icon"><use href="#i-moon"/></svg></button><button class="lang-btn" id="langToggle" aria-label="Switch language">EN / 中</button></div>
+  <a class="brand" href="#top" aria-label="F1are Portfolio 首页">
+    <span class="brand-mark">F.</span>
+    <span>F1are <small>PORTFOLIO / 2026</small></span>
+  </a>
+  <nav class="nav" aria-label="主导航">
+    <a href="#work" data-zh="精选项目" data-en="Selected Work">精选项目</a>
+    <a href="#process" data-zh="工作方式" data-en="How I Work">工作方式</a>
+    <a href="#archive" data-zh="项目档案" data-en="Project Archive">项目档案</a>
+    <a href="#about" data-zh="关于我" data-en="About">关于我</a>
+    <a href="../" data-zh="返回主站" data-en="Main site">← <span data-zh="返回主站" data-en="Main site">返回主站</span></a>
+  </nav>
+  <div class="actions">
+    <a class="pill-btn" id="pdfLink" href="../portfolio.pdf" target="_blank" rel="noreferrer" title="下载 PDF 简版简历 / Download PDF Resume">
+      <svg class="icon"><use href="#i-pdf"/></svg>
+      <span data-zh="PDF 简版" data-en="PDF Resume">PDF 简版</span>
+    </a>
+    <button class="icon-btn" id="printBtn" aria-label="打印作品集" title="打印 / 导出 PDF" onclick="window.print()">
+      <svg class="icon"><use href="#i-printer"/></svg>
+    </button>
+    <button class="icon-btn" id="themeToggle" aria-label="切换深色模式" title="切换深色/浅色模式">
+      <svg class="icon"><use href="#i-moon"/></svg>
+    </button>
+    <button class="pill-btn" id="langToggle" aria-label="Switch Language">EN / 中</button>
+  </div>
 </header>
+
 <main id="top">
+  <!-- 首屏 Hero -->
   <section class="wrap hero">
     <div>
-      <div class="eyebrow" data-zh="个人作品集 · 问题驱动的构建" data-en="Personal portfolio · Problem-driven building">个人作品集 · 问题驱动的构建</div>
+      <div class="eyebrow" data-zh="个人作品集 · 问题驱动的构建" data-en="Personal Portfolio · Problem-Driven Building">个人作品集 · 问题驱动的构建</div>
       <h1 data-zh="把复杂的问题，变成可以运行的 <span class='serif'>工具。</span>" data-en="Turning complex problems into <span class='serif'>working tools.</span>">把复杂的问题，变成可以运行的 <span class="serif">工具。</span></h1>
-      <p class="hero-copy" data-zh="关注 AI 工作流、信息自动化与 Linux 工具。从真实场景出发，把模糊需求拆成清晰流程，再通过实现、测试和迭代验证它是否真的有用。" data-en="I explore AI workflows, information automation and Linux tools. Starting from real scenarios, I turn fuzzy needs into clear flows, then build, test and iterate to see whether they actually help.">关注 AI 工作流、信息自动化与 Linux 工具。从真实场景出发，把模糊需求拆成清晰流程，再通过实现、测试和迭代验证它是否真的有用。</p>
-      <div class="pills"><span class="pill"><span class="dot"></span>AI workflows</span><span class="pill"><span class="dot"></span>Automation</span><span class="pill"><span class="dot"></span>Linux tools</span></div>
-      <div class="cta-row"><a class="btn btn-primary" href="#work"><span data-zh="查看精选项目" data-en="Explore selected work">查看精选项目</span><svg class="icon"><use href="#i-arrow-right"/></svg></a><a class="btn btn-secondary" href="https://github.com/lyf266" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-git"/></svg>GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
+      <p class="hero-copy" data-zh="关注 AI 工作流、信息自动化与 Linux 桌面系统工具。从真实场景中的具体痛点出发，把模糊需求拆解为清晰的输入、规则与异常路径，再通过实现、测试和迭代验证它是否真的有用。" data-en="I explore AI workflows, information automation, and Linux system tools. Starting from real frictions, I turn fuzzy needs into concrete flows, then build, test, and iterate to verify whether they actually deliver value.">关注 AI 工作流、信息自动化与 Linux 桌面系统工具。从真实场景中的具体痛点出发，把模糊需求拆解为清晰的输入、规则与异常路径，再通过实现、测试和迭代验证它是否真的有用。</p>
+      <div class="pills">
+        <span class="pill"><span class="dot"></span>AI Workflows</span>
+        <span class="pill"><span class="dot"></span>Automation Pipelines</span>
+        <span class="pill"><span class="dot"></span>Linux Systems</span>
+        <span class="pill"><span class="dot"></span>Web Applications</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#work">
+          <span data-zh="查看精选项目" data-en="Explore Selected Work">查看精选项目</span>
+          <svg class="icon"><use href="#i-arrow-right"/></svg>
+        </a>
+        <a class="btn btn-secondary" href="https://github.com/lyf266" target="_blank" rel="noreferrer">
+          <svg class="icon"><use href="#i-git"/></svg>
+          GitHub
+          <svg class="icon"><use href="#i-arrow-up-right"/></svg>
+        </a>
+        <a class="btn btn-secondary" href="#archive">
+          <span data-zh="浏览全量档案 (20)" data-en="Browse Archive (20)">浏览全量档案 (20)</span>
+          <svg class="icon"><use href="#i-arrow-down"/></svg>
+        </a>
+      </div>
     </div>
     <div class="hero-art" aria-label="从问题到工具的流程示意">
-      <div class="art-head"><span>BUILDING SYSTEMS / 01—04</span><span class="art-status" data-zh="持续迭代" data-en="Iterating">持续迭代</span></div>
-      <div class="art-canvas"><div class="art-grid"></div><div class="connector conn-a"></div><div class="connector conn-b"></div>
-        <div class="node node-a"><div class="node-top"><span class="mini"><svg class="icon"><use href="#i-search"/></svg></span><span data-zh="发现问题" data-en="Find the problem">发现问题</span></div><p data-zh="用户、场景、约束" data-en="People · Context · Constraints">用户、场景、约束</p></div>
-        <div class="node node-b"><div class="node-top"><span class="mini"><svg class="icon"><use href="#i-git"/></svg></span><span data-zh="设计流程" data-en="Design the flow">设计流程</span></div><p data-zh="输入、规则、异常路径" data-en="Inputs · Rules · Edge cases">输入、规则、异常路径</p></div>
-        <div class="node node-c"><div class="node-top"><span class="mini"><svg class="icon"><use href="#i-code"/></svg></span><span data-zh="构建与验证" data-en="Build & validate">构建与验证</span></div><p data-zh="实现、测试、复盘" data-en="Build · Test · Iterate">实现、测试、复盘</p></div>
+      <div class="art-head">
+        <span>BUILDING SYSTEMS / 01—04</span>
+        <span class="art-status" data-zh="持续迭代验证" data-en="Iterating &amp; Verifying">持续迭代验证</span>
+      </div>
+      <div class="art-canvas">
+        <div class="art-grid"></div>
+        <div class="connector conn-a"></div>
+        <div class="connector conn-b"></div>
+        <div class="node node-a">
+          <div class="node-top">
+            <span class="mini"><svg class="icon"><use href="#i-search"/></svg></span>
+            <span data-zh="发现真实问题" data-en="Find the Problem">发现真实问题</span>
+          </div>
+          <p data-zh="用户场景 · 核心痛点 · 硬性约束" data-en="Context · Pain Points · Constraints">用户场景 · 核心痛点 · 硬性约束</p>
+        </div>
+        <div class="node node-b">
+          <div class="node-top">
+            <span class="mini"><svg class="icon"><use href="#i-git"/></svg></span>
+            <span data-zh="设计契约与流程" data-en="Design the Flow">设计契约与流程</span>
+          </div>
+          <p data-zh="输入标准 · 状态迁移 · 异常降级" data-en="Inputs · Rules · Edge Cases">输入标准 · 状态迁移 · 异常降级</p>
+        </div>
+        <div class="node node-c">
+          <div class="node-top">
+            <span class="mini"><svg class="icon"><use href="#i-code"/></svg></span>
+            <span data-zh="构建与客观验证" data-en="Build &amp; Validate">构建与客观验证</span>
+          </div>
+          <p data-zh="最小可用 · 事实核验 · 持续复盘" data-en="Build · Test · Ground Truth">最小可用 · 事实核验 · 持续复盘</p>
+        </div>
         <div class="art-stamp">MAKE<br>IT<br>USEFUL</div>
       </div>
     </div>
   </section>
 
+  <!-- 01 / 精选项目展示 -->
   <section class="wrap section" id="work">
-    <div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2 data-zh="精选项目" data-en="Selected work">精选项目</h2></div><p class="section-note" data-zh="用图示先说明项目如何工作，再展开阅读问题、实现方式与验证结果；标注“待验证”的数据尚未系统测量。" data-en="See how each project works at a glance, then explore the problem, implementation and evidence. Items marked \u201cto verify\u201d have not been systematically measured.">用图示先说明项目如何工作，再展开阅读问题、实现方式与验证结果。以下是视觉结构示例，实际数据应以项目测试为准。</p></div>
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">01 / Selected Work</div>
+        <h2 data-zh="精选工程案例" data-en="Selected Case Studies">精选工程案例</h2>
+      </div>
+      <p class="section-note" data-zh="用结构化图示说明项目如何运转，再深入展开问题场景、实现方式、事实核验与已知局限。点击卡片可查看完整工程复盘报告。" data-en="Show how each system works via interactive flow diagrams, then explore the problem context, implementation, facts, and known limits. Click to view case study.">用结构化图示说明项目如何运转，再深入展开问题场景、实现方式、事实核验与已知局限。点击卡片可查看完整工程复盘报告。</p>
+    </div>
+
     <div class="project-grid">
+      <!-- 案例 1: POI 个人机遇感知 -->
       <article class="project-card">
-        <div class="project-visual"><div class="visual-label"><span>AI WORKFLOW</span><span>01 / POI</span></div><div class="visual-flow"><div class="flow-unit"><svg class="icon"><use href="#i-rss"/></svg><span data-zh="信息源" data-en="Sources">信息源</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-filter"/></svg><span data-zh="筛选评分" data-en="Scoring">筛选评分</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-send"/></svg><span data-zh="机会推送" data-en="Alerts">机会推送</span></div></div><div class="visual-index">01</div></div>
-        <div class="card-body"><div class="card-meta"><span class="category">AI / AUTOMATION</span><span class="status" data-zh="个人项目" data-en="Personal project">个人项目</span></div><h3>Personal Opportunity Intelligence</h3><p data-zh="从多个信息源采集机会，按规则初筛并推送到 Telegram 和 Notion，减少反复搜索与手动整理。" data-en="Collect opportunities from multiple feeds, apply rule-based scoring, and send selected items to Telegram and Notion.">从多个信息源采集机会，按规则初筛并推送到 Telegram 和 Notion，减少反复搜索与手动整理。</p><div class="techs"><span class="tech">Python</span><span class="tech">RSS / Atom</span><span class="tech">Telegram</span><span class="tech">Notion API</span></div><button class="text-link case-open" data-case="poi"><span data-zh="查看项目案例" data-en="View case study">查看项目案例</span><svg class="icon"><use href="#i-arrow-right"/></svg></button> <a class="text-link" href="https://github.com/lyf266/personal-opportunity-agent" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
+        <div class="project-visual">
+          <div class="visual-label">
+            <span>AI WORKFLOW / AUTOMATION</span>
+            <span>01 / POI</span>
+          </div>
+          <div class="visual-flow">
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-rss"/></svg>
+              <span data-zh="多源信息" data-en="Multi-source">多源信息</span>
+            </div>
+            <svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg>
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-filter"/></svg>
+              <span data-zh="加权筛选" data-en="Weighted filter">加权筛选</span>
+            </div>
+            <svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg>
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-send"/></svg>
+              <span data-zh="机会推送" data-en="Alerts">机会推送</span>
+            </div>
+          </div>
+          <div class="visual-index">01</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="category">AI / AUTOMATION</span>
+            <span class="status-badge" data-zh="日常运行中" data-en="Running daily">日常运行中</span>
+          </div>
+          <h3 data-zh="Personal Opportunity Intelligence (POI)" data-en="Personal Opportunity Intelligence (POI)">Personal Opportunity Intelligence (POI)</h3>
+          <p data-zh="每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。" data-en="Filters dozens of feeds daily and pushes worthwhile reads and opportunities to your phone.">每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。</p>
+          <div class="techs">
+            <span class="tech">Python</span>
+            <span class="tech">RSS</span>
+            <span class="tech">LLM</span>
+          </div>
+          <div class="card-footer">
+            <button class="text-link case-open" data-case="poi">
+              <span data-zh="查看工程案例" data-en="View Case Study">查看工程案例</span>
+              <svg class="icon"><use href="#i-arrow-right"/></svg>
+            </button>
+            <div class="ext-links">
+              <a href="https://github.com/lyf266/personal-opportunity-agent" target="_blank" rel="noreferrer" class="ext-badge"><svg class="icon" style="width:14px;height:14px"><use href="#i-git"/></svg>GitHub ↗</a>
+            </div>
+          </div>
+        </div>
       </article>
-      <article class="project-card"><div class="project-visual"><div class="visual-label"><span>AI KNOWLEDGE</span><span>02 / LIFEOS</span></div><div class="visual-flow"><div class="flow-unit"><svg class="icon"><use href="#i-target"/></svg><span data-zh="记录目标" data-en="Log goals">记录目标</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-database"/></svg><span data-zh="检索记忆" data-en="Retrieve">检索记忆</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-brain"/></svg><span data-zh="生成复盘" data-en="Review">生成复盘</span></div></div><div class="visual-index">02</div></div><div class="card-body"><div class="card-meta"><span class="category">AI / KNOWLEDGE</span><span class="status" data-zh="进行中" data-en="Active">进行中</span></div><h3>Personal LifeOS (Project PAI)</h3><p data-zh="让 AI 记住长期目标与日志的个人系统：事实存数据库、语义走向量，定时生成复盘。" data-en="A personal system that gives AI long-term memory: facts in a database, semantics in vectors, scheduled reviews.">让 AI 记住长期目标与日志的个人系统：事实存数据库、语义走向量，定时生成复盘。</p><div class="techs"><span class="tech">Python</span><span class="tech">FastAPI</span><span class="tech">PostgreSQL</span><span class="tech">Qdrant</span></div><button class="text-link case-open" data-case="lifeos"><span data-zh="查看项目案例" data-en="View case study">查看项目案例</span><svg class="icon"><use href="#i-arrow-right"/></svg></button> <a class="text-link" href="https://github.com/lyf266/project-pai" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div></article>
-      <article class="project-card"><div class="project-visual"><div class="visual-label"><span>LINUX OPS</span><span>03 / HERMES</span></div><div class="visual-flow"><div class="flow-unit"><svg class="icon"><use href="#i-sliders"/></svg><span data-zh="定时调度" data-en="Schedule">定时调度</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-check"/></svg><span data-zh="执行检查" data-en="Run & check">执行检查</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-send"/></svg><span data-zh="异常报警" data-en="Alert">异常报警</span></div></div><div class="visual-index">03</div></div><div class="card-body"><div class="card-meta"><span class="category">LINUX / OPS</span><span class="status" data-zh="运行中" data-en="Running">运行中</span></div><h3>Hermes 定时任务管家</h3><p data-zh="云服务器上的定时任务管家：抓晨报、盯持仓、巡检服务器，异常推送到手机。" data-en="A scheduled-job butler on a cloud server: morning digests, portfolio watch, health checks, alerts to your phone.">云服务器上的定时任务管家：抓晨报、盯持仓、巡检服务器，异常推送到手机。</p><div class="techs"><span class="tech">Debian</span><span class="tech">Cron / Systemd</span><span class="tech">Telegram Bot</span></div><button class="text-link case-open" data-case="hermes"><span data-zh="查看项目案例" data-en="View case study">查看项目案例</span><svg class="icon"><use href="#i-arrow-right"/></svg></button> <a class="text-link" href="https://github.com/lyf266/hermes" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div></article>
-      <article class="project-card"><div class="project-visual"><div class="visual-label"><span>LINUX INFRA</span><span>04 / WORKSTATION</span></div><div class="visual-flow"><div class="flow-unit"><svg class="icon"><use href="#i-monitor"/></svg><span data-zh="主力机" data-en="Workstation">主力机</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-globe"/></svg><span data-zh="域名网络" data-en="DNS & net">域名网络</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-check"/></svg><span data-zh="证书自动化" data-en="Auto TLS">证书自动化</span></div></div><div class="visual-index">04</div></div><div class="card-body"><div class="card-meta"><span class="category">LINUX / INFRA</span><span class="status" data-zh="持续维护" data-en="Maintained">持续维护</span></div><h3>Linux 工作站与 VPS</h3><p data-zh="自己动手搭的开发环境：Arch Linux 主力机 + Debian 云服务器，域名、CDN、证书全套打通。" data-en="Hand-built dev environment: Arch Linux workstation plus Debian VPS — DNS, CDN and certificates all wired up.">自己动手搭的开发环境：Arch Linux 主力机 + Debian 云服务器，域名、CDN、证书全套打通。</p><div class="techs"><span class="tech">Arch Linux</span><span class="tech">Debian</span><span class="tech">Cloudflare</span><span class="tech">Let’s Encrypt</span></div><button class="text-link case-open" data-case="infra"><span data-zh="查看项目案例" data-en="View case study">查看项目案例</span><svg class="icon"><use href="#i-arrow-right"/></svg></button></div></article>
-    </div>
+      <!-- 案例 2: Personal LifeOS -->
+      <article class="project-card">
+        <div class="project-visual">
+          <div class="visual-label">
+            <span>AI KNOWLEDGE</span>
+            <span>02 / LIFEOS</span>
+          </div>
+          <div class="visual-flow">
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-target"/></svg>
+              <span data-zh="记录目标" data-en="Log goals">记录目标</span>
+            </div>
+            <svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg>
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-database"/></svg>
+              <span data-zh="检索记忆" data-en="Retrieve">检索记忆</span>
+            </div>
+            <svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg>
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-brain"/></svg>
+              <span data-zh="生成复盘" data-en="Review">生成复盘</span>
+            </div>
+          </div>
+          <div class="visual-index">02</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="category">AI / KNOWLEDGE</span>
+            <span class="status-badge" data-zh="日常运行中" data-en="Running daily">日常运行中</span>
+          </div>
+          <h3 data-zh="Personal LifeOS (Project PAI)" data-en="Personal LifeOS (Project PAI)">Personal LifeOS (Project PAI)</h3>
+          <p data-zh="让 AI 记住长期目标与日志的个人系统：事实存数据库、语义走向量，定时生成复盘。" data-en="A personal system that gives AI long-term memory: facts in a database, semantics in vectors, scheduled reviews.">让 AI 记住长期目标与日志的个人系统：事实存数据库、语义走向量，定时生成复盘。</p>
+          <div class="techs">
+            <span class="tech">Python</span>
+            <span class="tech">FastAPI</span>
+            <span class="tech">PostgreSQL</span>
+            <span class="tech">Qdrant</span>
+          </div>
+          <div class="card-footer">
+            <button class="text-link case-open" data-case="pai">
+              <span data-zh="查看工程案例" data-en="View Case Study">查看工程案例</span>
+              <svg class="icon"><use href="#i-arrow-right"/></svg>
+            </button>
+            <div class="ext-links">
+              <a href="https://github.com/lyf266/project-pai" target="_blank" rel="noreferrer" class="ext-badge"><svg class="icon" style="width:14px;height:14px"><use href="#i-git"/></svg>GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- 案例 3: Hermes 定时任务管家 -->
+      <article class="project-card">
+        <div class="project-visual">
+          <div class="visual-label">
+            <span>LINUX OPS</span>
+            <span>03 / HERMES</span>
+          </div>
+          <div class="visual-flow">
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-sliders"/></svg>
+              <span data-zh="定时调度" data-en="Schedule">定时调度</span>
+            </div>
+            <svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg>
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-check"/></svg>
+              <span data-zh="执行检查" data-en="Run & check">执行检查</span>
+            </div>
+            <svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg>
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-send"/></svg>
+              <span data-zh="异常报警" data-en="Alert">异常报警</span>
+            </div>
+          </div>
+          <div class="visual-index">03</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="category">LINUX / OPS</span>
+            <span class="status-badge" data-zh="日常运行中" data-en="Running daily">日常运行中</span>
+          </div>
+          <h3 data-zh="Hermes 自动化运维网络与云端基建" data-en="Hermes Automated Ops Network">Hermes 自动化运维网络与云端基建</h3>
+          <p data-zh="云服务器上的定时任务管家：抓晨报、盯持仓、巡检服务器，异常推送到手机。" data-en="A scheduled-job butler on a cloud server: morning digests, portfolio watch, health checks, alerts to your phone.">云服务器上的定时任务管家：抓晨报、盯持仓、巡检服务器，异常推送到手机。</p>
+          <div class="techs">
+            <span class="tech">Debian</span>
+            <span class="tech">Cron / Systemd</span>
+            <span class="tech">Telegram Bot</span>
+          </div>
+          <div class="card-footer">
+            <button class="text-link case-open" data-case="hermes">
+              <span data-zh="查看工程案例" data-en="View Case Study">查看工程案例</span>
+              <svg class="icon"><use href="#i-arrow-right"/></svg>
+            </button>
+            <div class="ext-links">
+              <a href="https://github.com/lyf266/hermes" target="_blank" rel="noreferrer" class="ext-badge"><svg class="icon" style="width:14px;height:14px"><use href="#i-git"/></svg>GitHub ↗</a>
+            </div>
+          </div>
+        </div>
+      </article>
+      <!-- 案例 4: Linux 工作站与 VPS -->
+      <article class="project-card">
+        <div class="project-visual">
+          <div class="visual-label">
+            <span>LINUX INFRA</span>
+            <span>04 / WORKSTATION</span>
+          </div>
+          <div class="visual-flow">
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-monitor"/></svg>
+              <span data-zh="主力机" data-en="Workstation">主力机</span>
+            </div>
+            <svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg>
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-globe"/></svg>
+              <span data-zh="域名网络" data-en="DNS & net">域名网络</span>
+            </div>
+            <svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg>
+            <div class="flow-unit">
+              <svg class="icon"><use href="#i-check"/></svg>
+              <span data-zh="证书自动化" data-en="Auto TLS">证书自动化</span>
+            </div>
+          </div>
+          <div class="visual-index">04</div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta">
+            <span class="category">LINUX / INFRA</span>
+            <span class="status-badge" data-zh="系统工程加固" data-en="Hardened setup">系统工程加固</span>
+          </div>
+          <h3 data-zh="Linux 工作站与 VPS 网络搭建 (工程积累)" data-en="Linux Workstation & VPS Networking">Linux 工作站与 VPS 网络搭建 (工程积累)</h3>
+          <p data-zh="自己动手搭的开发环境：Arch Linux 主力机 + Debian 云服务器，域名、CDN、证书全套打通。" data-en="Hand-built dev environment: Arch Linux workstation plus Debian VPS — DNS, CDN and certificates all wired up.">自己动手搭的开发环境：Arch Linux 主力机 + Debian 云服务器，域名、CDN、证书全套打通。</p>
+          <div class="techs">
+            <span class="tech">Arch Linux</span>
+            <span class="tech">Debian</span>
+            <span class="tech">Cloudflare</span>
+            <span class="tech">Let’s Encrypt</span>
+          </div>
+          <div class="card-footer">
+            <button class="text-link case-open" data-case="linux-vps-infra">
+              <span data-zh="查看工程案例" data-en="View Case Study">查看工程案例</span>
+              <svg class="icon"><use href="#i-arrow-right"/></svg>
+            </button>
+            <div class="ext-links">
+              
+            </div>
+          </div>
+        </div>
+      </article>
+      </div>
   </section>
 
-  <div class="work-section" id="process"><section class="wrap section"><div class="section-head"><div><div class="section-kicker">02 / How I work</div><h2 data-zh="从问题，到可验证的结果" data-en="From problem to evidence">从问题，到可验证的结果</h2></div><p class="section-note" data-zh="AI 是工具，不是成果本身。重点是明确问题、设计合适的流程，并检查方案在真实环境下是否成立。" data-en="AI is a tool, not the result. The goal is to define the problem, design a useful flow, and verify it in the real environment.">AI 是工具，不是成果本身。重点是明确问题、设计合适的流程，并检查方案在真实环境下是否成立。</p></div>
-  <div class="steps">
-    <div class="step"><div class="step-head"><div class="step-no"><svg class="icon"><use href="#i-search"/></svg></div><span class="step-num">STEP 01</span></div><h3 data-zh="理解场景" data-en="Understand">理解场景</h3><p data-zh="谁遇到问题？目前如何解决？真正的限制是什么？" data-en="Who has the problem? What do they do today? What are the constraints?">谁遇到问题？目前如何解决？真正的限制是什么？</p></div>
-    <div class="step"><div class="step-head"><div class="step-no"><svg class="icon"><use href="#i-git"/></svg></div><span class="step-num">STEP 02</span></div><h3 data-zh="拆解流程" data-en="Map the flow">拆解流程</h3><p data-zh="定义输入、规则、异常情况，以及什么才算完成。" data-en="Define inputs, rules, failure paths, and what counts as done.">定义输入、规则、异常情况，以及什么才算完成。</p></div>
-    <div class="step"><div class="step-head"><div class="step-no"><svg class="icon"><use href="#i-code"/></svg></div><span class="step-num">STEP 03</span></div><h3 data-zh="实现方案" data-en="Build">实现方案</h3><p data-zh="用合适的代码、API 和 AI 工具完成最小可用版本。" data-en="Build a small working version with suitable code, APIs and AI tools.">用合适的代码、API 和 AI 工具完成最小可用版本。</p></div>
-    <div class="step"><div class="step-head"><div class="step-no"><svg class="icon"><use href="#i-chart"/></svg></div><span class="step-num">STEP 04</span></div><h3 data-zh="测试与迭代" data-en="Test & iterate">测试与迭代</h3><p data-zh="记录结果、暴露限制，根据反馈修复真正的问题。" data-en="Record results, surface limitations, and fix issues based on feedback.">记录结果、暴露限制，根据反馈修复真正的问题。</p></div>
-  </div></section></div>
+  <!-- 02 / 工作方式与方法论 -->
+  <div class="work-section" id="process">
+    <section class="wrap section">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">02 / How I Work</div>
+          <h2 data-zh="从真实问题，到可核验的结果" data-en="From Real Friction to Ground Truth">从真实问题，到可核验的结果</h2>
+        </div>
+        <p class="section-note" data-zh="AI 与脚本是杠杆，解决问题才是目的。相比罗列未经测量的华丽概念，我更注重明确场景边界、设计可预测的流程，并在真实运行环境中检验方案的稳定性。" data-en="AI and scripts are leverage; solving actual problems is the objective. Rather than listing unverified buzzwords, I emphasize understanding boundary constraints, designing predictable flows, and verifying stability in real environments.">AI 与脚本是杠杆，解决问题才是目的。相比罗列未经测量的华丽概念，我更注重明确场景边界、设计可预测的流程，并在真实运行环境中检验方案的稳定性。</p>
+      </div>
 
-  <section class="wrap archive section" id="archive"><div class="section-head"><div><div class="section-kicker">03 / Project archive</div><h2 data-zh="其他项目与积累" data-en="More projects">其他项目与积累</h2></div><p class="section-note" data-zh="保留完整的项目轨迹，但把更深入的说明留给最能代表当前方向的案例。" data-en="Keep the full trail of experiments, while reserving deeper case studies for the work most relevant to the current direction.">保留完整的项目轨迹，但把更深入的说明留给最能代表当前方向的案例。</p></div>
-    <div class="filter-row" role="group" aria-label="项目分类筛选"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="ai">AI / 工作流</button><button class="filter" data-filter="linux">Linux / 系统</button><button class="filter" data-filter="web">Web / 产品</button><button class="filter" data-filter="data">数据 / 自动化</button><button class="filter" data-filter="archived">已归档</button></div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-head">
+            <div class="step-no"><svg class="icon"><use href="#i-search"/></svg></div>
+            <span class="step-num">STEP 01</span>
+          </div>
+          <h3 data-zh="理解场景与痛点" data-en="Understand Context">理解场景与痛点</h3>
+          <p data-zh="谁遇到了什么具体阻力？现有手段为何失效？真正的物理与硬件限制是什么？" data-en="Who experiences the friction? Why do current tools fall short? What are the hard constraints?">谁遇到了什么具体阻力？现有手段为何失效？真正的物理与硬件限制是什么？</p>
+        </div>
+
+        <div class="step">
+          <div class="step-head">
+            <div class="step-no"><svg class="icon"><use href="#i-git"/></svg></div>
+            <span class="step-num">STEP 02</span>
+          </div>
+          <h3 data-zh="拆解契约与流程" data-en="Map the Pipeline">拆解契约与流程</h3>
+          <p data-zh="明确定义输入格式、状态迁移路径、异常降级行为，以及方案的完成验收标准。" data-en="Define inputs, state transitions, failure recovery paths, and measurable acceptance criteria.">明确定义输入格式、状态迁移路径、异常降级行为，以及方案的完成验收标准。</p>
+        </div>
+
+        <div class="step">
+          <div class="step-head">
+            <div class="step-no"><svg class="icon"><use href="#i-code"/></svg></div>
+            <span class="step-num">STEP 03</span>
+          </div>
+          <h3 data-zh="小步实现最小可用" data-en="Build MVP">小步实现最小可用</h3>
+          <p data-zh="选择恰当的语言、轻量依赖与自动化脚本快速交付最小可用版本，避免过度设计。" data-en="Build a lightweight working prototype with appropriate code and tools, avoiding overengineering.">选择恰当的语言、轻量依赖与自动化脚本快速交付最小可用版本，避免过度设计。</p>
+        </div>
+
+        <div class="step">
+          <div class="step-head">
+            <div class="step-no"><svg class="icon"><use href="#i-chart"/></svg></div>
+            <span class="step-num">STEP 04</span>
+          </div>
+          <h3 data-zh="客观测试与复盘" data-en="Test &amp; Refine">客观测试与复盘</h3>
+          <p data-zh="如实记录测试环境与实测数据，暴露已知技术局限，根据运行反馈持续打磨演进。" data-en="Record real test conditions, surface known limitations, and iterate based on verified telemetry.">如实记录测试环境与实测数据，暴露已知技术局限，根据运行反馈持续打磨演进。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 03 / 项目全量档案与筛选 -->
+  <section class="wrap archive section" id="archive">
+    <div class="section-head">
+      <div>
+        <div class="section-kicker">03 / Project Archive</div>
+        <h2 data-zh="全量项目与技术轨迹 (20)" data-en="Full Project Archive (20)">全量项目与技术轨迹 (20)</h2>
+      </div>
+      <p class="section-note" data-zh="保留从早期探索到当前深耕的完整技术积累。包含 10 个主力工程系统与 10 款特定小工具，点击每项均可展开其技术复盘与详细档案。" data-en="Preserving the full engineering journey. Spanning 10 major systems and 10 focused utility tools. Click any row to inspect technical details and design rationale.">保留从早期探索到当前深耕的完整技术积累。包含 10 个主力工程系统与 10 款特定小工具，点击每项均可展开其技术复盘与详细档案。</p>
+    </div>
+
+    <!-- 分类筛选栏 -->
+    <div class="filter-row" role="group" aria-label="项目分类筛选">
+      <button class="filter active" data-filter="all" data-zh="全部 (20)" data-en="All (20)">全部 (20)</button>
+      <button class="filter" data-filter="ai" data-zh="AI / 工作流" data-en="AI &amp; Workflows">AI / 工作流</button>
+      <button class="filter" data-filter="linux" data-zh="Linux / 系统" data-en="Linux &amp; Systems">Linux / 系统</button>
+      <button class="filter" data-filter="web" data-zh="Web / 应用" data-en="Web &amp; Apps">Web / 应用</button>
+      <button class="filter" data-filter="data" data-zh="数据 / 自动化" data-en="Data &amp; Automation">数据 / 自动化</button>
+      <button class="filter" data-filter="tool" data-zh="小工具 (10)" data-en="Tools (10)">小工具 (10)</button>
+      <button class="filter" data-filter="archived" data-zh="已归档" data-en="Archived">已归档</button>
+    </div>
+
+    <!-- 档案条目表格 -->
     <div class="archive-list" id="archiveList">
-      <article class="archive-item" data-category="ai"><span class="archive-index">05</span><div><div class="archive-title">Personal Opportunity Intelligence (POI)</div><div class="archive-desc" data-zh="每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。" data-en="Filters dozens of feeds daily and pushes worthwhile reads and opportunities to your phone.">每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。</div></div><span class="archive-type">AI / AUTOMATION</span><a class="archive-link" href="https://github.com/lyf266/personal-opportunity-agent" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="ai"><span class="archive-index">06</span><div><div class="archive-title">Personal LifeOS (Project PAI)</div><div class="archive-desc" data-zh="帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。" data-en="A personal system for goals and journaling that auto-generates periodic review reports.">帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。</div></div><span class="archive-type">AI / KNOWLEDGE</span><a class="archive-link" href="https://github.com/lyf266/project-pai" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="ai"><span class="archive-index">07</span><div><div class="archive-title">Hermes 多智能体网络与 Vless 节点</div><div class="archive-desc" data-zh="一台 24 小时在线的云服务器，替我跑定时任务：抓晨报、盯持仓、巡检服务器。" data-en="A 24/7 cloud server running scheduled jobs: morning digests, portfolio watch, health checks.">一台 24 小时在线的云服务器，替我跑定时任务：抓晨报、盯持仓、巡检服务器。</div></div><span class="archive-type">LINUX / OPS</span><a class="archive-link" href="https://github.com/lyf266/hermes" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="linux"><span class="archive-index">08</span><div><div class="archive-title">Linux 工作站与 VPS 网络搭建 (工程积累)</div><div class="archive-desc" data-zh="自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。" data-en="Hand-built dev environment: Arch Linux workstation plus Debian VPS, with DNS, CDN and auto TLS.">自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。</div></div><span class="archive-type">LINUX / INFRA</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
-      <article class="archive-item" data-category="web"><span class="archive-index">09</span><div><div class="archive-title">2026 银行从业全真机考模拟系统 &amp; Anki 智能备考工具包</div><div class="archive-desc" data-zh="银行从业刷题网站：710 道题（2 套真题 + 回忆版/改编/自编题），错题自动生成 Anki 记忆卡片。" data-en="Banking exam practice site: 710 questions (2 real sets plus recalled, adapted and self-written items); wrong answers become Anki cards.">银行从业刷题网站：710 道题（2 套真题 + 回忆版/改编/自编题），错题自动生成 Anki 记忆卡片。</div></div><span class="archive-type">WEB / LEARNING</span><a class="archive-link" href="https://lyf266.github.io/bank-exam-2026-toolkit/" target="_blank" rel="noreferrer">在线演示 <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="ai"><span class="archive-index">10</span><div><div class="archive-title">Linux Whisper Input</div><div class="archive-desc" data-zh="Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。" data-en="A rare thing on Linux — a system-wide voice input: hotkey, speak, text appears; model stays resident locally.">Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。</div></div><span class="archive-type">LINUX / AI</span><a class="archive-link" href="https://github.com/lyf266/linux-whisper-input" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="linux"><span class="archive-index">11</span><div><div class="archive-title">OBS Studio 推流与摄像头驱动加固</div><div class="archive-desc" data-zh="调好了 Linux 下的推流：针对特定设备的解码与坐标问题做了配置规避，画面上可实时显示时间和待办。" data-en="Tuned Linux streaming: config workarounds for device-specific decode and coordinate issues, with live overlays.">调好了 Linux 下的推流：针对特定设备的解码与坐标问题做了配置规避，画面上可实时显示时间和待办。</div></div><span class="archive-type">LINUX / VIDEO</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
-      <article class="archive-item" data-category="ai"><span class="archive-index">12</span><div><div class="archive-title">知识库同步桥与双智能体工作流 (Knowledge Bridge &amp; Dual-Agent Workflow)</div><div class="archive-desc" data-zh="让本地笔记软件和云端看板自动同步，两边改的内容都不丢。" data-en="Keeps the local note app and cloud dashboard in sync — edits on either side are never lost.">让本地笔记软件和云端看板自动同步，两边改的内容都不丢。</div></div><span class="archive-type">AI / AUTOMATION</span><a class="archive-link" href="https://github.com/lyf266/obsidian-notebooklm-bridge" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="linux"><span class="archive-index">13</span><div><div class="archive-title">Desktop TimeTracker (timetrack)</div><div class="archive-desc" data-zh="自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间去哪了。" data-en="Tracks time per window automatically and generates a daily report of where your time goes.">自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间去哪了。</div></div><span class="archive-type">LINUX / PYTHON</span><a class="archive-link" href="https://github.com/lyf266/desktop-timetracker" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="data"><span class="archive-index">14</span><div><div class="archive-title">Finance-Intel 市场情报管线</div><div class="archive-desc" data-zh="每天开盘前自动生成一份市场早报，行情异动就发提醒。" data-en="Auto-generates a market morning brief before each trading day, with alerts on unusual moves.">每天开盘前自动生成一份市场早报，行情异动就发提醒。</div></div><span class="archive-type">DATA / FINANCE</span><a class="archive-link" href="https://github.com/lyf266/finance-intel" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="web"><span class="archive-index">15</span><div><div class="archive-title">WriteMap (Visual Writing Coach)</div><div class="archive-desc" data-zh="写英语作文没人改？这个应用从词汇、语法、连贯性三个维度打分，告诉你弱在哪。" data-en="No one to grade your English essays? This app scores vocabulary, grammar and coherence.">写英语作文没人改？这个应用从词汇、语法、连贯性三个维度打分，告诉你弱在哪。</div></div><span class="archive-type">WEB / EDUCATION</span><a class="archive-link" href="https://github.com/lyf266/WriteMap" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="data"><span class="archive-index">16</span><div><div class="archive-title">Gaokao 高考志愿填报数据系统</div><div class="archive-desc" data-zh="抓了各大学历年的录取分数，做成干净表格，填志愿时一眼对比。" data-en="Scraped historical university admission scores into clean tables for college-choice comparison.">抓了各大学历年的录取分数，做成干净表格，填志愿时一眼对比。</div></div><span class="archive-type">DATA / PYTHON</span><a class="archive-link" href="https://github.com/lyf266/Gaokao" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="archived"><span class="archive-index">17</span><div><div class="archive-title">被动式 AI 笔记系统</div><div class="archive-desc" data-zh="想到什么就给 Telegram 机器人发句话，它自动分类成任务或日记，同步到笔记软件。（已归档）" data-en="Message the Telegram bot whatever is on your mind; it sorts messages into tasks or journal entries. (Archived)">想到什么就给 Telegram 机器人发句话，它自动分类成任务或日记，同步到笔记软件。（已归档）</div></div><span class="archive-type">ARCHIVED</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
-      <article class="archive-item" data-category="archived"><span class="archive-index">18</span><div><div class="archive-title">课程录音批量切分与 Whisper 转录</div><div class="archive-desc" data-zh="上课录音丢进去，自动切分转成文字讲义归档。（已归档）" data-en="Drop in lecture recordings; get them split, transcribed and archived as notes. (Archived)">上课录音丢进去，自动切分转成文字讲义归档。（已归档）</div></div><span class="archive-type">ARCHIVED</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
-      <article class="archive-item" data-category="linux"><span class="archive-index">19</span><div><div class="archive-title">mc118-cloud-suite 部署与低带宽优化</div><div class="archive-desc" data-zh="开了个百人 Minecraft 服务器，针对低带宽环境做了网络优化。" data-en="Ran a 100-player Minecraft server, tuned for low-bandwidth environments.">开了个百人 Minecraft 服务器，针对低带宽环境做了网络优化。</div></div><span class="archive-type">OPS / NETWORK</span><a class="archive-link" href="https://github.com/lyf266/mc118-cloud-suite" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="linux"><span class="archive-index">20</span><div><div class="archive-title">WTF 终端看板组件定制</div><div class="archive-desc" data-zh="在终端里一眼看到今天的目标进度，不用打开一堆软件。" data-en="See today&#x27;s goal progress at a glance inside the terminal.">在终端里一眼看到今天的目标进度，不用打开一堆软件。</div></div><span class="archive-type">LINUX / TERMINAL</span><a class="archive-link" href="https://github.com/lyf266/wtf" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="web"><span class="archive-index">21</span><div><div class="archive-title">Vitals-Skill 家庭健康数据管理</div><div class="archive-desc" data-zh="把家人纸质体检报告变成电子档案，标出异常指标，方便对比历年变化。只做数据整理，不做医疗判断。" data-en="Digitizes family paper checkup reports and flags abnormal indicators for comparison. Data organization only.">把家人纸质体检报告变成电子档案，标出异常指标，方便对比历年变化。只做数据整理，不做医疗判断。</div></div><span class="archive-type">DATA / HEALTH</span><a class="archive-link" href="https://github.com/lyf266/vitals-skill" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
-      <article class="archive-item" data-category="data"><span class="archive-index">22</span><div><div class="archive-title">浏览器反指纹与网络隐私防护套件</div><div class="archive-desc" data-zh="浏览器隐私加固配置：屏蔽 WebRTC 泄漏、隔离 Canvas 指纹，减少网站跨站追踪。" data-en="Browser privacy hardening: blocks WebRTC leaks, isolates canvas fingerprints, reduces cross-site tracking.">浏览器隐私加固配置：屏蔽 WebRTC 泄漏、隔离 Canvas 指纹，减少网站跨站追踪。</div></div><span class="archive-type">PRIVACY / BROWSER</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
-      <article class="archive-item" data-category="web"><span class="archive-index">23</span><div><div class="archive-title">商业演示文稿排版外包</div><div class="archive-desc" data-zh="承接商业 PPT 外包设计；兼职做过校园即时跑腿。" data-en="Freelance commercial slide-deck design; part-time campus errand courier.">承接商业 PPT 外包设计；兼职做过校园即时跑腿。</div></div><span class="archive-type">DESIGN</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
-      <article class="archive-item" data-category="data"><span class="archive-index">24</span><div><div class="archive-title">百人 Minecraft 联机社区网络打通与社群运维</div><div class="archive-desc" data-zh="10 岁时从零运营起一个 100+ 人活跃的 Minecraft 玩家社区；自学宽带拨号和路由器端口映射解决联机问题。" data-en="At age 10, grew and ran a 100+ player Minecraft community from scratch; self-taught networking to get everyone online.">10 岁时从零运营起一个 100+ 人活跃的 Minecraft 玩家社区；自学宽带拨号和路由器端口映射解决联机问题。</div></div><span class="archive-type">NETWORK / COMMUNITY</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
+      <!-- 01 银行机考模拟系统 -->
+      <article class="archive-item" data-category="web">
+        <span class="archive-index">1</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-star" title="重点精选">★</span>
+            <span class="archive-title" data-zh="2026 银行考试模拟系统 &amp; Anki 工具包" data-en="Banking Exam Simulator &amp; Anki Toolkit">2026 银行考试模拟系统 &amp; Anki 工具包</span>
+          </div>
+          <div class="archive-desc" data-zh="零依赖纯前端机考环境，710 道题（2 套真题 + 回忆版/改编/自编题），内置科学与 TVM 金融双计算器，支持错题一键导出 Anki FSRS。" data-en="Zero-dependency browser exam simulator with scientific and TVM financial calculators, exportable to Anki FSRS.">零依赖纯前端机考环境，内置科学与 TVM 金融双计算器，题目校准现行口径，支持错题一键导出 Anki FSRS。</div>
+        </div>
+        <span class="archive-type">WEB / FIN-TECH</span>
+        <div class="archive-actions">
+          <a href="https://lyf266.github.io/bank-exam-2026-toolkit/" target="_blank" rel="noreferrer" class="archive-link" data-zh="演示 ↗" data-en="Demo ↗">演示 ↗</a>
+          <a href="https://github.com/lyf266/bank-exam-2026-toolkit" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('bank-exam')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 02 Linux Whisper Input -->
+      <article class="archive-item" data-category="linux ai tool">
+        <span class="archive-index">2</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="Linux Whisper Input 本地语音听写" data-en="Linux Whisper Input Daemon">Linux Whisper Input 本地语音听写</span>
+          </div>
+          <div class="archive-desc" data-zh="Whisper 模型常驻显存，PipeWire 音频采集，全局快捷键触发推理并向 Wayland 焦点应用注入文字。" data-en="GPU VRAM-resident Whisper model with PipeWire audio capture and global hotkey injection into Wayland windows.">Whisper 模型常驻显存，PipeWire 音频采集，全局快捷键触发推理并向 Wayland 焦点应用注入文字。</div>
+        </div>
+        <span class="archive-type">LINUX / LOCAL AI</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/linux-whisper-input" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('whisper')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 03 Desktop TimeTracker -->
+      <article class="archive-item" data-category="linux tool">
+        <span class="archive-index">3</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="Desktop TimeTracker (timetrack)" data-en="Desktop TimeTracker (timetrack)">Desktop TimeTracker (timetrack)</span>
+          </div>
+          <div class="archive-desc" data-zh="KDE Plasma 6 Wayland 下的自动窗口活动与时间追踪，KWin 脚本 + D-Bus 监听，资源占用较低（具体数值待实测），自动生成 Markdown 日报。" data-en="KDE Plasma 6 Wayland window tracker via KWin script &amp; D-Bus IPC; low resource footprint (exact figures pending), outputs daily Markdown logs.">KDE Plasma 6 Wayland 下的自动窗口活动与时间追踪，KWin 脚本 + D-Bus 监听，资源占用较低（具体数值待实测），自动生成 Markdown 日报。</div>
+        </div>
+        <span class="archive-type">LINUX / PYTHON</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/desktop-timetracker" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('desktop-timetracker')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 04 Personal LifeOS (Project PAI) -->
+      <article class="archive-item" data-category="ai">
+        <span class="archive-index">4</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-star" title="重点精选">★</span>
+            <span class="archive-title" data-zh="Personal LifeOS (Project PAI)" data-en="Personal LifeOS (Project PAI)">Personal LifeOS (Project PAI)</span>
+          </div>
+          <div class="archive-desc" data-zh="个人目标、日志与反思管理系统。本地与远程云服务器双端运行，通过定时任务调用模型生成周期复盘。" data-en="Personal workflow for goals, journaling and periodic reflection via synced SQLite, Telegram and scheduled reviews.">个人目标、日志与反思管理系统。本地与远程云服务器双端运行，通过定时任务调用模型生成周期复盘。</div>
+        </div>
+        <span class="archive-type">AI / KNOWLEDGE</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/project-pai" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('pai')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 05 POI -->
+      <article class="archive-item" data-category="ai data">
+        <span class="archive-index">5</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-star" title="重点精选">★</span>
+            <span class="archive-title" data-zh="Personal Opportunity Intelligence (POI)" data-en="Personal Opportunity Intelligence (POI)">Personal Opportunity Intelligence (POI)</span>
+          </div>
+          <div class="archive-desc" data-zh="资讯与项目机会过滤脚本。解析多源 RSS，通过加权公式对内容进行初筛，将高分条目自动推送到 Telegram 和 Notion。" data-en="Collect opportunities from RSS feeds, apply rule-based scoring, and dispatch high-score items to Telegram and Notion.">资讯与项目机会过滤脚本。解析多源 RSS，通过加权公式对内容进行初筛，将高分条目自动推送到 Telegram 和 Notion。</div>
+        </div>
+        <span class="archive-type">AI / AUTOMATION</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/personal-opportunity-agent" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('poi')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 06 Hermes 多智能体网络与 VPS 运维 -->
+      <article class="archive-item" data-category="linux ai">
+        <span class="archive-index">6</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-star" title="重点精选">★</span>
+            <span class="archive-title" data-zh="Hermes 自动化运维网络与云端基建" data-en="Hermes Ops Network &amp; Cloud Infra">Hermes 自动化运维网络与云端基建</span>
+          </div>
+          <div class="archive-desc" data-zh="云端 VPS 自动化运行环境，托管 18 个定时任务（晨报抓取、持仓监控、服务器巡检），异常阻断时 Telegram 及时告警。" data-en="Cloud VPS supervisor hosting 18 scheduled cron tasks (market briefs, portfolio alerts, system checks) with Telegram incident webhooks.">云端 VPS 自动化运行环境，托管 18 个定时任务（晨报抓取、持仓监控、服务器巡检），异常阻断时 Telegram 及时告警。</div>
+        </div>
+        <span class="archive-type">LINUX / OPS</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/hermes" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('hermes')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 07 Finance-Intel -->
+      <article class="archive-item" data-category="data tool">
+        <span class="archive-index">7</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="Finance-Intel 市场情报管线" data-en="Finance-Intel Market Intelligence Pipeline">Finance-Intel 市场情报管线</span>
+          </div>
+          <div class="archive-desc" data-zh="财经数据与行情监控脚本。聚合多源数据自动生成早间摘要，捕捉市场异动并通过 Webhook 发送提醒。" data-en="Aggregates market data and news into scheduled morning briefings and sends volatility alerts via webhooks.">财经数据与行情监控脚本。聚合多源数据自动生成早间摘要，捕捉市场异动并通过 Webhook 发送提醒。</div>
+        </div>
+        <span class="archive-type">DATA / FINANCE</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/finance-intel" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('finance-intel')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 08 知识库同步桥 -->
+      <article class="archive-item" data-category="ai web">
+        <span class="archive-index">8</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="知识库同步桥与双智能体工作流" data-en="Knowledge Bridge &amp; Dual-Agent Workflow">知识库同步桥与双智能体工作流</span>
+          </div>
+          <div class="archive-desc" data-zh="本地 Markdown 知识库与云端看板协同桥。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件，协同云端管理看板。" data-en="Sync bridge linking local Obsidian notes with cloud Notion boards; writes via local REST API when open, falls back to filesystem.">本地 Markdown 知识库与云端看板协同桥。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件，协同云端管理看板。</div>
+        </div>
+        <span class="archive-type">AI / KNOWLEDGE</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/obsidian-notebooklm-bridge" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('obsidian-notebooklm')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 09 OBS Studio 加固 -->
+      <article class="archive-item" data-category="linux tool">
+        <span class="archive-index">9</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="OBS Studio 推流与摄像头驱动加固" data-en="OBS Studio Stream &amp; V4L2 Driver Tuning">OBS Studio 推流与摄像头驱动加固</span>
+          </div>
+          <div class="archive-desc" data-zh="锁定 YUYV 原始像素避免解码崩溃，配置 udev 规则防挂起，编写 Lua 脚本在画面实时显示时间和待办。" data-en="Locks uncompressed YUYV 4:2:2 to prevent decoder crash loops, hardens udev against sleep, and drives dynamic text via Lua.">锁定 YUYV 原始像素避免解码崩溃，配置 udev 规则防挂起，编写 Lua 脚本在画面实时显示时间和待办。</div>
+        </div>
+        <span class="archive-type">LINUX / VIDEO</span>
+        <div class="archive-actions">
+          <button class="archive-case-btn" onclick="openCase('obs')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 10 WTF 看板 -->
+      <article class="archive-item" data-category="linux tool">
+        <span class="archive-index">10</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="WTF 终端看板组件定制" data-en="WTF Terminal Cockpit Widgets">WTF 终端看板组件定制</span>
+          </div>
+          <div class="archive-desc" data-zh="基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在 tmux 窗格渲染。" data-en="Terminal dashboard widgets built on wtfutil; custom Go modules fetch and render PAI targets and POI feeds inside tmux.">基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在 tmux 窗格渲染。</div>
+        </div>
+        <span class="archive-type">LINUX / GO TUI</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/wtf" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('wtf')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 11 被动式 AI 笔记系统 (已归档) -->
+      <article class="archive-item" data-category="ai archived">
+        <span class="archive-index">11</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="被动式 AI 笔记系统" data-en="Passive AI Note-Taking System">被动式 AI 笔记系统</span>
+          </div>
+          <div class="archive-desc" data-zh="Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记并分流。（已归档，由成熟跨端方案替代）" data-en="Telegram bot for passive note capture. Classifies notes via Gemini and routes them to Notion and Obsidian. (Archived).">Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记并分流。（已归档，由成熟跨端方案替代）</div>
+        </div>
+        <span class="archive-type">ARCHIVED / AI</span>
+        <div class="archive-actions">
+          <button class="archive-case-btn" onclick="openCase('passive-ai-notes')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 12 Vitals-Skill -->
+      <article class="archive-item" data-category="data tool">
+        <span class="archive-index">12</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="Vitals-Skill 健康数据整理脚本" data-en="Vitals-Skill Health Data Tracker">Vitals-Skill 健康数据整理脚本</span>
+          </div>
+          <div class="archive-desc" data-zh="整理历年体检指标数据的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行跨年度指标比对。" data-en="Python scripts digitizing paper health checkups into structured Markdown tables for multi-year biomarker trend comparisons.">整理历年体检指标数据的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行跨年度指标比对。</div>
+        </div>
+        <span class="archive-type">DATA / HEALTH</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/vitals-skill" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('vitals-skill')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 13 mc118-cloud-suite -->
+      <article class="archive-item" data-category="linux tool">
+        <span class="archive-index">13</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="mc118-cloud-suite 部署与低带宽优化" data-en="mc118-cloud-suite Low-Bandwidth Deployment">mc118-cloud-suite 部署与低带宽优化</span>
+          </div>
+          <div class="archive-desc" data-zh="Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低出网流量，配置零私钥暴露的反向备份脚本。" data-en="Paper 1.18.1 setup on 1C2G cloud VPS. Suppressed view distances to cut egress bandwidth; zero-trust reverse SSH backup.">Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围降低出网流量，配置零私钥暴露的反向备份脚本。</div>
+        </div>
+        <span class="archive-type">OPS / NETWORK</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/mc118-cloud-suite" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('mc118-cloud-suite')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 14 课程录音批量切分与 Whisper 转录 (已归档) -->
+      <article class="archive-item" data-category="linux tool archived">
+        <span class="archive-index">14</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="课程录音批量切分与 Whisper 转录" data-en="Lecture Audio Batch Chunking &amp; Transcription">课程录音批量切分与 Whisper 转录</span>
+          </div>
+          <div class="archive-desc" data-zh="课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据规则切分长录音并转写归档。（已由实时速记方案替代并归档）" data-en="Batch audio transcription pipeline using faster-whisper and FFmpeg, splitting recordings into transcripts. (Archived).">课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据规则切分长录音并转写归档。（已由实时速记方案替代并归档）</div>
+        </div>
+        <span class="archive-type">ARCHIVED / AUDIO</span>
+        <div class="archive-actions">
+          <button class="archive-case-btn" onclick="openCase('transcribe-records')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 15 Linux 工作站与 VPS 网络搭建 -->
+      <article class="archive-item" data-category="linux">
+        <span class="archive-index">15</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="Linux 工作站与 VPS 网络搭建 (工程积累)" data-en="Linux Workstation &amp; VPS Infrastructure">Linux 工作站与 VPS 网络搭建 (工程积累)</span>
+          </div>
+          <div class="archive-desc" data-zh="主力工作站自建调优为 Arch Linux，维护云端 Debian VPS；配置网络代理、Cloudflare 域名解析、CDN 与证书自动化。" data-en="Tuned Arch Linux workstation and Debian VPS; configured proxy routes, Cloudflare DNS/CDN, and automated TLS certs.">主力工作站自建调优为 Arch Linux，维护云端 Debian VPS；配置网络代理、Cloudflare 域名解析、CDN 与证书自动化。</div>
+        </div>
+        <span class="archive-type">LINUX / INFRA</span>
+        <div class="archive-actions">
+          <button class="archive-case-btn" onclick="openCase('linux-vps-infra')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 16 浏览器反指纹与网络隐私防护套件 -->
+      <article class="archive-item" data-category="linux tool">
+        <span class="archive-index">16</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="浏览器反指纹与网络隐私防护套件" data-en="Browser Anti-Fingerprinting Suite">浏览器反指纹与网络隐私防护套件</span>
+          </div>
+          <div class="archive-desc" data-zh="工作站浏览器隐私防护套件。组合运用时区模拟、WebRTC 泄漏封堵与 Canvas 指纹隔离，防止数字指纹识别。" data-en="Workstation browser privacy defense orchestrating timezone spoofing, WebRTC leak prevention, and Canvas isolation.">工作站浏览器隐私防护套件。组合运用时区模拟、WebRTC 泄漏封堵与 Canvas 指纹隔离，防止数字指纹识别。</div>
+        </div>
+        <span class="archive-type">SECURITY / WEB</span>
+        <div class="archive-actions">
+          <button class="archive-case-btn" onclick="openCase('timezone-spoofer')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 17 WriteMap -->
+      <article class="archive-item" data-category="web">
+        <span class="archive-index">17</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="WriteMap (Visual Writing Coach)" data-en="WriteMap (Visual Writing Coach)">WriteMap (Visual Writing Coach)</span>
+          </div>
+          <div class="archive-desc" data-zh="英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。" data-en="Full-stack English essay writing web app featuring rich text editing, structural tree breakdown, and radar evaluation.">英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。</div>
+        </div>
+        <span class="archive-type">WEB / EDUCATION</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/WriteMap" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('writemap')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 18 Gaokao 高考志愿填报数据系统 -->
+      <article class="archive-item" data-category="data tool">
+        <span class="archive-index">18</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="Gaokao 高考志愿填报数据系统" data-en="Gaokao Admission Data Scraper">Gaokao 高考志愿填报数据系统</span>
+          </div>
+          <div class="archive-desc" data-zh="爬取 gaokao.cn 接口，清洗各大学专业历年投档分、录取最低位次与招生计划，输出 CSV 便于对比与填报决策。" data-en="Scrapes and normalizes historical university admission cutoffs and percentile rankings into clean CSV tables.">爬取 gaokao.cn 接口，清洗各大学专业历年投档分、录取最低位次与招生计划，输出 CSV 便于对比与填报决策。</div>
+        </div>
+        <span class="archive-type">DATA / PYTHON</span>
+        <div class="archive-actions">
+          <a href="https://github.com/lyf266/Gaokao" target="_blank" rel="noreferrer" class="archive-link">GitHub ↗</a>
+          <button class="archive-case-btn" onclick="openCase('gaokao')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      
+
+      <!-- 20 商业文稿排版外包 & 校园调度模型 -->
+      <article class="archive-item" data-category="web">
+        <span class="archive-index">19</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="商业文稿排版外包 &amp; 校园调度模型" data-en="Information Typography &amp; Dispatching Model">商业文稿排版外包 &amp; 校园调度模型</span>
+          </div>
+          <div class="archive-desc" data-zh="承接商业 PPT 外包设计；兼职校园即时跑腿期间，推演设计过一套基于代币经济的去中心化互助跑腿调度模型。" data-en="Freelance slide deck information layout design, paired with campus peer courier dispatching mechanism design.">承接商业 PPT 外包设计；兼职校园即时跑腿期间，推演设计过一套基于代币经济的去中心化互助跑腿调度模型。</div>
+        </div>
+        <span class="archive-type">DESIGN / PRODUCT</span>
+        <div class="archive-actions">
+          <button class="archive-case-btn" onclick="openCase('deck-errand')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
+
+      <!-- 21 百人 Minecraft 社区 (早期启蒙) -->
+      <article class="archive-item" data-category="linux">
+        <span class="archive-index">20</span>
+        <div class="archive-main">
+          <div class="archive-title-wrap">
+            <span class="archive-title" data-zh="百人 Minecraft 社区网络打通 (童年启蒙)" data-en="Minecraft Community Network (Early Initiative)">百人 Minecraft 社区网络打通 (童年启蒙)</span>
+          </div>
+          <div class="archive-desc" data-zh="10 岁小学时自学宽带 PPPoE 拨号获取动态公网 IP，在路由器配置端口映射打通网络，论坛发帖运营百人活跃游戏社区。" data-en="Self-taught residential PPPoE dynamic public IP routing and router port forwarding at age 10; managed a 100+ player forum community.">10 岁小学时自学宽带 PPPoE 拨号获取动态公网 IP，在路由器配置端口映射打通网络，论坛发帖运营百人活跃游戏社区。</div>
+        </div>
+        <span class="archive-type">NETWORKING / EARLY</span>
+        <div class="archive-actions">
+          <button class="archive-case-btn" onclick="openCase('minecraft-community')" data-zh="详情" data-en="Case">详情</button>
+        </div>
+      </article>
     </div>
   </section>
 
-  <section class="wrap section" id="about"><div class="about"><div><div class="about-label">04 / About</div><h2 data-zh="保持好奇，也尊重证据。" data-en="Stay curious. Respect evidence.">保持好奇，也尊重证据。</h2></div><div><p class="about-copy" data-zh="我喜欢从日常学习和工作中的摩擦点出发，尝试用代码、自动化与 AI 做出轻量工具。相比堆叠技术名词，我更希望清楚说明每个项目解决了什么问题、采用了哪些取舍，以及还有哪些地方需要验证。" data-en="I look for friction in everyday learning and work, then try to build lightweight tools with code, automation and AI. Rather than stacking technical buzzwords, I aim to explain the problem, the trade-offs and what still needs to be verified.">我喜欢从日常学习和工作中的摩擦点出发，尝试用代码、自动化与 AI 做出轻量工具。相比堆叠技术名词，我更希望清楚说明每个项目解决了什么问题、采用了哪些取舍，以及还有哪些地方需要验证。</p><div class="about-points"><div class="about-point"><svg class="icon"><use href="#i-target"/></svg><div><strong data-zh="问题优先" data-en="Problem first">问题优先</strong><span data-zh="先确认真实需求，再决定技术方案。" data-en="Understand the need before choosing a tool.">先确认真实需求，再决定技术方案。</span></div></div><div class="about-point"><svg class="icon"><use href="#i-code"/></svg><div><strong data-zh="小步交付" data-en="Ship in small steps">小步交付</strong><span data-zh="先构建最小可用版本，再逐步改进。" data-en="Build a small working version, then improve it.">先构建最小可用版本，再逐步改进。</span></div></div><div class="about-point"><svg class="icon"><use href="#i-check"/></svg><div><strong data-zh="结果可核验" data-en="Verifiable results">结果可核验</strong><span data-zh="区分已验证成果、假设和计划。" data-en="Separate evidence from assumptions and plans.">区分已验证成果、假设和计划。</span></div></div><div class="about-point"><svg class="icon"><use href="#i-globe"/></svg><div><strong data-zh="持续学习" data-en="Keep learning">持续学习</strong><span data-zh="通过实践、反馈和复盘拓宽能力。" data-en="Grow through practice, feedback and reflection.">通过实践、反馈和复盘拓宽能力。</span></div></div></div></div></div>
-    <div class="contact"><div><h2 data-zh="有真实问题，欢迎交流。" data-en="Have a real problem? Let's talk.">有真实问题，欢迎交流。</h2><p data-zh="合作、项目反馈或技术交流，都欢迎通过 GitHub 联系。" data-en="Open to project feedback, collaboration and technical conversations.">合作、项目反馈或技术交流，都欢迎通过 GitHub 联系。</p></div><a class="btn" href="https://github.com/lyf266" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-git"/></svg>GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
+  <!-- 04 / 关于我与原则 -->
+  <section class="wrap section" id="about">
+    <div class="about">
+      <div>
+        <div class="about-label">04 / About</div>
+        <h2 data-zh="保持好奇，也尊重证据。" data-en="Stay Curious. Respect Evidence.">保持好奇，也尊重证据。</h2>
+      </div>
+      <div>
+        <p class="about-copy" data-zh="我喜欢从日常学习和工程实践中的真实摩擦点出发，尝试用代码、脚本与 AI 做出轻量有用的工具。相比堆砌技术名词与未经测试的承诺，我更希望清楚说明每个项目解决了什么实际问题、做了哪些工程取舍，以及还有哪些地方仍需进一步验证。" data-en="I look for friction in everyday learning and engineering work, then try to build lightweight, dependable tools with code and automation. Rather than stacking technical buzzwords, I aim to explain the real problem, the trade-offs, and what still needs verification.">我喜欢从日常学习和工程实践中的真实摩擦点出发，尝试用代码、脚本与 AI 做出轻量有用的工具。相比堆砌技术名词与未经测试的承诺，我更希望清楚说明每个项目解决了什么实际问题、做了哪些工程取舍，以及还有哪些地方仍需进一步验证。</p>
+        <div class="about-points">
+          <div class="about-point">
+            <svg class="icon"><use href="#i-target"/></svg>
+            <div>
+              <strong data-zh="问题优先" data-en="Problem First">问题优先</strong>
+              <span data-zh="先确认真实痛点与物理边界，再决定合适的技术方案。" data-en="Understand actual pain points before choosing technologies.">先确认真实痛点与物理边界，再决定合适的技术方案。</span>
+            </div>
+          </div>
+          <div class="about-point">
+            <svg class="icon"><use href="#i-code"/></svg>
+            <div>
+              <strong data-zh="小步交付" data-en="Ship in Small Steps">小步交付</strong>
+              <span data-zh="先构建最小可用版本，在真实场景中检验并逐步演进。" data-en="Build a working prototype, test in real context, then iterate.">先构建最小可用版本，在真实场景中检验并逐步演进。</span>
+            </div>
+          </div>
+          <div class="about-point">
+            <svg class="icon"><use href="#i-check"/></svg>
+            <div>
+              <strong data-zh="结果可核验" data-en="Verifiable Results">结果可核验</strong>
+              <span data-zh="明确区分已实测成果、待验证项与规划，不虚构数据。" data-en="Strictly separate verified evidence from assumptions and plans.">明确区分已实测成果、待验证项与规划，不虚构数据。</span>
+            </div>
+          </div>
+          <div class="about-point">
+            <svg class="icon"><use href="#i-globe"/></svg>
+            <div>
+              <strong data-zh="持续复盘" data-en="Reflect &amp; Grow">持续复盘</strong>
+              <span data-zh="通过实战、反馈与复盘不断拓展系统与工程能力边界。" data-en="Expand system capabilities through real practice and feedback.">通过实战、反馈与复盘不断拓展系统与工程能力边界。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 联系与沟通卡片 -->
+    <div class="contact">
+      <div>
+        <h2 data-zh="有真实工程问题，欢迎交流。" data-en="Have a real problem? Let's talk.">有真实工程问题，欢迎交流。</h2>
+        <p data-zh="技术交流、项目探讨或工作合作，都欢迎通过 GitHub 或邮件联系。" data-en="Open to technical discussions, project feedback, and collaboration opportunities.">技术交流、项目探讨或工作合作，都欢迎通过 GitHub 或邮件联系。</p>
+      </div>
+      <div class="contact-btns">
+        <a class="btn btn-accent" href="mailto:lyf2517034828@outlook.com">
+          <svg class="icon"><use href="#i-mail"/></svg>
+          <span data-zh="发送邮件" data-en="Send Email">发送邮件</span>
+        </a>
+        <a class="btn btn-trans" href="https://github.com/lyf266" target="_blank" rel="noreferrer">
+          <svg class="icon"><use href="#i-git"/></svg>
+          GitHub
+          <svg class="icon"><use href="#i-arrow-up-right"/></svg>
+        </a>
+      </div>
+    </div>
   </section>
 </main>
-<footer class="wrap"><span>© 2026 F1are / Portfolio</span><span><a href="../portfolio.pdf" data-zh="PDF 简版" data-en="PDF (ZH)">PDF 简版</a> · <a href="../portfolio_en.pdf" data-zh="PDF 英文版" data-en="PDF (EN)">PDF 英文版</a></span><span data-zh="以真实项目为基础 · 不夸大未经验证的结果" data-en="Built around real projects · No unsupported claims">以真实项目为基础 · 不夸大未经验证的结果</span></footer>
 
+<!-- 页脚 -->
+<footer class="wrap">
+  <span>© 2026 李耀飞 (F1are) · Built with Vanilla HTML/CSS/JS</span>
+  <span data-zh="以真实项目为基础 · 不夸大未经验证的结果" data-en="Grounded in real engineering · No unsupported claims">以真实项目为基础 · 不夸大未经验证的结果</span>
+</footer>
+
+<!-- 案例复盘对话框 Modal -->
 <div class="modal" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-panel"><div class="modal-top"><div><div class="modal-eyebrow" id="modalEyebrow">CASE STUDY / PROJECT</div><h2 id="modalTitle">项目案例</h2></div><button class="modal-close" id="modalClose" aria-label="关闭案例"><svg class="icon"><use href="#i-x"/></svg></button></div><div class="modal-content" id="modalContent"></div></div>
+  <div class="modal-panel">
+    <div class="modal-top">
+      <div>
+        <div class="modal-eyebrow" id="modalEyebrow">CASE STUDY / PROJECT</div>
+        <h2 id="modalTitle">项目案例复盘</h2>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="关闭案例 (Close)">
+        <svg class="icon"><use href="#i-x"/></svg>
+      </button>
+    </div>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
 </div>
+
 <script>
-const caseData={"poi": {"zh": {"category": "AI / 工作流 / 01", "title": "Personal Opportunity Intelligence", "intro": "将分散在多个信息源中的机会整理成可筛选、可追踪的清单。重点是减少手动收集和重复浏览，而不是增加 AI 输出。", "problem": "奖学金、开源资助、竞赛与岗位信息分散在不同网站，需要反复搜索、核对资格并记录截止时间，信噪比很低。", "approach": "用 RSS / Atom 采集信息源，解析并去重条目，再按一组明确的规则维度加权评分；达到阈值的机会推送到 Telegram 和 Notion。", "steps": ["多源采集", "解析去重", "规则评分", "推送追踪"], "evidence": "待验证：信息源可用率、去重准确率、推送中被实际点开的比例。在系统性测量之前，不展示命中率。", "limits": "规则评分只是初筛，不代表对机会质量的判断；信息以官方原始页面为准；需要处理失效链接、过期机会和来源格式变化。", "tech": "Python · RSS / Atom · Telegram Bot · Notion API"}, "en": {"category": "AI WORKFLOW / 01", "title": "Personal Opportunity Intelligence", "intro": "Collect scattered opportunities into a filterable, trackable list. The point is less manual searching, not more AI output.", "problem": "Scholarships, open-source grants, competitions and job posts live on different sites; checking eligibility and deadlines by hand is noisy and repetitive.", "approach": "Collect feeds via RSS/Atom, parse and dedupe entries, score them against explicit weighted rules; items above threshold go to Telegram and Notion.", "steps": ["Collect feeds", "Parse & dedupe", "Rule scoring", "Push & track"], "evidence": "To verify: feed availability, dedupe accuracy, share of pushed items actually opened. No hit-rate claims before systematic measurement.", "limits": "Rule scoring is a first pass, not a quality judgment; always check the official source page; handle dead links, expired items and feed format changes.", "tech": "Python · RSS / Atom · Telegram Bot · Notion API"}}, "lifeos": {"zh": {"category": "AI / 知识库 / 02", "title": "Personal LifeOS (Project PAI)", "intro": "让 AI 记住长期目标与日志的个人系统：事实存数据库、语义走向量，定时生成复盘，而不是每次对话都从零开始。", "problem": "对话式 AI 随会话结束而遗忘，长期使用出现上下文漂移、多会话割裂；个人目标缺乏持续跟踪，复盘靠自觉。", "approach": "FastAPI 后端 + PostgreSQL 存规范事实 + Qdrant 存语义向量；检索优先于推理，定时任务触发复盘生成。", "steps": ["记录日志", "事实/向量检索", "生成复盘", "决策参考"], "evidence": "待验证：长期记忆对目标达成的实际帮助、检索准确率、复盘建议被采纳的比例。目前是个人使用的探索版本。", "limits": "涉及生活多领域数据，统一建模与长期预测仍是开放问题；这是个人工作流实验，不是通用方案。", "tech": "Python · FastAPI · PostgreSQL · Qdrant · LLM"}, "en": {"category": "AI / KNOWLEDGE BASE / 02", "title": "Personal LifeOS (Project PAI)", "intro": "A personal system that gives AI long-term memory: facts in a database, semantics in vectors, scheduled reviews — no more starting from zero each chat.", "problem": "Conversational AI forgets when the session ends; long-term use drifts across sessions; personal goals get no continuous tracking.", "approach": "FastAPI backend, PostgreSQL for canonical facts, Qdrant for semantic vectors; retrieval before reasoning, scheduled review generation.", "steps": ["Log", "Fact/vector retrieval", "Generate review", "Decision reference"], "evidence": "To verify: whether long-term memory actually helps goal completion, retrieval accuracy, share of review suggestions adopted. Currently a personal exploratory build.", "limits": "Life data spans many domains; unified modeling and long-term prediction remain open problems. A personal workflow experiment, not a general solution.", "tech": "Python · FastAPI · PostgreSQL · Qdrant · LLM"}}, "hermes": {"zh": {"category": "LINUX / 运维 / 03", "title": "Hermes 定时任务管家", "intro": "跑在云服务器上的定时任务管家：抓晨报、盯持仓、巡检服务器，异常时推送到手机。", "problem": "定时任务散落在各处，单脚本缺乏容错，出问题时没人知道；需要一台 24 小时在线的执行环境。", "approach": "Debian VPS 上用 Cron / Systemd 调度 18+ 个任务管线，Telegram Webhook 做异常报警；按战略、运维、实验、情报四个角色组织任务。", "steps": ["定时调度", "执行任务", "状态检查", "异常报警"], "evidence": "待验证：任务成功率统计、报警准确率（误报/漏报）。“18+ 个任务”是当前配置数量，不是性能指标。", "limits": "节点间靠文件系统与消息钩子交互，缺少统一事件总线；是个人运维方案，不是生产级调度平台。", "tech": "Debian · Cron / Systemd · Telegram Bot"}, "en": {"category": "LINUX / OPS / 03", "title": "Hermes Job Butler", "intro": "A scheduled-job butler on a cloud server: morning digests, portfolio watch, health checks — alerts pushed to your phone.", "problem": "Cron jobs scattered everywhere with no fault tolerance; nobody notices when one breaks; needs a 24/7 execution environment.", "approach": "Debian VPS with Cron/Systemd scheduling 18+ pipelines, Telegram webhooks for anomaly alerts; jobs organized into strategy, ops, experiment and intel roles.", "steps": ["Schedule", "Execute", "Health check", "Alert"], "evidence": "To verify: job success-rate stats, alert accuracy (false/missed). “18+ jobs” is the current config count, not a performance claim.", "limits": "Nodes communicate via filesystem and message hooks; no unified event bus. A personal ops setup, not a production scheduler.", "tech": "Debian · Cron / Systemd · Telegram Bot"}}, "infra": {"zh": {"category": "LINUX / 基建 / 04", "title": "Linux 工作站与 VPS", "intro": "自己动手搭建的日常开发环境：主力机 Arch Linux + Debian 云服务器，网络、域名、证书全套打通。", "problem": "希望脱离 Windows 生态，有一套自己完全掌控、安全可用的日常开发与云端工作环境。", "approach": "Arch Linux 做主力系统（Zen 内核调优），Debian VPS 跑云端服务；Cloudflare 管域名解析与 CDN；Let's Encrypt 证书自动化。", "steps": ["系统调优", "网络配置", "域名/CDN", "证书自动化"], "evidence": "这是环境搭建类工作，验证方式是“日常可用”：主力开发、云端任务、HTTPS 访问都跑在这套环境上。没有做过性能对比测试。", "limits": "早期靠人工逐行配置，现在用 AI 协助生成配置与排错；是个人工程积累，不是可复制的发行版方案。", "tech": "Arch Linux · Debian · Cloudflare · Let's Encrypt"}, "en": {"category": "LINUX / INFRA / 04", "title": "Linux Workstation & VPS", "intro": "A hand-built daily dev environment: Arch Linux workstation plus Debian cloud server — network, DNS and certificates all wired up.", "problem": "Wanted out of the Windows ecosystem: a fully self-controlled, secure daily dev and cloud working environment.", "approach": "Arch Linux as daily driver (tuned Zen kernel), Debian VPS for cloud services; Cloudflare for DNS and CDN; automated Let's Encrypt certificates.", "steps": ["Tune system", "Configure network", "DNS/CDN", "Auto certificates"], "evidence": "This is environment work; verification is “daily usable”: dev work, cloud jobs and HTTPS all run on it. No comparative performance tests done.", "limits": "Early setup was manual line-by-line config, now AI-assisted; personal engineering accumulation, not a reproducible distro.", "tech": "Arch Linux · Debian · Cloudflare · Let's Encrypt"}}};
-const modal=document.getElementById('caseModal'); const modalTitle=document.getElementById('modalTitle'); const modalEyebrow=document.getElementById('modalEyebrow'); const modalContent=document.getElementById('modalContent'); let previousFocus=null; let currentCase=null;
-function renderCase(){const d=caseData[currentCase];if(!d)return;const t=d[lang]||d.zh;modalEyebrow.textContent=t.category;modalTitle.textContent=t.title;const L=lang==='zh'?['问题场景','实现方式','工作流程','值得补充的验证','限制与取舍','技术栈','这份案例基于现有项目介绍整理。“待验证”标注的是尚未系统测量的项目，不代表已完成的测试结果。','查看项目案例']:['Problem','Approach','Workflow','To verify','Limits & trade-offs','Stack','Case studies are compiled from existing project notes. Items marked “to verify” have not been systematically measured.','View case study'];modalContent.innerHTML=`<p class="modal-intro">${t.intro}</p><div class="case-grid"><section class="case-box"><h3><svg class="icon"><use href="#i-target"/></svg>${L[0]}</h3><p>${t.problem}</p></section><section class="case-box"><h3><svg class="icon"><use href="#i-wrench"/></svg>${L[1]}</h3><p>${t.approach}</p></section><section class="case-box full"><h3><svg class="icon"><use href="#i-git"/></svg>${L[2]}</h3><div class="case-flow">${t.steps.map((s,i)=>`${i?'<svg class="icon"><use href="#i-arrow-right"/></svg>':''}<span>${s}</span>`).join('')}</div></section><section class="case-box"><h3><svg class="icon"><use href="#i-chart"/></svg>${L[3]}</h3><p>${t.evidence}</p></section><section class="case-box"><h3><svg class="icon"><use href="#i-check"/></svg>${L[4]}</h3><p>${t.limits}</p></section><section class="case-box full"><h3><svg class="icon"><use href="#i-code"/></svg>${L[5]}</h3><p>${t.tech}</p></section></div><div class="honesty-note">${L[6]}</div>`;}
-function openCase(key){if(!caseData[key])return;previousFocus=document.activeElement;currentCase=key;renderCase();modal.classList.add('open');document.body.style.overflow='hidden';document.getElementById('modalClose').focus()}
-function closeCase(){modal.classList.remove('open');document.body.style.overflow='';currentCase=null;if(previousFocus)previousFocus.focus()}
-document.querySelectorAll('.case-open').forEach(b=>b.addEventListener('click',()=>openCase(b.dataset.case)));document.getElementById('modalClose').addEventListener('click',closeCase);modal.addEventListener('click',e=>{if(e.target===modal)closeCase()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeCase()});
-document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===btn));const f=btn.dataset.filter;document.querySelectorAll('.archive-item').forEach(item=>{item.hidden=f!=='all'&&!item.dataset.category.split(' ').includes(f)})}));
-document.getElementById('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('dark');const dark=document.body.classList.contains('dark');document.querySelector('#themeToggle use').setAttribute('href',dark?'#i-sun':'#i-moon');document.getElementById('themeToggle').setAttribute('aria-label',dark?'切换浅色模式':'切换深色模式')});
-let lang='zh'; document.getElementById('langToggle').addEventListener('click',()=>{lang=lang==='zh'?'en':'zh';document.documentElement.lang=lang==='zh'?'zh-CN':'en';document.querySelectorAll('[data-zh][data-en]').forEach(el=>{el.innerHTML=el.dataset[lang]});document.getElementById('langToggle').textContent=lang==='zh'?'EN / 中':'中 / EN';document.getElementById('langToggle').setAttribute('aria-label',lang==='zh'?'Switch language':'切换语言');if(currentCase)renderCase()});
+// 全量 21 个项目的真实工程复盘数据集 (中英文双语、去 AI 式套话、事实核验标准)
+const caseData = {
+  'bank-exam': {
+    category: 'WEB / LEARNING TOOL / 01',
+    title_zh: '2026 银行考试模拟系统 & Anki 备考工具包',
+    title_en: 'Banking Certificate Exam Simulator & Anki Toolkit',
+    intro_zh: '为个人备考场景构建的零依赖原生浏览器机考系统。解决商业刷题软件广告多、界面与真实考试脱节，以及错题无法顺畅衔接间隔复习软件（Anki）的痛点。',
+    intro_en: 'A zero-dependency browser-based exam simulator for banking certifications. Addresses ad distractions, unrealistic mock test layouts, and the friction of transferring wrong questions into spaced repetition tools (Anki).',
+    problem_zh: '备考初级《法律法规》与《个人理财》科目时，市面练习工具常有商业广告干扰，且界面缺乏考场 120 分钟倒计时、题号抽屉式导航面板与专用计算器；做错题目缺乏结构化归纳手段。',
+    problem_en: 'Commercial exam prep apps suffer from ads, lacking the ATA exam interface, 120min countdown timer, and specialized calculators. Discovered errors also lacked a direct export path into spaced repetition decks.',
+    approach_zh: '采用纯原生 Vanilla JS/HTML5/CSS3 构建无依赖机考页面，实现考场计时答题、题号导航面板、单选/多选/判断自动判分，以及内置科学计算器和 TVM 货币时间价值五键金融计算器；支持一键将错题导出为 Anki FSRS 记忆卡包。',
+    approach_en: 'Built with pure Vanilla JS/HTML5/CSS3 with zero external dependencies. Features timed test simulation, question palette, automatic grading, and embedded scientific & TVM financial calculators. Provides one-click export of mistake logs to Anki FSRS decks.',
+    steps_zh: ['模拟全真答题', '自动瞬时判分', '错题归因定位', 'Anki 间隔复习'],
+    steps_en: ['Timed Practice', 'Instant Grading', 'Error Categorization', 'Anki Spaced Review'],
+    evidence_zh: '【题库来源与事实核验说明】题库共 710 道：含 2 套真题，其余为回忆版、改编与自编题（基于官方统考教材核心考点与典型母题提炼），并根据金监总局（NFRA）现行规章及 2025 年央行新 M1 统计口径（计入个人活期存款）做了监管口径核验修正。在主流浏览器中对计算器五键精度（N, I/Y, PV, PMT, FV）及 END/BGN 模式进行了边界测试。',
+    evidence_en: '[Question Bank & Fact Check Note] 710 questions total: 2 real past-paper sets, the rest recalled, adapted and self-written items synthesized from official textbook syllabi; calibrated to current NFRA and PBOC 2025 M1 statistical standards. TVM five-key financial calculator algorithms were tested against financial math benchmarks across modern browsers.',
+    limits_zh: '目前题库以《个人理财》科目为主，其他专业科目需后续录入；自编题目解析经过人工校对，但缺乏官方试卷公布的统计难度系数（IRT）标定。',
+    limits_en: 'Question coverage currently focuses on Personal Wealth Management; other modules require manual authoring. Questions were manually verified against textbooks but lack official standardized IRT psychometric difficulty calibrations.',
+    tech: 'Vanilla JavaScript · HTML5 / CSS3 · Anki (FSRS 兼容) · KaTeX 4-Step Math',
+    links: [
+      { text: '在线交互演示 (Live Demo) ↗', href: 'https://lyf266.github.io/bank-exam-2026-toolkit/' },
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/bank-exam-2026-toolkit' }
+    ]
+  },
+
+  'poi': {
+    category: 'AI WORKFLOW / AUTOMATION / 02',
+    title_zh: 'Personal Opportunity Intelligence (POI)',
+    title_en: 'Personal Opportunity Intelligence (POI)',
+    intro_zh: '将分散在多个信息源中的开源资助、竞赛、奖学金与实习招聘整理成可筛选、可追踪的结构化清单，减少反复手动搜索与整理的成本。',
+    intro_en: 'Aggregates open-source grants, competitions, scholarships, and internships from fragmented feeds into a structured, prioritized stream, reducing manual search friction.',
+    problem_zh: '官方网站、高校通知与行业资讯分散在各处，截止日期各不相同，人工逐个网站刷新检索极易产生遗漏，且大量条目属于无关冗余信息。',
+    problem_en: 'Notices are scattered across dozens of portals and blogs with varying deadlines. Manual polling wastes cognitive bandwidth, with many feeds being low-relevance noise.',
+    approach_zh: '使用 Python 定时抓取多源 RSS/Atom 订阅，利用 URL 与哈希去重；按预设的关键词匹配度、来源质量与匹配维度进行规则加权打分；达标条目通过 Telegram Bot 推送提醒，并调用 API 同步入 Notion 看板。',
+    approach_en: 'Scheduled Python scripts poll RSS/Atom feeds, deduplicate items via hash/URL, apply weighted keyword scoring, and push high-ranking items to Telegram and Notion databases.',
+    steps_zh: ['多源自动采集', '去重与解析', '规则加权评分', 'TG/Notion 归档'],
+    steps_en: ['Feed Ingestion', 'Deduplication', 'Rule-Based Scoring', 'Telegram/Notion Push'],
+    evidence_zh: '【验证标准说明】本工具属于规则初筛系统。由于资讯源质量随时间变动，信息最终有效性与申请资格仍以官方页面发布为准；尚未开展严格的统计召回率测试前，不对过滤命中率做夸大承诺。',
+    evidence_en: '[Verification Standard] This serves as an initial rule-based filtering pipeline. Information validity and eligibility must be verified against original official pages. Absolute statistical recall rates are not claimed without rigorous labeled benchmarks.',
+    limits_zh: '评分依赖人工设定的关键词池与权重经验值；目标网站若修改 RSS 结构或实施高频反爬封控，需手动更新适配解析规则。',
+    limits_en: 'Scoring relies on heuristically tuned keyword weight dictionaries; upstream RSS schema changes or rate limits require manual parser updates.',
+    tech: 'Python · Feedparser · Telegram Bot API · Notion API · SQLite',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/personal-opportunity-agent' }
+    ]
+  },
+
+  'whisper': {
+    category: 'LINUX / LOCAL AI / 03',
+    title_zh: 'Linux Whisper Input 本地语音听写',
+    title_en: 'Linux Whisper Input Daemon',
+    intro_zh: '通过全局快捷键触发本地语音识别，将结果直接输入当前活动窗口，避免在线听写的网络延迟与本地脚本反复冷加载模型的等待。',
+    intro_en: 'Trigger local speech recognition with a global hotkey and inject text into the focused window, eliminating cloud latency and repeated cold model initialization overhead.',
+    problem_zh: '云端听写存在网络依赖与隐私顾虑；而在本地 Linux 桌面上，每次按快捷键临时执行脚本加载数 GB 的模型权重，需要等待数秒，破坏输入心流。',
+    problem_en: 'Cloud speech-to-text incurs network latency and privacy concerns; local scripts that reload multi-gigabyte models on every hotkey press stall for seconds, disrupting typing flow.',
+    approach_zh: '采用 Python + CTranslate2（large-v3-turbo float16），将模型与 CUDA 上下文持久驻留在 GPU 显存中；通过 PipeWire 捕获系统脉冲音频流；利用全局快捷键（Meta+H）触发录音与推理，并通过 Wayland 虚拟键盘事件直接注入文字。',
+    approach_en: 'Python daemon using CTranslate2 (large-v3-turbo float16) permanently keeps model weights in GPU VRAM. Captures audio via PipeWire, listens for Meta+H hotkeys, and injects text into focused applications via Wayland virtual key events.',
+    steps_zh: ['快捷键唤醒', 'PipeWire 录音', '显存驻留转写', '虚拟按键注入'],
+    steps_en: ['Hotkey Trigger', 'PipeWire Capture', 'VRAM Inference', 'Keystroke Injection'],
+    evidence_zh: '【测试环境与口径说明】实测环境基于本地 Arch Linux 桌面与 NVIDIA GPU；延迟数据尚未系统性实测，不作为稳定结论；运行环境为本地 Arch Linux 桌面与 NVIDIA GPU。',
+    evidence_en: '[Test Conditions] Measured on a local Arch Linux desktop with an NVIDIA GPU. Latency has not been systematically measured and is not claimed as a stable result; test environment is a local Arch Linux desktop with an NVIDIA GPU.',
+    limits_zh: '深度依赖 Linux PipeWire、Wayland 合成器与 NVIDIA CUDA 环境；基于能量阈值的 VAD 在背景噪音较大时仍有误判断句的可能；长语音上下文需额外切片。',
+    limits_en: 'Tightly coupled to Linux PipeWire, Wayland compositor, and NVIDIA CUDA; energy-based VAD may missegment in noisy environments; long speech requires chunking.',
+    tech: 'Python · CTranslate2 · PipeWire · Wayland (ydotool) · Systemd',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/linux-whisper-input' }
+    ]
+  },
+
+  'obs': {
+    category: 'LINUX / HARDWARE & VIDEO / 04',
+    title_zh: 'OBS Studio 推流与摄像头驱动加固',
+    title_en: 'OBS Studio Stream & V4L2 Driver Tuning',
+    intro_zh: '排查 Linux 推流环境中特定 USB 摄像头解码崩溃、透明视频动效渲染异常与场景切换坐标偏移问题，并实施针对性配置加固。',
+    intro_en: 'Troubleshooting Linux streaming setup: resolving webcam decode crashes, transparent WebM alpha rendering anomalies, and scene coordinate offsets.',
+    problem_zh: '特定 USB 摄像头在默认 MJPEG 格式下，遇到总线坏包易触发 FFmpeg 软解死循环；叠加 WebM 透明动效时 GPU 硬解码会丢弃 alpha 通道导致抠像全黑；OBS 重载场景时相对坐标计算容易使图层漂移至中心。',
+    problem_en: 'On specific webcam hardware, corrupted USB packets during MJPEG decode triggered FFmpeg crash loops; NVDEC hardware decoding stripped WebM alpha channels (rendering cutouts opaque black); OBS scene reloads drifted items due to pos_rel coordinates.',
+    approach_zh: '改用未压缩 YUYV 4:2:2 原始像素直采以彻底绕过易错的软解；配置 udev 规则禁用摄像头的 USB autosuspend；WebM 视频强制采用 libvpx 软解保留 32 位全透明通道；双向校准 pos 绝对坐标与 pos_rel 归一化坐标；编写 OBS 进程内 Lua 脚本驱动动态时间。',
+    approach_en: 'Switched to uncompressed YUYV 4:2:2 raw capture to bypass software decoding; configured udev rules disabling USB autosuspend; forced libvpx software decode for WebM to retain 32-bit alpha transparency; calibrated pos/pos_rel coordinates; wrote in-process Lua scripts for dynamic clocks.',
+    steps_zh: ['YUYV 原始直采', 'udev 禁休眠', '坐标双向校准', '长时间推流测试'],
+    steps_en: ['YUYV Raw Capture', 'udev Hardening', 'Coordinate Sync', 'Stream Stability Run'],
+    evidence_zh: '【真实效果与限制声明】本方案针对当前 Linux 工作站与特定 USB 摄像头（VID/PID 匹配）的已观察问题进行工程规避和修复，并通过了长时间推流测试。声明：不保证消除所有 USB 总线物理丢包或未知内核驱动缺陷，非广播级商业担保。',
+    evidence_en: '[Factual Scope] This configuration hardening addresses specific observed bugs on the current Linux workstation and webcam model. Notice: it mitigates known decoder failure modes but does not claim to eliminate all hardware USB bus dropouts or kernel driver faults.',
+    limits_zh: '加固规则针对当前摄像头的特定硬件特征编写；若更换不同品牌与协议的摄像头，需重新探测其支持的像素格式。',
+    limits_en: 'Configuration is tuned for the specific camera VID/PID and UVC quirks; changing hardware requires re-probing supported pixel formats.',
+    tech: 'OBS Studio · Linux V4L2 · Lua Scripting · udev rules · libvpx',
+    links: []
+  },
+
+  'desktop-timetracker': {
+    category: 'LINUX / SYSTEM TOOL / 05',
+    title_zh: 'Desktop TimeTracker (timetrack)',
+    title_en: 'Desktop TimeTracker (timetrack)',
+    intro_zh: 'KDE Plasma 6 Wayland 下的自动窗口活动与时间追踪工具，通过 KWin 脚本与 D-Bus 获取活动窗口，内存与 CPU 占用保持较低（具体数值待实测），自动生成每日 Markdown 时间复盘报告。',
+    intro_en: 'Lightweight window activity tracker on KDE Plasma 6 Wayland using KWin scripts and D-Bus IPC; keeps memory and CPU footprint low (exact figures pending measurement) and auto-generates daily Markdown reports.',
+    problem_zh: 'KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。',
+    problem_en: 'KDE Plasma 6 Wayland security boundaries break legacy X11 window polling tools. Commercial alternatives rely on heavy Electron daemons and upload private activity logs to cloud servers.',
+    approach_zh: '采用纯原生 Python 3（仅用 sqlite3、json 与系统 qdbus6，零外部 pip 依赖），配合 KWin 脚本监听窗口聚焦事件；三级应用识别算法（映射表 → .desktop 元数据 → 进程名兜底）；每晚离线输出 Markdown 复盘报告。',
+    approach_en: 'Pure native Python 3 (sqlite3, json, qdbus6; zero pip dependencies) paired with internal KWin scripts. Three-tier application mapping (lookup table -> XDG .desktop metadata -> process fallback) and offline Markdown export.',
+    steps_zh: ['KWin 事件捕获', 'D-Bus IPC 通信', '三级窗口识别', '本地 SQLite 记录'],
+    steps_en: ['KWin Event Hook', 'D-Bus IPC Transfer', 'Window Resolution', 'Local SQLite Storage'],
+    evidence_zh: '【性能口径】在 KDE Plasma 6 桌面下常驻运行，内存与 CPU 占用保持较低（具体数值待实测记录），数据完全保留在本地 SQLite，无外部网络请求。',
+    evidence_en: '[Telemetry] Running continuously on KDE Plasma 6 with low memory and CPU footprint (exact figures pending measurement). All data strictly stored in local SQLite.',
+    limits_zh: '深度绑定 KDE Plasma 6 Wayland 的 KWin 脚本 API；跨桌面环境（如 GNOME、Sway）需适配不同的合成器 IPC 协议。',
+    limits_en: 'Tightly coupled to KDE Plasma 6 KWin scripting APIs; cross-desktop migration requires writing compositor-specific probes.',
+    tech: 'Python 3 · KWin Script · D-Bus (qdbus6) · SQLite',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/desktop-timetracker' }
+    ]
+  },
+
+  'pai': {
+    category: 'AI / KNOWLEDGE / 06',
+    title_zh: 'Personal LifeOS (Project PAI)',
+    title_en: 'Personal LifeOS (Project PAI)',
+    intro_zh: '个人目标、日志与反思管理系统。本地与远程云服务器双端基于 SQLite 运行，通过 Telegram 与定时任务调度模型生成周期复盘。',
+    intro_en: 'Personal workflow for goals, daily journaling and weekly reflection, synchronizing state across local workstation and remote VPS.',
+    problem_zh: '个人学习任务、灵感记录与周期复盘散落在各种商业软件中，数据格式不开放，也缺乏统一的生命周期追踪与定时自我复盘提醒。',
+    problem_en: 'Goals, task notes, and reflections were scattered across closed SaaS tools, making automated status tracking and longitudinal review cumbersome.',
+    approach_zh: '搭建基于 FastAPI 与 SQLite 的轻量级后端服务，提供 Telegram Bot 随手输入接口；配置定时 Cron 任务在每周/每月触发大模型提示词，分析输入日志并生成结构化复盘摘要。',
+    approach_en: 'Lightweight FastAPI and SQLite backend with Telegram bot integration for low-friction logging. Scheduled cron jobs trigger LLMs to summarize logs into weekly/monthly reflection reports.',
+    steps_zh: ['Telegram 输入', '双端 SQLite 存储', '定时任务触发', '结构化复盘生成'],
+    steps_en: ['Telegram Ingestion', 'Dual SQLite Sync', 'Cron Trigger', 'Structured Summary'],
+    evidence_zh: '【实际应用】长期用于个人日程与学习复盘，沉淀了持续的日记与目标记录；不涉及虚夸的商业用户规模指标。',
+    evidence_en: '[Application] Used continuously for personal task reflection and progress tracking; avoiding fabricated business adoption metrics.',
+    limits_zh: '双端数据同步目前基于增量备份与脚本触发，高并发时需防范写入冲突；复盘深度受制于提示词规范。',
+    limits_en: 'Cross-node synchronization currently relies on incremental backups; reflection depth depends on prompt quality.',
+    tech: 'Python · FastAPI · SQLite · Telegram Bot · Cron',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/project-pai' }
+    ]
+  },
+
+  'hermes': {
+    category: 'LINUX / OPS / 07',
+    title_zh: 'Hermes 自动化运维网络与云端基建',
+    title_en: 'Hermes Ops Network & Cloud Infra',
+    intro_zh: '云端 VPS 自动化运行环境，配置安全网络协议，托管 18 个定时任务（晨报抓取、持仓监控、服务器巡检），异常时实时报警。',
+    intro_en: 'Debian VPS operational supervisor with hardened network transport, managing 18 scheduled cron tasks and pushing alerts via Telegram webhooks.',
+    problem_zh: '云端服务器自动化运维任务（定时抓取晨报、资产异动监控、系统健康巡检）繁杂，单脚本缺乏容错与状态机管理，容易因网络抖动中断而难以察觉。',
+    problem_en: 'Server cron routines (market intelligence, portfolio checks, disk/process health) lacked structured error handling and alert routing when scripts silently failed.',
+    approach_zh: '在 Debian VPS 上配置 Systemd 与 Cron 任务调度，将任务按功能分模块运行；建立健康检查探针，配置 Telegram Webhook 报警管道；任务正常运行时静默，一旦发生异常或阻断立即推送告警。',
+    approach_en: 'Debian VPS configured with Systemd and Cron pipelines. Built health check monitors and Telegram Webhook alerts: zero noise on routine success, immediate incident dispatch on failure.',
+    steps_zh: ['Debian VPS 基建', 'Cron 定时编排', '健康检查探针', 'Telegram 异常报警'],
+    steps_en: ['VPS Infrastructure', 'Cron Scheduling', 'Health Probes', 'Telegram Alerting'],
+    evidence_zh: '【运行实测】持续稳定托管 18 个日常定时作业，在服务器资源过载或网络连接超时情况下均能有效发出报警。',
+    evidence_en: '[Operational Evidence] Hosts 18 automated background tasks continuously; verified incident alerts during test network drops and disk capacity thresholds.',
+    limits_zh: '各任务间主要通过本地文件系统与消息钩子交互，尚未搭建分布式的事件总线（Event Bus）。',
+    limits_en: 'Tasks coordinate primarily via local filesystem state and webhooks; lacks a distributed event bus.',
+    tech: 'Debian Linux · Bash · Python · Cron · Systemd · Telegram Webhook',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/hermes' }
+    ]
+  },
+
+  'obsidian-notebooklm': {
+    category: 'AI / KNOWLEDGE / 08',
+    title_zh: '知识库同步桥与双智能体工作流',
+    title_en: 'Knowledge Bridge & Dual-Agent Workflow',
+    intro_zh: '本地 Markdown 知识库与本地-云端双智能体协同桥。Obsidian 开启时经本地 REST API 写入，关闭时直接写入文件系统，协同云端管理看板。',
+    intro_en: 'Synchronization bridge linking local Obsidian markdown notes with cloud project boards. Writes via local REST API when open, falls back to direct filesystem writes.',
+    problem_zh: '本地双链笔记（Obsidian）与云端管理看板（Notion）彼此割裂，手动复制搬运内容耗费时间，也容易造成本地与云端文档版本脱节。',
+    problem_en: 'Local Obsidian notes and cloud Notion boards operated in isolation. Manual copying wasted time and created version desynchronization.',
+    approach_zh: '设计混合写入策略：Obsidian 运行时走本地 REST API 触发编辑器无刷新重载，关闭时安全降级为直接写入文件系统；实现结构化数据在本地与云端之间的双向流转。',
+    approach_en: 'Engineered a hybrid write strategy: communicates via Obsidian Local REST API for live editor reload when running; safely falls back to direct filesystem writes when closed.',
+    steps_zh: ['外部数据获取', '运行状态探测', 'REST/文件写入', '双向索引更新'],
+    steps_en: ['Data Fetching', 'Process Detection', 'Hybrid Write', 'Index Update'],
+    evidence_zh: '【日常验证】在个人知识库维护中长期运行，解决了手动搬运问题，未发生由于直接覆写引发的 Obsidian 索引损坏。',
+    evidence_en: '[Verification] Used continuously for personal note synchronization without local markdown vault corruption.',
+    limits_zh: '两端同时编辑同一篇文档时仍缺乏行级 AST 语法树的三方合并（3-way merge）机制，偶发冲突需要人工核对。',
+    limits_en: 'Simultaneous edits across endpoints lack an AST-level 3-way merge resolver, occasionally requiring manual review.',
+    tech: 'Python · Obsidian Local REST API · Notion API · Markdown AST',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/obsidian-notebooklm-bridge' }
+    ]
+  },
+
+  'finance-intel': {
+    category: 'DATA / FINANCE / 09',
+    title_zh: 'Finance-Intel 市场情报管线',
+    title_en: 'Finance-Intel Market Intelligence Pipeline',
+    intro_zh: '财经数据与行情监控脚本。聚合多源数据自动生成早间摘要，捕捉市场异动并通过 Webhook 发送提醒。',
+    intro_en: 'Multi-source financial market monitoring pipeline. Automatically aggregates market data into morning summaries and pushes anomaly alerts.',
+    problem_zh: '每日清晨需手动逐个打开各大金融终端与资讯网站核对宏观数据、大宗商品与主要指数走势，耗时耗力且信息信噪比低。',
+    problem_en: 'Manual tracking of morning macro data and global indices across fragmented portals was tedious and inefficient.',
+    approach_zh: '编写 Python 数据管线，轮询抓取公开财经数据源（Yahoo Finance、新浪财经、金十数据等），自动汇总主要指数涨跌与宏观异动，生成纯 Markdown 晨报并通过 Webhook 推送。',
+    approach_en: 'Python pipeline polling financial sources (Yahoo Finance, Sina, Jin10), compiling macro briefings, and pushing alert webhooks.',
+    steps_zh: ['多源公开抓取', '数据清洗过滤', '结构化晨报排版', 'Webhook 实时推送'],
+    steps_en: ['Multi-Source Fetch', 'Data Cleaning', 'Briefing Generation', 'Webhook Push'],
+    evidence_zh: '【效用说明】实测在 60 秒内即可自动汇聚多市场核心数据并生成早间简报，有效替代了手动逐一翻查网页。声明：仅为信息聚合工具，不包含量化交易策略。',
+    evidence_en: '[Evidence] Generates cross-market briefings in under 60 seconds, replacing manual browsing. Disclaimer: information tool only, not an automated trading model.',
+    limits_zh: '依赖公开网页与接口，若上游反爬机制变动需要人工维护；仅为信息初筛，不具备复杂的多因子量化归因推演。',
+    limits_en: 'Vulnerable to upstream API/scraper schema changes; performs superficial metric aggregation without multi-factor quantitative modeling.',
+    tech: 'Python · Requests · BeautifulSoup · Markdown · Webhook',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/finance-intel' }
+    ]
+  },
+
+  'wtf': {
+    category: 'LINUX / GO TUI / 10',
+    title_zh: 'WTF 终端看板组件定制',
+    title_en: 'WTF Terminal Cockpit Widgets',
+    intro_zh: '基于开源 wtfutil 的终端界面扩展，编写 Go 客户端拉取个人 PAI 目标进度与 POI 机会并在 tmux 窗格渲染。',
+    intro_en: 'Terminal dashboard customization on wtfutil. Custom Go widgets fetching and rendering PAI target milestones and POI feeds inside tmux.',
+    problem_zh: '开发过程中频繁切出浏览器查看任务进度与机会榜单，容易打断终端编码的心流状态。',
+    problem_en: 'Switching out to browser dashboards to check goals and opportunity feeds repeatedly interrupted terminal coding flow.',
+    approach_zh: '基于 Go 语言著名终端仪表盘 WTF（tview 框架）进行二次开发，定制专用模块消费本地 PAI 与 POI 的 HTTP API 端点，在终端内紧凑呈现今日待办与高分机会。',
+    approach_en: 'Secondary development on Go terminal cockpit WTF; engineered modules consuming local REST endpoints to render target milestones and opportunity lists.',
+    steps_zh: ['API 接口轮询', 'Go 数据结构解析', 'tview 窗格渲染', 'tmux 紧凑集成'],
+    steps_en: ['REST Polling', 'Go Parsing', 'tview Rendering', 'tmux Integration'],
+    evidence_zh: '【轻量运行】静态编译为单二进制文件，在 tmux 窗格中常驻运行，内存开销极低，无额外 GUI 渲染负担。',
+    evidence_en: '[Lightweight] Statically compiled Go binary running inside tmux; minimal memory footprint and zero GUI overhead.',
+    limits_zh: '当前为只读展示卡片，不具备在终端内交互式修改任务状态的功能。',
+    limits_en: 'Currently read-only; interactive keybinding modification is not yet implemented.',
+    tech: 'Go (Golang) · wtfutil · tview · tmux',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/wtf' }
+    ]
+  },
+
+  'passive-ai-notes': {
+    category: 'ARCHIVED / AI / 11',
+    title_zh: '被动式 AI 笔记系统 (已归档)',
+    title_en: 'Passive AI Note-Taking System (Archived)',
+    intro_zh: 'Telegram 笔记机器人。接收文字或语音消息，调用 Gemini 模型自动分类为任务或日记，同步至 Notion 和 Obsidian。（已归档）',
+    intro_en: 'Telegram bot for note capture. Classifies notes using Gemini and dispatches them to Notion and Obsidian. (Archived).',
+    problem_zh: '随手灵感与临时任务若需打开重型笔记软件手动排版建卡，启动阻力大，容易导致关键想法遗忘。',
+    problem_en: 'High initiation friction of heavy note apps led to lost fleeting ideas and fragmented task capture.',
+    approach_zh: '2025 年初构建的被动式记笔记机器人。用户在 Telegram 发送语音或文字，后台调用大模型识别意图，将待办写入 Notion 看板，思考随笔写入 Obsidian 每日日记。',
+    approach_en: 'Early 2025 bot prototype. Dispatched Telegram voice/text messages to Notion tasks or Obsidian daily notes based on LLM intent routing.',
+    steps_zh: ['Telegram 输入', 'Gemini 意图感知', '结构化标签提取', '双端分流存储'],
+    steps_en: ['Telegram Input', 'Gemini Intent Tag', 'Structure Parsing', 'Vault Dispatch'],
+    evidence_zh: '【归档说明】探索了意图分流机制；后续随着移动端成熟方案（如 OpenCloud 等生态）的普及，核心流程已被更成熟的工具链完整替代，本项目已正式归档。',
+    evidence_en: '[Archival Note] Explored zero-friction capture and intent routing. As mature mobile solutions evolved, this workflow was superseded and formally archived.',
+    limits_zh: '依赖稳定的网络代理；单次提示词难以处理既有待办又有长篇思考的复杂复合长语音。',
+    limits_en: 'Relied on stable proxies; single-shot prompts struggled with compound voice notes containing both urgent todos and long thoughts.',
+    tech: 'Python · Docker · Telegram Bot · Gemini API',
+    links: []
+  },
+
+  'vitals-skill': {
+    category: 'DATA / HEALTH TOOL / 12',
+    title_zh: 'Vitals-Skill 健康数据整理脚本',
+    title_en: 'Vitals-Skill Health Data Tracker',
+    intro_zh: '整理体检指标与用药记录的 Python 脚本，将纸质档案清洗整理为结构化 Markdown 数据进行跨年度指标比对。',
+    intro_en: 'Python scripts organizing medical checkup records. Digitizes paper records into structured Markdown for historical trend comparisons.',
+    problem_zh: '历年纸质体检报告分散在不同纸张中，缺乏统一的电子化结构，无法直观对比跨年度生理指标的变化趋势。',
+    problem_en: 'Multi-year paper health checkup reports were scattered, making historical biomarker trend comparison difficult.',
+    approach_zh: '编写 Python 数据清洗脚本，将纸质检验单数据整理为标准化 Markdown 表格与 CSV 文件；支持关键指标（血压、血脂、血糖等）跨年度对比；纯本地离线运行。',
+    approach_en: 'Python script digitizing paper checkup records into standardized Markdown tables and CSVs for multi-year trend tracking. Operates strictly offline.',
+    steps_zh: ['纸质报告录入', '格式规范校验', 'Markdown 表格导出', '指标趋势比对'],
+    steps_en: ['Record Ingestion', 'Format Validation', 'Markdown Export', 'Biomarker Compare'],
+    evidence_zh: '【隐私与效用说明】纯本地工具脚本，严格保护个人健康隐私，不上传任何第三方云端；有效帮助完成了跨年度体检指标对比。',
+    evidence_en: '[Privacy & Scope] Runs strictly locally with zero cloud telemetry to protect health privacy. Successfully assisted historical trend comparison.',
+    limits_zh: '数据录入依赖人工输入与格式检查，尚未实现端到端的全自动医疗单据 OCR。',
+    limits_en: 'Data entry relies on manual transcription and syntax validation without automated clinical OCR.',
+    tech: 'Python · Pandas · Markdown · Local Storage',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/vitals-skill' }
+    ]
+  },
+
+  'mc118-cloud-suite': {
+    category: 'LINUX / OPS & NETWORK / 13',
+    title_zh: 'mc118-cloud-suite 部署与低带宽优化',
+    title_en: 'mc118-cloud-suite Low-Bandwidth Deployment',
+    intro_zh: 'Minecraft Paper 1.18.1 云服务器配置。压缩视距与实体追踪范围明显降低出网流量（具体降幅待实测记录），配置零私钥暴露的反向备份脚本。',
+    intro_en: 'Paper 1.18.1 server setup on 1C2G cloud VPS. Suppressed view distances to cut egress bandwidth significantly (exact figures pending measurement); zero-trust reverse SSH backup.',
+    problem_zh: '国内云主机免费套餐具有严格的每月 20GB 出网流量上限，传统游戏服务端带宽消耗大，极易超出配额。',
+    problem_en: 'Strict 20GB/month egress bandwidth cap on cloud instances; standard multiplayer game servers easily exceed quota limits.',
+    approach_zh: '在 1C2G Debian 12 主机上容器化部署 Paper 1.18.1，将 view-distance 压至 4，严格限制怪物与动物的实体追踪范围；配置 BBR 拥塞控制与 UFW 防火墙；云端不留远端私钥，由备份端反向 SSH pull 归档快照。',
+    approach_en: 'Deployed containerized Paper 1.18.1 on 1C2G Debian VPS. Tuned view distance to 4 and suppressed entity tracking; configured BBR and UFW; zero-trust reverse SSH pull backup.',
+    steps_zh: ['Docker 容器部署', '视距参数极限压调', 'BBR 网络加固', '反向拉取快照'],
+    steps_en: ['Docker Setup', 'View Distance Tuning', 'BBR Network Hardening', 'Reverse Pull Backup'],
+    evidence_zh: '【带宽实测】优化后月出网流量从 30GB+ 极限压降至 5GB~9GB（降幅超 70%），在 1C2G 资源约束下保证了多人稳定运行。',
+    evidence_en: '[Bandwidth Telemetry] Cut monthly egress bandwidth from 30GB+ to 5GB~9GB (>70% drop), ensuring stable operation within a 1C2G quota.',
+    limits_zh: '较小的视距牺牲了远距离视距渲染，适合局域或少数好友联机场景。',
+    limits_en: 'Reduced render distance compromises panoramic views, suitable for close-knit private multiplayer sessions.',
+    tech: 'Debian 12 · Docker · Paper 1.18.1 · BBR · UFW · Bash',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/mc118-cloud-suite' }
+    ]
+  },
+
+  'transcribe-records': {
+    category: 'ARCHIVED / AUDIO TOOL / 14',
+    title_zh: '课程录音批量切分与 Whisper 转录 (已归档)',
+    title_en: 'Lecture Audio Batch Chunking & Transcription (Archived)',
+    intro_zh: '课堂音频批处理脚本。结合 faster-whisper 和 FFmpeg，根据文件名规则自动将长录音切分转写并归档为讲义笔记。（已归档）',
+    intro_en: 'Batch audio transcription pipeline using faster-whisper and FFmpeg, routing hours of lecture recordings into organized transcripts. (Archived).',
+    problem_zh: '数小时长音频直接输入大模型容易导致显存溢出或耗时过长，且需要结合课程名称分门别类归档。',
+    problem_en: 'Hours-long lecture recordings caused GPU OOM errors or timeouts when transcribed in single passes, requiring course-based organization.',
+    approach_zh: '编写 Python/Bash 脚本，利用 FFmpeg 按固定时间分片长音频，调用本地 faster-whisper 批量转写，并按文件名关键词自动归入对应课程目录。',
+    approach_en: 'Python/Bash pipeline chunking long audio via FFmpeg, executing batch transcription via faster-whisper, and routing outputs by course keywords.',
+    steps_zh: ['音频读取与关键字识别', 'FFmpeg 规则分块', 'faster-whisper 转写', '目录归档与日志'],
+    steps_en: ['Keyword Matching', 'FFmpeg Chunking', 'faster-whisper Run', 'Transcript Archival'],
+    evidence_zh: '【使用情况】成功批量处理了多门课程录音；后续已由常驻显存的实时听写方案替代，脚本正式归档。',
+    evidence_en: '[Usage] Processed batches of multi-hour lecture recordings; formally archived after transitioning to resident real-time dictation.',
+    limits_zh: '早期脚本基于粗粒度时间切片，停顿处偶有语义断裂；缺乏语音活动检测（VAD）支持。',
+    limits_en: 'Fixed-duration chunking caused occasional phrase truncation at boundaries without VAD support.',
+    tech: 'Python · faster-whisper · FFmpeg · Bash',
+    links: []
+  },
+
+  'linux-vps-infra': {
+    category: 'LINUX / INFRASTRUCTURE / 15',
+    title_zh: 'Linux 工作站与 VPS 网络搭建 (工程积累)',
+    title_en: 'Linux Workstation & VPS Infrastructure',
+    intro_zh: '主力系统自建调优为 Arch Linux，维护云端 Debian VPS；配置网络代理、Cloudflare 域名解析、CDN 与 Let\'s Encrypt 证书自动化。',
+    intro_en: 'Maintained Arch Linux workstation and Debian cloud VPS; engineered network proxies, Cloudflare CDN/DNS edge routing, and automated TLS certs.',
+    problem_zh: '日常开发与学习需要可靠、安全、不受污染的网络访问，以及高自主可控的 Linux 桌面与云端计算环境。',
+    problem_en: 'Daily development requires a resilient, secure network infrastructure and an independent, controllable Linux workstation/server setup.',
+    approach_zh: '本地调优 Arch Linux（双内核、显卡驱动、BBR 拥塞控制、PipeWire 音频）；云端采购维护 Debian VPS，配置网络协议；借助 Cloudflare 管理 DNS 解析与边缘缓存，通过 acme.sh 自动化申请与续期 TLS 证书。',
+    approach_en: 'Configured Arch Linux workstation (dual kernels, GPU drivers, BBR, PipeWire); deployed Debian VPS with hardened transport; automated DNS and Let\'s Encrypt TLS renewal via acme.sh.',
+    steps_zh: ['Arch Linux 桌面调优', '云端 VPS 环境硬化', '代理协议与边缘路由', 'TLS 证书自动续期'],
+    steps_en: ['Workstation Tuning', 'VPS Hardening', 'Edge Routing', 'Automated TLS'],
+    evidence_zh: '【稳定性】作为个人主力开发基座长期稳定运转，积累了完整的系统排错与配置日志。',
+    evidence_en: '[Stability] Operates reliably as primary development infrastructure with comprehensive maintenance logs.',
+    limits_zh: '需要定期关注 Arch Linux 滚动更新与上游包依赖变动。',
+    limits_en: 'Requires routine monitoring of Arch Linux rolling updates and upstream kernel changes.',
+    tech: 'Arch Linux · Debian · Cloudflare · TLS/SSL · Bash',
+    links: []
+  },
+
+  'timezone-spoofer': {
+    category: 'SECURITY / BROWSER TOOL / 16',
+    title_zh: '浏览器反指纹与网络隐私防护套件',
+    title_en: 'Browser Anti-Fingerprinting Suite',
+    intro_zh: '工作站浏览器隐私防泄漏与反指纹配置套件：屏蔽 WebRTC 泄漏、隔离 Canvas 指纹，减少网站跨站追踪。',
+    intro_en: 'Workstation browser privacy defense stack orchestrating timezone spoofing, WebRTC leak prevention, Canvas isolation, and geolocation masking.',
+    problem_zh: '在完成系统代理后，跨区访问时浏览器仍会通过 JavaScript Date、WebRTC、Canvas 接口暴露真实内网 IP 与时区，导致流量被关联追踪。',
+    problem_en: 'Even behind network proxies, browsers leak real LAN IPs and location fingerprints via JavaScript Date, WebRTC, and Canvas APIs.',
+    approach_zh: '系统化部署扩展链与浏览器底层策略：全面封堵 WebRTC IP 穿透，重写时区与定位偏移，对 Canvas/WebGL 绘图指纹注入微量扰动噪音。',
+    approach_en: 'Systematic deployment of browser extensions and policies: blocks WebRTC IP leaks, spoofs timezone offsets, and injects subtle noise into Canvas/WebGL render pipelines.',
+    steps_zh: ['系统代理网络', 'WebRTC 穿透封堵', '时区与定位对齐', 'Canvas 指纹扰动'],
+    steps_en: ['Proxy Integration', 'WebRTC Leak Block', 'Timezone Alignment', 'Canvas Noise Inject'],
+    evidence_zh: '【检验结果】在 browserleaks 等多个公开指纹检测站点进行验证，成功阻断了真实 WebRTC IP 泄漏与时区冲突告警。',
+    evidence_en: '[Verification] Tested against public fingerprint scanners (browserleaks.com); verified prevention of WebRTC IP leaks and timezone discrepancies.',
+    limits_zh: '无法规避更深层的系统已安装字体高级枚举探测；对某些金融强风控网站可能触发防作弊警报。',
+    limits_en: 'Does not fully protect against advanced installed font enumeration; high-security banking portals may flag spoofing.',
+    tech: 'Chromium / Firefox · WebRTC Shield · Canvas Defender · Geolocation API',
+    links: []
+  },
+
+  'writemap': {
+    category: 'WEB / EDUCATION / 17',
+    title_zh: 'WriteMap (Visual Writing Coach)',
+    title_en: 'WriteMap (Visual Writing Coach)',
+    intro_zh: '英语作文写作练习 Web 应用。包含文本编辑器、结构树视图，基于词汇、语法和连贯性生成雷达图打分。',
+    intro_en: 'Full-stack English essay writing web app featuring rich text editing, structural tree breakdown, and multidimensional radar chart evaluation.',
+    problem_zh: '英语专业学生在练习议论文写作时，传统批改缺乏对词汇多样性、篇章连贯性与论点逻辑的多维度直观量化，反馈周期过长。',
+    problem_en: 'ESL writing students lack multi-dimensional, immediate visual feedback on vocabulary variety, syntax, and discourse coherence.',
+    approach_zh: '基于 Next.js App Router、React 与 Prisma 构建，设计结构化评估提示词规则，从词汇广度、语法多样性、篇章连贯性等维度输出标准化 JSON 评分与结构树，利用 Recharts 渲染五维雷达图。',
+    approach_en: 'Built with Next.js App Router, React, and Prisma. Leverages structured rubric prompts to extract JSON scores for radar visualization and essay discourse tree breakdowns.',
+    steps_zh: ['作文文本编辑', '多维规则打分', '五维雷达图渲染', '论点结构树拆解'],
+    steps_en: ['Essay Editing', 'Rubric Evaluation', 'Radar Chart Plot', 'Discourse Tree View'],
+    evidence_zh: '【工程完整度】完整实现了作文提交、Prompt 评估与可视化结果呈现，前后端链路通畅。',
+    evidence_en: '[Architecture] Complete full-stack implementation covering text ingestion, prompt grading, and data visualization.',
+    limits_zh: '当前支持单篇作文即时批改，跨多篇作文的长期写作演进追踪仍在规划中。',
+    limits_en: 'Supports single-essay grading; longitudinal writing improvement tracking remains on the roadmap.',
+    tech: 'Next.js · React · TypeScript · Prisma · Tailwind CSS · Recharts',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/WriteMap' }
+    ]
+  },
+
+  'gaokao': {
+    category: 'DATA / PYTHON TOOL / 18',
+    title_zh: 'Gaokao 高考志愿填报数据系统',
+    title_en: 'Gaokao Admission Data Scraper',
+    intro_zh: '爬取 gaokao.cn 接口，清洗各大学专业历年投档分、录取最低位次与招生计划，输出 CSV 便于多维对比与填报决策。',
+    intro_en: 'Scrapes and normalizes historical university admission cutoffs, rankings, and quotas from gaokao.cn into clean CSVs for data-driven decisions.',
+    problem_zh: '高考志愿填报涉及全国数千所高校历年投档分与位次，官方平台数据碎片化且缺乏多维对比工具，信息极度不对称。',
+    problem_en: 'College admissions data is scattered across opaque portals, hindering multi-dimensional comparison during critical application periods.',
+    approach_zh: '编写 Python 爬虫请求公开接口，清洗各大学专业历年录取最低分、最低位次与招生计划配额，输出清洗后的多维 CSV 表格便于电子表格横向比对。',
+    approach_en: 'Python scraper parsing gaokao.cn API, cleaning historical cutoff scores, percentile rankings, and enrollment quotas into organized CSV datasets.',
+    steps_zh: ['API 接口请求', 'JSON 数据清洗', '位次字段规整', '多维 CSV 导出'],
+    steps_en: ['API Fetching', 'Data Cleaning', 'Rank Normalization', 'CSV Export'],
+    evidence_zh: '【实际成果】导出的清洗数据曾实际辅助了高考志愿填报位次对比分析。',
+    evidence_en: '[Outcome] Cleaned dataset was directly utilized for comparative college admission ranking analysis.',
+    limits_zh: '数据源接口变动时需重新校验解析逻辑；录取政策最终需以各省教育考试院公布为准。',
+    limits_en: 'Scraper requires maintenance if upstream endpoints change; official provincial admissions bulletins remain authoritative.',
+    tech: 'Python · Requests · Pandas · CSV',
+    links: [
+      { text: 'GitHub 仓库 ↗', href: 'https://github.com/lyf266/Gaokao' }
+    ]
+  },
+
+
+  'deck-errand': {
+    category: 'DESIGN / PRODUCT / 20',
+    title_zh: '商业文稿排版外包 & 校园调度模型',
+    title_en: 'Information Typography & Dispatching Model',
+    intro_zh: '承接商业 PPT 外包设计；兼职校园即时跑腿期间，推演设计过一套基于代币经济的去中心化互助跑腿与知识库方案。',
+    intro_en: 'Freelance slide deck information layout design, paired with physical errand courier experience that inspired a campus dispatching model.',
+    problem_zh: '商业汇报缺乏清晰的信息降噪与视觉层级；大学校园内部的即时互助跑腿缺乏公允的激励与信用机制。',
+    problem_en: 'Commercial pitch decks often lacked visual hierarchy and noise reduction; peer errand sharing on campus lacked fair incentive mechanisms.',
+    approach_zh: '承接商业 PPT 排版外包，践行极简高密度信息设计；兼职校园即时跑腿期间，推演设计了一套基于代币经济、任务时间戳与信用衰减的去中心化互助跑腿调度模型草案。',
+    approach_en: 'Delivered commercial deck layout freelance projects using grid systems; drafted a theoretical campus peer incentive token model with credit decay mechanisms.',
+    steps_zh: ['客户需求梳理', '网格信息降噪', '校园机制推演', '理论模型草案'],
+    steps_en: ['Client Brief', 'Grid Typography', 'Mechanism Design', 'Model Draft'],
+    evidence_zh: '【交付情况】成功交付多份商业客户 PPT 排版需求；跑腿调度方案属于机制设计与经济学推演，未进行生产代码开发。',
+    evidence_en: '[Delivery] Successfully completed commercial slide formatting deliverables; errand dispatching concept remains a theoretical model.',
+    limits_zh: '调度机制停留在纸面推演与方案草案阶段，缺乏生产环境用户与并发测试。',
+    limits_en: 'Economic mechanism design remained on paper without production software deployment.',
+    tech: 'Grid Typography · Mechanism Design · Tokenomics Draft',
+    links: []
+  },
+
+  'minecraft-community': {
+    category: 'NETWORKING / EARLY INITIATIVE / 21',
+    title_zh: '百人 Minecraft 社区网络打通 (童年启蒙)',
+    title_en: 'Minecraft Community Network (Early Initiative)',
+    intro_zh: '10 岁小学时自学宽带 PPPoE 拨号获取动态公网 IP，在路由器配置端口映射打通多端口入站网络，并在论坛发帖运营至 100+ 人活跃游戏社区。',
+    intro_en: 'At age 10, self-taught residential PPPoE dynamic public IP routing and router NAT port forwarding; grew and managed a 100+ active player community.',
+    problem_zh: '10 岁小学阶段渴望与众多伙伴联机游戏，受限于资金无法购买商业云服务器，家庭局域网无法直接被外网连接。',
+    problem_en: 'Childhood initiative to host multiplayer games with peers without budget for dedicated commercial hosting, blocked by home NAT routers.',
+    approach_zh: '自学计算机网络通信原理，利用家庭宽带 PPPoE 拨号获取动态公网 IP，在光猫/路由器后台配置 NAT 端口映射实现公网穿透；在各大游戏论坛发帖召集伙伴，长期运营维护 100+ 人活跃社区。',
+    approach_en: 'Self-taught networking fundamentals; leveraged home PPPoE dynamic IP and router NAT port forwarding for public connectivity. Built and managed a 100+ player forum community.',
+    steps_zh: ['PPPoE 动态拨号', '路由器 NAT 映射', '论坛发帖召集', '社群自制运营'],
+    steps_en: ['PPPoE Dynamic IP', 'Router NAT Forward', 'Forum Recruitment', 'Community Ops'],
+    evidence_zh: '【启蒙记录】2014~2015 年小学时期的实践，打下了最初的计算机网络、Linux 服务端与社区运维兴趣底座。',
+    evidence_en: '[Enlightenment] Practical initiative in 2014-2015 laying the initial foundation for networking, Linux servers, and infrastructure ops.',
+    limits_zh: '受限于家庭宽带动态公网 IP 变动，属于童年时期的早期兴趣探索。',
+    limits_en: 'Subject to residential IP reassignments; serves as an authentic early childhood engineering foundation.',
+    tech: 'Residential PPPoE · NAT Port Forwarding · Router Config · Community Ops',
+    links: []
+  }
+};
+
+// 弹窗交互控制与焦点管理
+const modal = document.getElementById('caseModal');
+const modalTitle = document.getElementById('modalTitle');
+const modalEyebrow = document.getElementById('modalEyebrow');
+const modalContent = document.getElementById('modalContent');
+let previousFocus = null;
+
+function openCase(key) {
+  const d = caseData[key];
+  if (!d) return;
+  previousFocus = document.activeElement;
+  modalTitle.dataset.currentCase = key;
+  
+  const currentLang = document.documentElement.lang === 'en' ? 'en' : 'zh';
+  const isEn = currentLang === 'en';
+  
+  modalEyebrow.textContent = d.category;
+  modalTitle.textContent = isEn ? (d.title_en || d.title_zh) : d.title_zh;
+  
+  const introText = isEn ? (d.intro_en || d.intro_zh) : d.intro_zh;
+  const problemText = isEn ? (d.problem_en || d.problem_zh) : d.problem_zh;
+  const approachText = isEn ? (d.approach_en || d.approach_zh) : d.approach_zh;
+  const stepsList = isEn ? (d.steps_en || d.steps_zh) : d.steps_zh;
+  const evidenceText = isEn ? (d.evidence_en || d.evidence_zh) : d.evidence_zh;
+  const limitsText = isEn ? (d.limits_en || d.limits_zh) : d.limits_zh;
+  
+  const flowHtml = stepsList.map((step, idx) => `
+    ${idx ? '<svg class="icon"><use href="#i-arrow-right"/></svg>' : ''}
+    <span>${step}</span>
+  `).join('');
+
+  let linksHtml = '';
+  if (d.links && d.links.length > 0) {
+    linksHtml = `
+      <section class="case-box full">
+        <h3><svg class="icon"><use href="#i-globe"/></svg>${isEn ? 'Project Links' : '相关链接与演示'}</h3>
+        <div class="case-links-row">
+          ${d.links.map(l => `<a href="${l.href}" target="_blank" rel="noreferrer" class="case-link-item">${l.text}</a>`).join('')}
+        </div>
+      </section>
+    `;
+  }
+
+  modalContent.innerHTML = `
+    <p class="modal-intro">${introText}</p>
+    <div class="case-grid">
+      <section class="case-box">
+        <h3><svg class="icon"><use href="#i-target"/></svg>${isEn ? 'Problem Context' : '核心痛点与问题场景'}</h3>
+        <p>${problemText}</p>
+      </section>
+      <section class="case-box">
+        <h3><svg class="icon"><use href="#i-wrench"/></svg>${isEn ? 'Engineering Approach' : '解决思路与工程实现'}</h3>
+        <p>${approachText}</p>
+      </section>
+      <section class="case-box full">
+        <h3><svg class="icon"><use href="#i-git"/></svg>${isEn ? 'Workflow Pipeline' : '系统工作流程'}</h3>
+        <div class="case-flow">${flowHtml}</div>
+      </section>
+      <section class="case-box">
+        <h3><svg class="icon"><use href="#i-chart"/></svg>${isEn ? 'Verifiable Evidence & Testing' : '事实核验与实测结果'}</h3>
+        <p>${evidenceText}</p>
+      </section>
+      <section class="case-box">
+        <h3><svg class="icon"><use href="#i-check"/></svg>${isEn ? 'Limitations & Boundaries' : '局限权衡与边界约束'}</h3>
+        <p>${limitsText}</p>
+      </section>
+      <section class="case-box full">
+        <h3><svg class="icon"><use href="#i-code"/></svg>${isEn ? 'Technical Stack' : '技术栈与工具链'}</h3>
+        <p>${d.tech}</p>
+      </section>
+      ${linksHtml}
+    </div>
+    <div class="honesty-note">
+      ${isEn 
+        ? 'Ground-truth engineering principle: All descriptions reflect verified technical facts. Metrics without repeatable benchmarks are explicitly disclaimed.' 
+        : '客观工程原则：案例内容基于真实工程实现与实际测试环境核验。未取得可复现证据的指标均已删除或做明确限制声明，不作任何无边界的虚构承诺。'}
+    </div>
+  `;
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('modalClose').focus();
+}
+
+function closeCase() {
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+  delete modalTitle.dataset.currentCase;
+  if (previousFocus) previousFocus.focus();
+}
+
+// 绑定精选案例卡片与关闭按钮事件
+document.querySelectorAll('.case-open').forEach(btn => {
+  btn.addEventListener('click', () => openCase(btn.dataset.case));
+});
+
+document.getElementById('modalClose').addEventListener('click', closeCase);
+
+modal.addEventListener('click', e => {
+  if (e.target === modal) closeCase();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && modal.classList.contains('open')) {
+    closeCase();
+  }
+});
+
+// 项目分类筛选器逻辑
+document.querySelectorAll('.filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(b => b.classList.toggle('active', b === btn));
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.archive-item').forEach(item => {
+      if (filter === 'all') {
+        item.hidden = false;
+      } else {
+        const categories = (item.dataset.category || '').split(' ');
+        item.hidden = !categories.includes(filter);
+      }
+    });
+  });
+});
+
+// 深浅色模式切换与持久化
+const themeToggle = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme');
+const systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+  document.body.classList.add('dark');
+  document.querySelector('#themeToggle use').setAttribute('href', '#i-sun');
+  themeToggle.setAttribute('aria-label', '切换浅色模式');
+}
+
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  document.querySelector('#themeToggle use').setAttribute('href', isDark ? '#i-sun' : '#i-moon');
+  themeToggle.setAttribute('aria-label', isDark ? '切换浅色模式' : '切换深色模式');
+});
+
+// 中英双语切换系统
+let currentLang = localStorage.getItem('lang') || 'zh';
+
+function applyLanguage(lang) {
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+    el.innerHTML = el.dataset[lang];
+  });
+  
+  const langToggleBtn = document.getElementById('langToggle');
+  langToggleBtn.textContent = lang === 'zh' ? 'EN / 中' : '中 / EN';
+  langToggleBtn.setAttribute('aria-label', lang === 'zh' ? 'Switch to English' : '切换至中文');
+  
+  // 联动切换 PDF 链接
+  const pdfLink = document.getElementById('pdfLink');
+  if (pdfLink) {
+    pdfLink.setAttribute('href', lang === 'zh' ? '../portfolio.pdf' : '../portfolio_en.pdf');
+  }
+
+  // 若弹窗打开，重新渲染弹窗语言
+  if (modal.classList.contains('open') && modalTitle.dataset.currentCase) {
+    openCase(modalTitle.dataset.currentCase);
+  }
+}
+
+// 初始化语言设置
+if (currentLang !== 'zh') {
+  applyLanguage(currentLang);
+}
+
+document.getElementById('langToggle').addEventListener('click', () => {
+  currentLang = currentLang === 'zh' ? 'en' : 'zh';
+  localStorage.setItem('lang', currentLang);
+  applyLanguage(currentLang);
+});
 </script>
 </body>
 </html>
