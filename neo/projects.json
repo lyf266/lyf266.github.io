@@ -1,0 +1,824 @@
+[
+ {
+  "title_zh": "2026 银行从业全真机考模拟系统 & Anki 智能备考工具包",
+  "title_en": "Bank Exam 2026 ATA Simulator & Anki Intelligent Toolkit",
+  "desc_zh": "做了个和真实考场一模一样的银行从业刷题网站：710 道真题，手机电脑都能用，做错的题自动生成 Anki 记忆卡片。",
+  "desc_en": "A web-based mock exam replicating the real banking certification interface: 710 real questions, mobile-friendly, with wrong answers auto-converted into Anki flashcards.",
+  "data_tags": [
+   "web",
+   "quant",
+   "featured"
+  ],
+  "tag_labels": [
+   "★ 精选",
+   "JavaScript",
+   "HTML/CSS",
+   "Anki / FSRS",
+   "Mobile-Ready",
+   "金融",
+   "web"
+  ],
+  "links": [
+   "https://lyf266.github.io/bank-exam-2026-toolkit/",
+   "https://github.com/lyf266/bank-exam-2026-toolkit"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。",
+    "en": "Preparing for banking certificates was hindered by ad-heavy tools with outdated regulations and no true-to-exam ATA interface simulation."
+   },
+   {
+    "label": "AI 目标、规划与提示词设定",
+    "zh": "设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。",
+    "en": "Set 3 goals: 1) End-to-end zero-dependency native JS exam & TVM calculator generation; 2) Clean 710+ questions to 2026 NFRA & M1 regulatory standards; 3) Standardize KaTeX 4-step math derivations."
+   },
+   {
+    "label": "架构设计与硬性约束",
+    "zh": "纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。",
+    "en": "Pure Vanilla JS/HTML5 zero-dependency architecture. Fisher-Yates in-browser shuffle prevents position-memorization. TVM calculator with END/BGN modes. Paired with Anki FSRS decks."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。",
+    "en": "Official exams do not release past papers and commercial question banks are paywalled; questions are currently synthesized from textbook paradigms. Roadmap: 1) Build an adaptive evaluation agent plotting knowledge growth curves to pinpoint weak domains; 2) Drive AI to target weaknesses with dynamic generative quizzes, tracking performance improvement over time."
+   }
+  ]
+ },
+ {
+  "title_zh": "Linux Whisper Input",
+  "title_en": "Linux Whisper Input",
+  "desc_zh": "Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型跑在本地，延迟约 300ms。",
+  "desc_en": "Good system-wide voice input tools are rare on Linux, so I built one: press a hotkey, speak, and text appears anywhere — local Whisper model, ~300ms latency.",
+  "data_tags": [
+   "linux",
+   "ai",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "Python",
+   "CTranslate2",
+   "Wayland",
+   "PipeWire",
+   "linux"
+  ],
+  "links": [
+   "https://github.com/lyf266/linux-whisper-input"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "云端听写受制于网络往返延迟（>1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。",
+    "en": "Cloud dictation suffers from latency (>1s) and privacy risks; traditional local scripts reload multi-GB models on every keypress, destroying focus."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "采用 Python + CTranslate2（large-v3-turbo float16）+ PipeWire 管道捕获音频流 + Wayland 虚拟键盘事件注入 + Systemd 用户级守护。模型权重与 CUDA 上下文永久驻留 GPU 显存，快捷键 Meta+H 唤醒瞬时推理，端到端延迟 <300ms。",
+    "en": "Python daemon + CTranslate2 (large-v3-turbo float16) + PipeWire + Wayland virtual key injection. Model & CUDA context permanently resident in GPU VRAM (<300ms end-to-end latency)."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "显存占用与推理速度极致平衡；VAD 语音活动检测精准裁切首尾静音，避免尾音重复幻觉；Unix Domain Socket 进程间通信隔离监听与推理。",
+    "en": "Strict balance between VRAM allocation and inference speed. Precise VAD trimming prevents trailing repetition artifacts; UDS isolates capture and inference."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。",
+    "en": "Requires dedicated NVIDIA GPU VRAM; long-speech pause segmentation requires further threshold tuning."
+   }
+  ]
+ },
+ {
+  "title_zh": "Desktop TimeTracker (timetrack)",
+  "title_en": "Desktop TimeTracker (timetrack)",
+  "desc_zh": "自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间都去哪了。",
+  "desc_en": "Automatically tracks how long you spend in each window and generates a daily report, so you can see where your time actually goes.",
+  "data_tags": [
+   "linux",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "Python",
+   "KWin",
+   "D-Bus",
+   "SQLite",
+   "linux"
+  ],
+  "links": [
+   "https://github.com/lyf266/desktop-timetracker"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。",
+    "en": "Wayland security sandbox blocks legacy X11 window loggers; commercial alternatives rely on bloated Electron processes (>300MB RAM) and cloud telemetry."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "纯原生 Python 3 (sqlite3, json, qdbus6) 结合 KWin 内部脚本，零外部 pip 依赖。三级渐进式窗口识别算法（用户自定义映射 → XDG .desktop 应用程序元数据 → 进程兜底匹配）。",
+    "en": "Pure Python 3 standard library + KWin internal scripts with zero external dependencies. 3-tier progressive classification pipeline (user rules → XDG desktop metadata → process fallback)."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "内存占用极限压缩至 ~13MB，CPU 消耗 <0.1%，全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。",
+    "en": "Ultra-low memory footprint (~13MB RAM) and <0.1% CPU. Nightly automated generation of Markdown activity review reports."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。",
+    "en": "Tightly integrated with KDE Plasma 6 Wayland; adapting to GNOME/Sway requires corresponding IPC bridges."
+   }
+  ]
+ },
+ {
+  "title_zh": "Personal LifeOS (Project PAI)",
+  "title_en": "Personal LifeOS (Project PAI)",
+  "desc_zh": "帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。",
+  "desc_en": "A personal system for goals and journaling that auto-generates periodic review reports.",
+  "data_tags": [
+   "agent",
+   "featured"
+  ],
+  "tag_labels": [
+   "★ 精选",
+   "Python",
+   "FastAPI",
+   "SQLite",
+   "agent",
+   "MCP"
+  ],
+  "links": [
+   "https://github.com/lyf266/project-pai"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。",
+    "en": "Chatbots suffer from session amnesia, context drift, and lack of persistent modeling of user goals and growth over time."
+   },
+   {
+    "label": "AI 目标、规划与提示词设定",
+    "zh": "专属个人长期智能体系统（PAI），持续对“用户自身、客观世界及其相互关系”进行建模。Agent 目标不是问答聊天机器人，而是协助用户进行生活日志复盘、个人目标追踪与决策建议。",
+    "en": "Build Personal AI (PAI) continuously modeling the user, the world, and their relation for long-term growth, reflection, and decision support."
+   },
+   {
+    "label": "架构设计与硬性约束",
+    "zh": "FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。",
+    "en": "FastAPI + PostgreSQL + Qdrant + OpenRouter. Core constraints: 'Retrieval before reasoning' (structured memory over raw chats); human confirmation for high-impact actions; strict resource bounds."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "目前系统已打通‘个人目标追踪 - 日志复盘 - 决策反思’的内生闭环。核心痛点在于：LifeOS 涉及现实生活的多元领域（金融市场、行为习惯、情绪心理等），当前缺乏统一且具备深度感知预测能力的‘世界模型 (World Model)’，且缺乏跨领域的严谨 Agent Harness 评测工程进行多维校准与安全约束。实现对客观世界的全局感知与高置信度前瞻指导，是系统下一阶段的核心演进方向。",
+    "en": "The internal loop of personal goal tracking, journaling, and reflection is fully operational. The current bottleneck is that LifeOS spans diverse real-world domains (markets, habits, psychology), lacking a unified World Model for holistic perception/prediction, as well as multi-domain Agent Harness engineering to calibrate and constrain agent advice. Grounding the agent with world models and safety harnesses is the primary roadmap."
+   }
+  ]
+ },
+ {
+  "title_zh": "Personal Opportunity Intelligence (POI)",
+  "title_en": "Personal Opportunity Intelligence (POI)",
+  "desc_zh": "每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。",
+  "desc_en": "Automatically filters dozens of feeds every day and pushes only the worthwhile reads and opportunities to your phone.",
+  "data_tags": [
+   "agent",
+   "net",
+   "featured"
+  ],
+  "tag_labels": [
+   "★ 精选",
+   "Python",
+   "RSS",
+   "Telegram",
+   "agent"
+  ],
+  "links": [
+   "https://github.com/lyf266/personal-opportunity-agent"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "全球官方奖学金（DAAD/Erasmus Mundus）、带薪开源导师（LFX）、黑客松与远程兼职岗位信息极度分散碎片化，人工搜集信噪比低，容易因信息过载陷入决策内耗。",
+    "en": "Global grants, open-source mentorships, and remote jobs are scattered and noisy, causing cognitive overload and decision paralysis."
+   },
+   {
+    "label": "AI 目标、规划与提示词设定",
+    "zh": "专属机会挖掘与量化决策智能体，全天候并发抓取 9 大维度渠道的官方数据源，自动进行多维打分初筛与价值评估。",
+    "en": "Autonomous opportunity radar scanning 9 dimensions, computing deterministic weighted scores to identify high-leverage opportunities."
+   },
+   {
+    "label": "架构设计与硬性约束",
+    "zh": "Python 原生轻量 HTTP 服务 (server.py) + 并发多源 RSS/Atom 抓取引擎 (fetch_feeds.py) + Vanilla CSS/JS 响应式单页 + SVG 蛛网雷达图。核心硬约束：独创 7 维加权决策评估公式 (7D Formula)，长期价值/技能/未来帮助加权正向，时间成本/风险控制惩罚扣减；仅加权得分 ≥ 8.0 的机会才触发 Telegram/Notion 深度推送。",
+    "en": "Native Python server + concurrent feed fetcher + SVG spider radar + Notion sync. Constrained by 7D formula (value 1.5, skill 1.5, future 1.5, network 1.0, income 1.0 vs time -0.8, risk -0.8); threshold ≥ 8.0 triggers alert."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "当前已实现全球官方奖学金、开源项目资助与远程岗位的 7 维加权初筛。后续演进规划：1) 新增针对主流招聘平台的‘AI Agent 与大模型领域优质实习机会’定向抓取与动态匹配模块，精准满足青年开发者在 AI 时代的实习与实战积累需求；2) 引入轻量 LLM 对非结构化长文进行意图重排与岗位信噪比深度过滤。",
+    "en": "Currently filters global grants, open-source stipends, and remote jobs. Next steps: 1) Add targeted crawling and matching for premium AI Agent & LLM internship opportunities across recruitment platforms to serve emerging student needs; 2) Introduce lightweight LLM semantic reranking for unstructured long-form postings."
+   }
+  ]
+ },
+ {
+  "title_zh": "Hermes 多智能体网络与 Vless 节点",
+  "title_en": "Hermes Multi-Agent Network & Vless Node",
+  "desc_zh": "一台 24 小时在线的云服务器，替我跑 18 个定时任务：抓晨报、盯持仓、巡检服务器。",
+  "desc_en": "A 24/7 cloud server running 18 scheduled jobs for me: morning news digests, portfolio monitoring, and server health checks.",
+  "data_tags": [
+   "net",
+   "agent",
+   "linux",
+   "featured"
+  ],
+  "tag_labels": [
+   "★ 精选",
+   "VPS",
+   "Vless",
+   "Debian",
+   "Cron",
+   "net"
+  ],
+  "links": [
+   "https://github.com/lyf266/hermes"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "云端服务器自动化运维任务（定时抓取晨报、资产异动监控、系统健康巡检）繁杂，单脚本缺乏容错与状态机管理，且复杂网络环境下远程通信需要高抗审查保证。",
+    "en": "Cloud server cron routines lack centralized supervision and state management, requiring reliable, censorship-resistant remote transport."
+   },
+   {
+    "label": "AI 目标、规划与提示词设定",
+    "zh": "定制 Hermes 自动化智能体，在云端 VPS 上作为 24/7 不间断的运维参谋与守护者，自主调度托管 18+ 个定时 Cron 管线。",
+    "en": "Custom Hermes autonomous agent operating 24/7 on Debian VPS as ops supervisor, scheduling 18+ automated monitoring pipelines."
+   },
+   {
+    "label": "架构设计与硬性约束",
+    "zh": "Debian VPS + Vless 协议通信网络 + Systemd/Cron + Telegram Webhook 报警管道。践行四核分工边界（Main 战略参谋、Ops 自动化运维、Innovate 前沿实验、Intel 情报感知），任务无异常时绝对静默（杜绝无意义 Token 消耗），一旦异常截断立即全量报警。",
+    "en": "Debian VPS + Vless network + Systemd/Cron + Telegram Webhook. Quad-core role separation (Main, Ops, Innovate, Intel); strict zero-noise policy on routine success, full alerts on interruption."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "节点间多依赖文件系统与消息钩子交互，计划沉淀更统一的跨节点事件总线。",
+    "en": "Nodes currently coordinate via filesystem and webhook hooks; unified lightweight event bus planned."
+   }
+  ]
+ },
+ {
+  "title_zh": "Finance-Intel 市场情报管线",
+  "title_en": "Finance-Intel Market Intelligence Pipeline",
+  "desc_zh": "每天开盘前自动生成一份市场早报，行情异动就发提醒。",
+  "desc_en": "Auto-generates a market morning brief before each trading day and sends alerts on unusual moves.",
+  "data_tags": [
+   "quant",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "Python",
+   "TradingView",
+   "金融"
+  ],
+  "links": [
+   "https://github.com/lyf266/finance-intel"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "每日清晨需手动逐个打开各大金融终端与资讯网站核对宏观订单流、大宗商品与主要指数走势，耗时耗力且信噪比低。",
+    "en": "Manual tracking of morning macro order flows and global market indices is tedious and fragmented."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "Python + Freqtrade + Yahoo Finance / 新浪财经 / 金十数据 / TradingView + Telegram Bot Webhook。定时追踪宏观订单流与价格行为，在 <60 秒内全自动生成结构化晨间研报；高波动实时告警，每周节省 15+ 小时人工盯盘时间。",
+    "en": "Python pipeline polling Yahoo Finance, Jin10, and TradingView, automatically compiling structured morning briefings in <60s with anomaly webhooks."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "单进程轻量无头运行，异常状态自动降级重试，输出纯 Markdown 与卡片化数据源。",
+    "en": "Headless single-process design with graceful error fallback; exports clean Markdown summary feeds."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "痛点在于缺乏金融垂直领域的专业大模型与严格的量化 Financial Harness 评测工程。目前系统主要实现‘盯盘与数据异常即时报警、新闻事件严重程度初筛推送’；对于深度的宏观归因与研报多因子推演能力依然受限。下一步需引入金融评测 Harness 与高阶意图分级模型，提升极端市场行情下的研判准确度。",
+    "en": "Lacks specialized financial domain LLMs and rigorous Financial Harness evaluation suites. Currently delivers automated price-tracking, anomaly triggers, and news severity filtering; deep macro-factor reasoning remains constrained. Roadmap: incorporate financial eval harnesses and high-tier classification models for resilient extreme-market analysis."
+   }
+  ]
+ },
+ {
+  "title_zh": "知识库同步桥与双智能体工作流 (Knowledge Bridge & Dual-Agent Workflow)",
+  "title_en": "Knowledge Bridge & Dual-Agent Workflow",
+  "desc_zh": "让本地笔记软件和云端看板自动同步，两边改的内容都不丢。",
+  "desc_en": "Keeps my local note-taking app and cloud dashboard in sync automatically — edits on either side are never lost.",
+  "data_tags": [
+   "agent",
+   "web"
+  ],
+  "tag_labels": [
+   "Python",
+   "Obsidian",
+   "REST API",
+   "agent"
+  ],
+  "links": [
+   "https://github.com/lyf266/obsidian-notebooklm-bridge"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "本地知识文档、云端项目看板与 AI Agent 工具链彼此割裂，手动搬运同步消耗大量认知带宽；本地双链知识库缺乏与云端高阶分析及智能体的自动化实时流转。",
+    "en": "Local knowledge notes, cloud project boards, and AI agents are siloed, creating friction during context handoff and synthesis."
+   },
+   {
+    "label": "AI 目标、规划与提示词设定",
+    "zh": "打通‘本地沉淀 + 云端协作’的双智能体端到端协同流：本地以 Obsidian 作为事实底座，由本地 Agent (Antigravity) 负责研发与深度处理；云端以 Notion 负责看板与项目追踪，由云端 Agent (Muse AI) 负责情报感知与整理，通过自动化脚本与 REST API 实现结构化数据回流本地。",
+    "en": "Architect an end-to-end Dual-Agent pipeline: Obsidian as local truth managed by Antigravity (Local Agent), Notion as project tracking managed by Muse AI (Cloud Agent), with automated REST bridges syncing structured context."
+   },
+   {
+    "label": "架构设计与硬性约束",
+    "zh": "独创“混合写入策略（Hybrid Write & Fallback）”：Obsidian 运行时走本地 REST API 触发毫秒级编辑器无刷新重载，关闭时安全降级为直接写入文件系统，确保数据一致性且绝不损坏本地索引；本地与云端职责清晰边界隔离。",
+    "en": "Hybrid write strategy: leverages Obsidian Local REST API for zero-reload live editor updates when open; safely falls back to direct filesystem writes when closed; strictly isolates local and cloud agent role boundaries."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "早期脚本依赖 NotebookLM CLI 凭据，当前全面推进升级为统一的 Antigravity (本地) + Muse AI (云端) + Obsidian + Notion 跨端双智能体全自动化工作流。",
+    "en": "Transitioning legacy single-purpose NotebookLM scripts into a unified Antigravity + Muse AI + Obsidian + Notion cross-environment dual-agent pipeline."
+   }
+  ]
+ },
+ {
+  "title_zh": "OBS Studio 推流与摄像头驱动加固",
+  "title_en": "OBS Studio Stream & V4L2 Driver Hardening",
+  "desc_zh": "调好了 Linux 下的推流：画面不再崩溃，还能在直播画面上实时显示时间和待办。",
+  "desc_en": "Tuned Linux streaming setup: no more crashes, with live time and todo overlays on the broadcast.",
+  "data_tags": [
+   "linux",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "V4L2",
+   "Lua",
+   "OBS",
+   "linux"
+  ],
+  "links": [],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "Linux 下 USB 摄像头在默认 MJPG 采集时遇坏包触发 FFmpeg 软件解码崩溃死循环；叠加 WebM 透明动效时 GPU 硬解码（NVDEC）会剥离 alpha 通道导致抠像全黑；OBS 重载场景时坐标漂移到画布中心。",
+    "en": "V4L2 USB camera crash loops in MJPG decode on bus dropouts; NVDEC hardware decode strips WebM alpha channel (rendering black opaque cutouts); OBS pos_rel coordinates drift to screen center on reload."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "锁定未压缩 YUYV 4:2:2 原始像素直采（OBS format 1448695129）完全绕过 FFmpeg 软解；配置 udev 规则禁用 USB autosuspend；双向同步计算 pos 绝对像素与 pos_rel 相对归一化坐标；WebM 强制 libvpx 软解保留 32 位全透明通道；进程内 Lua 定时器驱动动态时间。",
+    "en": "Lock uncompressed YUYV 4:2:2 raw copy bypassing FFmpeg; disable USB autosuspend via udev; synchronize pos and pos_rel; force libvpx software decode for WebM transparency; in-process Lua dynamic clock."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "实现广播级画质与零外部常驻后台进程，彻底免疫 USB 总线丢包与驱动崩溃。",
+    "en": "Broadcast-grade output with zero external background daemons, immune to USB bus packet corruption."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "硬件参数针对特定型号深度加固，跨机使用需根据摄像头 VID/PID 重新绑定 udev 规则。",
+    "en": "Hardware parameters tuned for specific webcam VID/PID; multi-device migration requires adapting udev rules."
+   }
+  ]
+ },
+ {
+  "title_zh": "WTF 终端看板组件定制",
+  "title_en": "WTF Terminal Cockpit Widgets (Fork)",
+  "desc_zh": "在终端里一眼看到今天的目标进度，不用打开一堆软件。",
+  "desc_en": "See today's goal progress at a glance inside the terminal — no need to open a bunch of apps.",
+  "data_tags": [
+   "linux",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "Go",
+   "TUI",
+   "linux"
+  ],
+  "links": [
+   "https://github.com/lyf266/wtf"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "开发过程中频繁切换浏览器查看 PAI 目标进度与 POI 机会榜单容易产生视觉干扰、分散编码心流。",
+    "en": "Switching to browser dashboards to check goals and opportunity feeds interrupts terminal coding flow."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "基于 Go 语言著名终端仪表盘 WTF（tview 框架）进行二次开发，定制专用模块消费本地 PAI 与 POI 的 HTTP API 端点，在终端内紧凑聚合呈现今日目标进度与 Top 5 机会榜单。",
+    "en": "Go language TUI engineering on WTF; custom widgets consuming local PAI and POI REST endpoints to render targets and opportunity ranks in terminal."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "原生编译为单个轻量二进制，运行于 tmux 终端窗格，内存开销极低、零额外界面渲染负担。",
+    "en": "Statically compiled Go binary running inside tmux; minimal memory footprint and zero GUI overhead."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "当前为只读展示卡片，后续可扩展轻量键盘交互式状态勾选。",
+    "en": "Currently read-only; interactive keybinding toggles could be added."
+   }
+  ]
+ },
+ {
+  "title_zh": "被动式 AI 笔记系统",
+  "title_en": "Passive AI Note-Taking System",
+  "desc_zh": "想到什么就给 Telegram 机器人发句话，它自动分类成任务或日记，同步到笔记软件。（已归档）",
+  "desc_en": "Send the Telegram bot whatever is on your mind; it auto-sorts messages into tasks or journal entries and syncs them to my notes. (Archived)",
+  "data_tags": [
+   "agent"
+  ],
+  "tag_labels": [
+   "Python",
+   "Docker",
+   "Telegram",
+   "Gemini",
+   "agent"
+  ],
+  "links": [],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "随手灵感与临时任务若需打开重型笔记软件手动排版建卡，会产生巨大的启动阻力（Initiation Friction），导致大量关键想法流失遗忘。",
+    "en": "High initiation friction of heavy note apps leads to lost ideas and fragmented fleeting tasks."
+   },
+   {
+    "label": "AI 目标、规划与提示词设定",
+    "zh": "打造“极简输入，智能分流”的被动式记笔记机器人。用户在 Telegram 发送语音或文字碎念，后台 AI 自动识别内容意图、提取核心标题并归纳标签。",
+    "en": "Zero-friction passive capture bot via Telegram. AI automatically interprets intent, extracts titles/tags, and dispatches to appropriate vaults."
+   },
+   {
+    "label": "架构设计与硬性约束",
+    "zh": "Python 3.11+ / Docker / Telegram Bot API / Gemini 模型 / Notion API / Obsidian REST API。单一消息单次分类路由——任务项注入 Notion 待办看板，思考日记项注入 Obsidian 每日日记流，实现零心智负担沉淀。",
+    "en": "Python + Docker + Telegram Bot + Gemini API + Notion + Obsidian. Single-shot intent classification routing tasks to Notion and reflections to Obsidian daily logs."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "本项目为 2025 年初构思探索的极简被动记录雏形，探索了意图自动分流机制；后续随着移动端成熟方案（如 OpenCloud 等生态）的普及，核心功能已被更成熟的工具链完整替代，本项目已正式归档（Archived）。",
+    "en": "This project served as an early 2025 proof-of-concept exploring zero-friction passive capture and intent routing. As mature mobile and cloud solutions (such as OpenCloud) evolved to cover this workflow, this project was formally superseded and archived."
+   }
+  ]
+ },
+ {
+  "title_zh": "Vitals-Skill 家庭健康数据管理",
+  "title_en": "Vitals-Skill Family Health Data Tracker",
+  "desc_zh": "把家人纸质体检报告变成电子档案，自动标出异常指标，方便对比历年变化。",
+  "desc_en": "Digitizes family members' paper medical reports and flags abnormal indicators for year-over-year comparison.",
+  "data_tags": [
+   "web",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "Python",
+   "Obsidian",
+   "OCR"
+  ],
+  "links": [
+   "https://github.com/lyf266/vitals-skill"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "长辈患有慢性疾病，历年纸质体检报告分散且用药记录混乱，无法直观进行跨年度指标比对与异常预警。",
+    "en": "Family members' chronic health checkup reports are scattered on paper, making multi-year biomarker comparison difficult."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "编写 Python 自动化脚本管线，将纸质体检报告通过 OCR 提取并归一化为结构化 Markdown 数据，建立家庭健康档案库。",
+    "en": "Python automation pipeline normalizing OCR scanned paper reports into structured Markdown records with metric trend visualization."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "数据清洗脚本 + 正则归一化 + Obsidian Health 知识库联动，实现跨年度血压、血脂、血糖指标历史曲线比对与异常红线自动高亮。",
+    "en": "Data cleaning script + regex normalization + Obsidian Health Vault, plotting historical biomarkers and flagging thresholds."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "痛点在于缺乏医药专业领域的垂直大模型，且缺乏严谨的医疗级 Agent Harness 评估工程（指导意见置信度难以把控）。后续演进规划：构建专业医疗检索与评测框架（Medical Harness），主动对接权威医学指南、药典与权威医学网站，输出必须具备可直接跳转、可追溯查验的官方文献引用，支持严格的人工核验，确保健康建议安全可信。",
+    "en": "The primary pain point is the absence of medical-domain models and a rigorous Medical Agent Harness to guarantee clinical-grade confidence. Roadmap: develop a specialized medical retrieval & eval harness querying authoritative medical guidelines and pharmacopeias, mandating traceable citations and links to authoritative portals for human verification."
+   }
+  ]
+ },
+ {
+  "title_zh": "mc118-cloud-suite 部署与低带宽优化",
+  "title_en": "mc118-cloud-suite Low-Bandwidth Cloud Deployment",
+  "desc_zh": "开了个百人 Minecraft 服务器，优化网络配置后流量费降了 75%。",
+  "desc_en": "Ran a 100-player Minecraft server; network tuning cut bandwidth bills by 75%.",
+  "data_tags": [
+   "linux",
+   "net",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "Docker",
+   "Debian",
+   "Bash",
+   "linux"
+  ],
+  "links": [
+   "https://github.com/lyf266/mc118-cloud-suite"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "国内云主机免费套餐具有严格的 20GB/月 出网流量上限，传统 MC 服务器极度消耗带宽且公网暴露面临扫描渗透风险。",
+    "en": "Strict 20GB/month egress bandwidth cap on cloud instances; public server exposure to scanning and brute-force attacks."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "在 1C2G 严苛资源下完成系统安全硬化与带宽极限压调，建立免私钥暴露的安全反向备份流程。",
+    "en": "Hardened paper server setup on 1C2G cloud VPS achieving >75% protocol bandwidth reduction and zero-trust reverse pull backups."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 极限压降至 5GB~9GB（降幅超 75%）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。",
+    "en": "Debian 12 + Docker + Paper 1.18.1 + BBR + UFW + Fail2ban. View distance=4, simulation=3, suppressed entity tracking (monsters 24, animals 16, players 32), >75% bandwidth cut; zero-trust reverse SSH pull backup."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "牺牲了远距离视距渲染以换取极致低带宽，适合局域或固定小圈子联机场景。",
+    "en": "Compromised extreme render distance for ultra-low bandwidth consumption."
+   }
+  ]
+ },
+ {
+  "title_zh": "课程录音批量切分与 Whisper 转录",
+  "title_en": "Lecture Audio Batch Chunking & Whisper Transcription",
+  "desc_zh": "上课录音丢进去，自动切分转成文字讲义归档。（已归档）",
+  "desc_en": "Drop in lecture recordings and get them auto-split, transcribed, and archived as study notes. (Archived)",
+  "data_tags": [
+   "linux",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "Python",
+   "Whisper",
+   "FFmpeg"
+  ],
+  "links": [],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "大学各专业课动辄数小时的随堂录音文件堆积，课后手动重听耗时过长，难以快速定位核心考点与板书笔记。",
+    "en": "Hours of raw university lecture audio recordings accumulate without quick indexing of key lecture points."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "编写批处理脚本流水线，结合 faster-whisper 与 FFmpeg，根据文件名关键字自动识别课程类别、执行切分转写并归档为带时间戳的结构化笔记。",
+    "en": "Batch processing script combining faster-whisper and FFmpeg, routing audio by keyword rules into timestamped lecture transcripts."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "Python 3 + faster-whisper (CTranslate2) + FFmpeg + Shell 脚本。内置 GPU/CPU 自动探测降级机制、关键字课程分流路由表与 JSONL 运行日志，一键批量转出高质量课堂讲义。",
+    "en": "Python 3 + faster-whisper + FFmpeg + Shell. Hardware auto-detection, keyword routing table, and JSONL run logger for automated transcription."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "随着通义千问等现代智能会议软件（具备实时高精度转写与分钟级核心要点提炼）的普及，该离线批处理脚本流水线目前已被现代云端速记工作流完全取代并归档（Archived）；当前重心已全面转移至结构化导出文本的本地知识库沉淀与 AI Agent 自动化管理。",
+    "en": "With the emergence of modern intelligent meeting tools (providing real-time high-accuracy transcription and minute-level key summaries), this local offline batch pipeline has been formally superseded and archived; focus has transitioned to local vault archiving and AI Agent knowledge curation."
+   }
+  ]
+ },
+ {
+  "title_zh": "Linux 工作站与 VPS 网络搭建 (工程积累)",
+  "title_en": "Linux Workstation & VPS Network Infrastructure",
+  "desc_zh": "自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。",
+  "desc_en": "Hand-built dev environment: Arch Linux workstation plus Debian cloud VPS, with DNS, CDN, and automated TLS certificates.",
+  "data_tags": [
+   "linux",
+   "net"
+  ],
+  "tag_labels": [
+   "Arch Linux",
+   "Debian",
+   "Cloudflare",
+   "SSL/TLS",
+   "net"
+  ],
+  "links": [],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。",
+    "en": "Transitioning from Windows to Linux; building a secure, uncensored, high-availability workstation and cloud environment."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "将 Arch Linux 配置调校为主力系统，采购运维 Debian VPS；配置 Cloudflare 域名解析、CDN 与 Let's Encrypt 证书自动化。",
+    "en": "Tuned Arch Linux as daily driver; deployed Debian VPS with Cloudflare CDN/DNS and automated Let's Encrypt SSL/TLS certificates."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。",
+    "en": "Arch Linux + Zen kernel + pacman/yay + UFW + end-to-end TLS encryption, establishing a rock-solid developer workstation."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。",
+    "en": "Originally heavily reliant on manual CLI tuning and troubleshooting; now deeply automated via AI Agents for config generation, dependency resolution, validation scripting, and routine health checks, transforming low-level maintenance into high-leverage human-agent workflows."
+   }
+  ]
+ },
+ {
+  "title_zh": "浏览器反指纹与网络隐私防护套件",
+  "title_en": "Browser Anti-Fingerprinting & Privacy Hardening Suite",
+  "desc_zh": "浏览器隐私加固配置：屏蔽 WebRTC 泄漏、隔离 Canvas 指纹，减少网站跨站追踪。",
+  "desc_en": "Browser privacy hardening: blocks WebRTC leaks and isolates canvas fingerprints to reduce cross-site tracking.",
+  "data_tags": [
+   "net",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "反指纹",
+   "WebRTC",
+   "Canvas",
+   "安全"
+  ],
+  "links": [],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "浏览器会通过 JavaScript、WebRTC、Canvas 与地理位置接口暴露系统与硬件指纹，导致被网站跨站关联追踪。",
+    "en": "Browsers leak system and hardware fingerprints via JavaScript, WebRTC, Canvas, and Geolocation APIs, enabling cross-site correlation tracking."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "系统化配置与部署浏览器隐私防护扩展链，全面封堵 WebRTC IP 泄漏，深度重写时区与定位偏移，并对 Canvas/WebGL 渲染指纹增加微量扰动噪音，阻断数字身份关联。",
+    "en": "Systematically orchestrates browser privacy protection extensions: plugs WebRTC IP leaks, spoofs timezone and geolocation offsets, and injects subtle noise into Canvas/WebGL render pipelines to prevent fingerprinting."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "与系统网络环境协同；严格确保在阻断指纹侦测的同时不破坏现代复杂 Web 应用的正常渲染、数学计算与日常使用心流。",
+    "en": "Works alongside the system network setup; ensures robust anti-tracking defense without breaking complex web apps, math operations, or browsing UX."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "针对更深层的复杂浏览器指纹追踪（如高级音频上下文枚举与系统字体探测），后续配合专用隔离配置文件（Firefox Profile Isolation / 反指纹多开环境）进一步加固。",
+    "en": "To defend against deeper advanced vector probing (audio context enumeration, installed font inspection), paired with Firefox Profile Isolation and containerized environments on the roadmap."
+   }
+  ]
+ },
+ {
+  "title_zh": "WriteMap (Visual Writing Coach)",
+  "title_en": "WriteMap (Visual Writing Coach)",
+  "desc_zh": "写英语作文没人改？这个应用从词汇、语法、连贯性三个维度打分，告诉你弱在哪。",
+  "desc_en": "No one to grade your English essays? This app scores vocabulary, grammar, and coherence, showing exactly where you are weak.",
+  "data_tags": [
+   "web"
+  ],
+  "tag_labels": [
+   "Next.js",
+   "React",
+   "TypeScript",
+   "Prisma",
+   "web"
+  ],
+  "links": [
+   "https://github.com/lyf266/WriteMap"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "英语专业学生在练习议论文写作时，传统批改缺乏对词汇多样性、篇章连贯性与论点逻辑的多维度直观量化，反馈周期过长。",
+    "en": "ESL writing students lack multi-dimensional, immediate visual feedback on vocabulary variety, syntax, and discourse coherence."
+   },
+   {
+    "label": "AI 目标、规划与提示词设定",
+    "zh": "结合自身商务英语专业与全栈技术底牌，构建基于 Next.js 的视觉化写作教练系统，提供即时多维能力打分与结构树拆解。",
+    "en": "Full-stack writing coach providing 5-axis radar chart scoring and discourse tree visualization using LLM grading prompts."
+   },
+   {
+    "label": "架构设计与硬性约束",
+    "zh": "Next.js App Router + React + TypeScript + Tailwind CSS + Recharts + Prisma ORM + SQLite。设计精准的评估 Prompt 规则矩阵，从词汇广度、语法多样性、篇章连贯性、任务完成度等维度输出标准化 JSON 评分与结构树。",
+    "en": "Next.js App Router + React + TypeScript + Recharts + Prisma. Structured rubric prompts extracting standardized JSON scores for radar visualization and tree structures."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "当前支持单篇作文批改，后续规划加入长期写作历史演进追踪与同义词替换知识库。",
+    "en": "Supports single-essay grading; longitudinal writing improvement tracking planned."
+   }
+  ]
+ },
+ {
+  "title_zh": "Gaokao 高考志愿填报数据系统",
+  "title_en": "Gaokao College Admission Data Scraper",
+  "desc_zh": "抓了各大学历年的录取分数，做成干净表格，填志愿时一眼对比。",
+  "desc_en": "Scraped historical university admission scores into clean tables for at-a-glance comparison when choosing colleges.",
+  "data_tags": [
+   "quant",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "Python",
+   "Requests",
+   "Pandas",
+   "数据"
+  ],
+  "links": [
+   "https://github.com/lyf266/Gaokao"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "高考志愿填报涉及全国数千所高校历年投档分与位次，官方平台数据碎片化且缺乏多维对比工具，信息极度不对称。",
+    "en": "College admissions data is scattered and fragmented across opaque official portals, hindering comparative decision-making."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "爬取 gaokao.cn 接口，清洗各大学专业历年录取最低分、最低位次与招生计划配额，输出清洗后的多维 CSV 便于填报决策。",
+    "en": "Python scraper parsing gaokao.cn API, cleaning historical cutoff scores, percentile rankings, and enrollment quotas into CSVs."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "Python + Requests + Pandas 数据清洗流水线，建立位次换算模型与多维交叉筛选比对逻辑。",
+    "en": "Python + Requests + Pandas pipeline calculating percentile ranges and historical cutoff differentials."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "为静态单年度抓取分析脚本，接口变动需人工更新解析逻辑。",
+    "en": "Static annual scraping pipeline; API endpoint changes require script maintenance."
+   }
+  ]
+ },
+ {
+  "title_zh": "商业演示文稿排版外包",
+  "title_en": "Freelance Information Design",
+  "desc_zh": "承接商业 PPT 外包设计；兼职做过校园即时跑腿。",
+  "desc_en": "Freelance commercial slide-deck design; part-time campus errand courier.",
+  "data_tags": [
+   "web"
+  ],
+  "tag_labels": [
+   "设计",
+   "信息排版"
+  ],
+  "links": [],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "商业汇报缺乏清晰的信息降噪与视觉层级。",
+    "en": "Commercial presentations lack clean information hierarchy."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "承接商业 PPT 排版外包，践行极简高密度信息设计；兼职做过校园即时跑腿。",
+    "en": "Information design for commercial pitch decks; part-time campus errand courier experience."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "遵循思源黑体规范与网格排版系统。",
+    "en": "Grid-based typography system."
+   }
+  ]
+ },
+ {
+  "title_zh": "百人 Minecraft 联机社区网络打通与社群运维",
+  "title_en": "100-Player Minecraft Server Network & Community Ops",
+  "desc_zh": "10 岁时从零运营起一个 100+ 人活跃的 Minecraft 玩家社区（论坛发帖、管服、搞活动）；自学宽带拨号和路由器端口映射解决联机问题。",
+  "desc_en": "At age 10, grew and ran a 100+ active-player Minecraft community from scratch — forum outreach, server ops, events — and self-taught broadband dial-up plus router port forwarding to solve connectivity.",
+  "data_tags": [
+   "net"
+  ],
+  "tag_labels": [
+   "PPPoE",
+   "端口映射",
+   "公网穿透",
+   "社区运营",
+   "网络启蒙"
+  ],
+  "links": [],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "10 岁小学阶段渴望与众多伙伴联机游戏，受限于资金无法购买昂贵的商业云服务器。",
+    "en": "Childhood initiative to host multi-player gaming without access to expensive cloud hosting."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "自学网络通信原理，利用家庭宽带 PPPoE 拨号获取动态公网 IP，在路由器/光猫配置 NAT 端口映射实现公网穿透；在各大游戏论坛发帖自主召集伙伴，运营维护 100+ 人活跃社区与节假日活动。",
+    "en": "Self-taught networking using home broadband PPPoE dynamic public IP, configured router NAT port forwarding; recruited players on gaming forums, scaling and managing a 100+ active player community."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "动态公网 IP 嗅探 + 路由器 NAT 多端口映射转发 + 论坛社区自治管理，以零资金投入打通多人联机网络。",
+    "en": "Dynamic public IP routing + router NAT multi-port forwarding + forum community governance, achieving multiplayer connectivity with zero funding."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "童年纯网络与社区实践启蒙，奠定了后续计算机网络与系统架构的基础认知。",
+    "en": "Foundational childhood technical exploration, igniting long-term passion for systems and networks."
+   }
+  ]
+ }
+]
