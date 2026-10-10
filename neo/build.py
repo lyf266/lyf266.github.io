@@ -7,6 +7,39 @@ import json, re, html as htmllib
 
 P = json.load(open('neo/projects.json', encoding='utf-8'))
 
+# ---------------------------------------------------------------- merge: neo-v2 honest copy + featured-first
+# 1) Fact-checked one-liners (no unverified numbers, honest question-bank labeling)
+HONEST_DESCS = {
+ "银行从业": ("银行从业刷题网站：710 道题（2 套真题 + 回忆版/改编/自编题），手机电脑都能用，做错的题自动生成 Anki 记忆卡片。",
+             "A web-based mock exam replicating the real banking certification interface: 710 questions (2 real sets plus recalled, adapted and self-written items), mobile-friendly, wrong answers auto-converted into Anki flashcards."),
+ "Whisper": ("Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。",
+             "Good system-wide voice input tools are rare on Linux, so I built one: press a hotkey, speak, and text appears anywhere \u2014 model stays resident locally, no network needed."),
+ "mc118": ("开了个百人 Minecraft 服务器，针对低带宽环境做了网络优化。",
+           "Ran a 100-player Minecraft server, tuned for low-bandwidth environments."),
+}
+for proj in P:
+    for key, (zh, en) in HONEST_DESCS.items():
+        if key in proj['title_zh'] or key in proj['title_en']:
+            proj['desc_zh'], proj['desc_en'] = zh, en
+
+# 2) Featured set: POI / LifeOS / Hermes / Linux工作站 (bank out, infra in)
+for proj in P:
+    tags = proj['data_tags']
+    if "银行从业" in proj['title_zh'] and 'featured' in tags:
+        tags.remove('featured')
+    if "Linux 工作站" in proj['title_zh'] and 'featured' not in tags:
+        tags.append('featured')
+
+# 3) Featured-first ordering
+FEATURED_ORDER = ["Personal Opportunity Intelligence", "LifeOS", "Hermes", "Linux 工作站"]
+def _fkey(proj):
+    for i, k in enumerate(FEATURED_ORDER):
+        if k in proj['title_zh'] or k in proj['title_en']:
+            return (0, i)
+    return (1, 0)
+P.sort(key=_fkey)
+print('merge applied:', [proj['title_zh'][:16] for proj in P[:6]])
+
 # ---------------------------------------------------------------- copy fixes
 # (zh_old, zh_new, en_old, en_new) — ChatGPT second-round review rewrites
 FIXES = [
@@ -31,6 +64,22 @@ FIXES = [
  ("严格的量化 Financial Harness 评测工程", "严格的量化评测工程", None, None),
  ("全面���进升级", "全面升级", None, None),
  ("内生闭环", "流程", None, None),
+ ("快捷键 Meta+H 唤醒瞬时推理，端到端延迟 <300ms。",
+  "快捷键唤醒后直接推理，无需重新加载模型。（延迟数据待系统性实测）",
+  "<300ms end-to-end latency",
+  "latency pending systematic measurement"),
+ ("内存占用极限压缩至 ~13MB，CPU 消耗 <0.1%，全本地存储",
+  "内存与 CPU 占用保持较低（具体数值待实测），全本地存储",
+  "Ultra-low memory footprint (~13MB RAM) and <0.1% CPU.",
+  "Low memory and CPU footprint (exact figures pending measurement)."),
+ ("\x00never-match",
+  "",
+  "achieving >75% protocol bandwidth reduction",
+  "achieving significant bandwidth reduction (exact figures pending measurement)"),
+ ("月流量从 30GB+ 极限压降至 5GB~9GB（降幅超 75%）",
+  "月流量从 30GB+ 明显压降（具体降幅待实测记录）",
+  ">75% bandwidth cut",
+  "bandwidth significantly reduced (exact figures pending measurement)"),
 ]
 
 def fix(text, lang):

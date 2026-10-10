@@ -92,141 +92,9 @@ footer a{color:var(--muted)}
 <button class="chip mono" data-domain="tool"><span data-zh="小工具" data-en="Tools">小工具</span></button></div>
   <p class="countline mono" id="countLine"></p>
   <main>
-<article class="card" id="p01" data-domains="quant web">
+<article class="card" id="p01" data-domains="ai net">
   <div class="card-top mono">
     <span class="proj-num">PROJECT_01</span>
-    <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
-    <span class="card-links"><a class="hlink" href="https://lyf266.github.io/bank-exam-2026-toolkit/" target="_blank" rel="noopener"><span data-zh="演示 ↗" data-en="Demo ↗">演示 ↗</span></a><a class="hlink" href="https://github.com/lyf266/bank-exam-2026-toolkit" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="2026 银行从业全真机考模拟系统 &amp; Anki 智能备考工具包" data-en="Bank Exam 2026 ATA Simulator &amp; Anki Intelligent Toolkit">2026 银行从业全真机考模拟系统 &amp; Anki 智能备考工具包</span></h2>
-  <p class="oneline"><span data-zh="做了个和真实考场一模一样的银行从业刷题网站：710 道真题，手机电脑都能用，做错的题自动生成 Anki 记忆卡片。" data-en="A web-based mock exam replicating the real banking certification interface: 710 real questions, mobile-friendly, with wrong answers auto-converted into Anki flashcards.">做了个和真实考场一模一样的银行从业刷题网站：710 道真题，手机电脑都能用，做错的题自动生成 Anki 记忆卡片。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。" data-en="Preparing for banking certificates was hindered by ad-heavy tools with outdated regulations and no true-to-exam ATA interface simulation.">备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="清洗题库" data-en="Clean bank">清洗题库</span></span><span class="farrow">→</span><span class="step"><span data-zh="校准监管口径" data-en="Calibrate rules">校准监管口径</span></span><span class="farrow">→</span><span class="step"><span data-zh="仿真机考" data-en="Simulate exam">仿真机考</span></span><span class="farrow">→</span><span class="step"><span data-zh="错题进 Anki" data-en="Wrong → Anki">错题进 Anki</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。" data-en="Set 3 goals: 1) End-to-end zero-dependency native JS exam &amp; TVM calculator generation; 2) Clean 710+ questions to 2026 NFRA &amp; M1 regulatory standards; 3) Standardize KaTeX 4-step math derivations.">设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Bank Exam 2026 ATA Simul/</span>
-<span data-zh="├── exam.html ── ATA 机考界面" data-en="├── exam.html ── ATA exam UI">├── exam.html ── ATA 机考界面</span>
-<span data-zh="├── tvm-calc.js ── TVM 金融计算器" data-en="├── tvm-calc.js ── TVM calculator">├── tvm-calc.js ── TVM 金融计算器</span>
-<span data-zh="├── questions-710.json ── 真题库" data-en="├── questions-710.json ── question bank">├── questions-710.json ── 真题库</span>
-<span data-zh="└── anki-export.js ── FSRS 卡包导出" data-en="└── anki-export.js ── FSRS deck export">└── anki-export.js ── FSRS 卡包导出</span></pre>
-    <p class="sec-body eng-note"><span data-zh="纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。" data-en="Pure Vanilla JS/HTML5 zero-dependency architecture.Fisher-Yates in-browser shuffle prevents position-memorization.TVM calculator with END/BGN modes.Paired with Anki FSRS decks.">纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。" data-en="Official exams do not release past papers and commercial question banks are paywalled; questions are currently synthesized from textbook paradigms.">核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Anki / FSRS</span><span class="tag">Mobile-Ready</span><span class="tag">金融</span><span class="tag">web</span></div>
-</article>
-
-<article class="card" id="p02" data-domains="ai linux tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_02</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/linux-whisper-input" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Linux Whisper Input" data-en="Linux Whisper Input">Linux Whisper Input</span></h2>
-  <p class="oneline"><span data-zh="Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型跑在本地，延迟约 300ms。" data-en="Good system-wide voice input tools are rare on Linux, so I built one: press a hotkey, speak, and text appears anywhere — local Whisper model, ~300ms latency.">Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型跑在本地，延迟约 300ms。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="云端听写受制于网络往返延迟（&gt;1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。" data-en="Cloud dictation suffers from latency (&gt;1s) and privacy risks; traditional local scripts reload multi-GB models on every keypress, destroying focus.">云端听写受制于网络往返延迟（&gt;1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="按下快捷键" data-en="Hotkey">按下快捷键</span></span><span class="farrow">→</span><span class="step"><span data-zh="捕获音频" data-en="Capture audio">捕获音频</span></span><span class="farrow">→</span><span class="step"><span data-zh="VAD 裁切" data-en="VAD trim">VAD 裁切</span></span><span class="farrow">→</span><span class="step"><span data-zh="本地推理" data-en="Local inference">本地推理</span></span><span class="farrow">→</span><span class="step"><span data-zh="注入文本" data-en="Inject text">注入文本</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="采用 Python + CTranslate2（large-v3-turbo float16）+ PipeWire 管道捕获音频流 + Wayland 虚拟键盘事件注入 + Systemd 用户级守护。模型权重与 CUDA 上下文永久驻留 GPU 显存，快捷键 Meta+H 唤醒瞬时推理，端到端延迟 &lt;300ms。" data-en="Python daemon + CTranslate2 (large-v3-turbo float16) + PipeWire + Wayland virtual key injection.Model &amp; CUDA context permanently resident in GPU VRAM (&lt;300ms end-to-end latency).">采用 Python + CTranslate2（large-v3-turbo float16）+ PipeWire 管道捕获音频流 + Wayland 虚拟键盘事件注入 + Systemd 用户级守护。模型权重与 CUDA 上下文永久驻留 GPU 显存，快捷键 Meta+H 唤醒瞬时推理，端到端延迟 &lt;300ms。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Linux Whisper Input/</span>
-<span data-zh="├── daemon.py ── 常驻监听" data-en="├── daemon.py ── resident listener">├── daemon.py ── 常驻监听</span>
-<span data-zh="├── vad.py ── 语音端点检测" data-en="├── vad.py ── voice activity detection">├── vad.py ── 语音端点检测</span>
-<span data-zh="├── infer.py ── CTranslate2 推理" data-en="├── infer.py ── inference">├── infer.py ── CTranslate2 推理</span>
-<span data-zh="└── wayland-inject.py ── 文本注入" data-en="└── wayland-inject.py ── text injection">└── wayland-inject.py ── 文本注入</span></pre>
-    <p class="sec-body eng-note"><span data-zh="在模型部署时，我重点优化显存占用和响应速度之间的平衡。通过 VAD 判断有效语音区间，减少无意义音频输入，同时将监听和推理拆分为独立进程，避免任务互相影响。" data-en="Strict balance between VRAM allocation and inference speed.Precise VAD trimming prevents trailing repetition artifacts; UDS isolates capture and inference.">在模型部署时，我重点优化显存占用和响应速度之间的平衡。通过 VAD 判断有效语音区间，减少无意义音频输入，同时将监听和推理拆分为独立进程，避免任务互相影响。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。" data-en="Requires dedicated NVIDIA GPU VRAM; long-speech pause segmentation requires further threshold tuning.">硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">CTranslate2</span><span class="tag">Wayland</span><span class="tag">PipeWire</span><span class="tag">linux</span></div>
-</article>
-
-<article class="card" id="p03" data-domains="linux tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_03</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/desktop-timetracker" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Desktop TimeTracker (timetrack)" data-en="Desktop TimeTracker (timetrack)">Desktop TimeTracker (timetrack)</span></h2>
-  <p class="oneline"><span data-zh="自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间都去哪了。" data-en="Automatically tracks how long you spend in each window and generates a daily report, so you can see where your time actually goes.">自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间都去哪了。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。" data-en="Wayland security sandbox blocks legacy X11 window loggers; commercial alternatives rely on bloated Electron processes (&gt;300MB RAM) and cloud telemetry.">KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="监听窗口" data-en="Listen">监听窗口</span></span><span class="farrow">→</span><span class="step"><span data-zh="三级识别" data-en="3-level identify">三级识别</span></span><span class="farrow">→</span><span class="step"><span data-zh="本地存储" data-en="Local store">本地存储</span></span><span class="farrow">→</span><span class="step"><span data-zh="夜间日报" data-en="Nightly report">夜间日报</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="项目尽量保持轻量化，没有引入额外 Python 第三方依赖。窗口识别采用三级匹配策略：1. 用户自定义规则优先；2. 使用系统应用元数据辅助判断；3. 最后根据进程信息进行兜底。" data-en="Pure Python 3 standard library + KWin internal scripts with zero external dependencies.3-tier progressive classification pipeline (user rules → XDG desktop metadata → process fallback).">项目尽量保持轻量化，没有引入额外 Python 第三方依赖。窗口识别采用三级匹配策略：1. 用户自定义规则优先；2. 使用系统应用元数据辅助判断；3. 最后根据进程信息进行兜底。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Desktop TimeTracker (tim/</span>
-<span data-zh="├── kwin-script.js ── 窗口监听" data-en="├── kwin-script.js ── window listener">├── kwin-script.js ── 窗口监听</span>
-<span data-zh="├── identify.py ── 三级识别" data-en="├── identify.py ── 3-level identify">├── identify.py ── 三级识别</span>
-<span data-zh="├── store.db ── SQLite 本地存储" data-en="├── store.db ── local storage">├── store.db ── SQLite 本地存储</span>
-<span data-zh="└── report.py ── 日报生成" data-en="└── report.py ── report generator">└── report.py ── 日报生成</span></pre>
-    <p class="sec-body eng-note"><span data-zh="内存占用极限压缩至 ~13MB，CPU 消耗 &lt;0.1%，全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。" data-en="Ultra-low memory footprint (~13MB RAM) and &lt;0.1% CPU.Nightly automated generation of Markdown activity review reports.">内存占用极限压缩至 ~13MB，CPU 消耗 &lt;0.1%，全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。" data-en="Tightly integrated with KDE Plasma 6 Wayland; adapting to GNOME/Sway requires corresponding IPC bridges.">深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">KWin</span><span class="tag">D-Bus</span><span class="tag">SQLite</span><span class="tag">linux</span></div>
-</article>
-
-<article class="card" id="p04" data-domains="ai">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_04</span>
-    <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/project-pai" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Personal LifeOS (Project PAI)" data-en="Personal LifeOS (Project PAI)">Personal LifeOS (Project PAI)</span></h2>
-  <p class="oneline"><span data-zh="帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。" data-en="A personal system for goals and journaling that auto-generates periodic review reports.">帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。" data-en="Chatbots suffer from session amnesia, context drift, and lack of persistent modeling of user goals and growth over time.">传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="记录日志" data-en="Log">记录日志</span></span><span class="farrow">→</span><span class="step"><span data-zh="检索事实" data-en="Retrieve">检索事实</span></span><span class="farrow">→</span><span class="step"><span data-zh="LLM 复盘" data-en="AI review">LLM 复盘</span></span><span class="farrow">→</span><span class="step"><span data-zh="决策建议" data-en="Advise">决策建议</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="专属个人长期智能体系统（PAI），持续对“用户自身、客观世界及其相互关系”进行建模。Agent 目标不是问答聊天机器人，而是协助用户进行生活日志复盘、个人目标追踪与决策建议。" data-en="Build Personal AI (PAI) continuously modeling the user, the world, and their relation for long-term growth, reflection, and decision support.">专属个人长期智能体系统（PAI），持续对“用户自身、客观世界及其相互关系”进行建模。Agent 目标不是问答聊天机器人，而是协助用户进行生活日志复盘、个人目标追踪与决策建议。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Personal LifeOS (Project/</span>
-<span data-zh="├── api/ ── FastAPI 模块化单体" data-en="├── api/ ── modular monolith">├── api/ ── FastAPI 模块化单体</span>
-<span data-zh="├── web/ ── Next.js 前端" data-en="├── web/ ── frontend">├── web/ ── Next.js 前端</span>
-<span data-zh="├── postgres/ ── 规范事实库" data-en="├── postgres/ ── fact store">├── postgres/ ── 规范事实库</span>
-<span data-zh="└── qdrant/ ── 语义向量检索" data-en="└── qdrant/ ── vector search">└── qdrant/ ── 语义向量检索</span></pre>
-    <p class="sec-body eng-note"><span data-zh="FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。" data-en="FastAPI + PostgreSQL + Qdrant + OpenRouter.Core constraints: &#x27;Retrieval before reasoning&#x27; (structured memory over raw chats); human confirmation for high-impact actions; strict resource bounds.">FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="当前版本已经实现了目标记录、行为日志分析和阶段性复盘之间的数据连接。下一阶段主要挑战是如何让系统理解更加复杂的人类行为场景。例如，不同领域的数据（工作、财务、习惯、情绪）之间存在关联，但目前仍缺少一个可靠的方法进行统一建模和长期预测。" data-en="The internal loop of personal goal tracking, journaling, and reflection is fully operational.">当前版本已经实现了目标记录、行为日志分析和阶段性复盘之间的数据连接。下一阶段主要挑战是如何让系统理解更加复杂的人类行为场景。例如，不同领域的数据（工作、财务、习惯、情绪）之间存在关联，但目前仍缺少一个可靠的方法进行统一建模和长期预测。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">agent</span><span class="tag">MCP</span></div>
-</article>
-
-<article class="card" id="p05" data-domains="ai net">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_05</span>
     <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
     <span class="card-links"><a class="hlink" href="https://github.com/lyf266/personal-opportunity-agent" target="_blank" rel="noopener">GitHub ↗</a></span>
   </div>
@@ -257,9 +125,42 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">Python</span><span class="tag">RSS</span><span class="tag">Telegram</span><span class="tag">agent</span></div>
 </article>
 
-<article class="card" id="p06" data-domains="ai linux net">
+<article class="card" id="p02" data-domains="ai">
   <div class="card-top mono">
-    <span class="proj-num">PROJECT_06</span>
+    <span class="proj-num">PROJECT_02</span>
+    <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
+    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/project-pai" target="_blank" rel="noopener">GitHub ↗</a></span>
+  </div>
+  <h2 class="card-title"><span data-zh="Personal LifeOS (Project PAI)" data-en="Personal LifeOS (Project PAI)">Personal LifeOS (Project PAI)</span></h2>
+  <p class="oneline"><span data-zh="帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。" data-en="A personal system for goals and journaling that auto-generates periodic review reports.">帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。</span></p>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
+    <p class="sec-body"><span data-zh="传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。" data-en="Chatbots suffer from session amnesia, context drift, and lack of persistent modeling of user goals and growth over time.">传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
+    <div class="flow"><span class="step"><span data-zh="记录日志" data-en="Log">记录日志</span></span><span class="farrow">→</span><span class="step"><span data-zh="检索事实" data-en="Retrieve">检索事实</span></span><span class="farrow">→</span><span class="step"><span data-zh="LLM 复盘" data-en="AI review">LLM 复盘</span></span><span class="farrow">→</span><span class="step"><span data-zh="决策建议" data-en="Advise">决策建议</span></span></div>
+    <p class="sec-body eng-note"><span data-zh="专属个人长期智能体系统（PAI），持续对“用户自身、客观世界及其相互关系”进行建模。Agent 目标不是问答聊天机器人，而是协助用户进行生活日志复盘、个人目标追踪与决策建议。" data-en="Build Personal AI (PAI) continuously modeling the user, the world, and their relation for long-term growth, reflection, and decision support.">专属个人长期智能体系统（PAI），持续对“用户自身、客观世界及其相互关系”进行建模。Agent 目标不是问答聊天机器人，而是协助用户进行生活日志复盘、个人目标追踪与决策建议。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
+    <pre class="tree"><span class="tdir">Personal LifeOS (Project/</span>
+<span data-zh="├── api/ ── FastAPI 模块化单体" data-en="├── api/ ── modular monolith">├── api/ ── FastAPI 模块化单体</span>
+<span data-zh="├── web/ ── Next.js 前端" data-en="├── web/ ── frontend">├── web/ ── Next.js 前端</span>
+<span data-zh="├── postgres/ ── 规范事实库" data-en="├── postgres/ ── fact store">├── postgres/ ── 规范事实库</span>
+<span data-zh="└── qdrant/ ── 语义向量检索" data-en="└── qdrant/ ── vector search">└── qdrant/ ── 语义向量检索</span></pre>
+    <p class="sec-body eng-note"><span data-zh="FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。" data-en="FastAPI + PostgreSQL + Qdrant + OpenRouter.Core constraints: &#x27;Retrieval before reasoning&#x27; (structured memory over raw chats); human confirmation for high-impact actions; strict resource bounds.">FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
+    <p class="sec-body"><span data-zh="当前版本已经实现了目标记录、行为日志分析和阶段性复盘之间的数据连接。下一阶段主要挑战是如何让系统理解更加复杂的人类行为场景。例如，不同领域的数据（工作、财务、习惯、情绪）之间存在关联，但目前仍缺少一个可靠的方法进行统一建模和长期预测。" data-en="The internal loop of personal goal tracking, journaling, and reflection is fully operational.">当前版本已经实现了目标记录、行为日志分析和阶段性复盘之间的数据连接。下一阶段主要挑战是如何让系统理解更加复杂的人类行为场景。例如，不同领域的数据（工作、财务、习惯、情绪）之间存在关联，但目前仍缺少一个可靠的方法进行统一建模和长期预测。</span></p>
+  </section>
+  <div class="tagrow"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">agent</span><span class="tag">MCP</span></div>
+</article>
+
+<article class="card" id="p03" data-domains="ai linux net">
+  <div class="card-top mono">
+    <span class="proj-num">PROJECT_03</span>
     <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
     <span class="card-links"><a class="hlink" href="https://github.com/lyf266/hermes" target="_blank" rel="noopener">GitHub ↗</a></span>
   </div>
@@ -290,9 +191,140 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">VPS</span><span class="tag">Vless</span><span class="tag">Debian</span><span class="tag">Cron</span><span class="tag">net</span></div>
 </article>
 
-<article class="card" id="p07" data-domains="quant tool">
+<article class="card" id="p04" data-domains="linux net">
+  <div class="card-top mono">
+    <span class="proj-num">PROJECT_04</span>
+    <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
+    <span class="card-links"></span>
+  </div>
+  <h2 class="card-title"><span data-zh="Linux 工作站与 VPS 网络搭建 (工程积累)" data-en="Linux Workstation &amp; VPS Network Infrastructure">Linux 工作站与 VPS 网络搭建 (工程积累)</span></h2>
+  <p class="oneline"><span data-zh="自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。" data-en="Hand-built dev environment: Arch Linux workstation plus Debian cloud VPS, with DNS, CDN, and automated TLS certificates.">自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。</span></p>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
+    <p class="sec-body"><span data-zh="脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。" data-en="Transitioning from Windows to Linux; building a secure, uncensored, high-availability workstation and cloud environment.">脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
+    <div class="flow"><span class="step"><span data-zh="装机调优" data-en="Tune system">装机调优</span></span><span class="farrow">→</span><span class="step"><span data-zh="网络配置" data-en="Configure net">网络配置</span></span><span class="farrow">→</span><span class="step"><span data-zh="证书自动化" data-en="Auto TLS">证书自动化</span></span></div>
+    <p class="sec-body eng-note"><span data-zh="将 Arch Linux 配置调校为主力系统，采购运维 Debian VPS；配置 Cloudflare 域名解析、CDN 与 Let&#x27;s Encrypt 证书自动化。" data-en="Tuned Arch Linux as daily driver; deployed Debian VPS with Cloudflare CDN/DNS and automated Let&#x27;s Encrypt SSL/TLS certificates.">将 Arch Linux 配置调校为主力系统，采购运维 Debian VPS；配置 Cloudflare 域名解析、CDN 与 Let&#x27;s Encrypt 证书自动化。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
+    <pre class="tree"><span class="tdir">Linux Workstation &amp; VPS /</span>
+<span data-zh="├── arch/ ── Zen 内核调优" data-en="├── arch/ ── tuned kernel">├── arch/ ── Zen 内核调优</span>
+<span data-zh="├── debian-vps/ ── 云服务器" data-en="├── debian-vps/ ── cloud VPS">├── debian-vps/ ── 云服务器</span>
+<span data-zh="└── tls-auto/ ── 证书自动化" data-en="└── tls-auto/ ── cert automation">└── tls-auto/ ── 证书自动化</span></pre>
+    <p class="sec-body eng-note"><span data-zh="pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。" data-en="Arch Linux + Zen kernel + pacman/yay + UFW + end-to-end TLS encryption, establishing a rock-solid developer workstation.">pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
+    <p class="sec-body"><span data-zh="早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。" data-en="Originally heavily reliant on manual CLI tuning and troubleshooting; now deeply automated via AI Agents for config generation, dependency resolution, validation scripting, and routine health checks, transforming low-level maintenance into high-leverage human-agent workflows.">早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。</span></p>
+  </section>
+  <div class="tagrow"><span class="tag">Arch Linux</span><span class="tag">Debian</span><span class="tag">Cloudflare</span><span class="tag">SSL/TLS</span><span class="tag">net</span></div>
+</article>
+
+<article class="card" id="p05" data-domains="quant web">
+  <div class="card-top mono">
+    <span class="proj-num">PROJECT_05</span>
+    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
+    <span class="card-links"><a class="hlink" href="https://lyf266.github.io/bank-exam-2026-toolkit/" target="_blank" rel="noopener"><span data-zh="演示 ↗" data-en="Demo ↗">演示 ↗</span></a><a class="hlink" href="https://github.com/lyf266/bank-exam-2026-toolkit" target="_blank" rel="noopener">GitHub ↗</a></span>
+  </div>
+  <h2 class="card-title"><span data-zh="2026 银行从业全真机考模拟系统 &amp; Anki 智能备考工具包" data-en="Bank Exam 2026 ATA Simulator &amp; Anki Intelligent Toolkit">2026 银行从业全真机考模拟系统 &amp; Anki 智能备考工具包</span></h2>
+  <p class="oneline"><span data-zh="银行从业刷题网站：710 道题（2 套真题 + 回忆版/改编/自编题），手机电脑都能用，做错的题自动生成 Anki 记忆卡片。" data-en="A web-based mock exam replicating the real banking certification interface: 710 questions (2 real sets plus recalled, adapted and self-written items), mobile-friendly, wrong answers auto-converted into Anki flashcards.">银行从业刷题网站：710 道题（2 套真题 + 回忆版/改编/自编题），手机电脑都能用，做错的题自动生成 Anki 记忆卡片。</span></p>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
+    <p class="sec-body"><span data-zh="备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。" data-en="Preparing for banking certificates was hindered by ad-heavy tools with outdated regulations and no true-to-exam ATA interface simulation.">备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
+    <div class="flow"><span class="step"><span data-zh="清洗题库" data-en="Clean bank">清洗题库</span></span><span class="farrow">→</span><span class="step"><span data-zh="校准监管口径" data-en="Calibrate rules">校准监管口径</span></span><span class="farrow">→</span><span class="step"><span data-zh="仿真机考" data-en="Simulate exam">仿真机考</span></span><span class="farrow">→</span><span class="step"><span data-zh="错题进 Anki" data-en="Wrong → Anki">错题进 Anki</span></span></div>
+    <p class="sec-body eng-note"><span data-zh="设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。" data-en="Set 3 goals: 1) End-to-end zero-dependency native JS exam &amp; TVM calculator generation; 2) Clean 710+ questions to 2026 NFRA &amp; M1 regulatory standards; 3) Standardize KaTeX 4-step math derivations.">设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
+    <pre class="tree"><span class="tdir">Bank Exam 2026 ATA Simul/</span>
+<span data-zh="├── exam.html ── ATA 机考界面" data-en="├── exam.html ── ATA exam UI">├── exam.html ── ATA 机考界面</span>
+<span data-zh="├── tvm-calc.js ── TVM 金融计算器" data-en="├── tvm-calc.js ── TVM calculator">├── tvm-calc.js ── TVM 金融计算器</span>
+<span data-zh="├── questions-710.json ── 真题库" data-en="├── questions-710.json ── question bank">├── questions-710.json ── 真题库</span>
+<span data-zh="└── anki-export.js ── FSRS 卡包导出" data-en="└── anki-export.js ── FSRS deck export">└── anki-export.js ── FSRS 卡包导出</span></pre>
+    <p class="sec-body eng-note"><span data-zh="纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。" data-en="Pure Vanilla JS/HTML5 zero-dependency architecture.Fisher-Yates in-browser shuffle prevents position-memorization.TVM calculator with END/BGN modes.Paired with Anki FSRS decks.">纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
+    <p class="sec-body"><span data-zh="核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。" data-en="Official exams do not release past papers and commercial question banks are paywalled; questions are currently synthesized from textbook paradigms.">核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。</span></p>
+  </section>
+  <div class="tagrow"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Anki / FSRS</span><span class="tag">Mobile-Ready</span><span class="tag">金融</span><span class="tag">web</span></div>
+</article>
+
+<article class="card" id="p06" data-domains="ai linux tool">
+  <div class="card-top mono">
+    <span class="proj-num">PROJECT_06</span>
+    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
+    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/linux-whisper-input" target="_blank" rel="noopener">GitHub ↗</a></span>
+  </div>
+  <h2 class="card-title"><span data-zh="Linux Whisper Input" data-en="Linux Whisper Input">Linux Whisper Input</span></h2>
+  <p class="oneline"><span data-zh="Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。" data-en="Good system-wide voice input tools are rare on Linux, so I built one: press a hotkey, speak, and text appears anywhere — model stays resident locally, no network needed.">Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。</span></p>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
+    <p class="sec-body"><span data-zh="云端听写受制于网络往返延迟（&gt;1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。" data-en="Cloud dictation suffers from latency (&gt;1s) and privacy risks; traditional local scripts reload multi-GB models on every keypress, destroying focus.">云端听写受制于网络往返延迟（&gt;1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
+    <div class="flow"><span class="step"><span data-zh="按下快捷键" data-en="Hotkey">按下快捷键</span></span><span class="farrow">→</span><span class="step"><span data-zh="捕获音频" data-en="Capture audio">捕获音频</span></span><span class="farrow">→</span><span class="step"><span data-zh="VAD 裁切" data-en="VAD trim">VAD 裁切</span></span><span class="farrow">→</span><span class="step"><span data-zh="本地推理" data-en="Local inference">本地推理</span></span><span class="farrow">→</span><span class="step"><span data-zh="注入文本" data-en="Inject text">注入文本</span></span></div>
+    <p class="sec-body eng-note"><span data-zh="采用 Python + CTranslate2（large-v3-turbo float16）+ PipeWire 管道捕获音频流 + Wayland 虚拟键盘事件注入 + Systemd 用户级守护。模型权重与 CUDA 上下文永久驻留 GPU 显存，快捷键唤醒后直接推理，无需重新加载模型。（延迟数据待系统性实测）" data-en="Python daemon + CTranslate2 (large-v3-turbo float16) + PipeWire + Wayland virtual key injection.Model &amp; CUDA context permanently resident in GPU VRAM (latency pending systematic measurement).">采用 Python + CTranslate2（large-v3-turbo float16）+ PipeWire 管道捕获音频流 + Wayland 虚拟键盘事件注入 + Systemd 用户级守护。模型权重与 CUDA 上下文永久驻留 GPU 显存，快捷键唤醒后直接推理，无需重新加载模型。（延迟数据待系统性实测）</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
+    <pre class="tree"><span class="tdir">Linux Whisper Input/</span>
+<span data-zh="├── daemon.py ── 常驻监听" data-en="├── daemon.py ── resident listener">├── daemon.py ── 常驻监听</span>
+<span data-zh="├── vad.py ── 语音端点检测" data-en="├── vad.py ── voice activity detection">├── vad.py ── 语音端点检测</span>
+<span data-zh="├── infer.py ── CTranslate2 推理" data-en="├── infer.py ── inference">├── infer.py ── CTranslate2 推理</span>
+<span data-zh="└── wayland-inject.py ── 文本注入" data-en="└── wayland-inject.py ── text injection">└── wayland-inject.py ── 文本注入</span></pre>
+    <p class="sec-body eng-note"><span data-zh="在模型部署时，我重点优化显存占用和响应速度之间的平衡。通过 VAD 判断有效语音区间，减少无意义音频输入，同时将监听和推理拆分为独立进程，避免任务互相影响。" data-en="Strict balance between VRAM allocation and inference speed.Precise VAD trimming prevents trailing repetition artifacts; UDS isolates capture and inference.">在模型部署时，我重点优化显存占用和响应速度之间的平衡。通过 VAD 判断有效语音区间，减少无意义音频输入，同时将监听和推理拆分为独立进程，避免任务互相影响。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
+    <p class="sec-body"><span data-zh="硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。" data-en="Requires dedicated NVIDIA GPU VRAM; long-speech pause segmentation requires further threshold tuning.">硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。</span></p>
+  </section>
+  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">CTranslate2</span><span class="tag">Wayland</span><span class="tag">PipeWire</span><span class="tag">linux</span></div>
+</article>
+
+<article class="card" id="p07" data-domains="linux tool">
   <div class="card-top mono">
     <span class="proj-num">PROJECT_07</span>
+    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
+    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/desktop-timetracker" target="_blank" rel="noopener">GitHub ↗</a></span>
+  </div>
+  <h2 class="card-title"><span data-zh="Desktop TimeTracker (timetrack)" data-en="Desktop TimeTracker (timetrack)">Desktop TimeTracker (timetrack)</span></h2>
+  <p class="oneline"><span data-zh="自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间都去哪了。" data-en="Automatically tracks how long you spend in each window and generates a daily report, so you can see where your time actually goes.">自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间都去哪了。</span></p>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
+    <p class="sec-body"><span data-zh="KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。" data-en="Wayland security sandbox blocks legacy X11 window loggers; commercial alternatives rely on bloated Electron processes (&gt;300MB RAM) and cloud telemetry.">KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
+    <div class="flow"><span class="step"><span data-zh="监听窗口" data-en="Listen">监听窗口</span></span><span class="farrow">→</span><span class="step"><span data-zh="三级识别" data-en="3-level identify">三级识别</span></span><span class="farrow">→</span><span class="step"><span data-zh="本地存储" data-en="Local store">本地存储</span></span><span class="farrow">→</span><span class="step"><span data-zh="夜间日报" data-en="Nightly report">夜间日报</span></span></div>
+    <p class="sec-body eng-note"><span data-zh="项目尽量保持轻量化，没有引入额外 Python 第三方依赖。窗口识别采用三级匹配策略：1. 用户自定义规则优先；2. 使用系统应用元数据辅助判断；3. 最后根据进程信息进行兜底。" data-en="Pure Python 3 standard library + KWin internal scripts with zero external dependencies.3-tier progressive classification pipeline (user rules → XDG desktop metadata → process fallback).">项目尽量保持轻量化，没有引入额外 Python 第三方依赖。窗口识别采用三级匹配策略：1. 用户自定义规则优先；2. 使用系统应用元数据辅助判断；3. 最后根据进程信息进行兜底。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
+    <pre class="tree"><span class="tdir">Desktop TimeTracker (tim/</span>
+<span data-zh="├── kwin-script.js ── 窗口监听" data-en="├── kwin-script.js ── window listener">├── kwin-script.js ── 窗口监听</span>
+<span data-zh="├── identify.py ── 三级识别" data-en="├── identify.py ── 3-level identify">├── identify.py ── 三级识别</span>
+<span data-zh="├── store.db ── SQLite 本地存储" data-en="├── store.db ── local storage">├── store.db ── SQLite 本地存储</span>
+<span data-zh="└── report.py ── 日报生成" data-en="└── report.py ── report generator">└── report.py ── 日报生成</span></pre>
+    <p class="sec-body eng-note"><span data-zh="内存与 CPU 占用保持较低（具体数值待实测），全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。" data-en="Low memory and CPU footprint (exact figures pending measurement).Nightly automated generation of Markdown activity review reports.">内存与 CPU 占用保持较低（具体数值待实测），全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。</span></p>
+  </section>
+  <section class="sec">
+    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
+    <p class="sec-body"><span data-zh="深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。" data-en="Tightly integrated with KDE Plasma 6 Wayland; adapting to GNOME/Sway requires corresponding IPC bridges.">深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。</span></p>
+  </section>
+  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">KWin</span><span class="tag">D-Bus</span><span class="tag">SQLite</span><span class="tag">linux</span></div>
+</article>
+
+<article class="card" id="p08" data-domains="quant tool">
+  <div class="card-top mono">
+    <span class="proj-num">PROJECT_08</span>
     <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
     <span class="card-links"><a class="hlink" href="https://github.com/lyf266/finance-intel" target="_blank" rel="noopener">GitHub ↗</a></span>
   </div>
@@ -322,9 +354,9 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">TradingView</span><span class="tag">金融</span></div>
 </article>
 
-<article class="card" id="p08" data-domains="ai web">
+<article class="card" id="p09" data-domains="ai web">
   <div class="card-top mono">
-    <span class="proj-num">PROJECT_08</span>
+    <span class="proj-num">PROJECT_09</span>
     <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
     <span class="card-links"><a class="hlink" href="https://github.com/lyf266/obsidian-notebooklm-bridge" target="_blank" rel="noopener">GitHub ↗</a></span>
   </div>
@@ -354,9 +386,9 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">Python</span><span class="tag">Obsidian</span><span class="tag">REST API</span><span class="tag">agent</span></div>
 </article>
 
-<article class="card" id="p09" data-domains="linux tool">
+<article class="card" id="p10" data-domains="linux tool">
   <div class="card-top mono">
-    <span class="proj-num">PROJECT_09</span>
+    <span class="proj-num">PROJECT_10</span>
     <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
     <span class="card-links"></span>
   </div>
@@ -386,9 +418,9 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">小工具</span><span class="tag">V4L2</span><span class="tag">Lua</span><span class="tag">OBS</span><span class="tag">linux</span></div>
 </article>
 
-<article class="card" id="p10" data-domains="linux tool">
+<article class="card" id="p11" data-domains="linux tool">
   <div class="card-top mono">
-    <span class="proj-num">PROJECT_10</span>
+    <span class="proj-num">PROJECT_11</span>
     <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
     <span class="card-links"><a class="hlink" href="https://github.com/lyf266/wtf" target="_blank" rel="noopener">GitHub ↗</a></span>
   </div>
@@ -417,9 +449,9 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">小工具</span><span class="tag">Go</span><span class="tag">TUI</span><span class="tag">linux</span></div>
 </article>
 
-<article class="card" id="p11" data-domains="ai">
+<article class="card" id="p12" data-domains="ai">
   <div class="card-top mono">
-    <span class="proj-num">PROJECT_11</span>
+    <span class="proj-num">PROJECT_12</span>
     <span class="status archived"><span data-zh="已归档" data-en="ARCHIVED">已归档</span></span>
     <span class="card-links"></span>
   </div>
@@ -450,9 +482,9 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Telegram</span><span class="tag">Gemini</span><span class="tag">agent</span></div>
 </article>
 
-<article class="card" id="p12" data-domains="tool web">
+<article class="card" id="p13" data-domains="tool web">
   <div class="card-top mono">
-    <span class="proj-num">PROJECT_12</span>
+    <span class="proj-num">PROJECT_13</span>
     <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
     <span class="card-links"><a class="hlink" href="https://github.com/lyf266/vitals-skill" target="_blank" rel="noopener">GitHub ↗</a></span>
   </div>
@@ -482,14 +514,14 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">Obsidian</span><span class="tag">OCR</span></div>
 </article>
 
-<article class="card" id="p13" data-domains="linux net tool">
+<article class="card" id="p14" data-domains="linux net tool">
   <div class="card-top mono">
-    <span class="proj-num">PROJECT_13</span>
+    <span class="proj-num">PROJECT_14</span>
     <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
     <span class="card-links"><a class="hlink" href="https://github.com/lyf266/mc118-cloud-suite" target="_blank" rel="noopener">GitHub ↗</a></span>
   </div>
   <h2 class="card-title"><span data-zh="mc118-cloud-suite 部署与低带宽优化" data-en="mc118-cloud-suite Low-Bandwidth Cloud Deployment">mc118-cloud-suite 部署与低带宽优化</span></h2>
-  <p class="oneline"><span data-zh="开了个百人 Minecraft 服务器，优化网络配置后流量费降了 75%。" data-en="Ran a 100-player Minecraft server; network tuning cut bandwidth bills by 75%.">开了个百人 Minecraft 服务器，优化网络配置后流量费降了 75%。</span></p>
+  <p class="oneline"><span data-zh="开了个百人 Minecraft 服务器，针对低带宽环境做了网络优化。" data-en="Ran a 100-player Minecraft server, tuned for low-bandwidth environments.">开了个百人 Minecraft 服务器，针对低带宽环境做了网络优化。</span></p>
   <section class="sec">
     <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
     <p class="sec-body"><span data-zh="国内云主机免费套餐具有严格的 20GB/月 出网流量上限，传统 MC 服务器极度消耗带宽且公网暴露面临扫描渗透风险。" data-en="Strict 20GB/month egress bandwidth cap on cloud instances; public server exposure to scanning and brute-force attacks.">国内云主机免费套餐具有严格的 20GB/月 出网流量上限，传统 MC 服务器极度消耗带宽且公网暴露面临扫描渗透风险。</span></p>
@@ -497,7 +529,7 @@ footer a{color:var(--muted)}
   <section class="sec">
     <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
     <div class="flow"><span class="step"><span data-zh="安全硬化" data-en="Harden">安全硬化</span></span><span class="farrow">→</span><span class="step"><span data-zh="压缩带宽" data-en="Slim bandwidth">压缩带宽</span></span><span class="farrow">→</span><span class="step"><span data-zh="反向备份" data-en="Reverse backup">反向备份</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="在 1C2G 严苛资源下完成系统安全硬化与带宽极限压调，建立免私钥暴露的安全反向备份流程。" data-en="Hardened paper server setup on 1C2G cloud VPS achieving &gt;75% protocol bandwidth reduction and zero-trust reverse pull backups.">在 1C2G 严苛资源下完成系统安全硬化与带宽极限压调，建立免私钥暴露的安全反向备份流程。</span></p>
+    <p class="sec-body eng-note"><span data-zh="在 1C2G 严苛资源下完成系统安全硬化与带宽极限压调，建立免私钥暴露的安全反向备份流程。" data-en="Hardened paper server setup on 1C2G cloud VPS achieving significant bandwidth reduction (exact figures pending measurement) and zero-trust reverse pull backups.">在 1C2G 严苛资源下完成系统安全硬化与带宽极限压调，建立免私钥暴露的安全反向备份流程。</span></p>
   </section>
   <section class="sec">
     <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
@@ -505,7 +537,7 @@ footer a{color:var(--muted)}
 <span data-zh="├── paper-1.18.1 ── 服务端" data-en="├── paper-1.18.1 ── game server">├── paper-1.18.1 ── 服务端</span>
 <span data-zh="├── bbr+ufw ── 网络与防火墙" data-en="├── bbr+ufw ── net + firewall">├── bbr+ufw ── 网络与防火墙</span>
 <span data-zh="└── backup.sh ── 反向备份" data-en="└── backup.sh ── reverse backup">└── backup.sh ── 反向备份</span></pre>
-    <p class="sec-body eng-note"><span data-zh="Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 极限压降至 5GB~9GB（降幅超 75%）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。" data-en="Debian 12 + Docker + Paper 1.18.1 + BBR + UFW + Fail2ban.View distance=4, simulation=3, suppressed entity tracking (monsters 24, animals 16, players 32), &gt;75% bandwidth cut; zero-trust reverse SSH pull backup.">Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 极限压降至 5GB~9GB（降幅超 75%）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。</span></p>
+    <p class="sec-body eng-note"><span data-zh="Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 明显压降（具体降幅待实测记录）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。" data-en="Debian 12 + Docker + Paper 1.18.1 + BBR + UFW + Fail2ban.View distance=4, simulation=3, suppressed entity tracking (monsters 24, animals 16, players 32), bandwidth significantly reduced (exact figures pending measurement); zero-trust reverse SSH pull backup.">Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 明显压降（具体降幅待实测记录）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。</span></p>
   </section>
   <section class="sec">
     <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
@@ -514,14 +546,14 @@ footer a{color:var(--muted)}
   <div class="tagrow"><span class="tag">小工具</span><span class="tag">Docker</span><span class="tag">Debian</span><span class="tag">Bash</span><span class="tag">linux</span></div>
 </article>
 
-<article class="card" id="p14" data-domains="linux tool">
+<article class="card" id="p15" data-domains="linux tool">
   <div class="card-top mono">
-    <span class="proj-num">PROJECT_14</span>
-    <span class="status archived"><span data-zh="已归档" data-en="ARCHIVED">已归档</span></span>
+    <span class="proj-num">PROJECT_15</span>
+    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
     <span class="card-links"></span>
   </div>
   <h2 class="card-title"><span data-zh="课程录音批量切分与 Whisper 转录" data-en="Lecture Audio Batch Chunking &amp; Whisper Transcription">课程录音批量切分与 Whisper 转录</span></h2>
-  <p class="oneline"><span data-zh="上课录音丢进去，自动切分转成文字讲义归档。（已归档）" data-en="Drop in lecture recordings and get them auto-split, transcribed, and archived as study notes. (Archived)">上课录音丢进去，自动切分转成文字讲义归档。（已归档）</span></p>
+  <p class="oneline"><span data-zh="Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。" data-en="Good system-wide voice input tools are rare on Linux, so I built one: press a hotkey, speak, and text appears anywhere — model stays resident locally, no network needed.">Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。</span></p>
   <section class="sec">
     <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
     <p class="sec-body"><span data-zh="大学各专业课动辄数小时的随堂录音文件堆积，课后手动重听耗时过长，难以快速定位核心考点与板书笔记。" data-en="Hours of raw university lecture audio recordings accumulate without quick indexing of key lecture points.">大学各专业课动辄数小时的随堂录音文件堆积，课后手动重听耗时过长，难以快速定位核心考点与板书笔记。</span></p>
@@ -545,38 +577,6 @@ footer a{color:var(--muted)}
     <p class="sec-body"><span data-zh="随着通义千问等现代智能会议软件（具备实时高精度转写与分钟级核心要点提炼）的普及，该离线批处理脚本流水线目前已被现代云端速记工作流完全取代并归档（Archived）；当前重心已全面转移至结构化导出文本的本地知识库沉淀与 AI Agent 自动化管理。" data-en="With the emergence of modern intelligent meeting tools (providing real-time high-accuracy transcription and minute-level key summaries), this local offline batch pipeline has been formally superseded and archived; focus has transitioned to local vault archiving and AI Agent knowledge curation.">随着通义千问等现代智能会议软件（具备实时高精度转写与分钟级核心要点提炼）的普及，该离线批处理脚本流水线目前已被现代云端速记工作流完全取代并归档（Archived）；当前重心已全面转移至结构化导出文本的本地知识库沉淀与 AI Agent 自动化管理。</span></p>
   </section>
   <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">FFmpeg</span></div>
-</article>
-
-<article class="card" id="p15" data-domains="linux net">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_15</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Linux 工作站与 VPS 网络搭建 (工程积累)" data-en="Linux Workstation &amp; VPS Network Infrastructure">Linux 工作站与 VPS 网络搭建 (工程积累)</span></h2>
-  <p class="oneline"><span data-zh="自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。" data-en="Hand-built dev environment: Arch Linux workstation plus Debian cloud VPS, with DNS, CDN, and automated TLS certificates.">自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。" data-en="Transitioning from Windows to Linux; building a secure, uncensored, high-availability workstation and cloud environment.">脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="装机调优" data-en="Tune system">装机调优</span></span><span class="farrow">→</span><span class="step"><span data-zh="网络配置" data-en="Configure net">网络配置</span></span><span class="farrow">→</span><span class="step"><span data-zh="证书自动化" data-en="Auto TLS">证书自动化</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="将 Arch Linux 配置调校为主力系统，采购运维 Debian VPS；配置 Cloudflare 域名解析、CDN 与 Let&#x27;s Encrypt 证书自动化。" data-en="Tuned Arch Linux as daily driver; deployed Debian VPS with Cloudflare CDN/DNS and automated Let&#x27;s Encrypt SSL/TLS certificates.">将 Arch Linux 配置调校为主力系统，采购运维 Debian VPS；配置 Cloudflare 域名解析、CDN 与 Let&#x27;s Encrypt 证书自动化。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Linux Workstation &amp; VPS /</span>
-<span data-zh="├── arch/ ── Zen 内核调优" data-en="├── arch/ ── tuned kernel">├── arch/ ── Zen 内核调优</span>
-<span data-zh="├── debian-vps/ ── 云服务器" data-en="├── debian-vps/ ── cloud VPS">├── debian-vps/ ── 云服务器</span>
-<span data-zh="└── tls-auto/ ── 证书自动化" data-en="└── tls-auto/ ── cert automation">└── tls-auto/ ── 证书自动化</span></pre>
-    <p class="sec-body eng-note"><span data-zh="pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。" data-en="Arch Linux + Zen kernel + pacman/yay + UFW + end-to-end TLS encryption, establishing a rock-solid developer workstation.">pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。" data-en="Originally heavily reliant on manual CLI tuning and troubleshooting; now deeply automated via AI Agents for config generation, dependency resolution, validation scripting, and routine health checks, transforming low-level maintenance into high-leverage human-agent workflows.">早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">Arch Linux</span><span class="tag">Debian</span><span class="tag">Cloudflare</span><span class="tag">SSL/TLS</span><span class="tag">net</span></div>
 </article>
 
 <article class="card" id="p16" data-domains="net tool">
