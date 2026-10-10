@@ -1,781 +1,310 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Project Atlas — LYF Archive (neo)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>李耀飞 (F1are) — 作品集 / Portfolio</title>
 <style>
-:root{--bg:#0d1117;--panel:#161b22;--line:#30363d;--text:#e6edf3;--muted:#8b949e;
---accent:#58a6ff;--green:#3fb950;--yellow:#d29922;--star:#e3b341;--purple:#bc8cff}
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--text);margin:0;
-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
-line-height:1.7}
-.mono{font-family:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,Consolas,monospace}
-.wrap{max-width:880px;margin:0 auto;padding:24px 18px 80px}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:12px}
-.backlink{color:var(--muted);text-decoration:none;font-size:13px}
-.backlink:hover{color:var(--accent)}
-.langbtn{background:transparent;border:1px solid var(--line);color:var(--text);border-radius:6px;
-padding:6px 14px;cursor:pointer;font-size:13px}
-.langbtn:hover{border-color:var(--accent);color:var(--accent)}
-.hero{border:1px solid var(--line);border-radius:12px;padding:32px 28px;margin-bottom:24px;
-background:linear-gradient(180deg,#161b22,#0d1117)}
-.hero .kicker{font-size:12px;letter-spacing:3px;color:var(--accent)}
-.hero h1{font-size:34px;margin:10px 0 6px;letter-spacing:1px}
-.hero .sub{color:var(--muted);font-size:14px;margin:0 0 20px}
-.stats{display:flex;gap:28px;flex-wrap:wrap}
-.stat .n{font-size:26px;color:var(--text)}
-.stat .l{font-size:11px;color:var(--muted);letter-spacing:2px}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-.chip{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:20px;
-padding:5px 14px;font-size:13px;cursor:pointer}
-.chip:hover{border-color:var(--accent);color:var(--text)}
-.chip.on{background:var(--accent);border-color:var(--accent);color:#0d1117;font-weight:600}
-.countline{color:var(--muted);font-size:12px;margin:10px 0 0}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px;margin:20px 0}
-.card.hide{display:none}
-.card-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
-.proj-num{font-size:12px;color:var(--muted);letter-spacing:1px}
-.status{font-size:11px;padding:2px 10px;border-radius:20px;border:1px solid}
-.status.active{color:var(--green);border-color:var(--green)}
-.status.archived{color:var(--muted);border-color:var(--muted)}
-.status.featured{color:var(--star);border-color:var(--star)}
-.card-links{margin-left:auto;display:flex;gap:10px}
-.hlink{color:var(--muted);text-decoration:none;font-size:12px;border:1px solid var(--line);
-border-radius:4px;padding:2px 8px}
-.hlink:hover{color:var(--accent);border-color:var(--accent)}
-.card-title{font-size:20px;margin:6px 0 4px}
-.oneline{color:var(--text);font-size:14.5px;margin:0 0 6px}
-.sec{margin-top:16px;border-top:1px dashed var(--line);padding-top:12px}
-.seclab{font-size:11px;letter-spacing:3px;color:var(--accent);margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.seclab .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
-.sec-body{font-size:14px;color:var(--text);margin:0}
-.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.step{background:#0d1117;border:1px solid var(--accent);border-radius:6px;padding:5px 12px;font-size:13px}
-.farrow{color:var(--accent);font-weight:700}
-.tree{background:#0d1117;border:1px solid var(--line);border-radius:6px;padding:12px 14px;
-font-size:12.5px;overflow-x:auto;margin:0;line-height:1.8;color:var(--text)}
-.tree .tdir{color:var(--purple)}
-.eng-note{margin-top:10px;font-size:13.5px;color:var(--muted)}
-.eng-note:hover{color:var(--text)}
-.tagrow{margin-top:14px;display:flex;gap:6px;flex-wrap:wrap}
-.tag{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:1px 8px}
-footer{margin-top:48px;color:var(--muted);font-size:12px;text-align:center}
-footer a{color:var(--muted)}
-@media(max-width:640px){.hero h1{font-size:26px}.hero{padding:22px 18px}.card{padding:16px}}
+  :root{
+    --bg:#f7f7f4; --paper:#fff; --paper-2:#f0f1ed; --ink:#19211e; --muted:#66716b;
+    --line:#dfe3dc; --line-strong:#c6cec4; --accent:#245c4b; --accent-hi:#d7f078;
+    --accent-soft:#e8efe9; --code:#e9ede8; --shadow:0 18px 55px rgba(28,42,33,.08);
+    --serif:Georgia,"Times New Roman",serif; --sans:Inter,"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace; --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer}
+  button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #7a9c32;outline-offset:3px}
+  svg{display:block}
+  .icon{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .wrap{width:min(1160px,calc(100% - 44px));margin-inline:auto}
+  .topbar{height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:750;letter-spacing:-.04em}
+  .brand-mark{width:35px;height:35px;border-radius:11px;background:var(--accent);color:white;display:grid;place-items:center;font-size:14px;font-family:var(--mono);letter-spacing:-.08em}
+  .brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.17em;font-weight:650;margin-top:-2px}
+  .nav{display:flex;gap:24px;align-items:center;color:var(--muted);font-size:13px}
+  .nav a:hover{color:var(--accent)}
+  .actions{display:flex;align-items:center;gap:8px}
+  .icon-btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);width:37px;height:37px;border-radius:50%;display:grid;place-items:center}
+  .lang-btn{height:37px;padding:0 12px;border:1px solid var(--line);background:var(--paper);border-radius:99px;color:var(--ink);font-size:12px;font-weight:700}
+  .hero{padding:83px 0 68px;display:grid;grid-template-columns:minmax(0,1.07fr) minmax(320px,.93fr);align-items:center;gap:58px}
+  .eyebrow{display:flex;align-items:center;gap:10px;text-transform:uppercase;font:700 11px var(--mono);letter-spacing:.14em;color:var(--accent);margin-bottom:20px}
+  .eyebrow:before{content:"";width:25px;height:1px;background:currentColor}
+  h1,h2,h3,p{margin-top:0}
+  h1{font-size:clamp(42px,5.5vw,72px);line-height:1.09;letter-spacing:-.065em;font-weight:760;margin-bottom:23px;max-width:720px}
+  h1 .serif{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:-.07em;color:var(--accent)}
+  .hero-copy{font-size:17px;line-height:1.85;color:var(--muted);max-width:590px;margin-bottom:25px}
+  .hero-copy strong{color:var(--ink);font-weight:650}
+  .pills{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 30px}
+  .pill{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:rgba(255,255,255,.55);padding:7px 11px;border-radius:99px;font-size:12px;color:var(--muted)}
+  .pill .dot{width:6px;height:6px;background:var(--accent);border-radius:50%}
+  .cta-row{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 16px;border-radius:11px;border:1px solid transparent;font-size:13px;font-weight:700;transition:transform .18s,background .18s,border-color .18s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-secondary{background:var(--paper);border-color:var(--line);color:var(--ink)}
+  .hero-art{position:relative;border:1px solid var(--line);border-radius:26px;background:var(--paper);padding:20px;box-shadow:var(--shadow);min-height:420px;overflow:hidden}
+  .art-head{display:flex;justify-content:space-between;align-items:center;font:11px var(--mono);color:var(--muted);padding:0 2px 17px;border-bottom:1px solid var(--line)}
+  .art-status{display:flex;align-items:center;gap:6px}.art-status:before{content:"";width:6px;height:6px;border-radius:50%;background:#58966e}
+  .art-canvas{position:relative;height:330px;padding:22px 6px 10px}
+  .art-grid{position:absolute;inset:16px 0 0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);background-size:36px 36px;opacity:.48;mask-image:linear-gradient(black,transparent 95%)}
+  .node{position:absolute;background:var(--paper);border:1px solid var(--line-strong);border-radius:13px;padding:12px 13px;box-shadow:0 7px 20px rgba(20,35,27,.06);z-index:2}
+  .node-top{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:750}
+  .node .mini{width:30px;height:30px;border-radius:9px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+  .node p{font-size:10px;line-height:1.45;color:var(--muted);margin:7px 0 0 39px}
+  .node-a{top:32px;left:7%;width:47%}.node-b{top:125px;right:2%;width:49%}.node-c{top:220px;left:5%;width:48%}
+  .connector{position:absolute;z-index:1;border-color:#89a58e;border-style:dashed;border-width:0 0 1.5px 1.5px}
+  .conn-a{left:39%;top:91px;width:24%;height:39%;border-radius:0 0 0 15px;transform:skewY(-14deg)}
+  .conn-b{right:28%;top:190px;width:26%;height:27%;border-width:1.5px 1.5px 0 0;border-radius:0 12px 0 0;transform:skewY(13deg)}
+  .art-stamp{position:absolute;right:18px;bottom:8px;transform:rotate(-7deg);border:1px solid var(--accent);color:var(--accent);border-radius:50%;width:76px;height:76px;display:grid;place-items:center;text-align:center;font:700 9px/1.4 var(--mono);letter-spacing:.08em;background:var(--accent-soft)}
+  .section{padding:58px 0}
+  .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:25px}
+  .section-kicker{font:700 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  h2{font-size:clamp(28px,3.4vw,42px);line-height:1.15;letter-spacing:-.055em;margin-bottom:0}
+  .section-note{max-width:410px;font-size:13px;color:var(--muted);margin:0}
+  .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+  .project-card{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;min-width:0}
+  .project-card:hover{transform:translateY(-3px);border-color:var(--line-strong);box-shadow:0 15px 38px rgba(28,42,33,.06)}
+  .project-visual{height:210px;background:var(--paper-2);padding:18px 22px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .visual-label{font:10px var(--mono);letter-spacing:.13em;color:var(--muted);text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+  .visual-flow{display:flex;align-items:center;justify-content:center;gap:12px;height:145px}
+  .flow-unit{width:84px;height:83px;border:1px solid var(--line-strong);border-radius:16px;background:var(--paper);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;box-shadow:0 5px 14px rgba(0,0,0,.025)}
+  .flow-unit .icon{width:24px;height:24px;color:var(--accent)}
+  .flow-unit span{font-size:10px;font-weight:650;color:var(--muted);white-space:nowrap}
+  .flow-arrow{color:#83978a;width:17px;height:17px}
+  .visual-index{position:absolute;right:19px;bottom:8px;font:italic 38px var(--serif);color:rgba(36,92,75,.14)}
+  .card-body{padding:22px 24px 21px}
+  .card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+  .category{font:700 10px var(--mono);letter-spacing:.11em;color:var(--accent);text-transform:uppercase}
+  .status{font-size:10px;padding:4px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-weight:700}
+  .card-body h3{font-size:22px;letter-spacing:-.045em;line-height:1.25;margin-bottom:9px}
+  .card-body p{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:16px;min-height:45px}
+  .techs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+  .tech{font:10px var(--mono);color:var(--muted);background:var(--paper-2);padding:5px 7px;border-radius:6px}
+  .text-link{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:750;color:var(--accent);border:0;background:transparent;padding:0}
+  .text-link:hover{text-decoration:underline;text-underline-offset:4px}
+  .work-section{background:#e9eee8;border-block:1px solid #dce4da}
+  .work-section .section{padding:60px 0}
+  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:31px}
+  .step{padding:0 21px 0 0;position:relative}
+  .step:not(:last-child):after{content:"";position:absolute;left:51px;right:17px;top:24px;border-top:1px dashed #a7b9a7}
+  .step-head{display:flex;align-items:center;gap:13px;position:relative;z-index:1;margin-bottom:15px}
+  .step-no{width:49px;height:49px;border-radius:15px;background:var(--paper);border:1px solid #d3ded1;display:grid;place-items:center;color:var(--accent)}
+  .step-no .icon{width:22px;height:22px}
+  .step-num{font:11px var(--mono);color:#718174}
+  .step h3{font-size:16px;margin-bottom:7px;letter-spacing:-.02em}
+  .step p{font-size:12px;line-height:1.7;color:#5e6d61;margin-bottom:0;max-width:220px}
+  .archive{padding-top:64px}
+  .filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:19px}
+  .filter{border:1px solid var(--line);background:transparent;border-radius:99px;padding:7px 12px;color:var(--muted);font-size:12px}
+  .filter:hover,.filter.active{border-color:var(--accent);background:var(--accent);color:white}
+  .archive-list{border-top:1px solid var(--line)}
+  .archive-item{display:grid;grid-template-columns:55px minmax(0,1fr) 120px 110px;align-items:center;gap:17px;padding:17px 4px;border-bottom:1px solid var(--line);transition:background .15s}
+  .archive-item:hover{background:rgba(255,255,255,.4)}
+  .archive-item[hidden]{display:none}
+  .archive-index{font:12px var(--mono);color:#9aa49b}
+  .archive-title{font-weight:750;font-size:14px;letter-spacing:-.02em;margin-bottom:3px}
+  .archive-desc{font-size:12px;color:var(--muted);line-height:1.55}
+  .archive-type{font:10px var(--mono);color:var(--muted);text-align:left}
+  .archive-link{justify-self:end;font-size:11px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:5px}
+  .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:start;border-top:1px solid var(--line);padding-top:54px}
+  .about-label{font:700 11px var(--mono);letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:13px}
+  .about h2{max-width:360px}
+  .about-copy{font-size:14px;color:var(--muted);line-height:1.9;max-width:680px}
+  .about-copy strong{color:var(--ink)}
+  .about-points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:23px}
+  .about-point{border:1px solid var(--line);background:var(--paper);border-radius:13px;padding:14px;display:flex;gap:11px;align-items:flex-start}
+  .about-point .icon{color:var(--accent);margin-top:2px}
+  .about-point strong{font-size:12px;display:block;margin-bottom:2px}
+  .about-point span{font-size:11px;color:var(--muted);display:block;line-height:1.5}
+  .contact{margin-top:64px;margin-bottom:35px;background:var(--accent);color:#fff;border-radius:25px;padding:34px 38px;display:flex;justify-content:space-between;align-items:center;gap:24px;overflow:hidden;position:relative}
+  .contact:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(255,255,255,.15);border-radius:50%;right:20%;top:-180px;box-shadow:0 0 0 25px rgba(255,255,255,.035),0 0 0 50px rgba(255,255,255,.025)}
+  .contact h2{font-size:29px;max-width:530px;margin-bottom:7px;position:relative;z-index:1}
+  .contact p{font-size:13px;color:rgba(255,255,255,.72);margin-bottom:0;position:relative;z-index:1}
+  .contact .btn{background:var(--accent-hi);color:#1e3325;position:relative;z-index:1;white-space:nowrap}
+  footer{display:flex;justify-content:space-between;gap:20px;padding:0 0 32px;color:var(--muted);font:11px var(--mono)}
+  .modal{position:fixed;inset:0;display:none;z-index:20;background:rgba(18,29,23,.56);backdrop-filter:blur(7px);padding:22px;overflow:auto}
+  .modal.open{display:flex;align-items:flex-start;justify-content:center}
+  .modal-panel{width:min(850px,100%);margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:23px;box-shadow:0 28px 100px rgba(0,0,0,.25);overflow:hidden}
+  .modal-top{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 28px;border-bottom:1px solid var(--line)}
+  .modal-eyebrow{font:700 10px var(--mono);letter-spacing:.13em;color:var(--accent);margin-bottom:7px}
+  .modal-top h2{font-size:29px}
+  .modal-close{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line);background:var(--paper-2);border-radius:50%;color:var(--ink)}
+  .modal-content{padding:26px 28px 30px}
+  .modal-intro{color:var(--muted);font-size:14px;max-width:680px;margin-bottom:23px}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+  .case-box{border:1px solid var(--line);border-radius:14px;padding:17px;background:var(--paper)}
+  .case-box.full{grid-column:1/-1}
+  .case-box h3{font-size:12px;color:var(--accent);font-weight:800;margin-bottom:9px;display:flex;align-items:center;gap:8px}
+  .case-box p,.case-box li{font-size:12px;line-height:1.8;color:var(--muted)}
+  .case-box p{margin-bottom:0}.case-box ul{padding-left:18px;margin:0}
+  .case-flow{display:flex;align-items:center;justify-content:space-around;gap:10px;flex-wrap:wrap;margin-top:13px}
+  .case-flow span{display:flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--paper-2);padding:8px 11px;border-radius:9px;font-size:11px;font-weight:700}
+  .case-flow .icon{width:15px;height:15px;color:var(--accent)}
+  .honesty-note{margin-top:17px;padding:13px 15px;border-left:3px solid #b3bf78;background:var(--paper-2);font-size:11px;color:var(--muted);line-height:1.7}
+  .handoff{margin:60px 0 40px;border:1px dashed var(--line-strong);border-radius:15px;padding:0 18px;background:rgba(255,255,255,.36)}
+  .handoff summary{padding:16px 0;font-weight:750;font-size:13px;cursor:pointer}
+  .handoff-content{padding:0 0 20px;color:var(--muted);font-size:12px;line-height:1.8}
+  .handoff-content h3{font-size:13px;color:var(--ink);margin:18px 0 5px}
+  .handoff-content ul{padding-left:19px;margin-top:5px}
+  .handoff-content code{font-family:var(--mono);background:var(--code);padding:2px 5px;border-radius:4px;color:var(--ink)}
+  body.dark{--bg:#111713;--paper:#171f19;--paper-2:#202a22;--ink:#ecf1ea;--muted:#a3afa4;--line:#2b392e;--line-strong:#405244;--accent:#a6d6ae;--accent-hi:#d7f078;--accent-soft:#263a2b;--code:#263329;--shadow:0 18px 55px rgba(0,0,0,.18)}
+  body.dark .brand-mark{background:#a6d6ae;color:#142017} body.dark .btn-primary{background:#a6d6ae;color:#142017}
+  body.dark .hero-art,body.dark .project-card,body.dark .about-point,body.dark .node,body.dark .flow-unit{box-shadow:none}
+  body.dark .work-section{background:#1b261e;border-color:#2b392e} body.dark .step p{color:#a3afa4}
+  body.dark .pill{background:rgba(255,255,255,.025)} body.dark .contact{background:#294b36}
+  body.dark .archive-item:hover{background:rgba(255,255,255,.025)} body.dark .modal{background:rgba(0,0,0,.7)}
+  @media(max-width:850px){
+    .nav{display:none}.hero{grid-template-columns:1fr;gap:35px;padding-top:58px}.hero-art{min-height:400px}.art-canvas{height:310px}
+    .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 12px}.step:not(:last-child):after{display:none}
+    .archive-item{grid-template-columns:36px minmax(0,1fr) 95px;gap:12px}.archive-link{display:none}.about{grid-template-columns:1fr;gap:22px}
+  }
+  @media(max-width:600px){
+    .wrap{width:min(100% - 28px,1160px)}.topbar{height:65px}.brand{font-size:14px}.brand-mark{width:32px;height:32px}.actions{gap:5px}.icon-btn{width:34px;height:34px}.lang-btn{height:34px;padding:0 10px}
+    .hero{padding:48px 0 40px;gap:29px}h1{font-size:clamp(40px,12vw,58px)}.hero-copy{font-size:15px}.hero-art{padding:15px;min-height:360px}.art-canvas{height:280px}.node-a{left:1%;width:51%}.node-b{right:0;width:53%}.node-c{left:1%;width:51%}.node{padding:10px}.node-top{font-size:10px}.node .mini{width:26px;height:26px}.node p{font-size:9px;margin-left:35px}
+    .section{padding:43px 0}.section-head{align-items:flex-start;flex-direction:column;gap:12px}.section-note{max-width:none}.project-grid{grid-template-columns:1fr}.project-visual{height:190px}.card-body{padding:19px}.card-body p{min-height:0}
+    .steps{grid-template-columns:1fr 1fr;gap:23px 14px}.step{padding-right:0}.step-head{gap:9px}.step-no{width:42px;height:42px;border-radius:12px}.step h3{font-size:14px}.step p{font-size:11px}
+    .archive{padding-top:43px}.archive-item{grid-template-columns:28px minmax(0,1fr);gap:10px;padding:15px 1px}.archive-type{display:none}.archive-title{font-size:13px}.archive-desc{font-size:11px}
+    .about{padding-top:38px}.about-points{grid-template-columns:1fr}.contact{margin-top:42px;padding:27px 22px;align-items:flex-start;flex-direction:column}.contact h2{font-size:25px}.contact:after{right:-60px}
+    footer{flex-direction:column;gap:7px}.modal{padding:9px}.modal-top{padding:18px 18px}.modal-top h2{font-size:24px}.modal-content{padding:18px}.case-grid{grid-template-columns:1fr}.case-box.full{grid-column:auto}.case-flow{justify-content:flex-start}.handoff{margin-top:42px;padding-inline:13px}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+  @media print{.topbar .actions,.nav,.cta-row,.text-link,.filter-row,.contact,.handoff,.modal{display:none!important}body{background:white;color:#111}.wrap{width:100%}.hero{padding:30px 0}.project-card{break-inside:avoid;box-shadow:none}.project-grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="topbar">
-    <a class="backlink mono" href="../">← lyf266.github.io</a>
-    <button class="langbtn mono" id="langBtn">EN / 英文</button>
-  </div>
-  <header class="hero">
-    <div class="kicker mono">NEO · EXPERIMENTAL REDESIGN</div>
-    <h1 class="mono">LYF PROJECT ATLAS</h1>
-    <p class="sub"><span data-zh="20 个项目的技术档案库 —— 每个项目：问题 → 方法 → 工程 → 结果。不再是 README 墙。" data-en="Technical archive of 20 projects — each one: problem → approach → engineering → result. Not a README wall.">20 个项目的技术档案库 —— 每个项目：问题 → 方法 → 工程 → 结果。不再是 README 墙。</span></p>
-    <div class="stats mono">
-      <div class="stat"><div class="n">20</div><div class="l"><span data-zh="项目" data-en="PROJECTS">项目</span></div></div>
-      <div class="stat"><div class="n">06</div><div class="l"><span data-zh="技术领域" data-en="DOMAINS">技术领域</span></div></div>
-      <div class="stat"><div class="n">04</div><div class="l"><span data-zh="精选" data-en="FEATURED">精选</span></div></div>
-      <div class="stat"><div class="n">02</div><div class="l"><span data-zh="语言" data-en="LANGUAGES">语言</span></div></div>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14m-6-6 6 6 6-6"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"/></symbol>
+  <symbol id="i-rss" viewBox="0 0 24 24"><path d="M5 19a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16M7 12h10m-7 7h4"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 18V5a3 3 0 0 0-5.7-1.3A4 4 0 0 0 4 11a4 4 0 0 0 3 6.8M12 18V5a3 3 0 0 1 5.7-1.3A4 4 0 0 1 20 11a4 4 0 0 1-3 6.8M12 18v3M8 13a3 3 0 0 0 3 3m5-8a3 3 0 0 1-3 3"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5m-4 0h8"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M14 5h-4l-2 3H4a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-4Z"/><circle cx="12" cy="13" r="3"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M8 21h8m-4-5v5"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 17-5-5 5-5m8 10 5-5-5-5m-3-7-2 20"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+  <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M2 14h4m4-6h4m4 8h4"/></symbol>
+  <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="3" r="2"/><path d="M6 5v12a4 4 0 0 0 4 4h2M6 9h8a4 4 0 0 1 4 4v8"/><circle cx="18" cy="21" r="2"/><circle cx="18" cy="13" r="2"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a5 5 0 0 0-6.9 6.9L3 18l3 3 4.8-4.8a5 5 0 0 0 6.9-6.9L14 13l-3-3Z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M8 15l4-4 4 3 5-7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="m18 6-12 12M6 6l12 12"/></symbol>
+  <symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v11h14V9m-9 4h4"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></symbol>
+</svg>
+<header class="wrap topbar">
+  <a class="brand" href="#top" aria-label="F1are Portfolio 首页"><span class="brand-mark">F.</span><span>F1are <small>PORTFOLIO / 2026</small></span></a>
+  <nav class="nav" aria-label="主导航"><a href="#work" data-zh="精选项目" data-en="Selected work">精选项目</a><a href="#process" data-zh="工作方式" data-en="How I work">工作方式</a><a href="#archive" data-zh="项目档案" data-en="Archive">项目档案</a><a href="#about" data-zh="关于我" data-en="About">关于我</a></nav>
+  <div class="actions"><button class="icon-btn" id="themeToggle" aria-label="切换深色模式" title="切换深色模式"><svg class="icon"><use href="#i-moon"/></svg></button><button class="lang-btn" id="langToggle" aria-label="Switch language">EN / 中</button></div>
+</header>
+<main id="top">
+  <section class="wrap hero">
+    <div>
+      <div class="eyebrow" data-zh="个人作品集 · 问题驱动的构建" data-en="Personal portfolio · Problem-driven building">个人作品集 · 问题驱动的构建</div>
+      <h1 data-zh="把复杂的问题，变成可以运行的 <span class='serif'>工具。</span>" data-en="Turning complex problems into <span class='serif'>working tools.</span>">把复杂的问题，变成可以运行的 <span class="serif">工具。</span></h1>
+      <p class="hero-copy" data-zh="关注 AI 工作流、信息自动化与 Linux 工具。从真实场景出发，把模糊需求拆成清晰流程，再通过实现、测试和迭代验证它是否真的有用。" data-en="I explore AI workflows, information automation and Linux tools. Starting from real scenarios, I turn fuzzy needs into clear flows, then build, test and iterate to see whether they actually help.">关注 AI 工作流、信息自动化与 Linux 工具。从真实场景出发，把模糊需求拆成清晰流程，再通过实现、测试和迭代验证它是否真的有用。</p>
+      <div class="pills"><span class="pill"><span class="dot"></span>AI workflows</span><span class="pill"><span class="dot"></span>Automation</span><span class="pill"><span class="dot"></span>Linux tools</span></div>
+      <div class="cta-row"><a class="btn btn-primary" href="#work"><span data-zh="查看精选项目" data-en="Explore selected work">查看精选项目</span><svg class="icon"><use href="#i-arrow-right"/></svg></a><a class="btn btn-secondary" href="https://github.com/lyf266" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-git"/></svg>GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
     </div>
-  </header>
-  <div class="filters"><button class="chip mono on" data-domain="all"><span data-zh="全部" data-en="All">全部</span></button>
-<button class="chip mono" data-domain="ai"><span data-zh="AI / Agent" data-en="AI / Agent">AI / Agent</span></button>
-<button class="chip mono" data-domain="linux"><span data-zh="Linux 系统" data-en="Linux">Linux 系统</span></button>
-<button class="chip mono" data-domain="quant"><span data-zh="量化金融" data-en="Quant Finance">量化金融</span></button>
-<button class="chip mono" data-domain="web"><span data-zh="Web 应用" data-en="Web Apps">Web 应用</span></button>
-<button class="chip mono" data-domain="net"><span data-zh="网络基建" data-en="Network &amp; Infra">网络基建</span></button>
-<button class="chip mono" data-domain="tool"><span data-zh="小工具" data-en="Tools">小工具</span></button></div>
-  <p class="countline mono" id="countLine"></p>
-  <main>
-<article class="card" id="p01" data-domains="quant web">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_01</span>
-    <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
-    <span class="card-links"><a class="hlink" href="https://lyf266.github.io/bank-exam-2026-toolkit/" target="_blank" rel="noopener"><span data-zh="演示 ↗" data-en="Demo ↗">演示 ↗</span></a><a class="hlink" href="https://github.com/lyf266/bank-exam-2026-toolkit" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="2026 银行从业全真机考模拟系统 &amp; Anki 智能备考工具包" data-en="Bank Exam 2026 ATA Simulator &amp; Anki Intelligent Toolkit">2026 银行从业全真机考模拟系统 &amp; Anki 智能备考工具包</span></h2>
-  <p class="oneline"><span data-zh="做了个和真实考场一模一样的银行从业刷题网站：710 道真题，手机电脑都能用，做错的题自动生成 Anki 记忆卡片。" data-en="A web-based mock exam replicating the real banking certification interface: 710 real questions, mobile-friendly, with wrong answers auto-converted into Anki flashcards.">做了个和真实考场一模一样的银行从业刷题网站：710 道真题，手机电脑都能用，做错的题自动生成 Anki 记忆卡片。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。" data-en="Preparing for banking certificates was hindered by ad-heavy tools with outdated regulations and no true-to-exam ATA interface simulation.">备考初级《法律法规》与《个人理财》时，市面刷题软件充斥商业广告，题库存在过时监管条文（旧银保监会口径），且无法还原真实考场的 120 分钟倒计时、ATA 官方蓝调题号矩阵与专用计算器交互。</span></p>
+    <div class="hero-art" aria-label="从问题到工具的流程示意">
+      <div class="art-head"><span>BUILDING SYSTEMS / 01—04</span><span class="art-status" data-zh="持续迭代" data-en="Iterating">持续迭代</span></div>
+      <div class="art-canvas"><div class="art-grid"></div><div class="connector conn-a"></div><div class="connector conn-b"></div>
+        <div class="node node-a"><div class="node-top"><span class="mini"><svg class="icon"><use href="#i-search"/></svg></span><span data-zh="发现问题" data-en="Find the problem">发现问题</span></div><p data-zh="用户、场景、约束" data-en="People · Context · Constraints">用户、场景、约束</p></div>
+        <div class="node node-b"><div class="node-top"><span class="mini"><svg class="icon"><use href="#i-git"/></svg></span><span data-zh="设计流程" data-en="Design the flow">设计流程</span></div><p data-zh="输入、规则、异常路径" data-en="Inputs · Rules · Edge cases">输入、规则、异常路径</p></div>
+        <div class="node node-c"><div class="node-top"><span class="mini"><svg class="icon"><use href="#i-code"/></svg></span><span data-zh="构建与验证" data-en="Build & validate">构建与验证</span></div><p data-zh="实现、测试、复盘" data-en="Build · Test · Iterate">实现、测试、复盘</p></div>
+        <div class="art-stamp">MAKE<br>IT<br>USEFUL</div>
+      </div>
+    </div>
   </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="清洗题库" data-en="Clean bank">清洗题库</span></span><span class="farrow">→</span><span class="step"><span data-zh="校准监管口径" data-en="Calibrate rules">校准监管口径</span></span><span class="farrow">→</span><span class="step"><span data-zh="仿真机考" data-en="Simulate exam">仿真机考</span></span><span class="farrow">→</span><span class="step"><span data-zh="错题进 Anki" data-en="Wrong → Anki">错题进 Anki</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。" data-en="Set 3 goals: 1) End-to-end zero-dependency native JS exam &amp; TVM calculator generation; 2) Clean 710+ questions to 2026 NFRA &amp; M1 regulatory standards; 3) Standardize KaTeX 4-step math derivations.">设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Bank Exam 2026 ATA Simul/</span>
-<span data-zh="├── exam.html ── ATA 机考界面" data-en="├── exam.html ── ATA exam UI">├── exam.html ── ATA 机考界面</span>
-<span data-zh="├── tvm-calc.js ── TVM 金融计算器" data-en="├── tvm-calc.js ── TVM calculator">├── tvm-calc.js ── TVM 金融计算器</span>
-<span data-zh="├── questions-710.json ── 真题库" data-en="├── questions-710.json ── question bank">├── questions-710.json ── 真题库</span>
-<span data-zh="└── anki-export.js ── FSRS 卡包导出" data-en="└── anki-export.js ── FSRS deck export">└── anki-export.js ── FSRS 卡包导出</span></pre>
-    <p class="sec-body eng-note"><span data-zh="纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。" data-en="Pure Vanilla JS/HTML5 zero-dependency architecture.Fisher-Yates in-browser shuffle prevents position-memorization.TVM calculator with END/BGN modes.Paired with Anki FSRS decks.">纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。" data-en="Official exams do not release past papers and commercial question banks are paywalled; questions are currently synthesized from textbook paradigms.">核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">Anki / FSRS</span><span class="tag">Mobile-Ready</span><span class="tag">金融</span><span class="tag">web</span></div>
-</article>
 
-<article class="card" id="p02" data-domains="ai linux tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_02</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/linux-whisper-input" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Linux Whisper Input" data-en="Linux Whisper Input">Linux Whisper Input</span></h2>
-  <p class="oneline"><span data-zh="Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型跑在本地，延迟约 300ms。" data-en="Good system-wide voice input tools are rare on Linux, so I built one: press a hotkey, speak, and text appears anywhere — local Whisper model, ~300ms latency.">Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型跑在本地，延迟约 300ms。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="云端听写受制于网络往返延迟（&gt;1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。" data-en="Cloud dictation suffers from latency (&gt;1s) and privacy risks; traditional local scripts reload multi-GB models on every keypress, destroying focus.">云端听写受制于网络往返延迟（&gt;1s）与隐私泄露隐患；传统本地脚本每次按快捷键都要冷启动加载数 GB 模型，卡顿数秒严重打断输入心流。</span></p>
+  <section class="wrap section" id="work">
+    <div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2 data-zh="精选项目" data-en="Selected work">精选项目</h2></div><p class="section-note" data-zh="用图示先说明项目如何工作，再展开阅读问题、实现方式与验证结果。以下是视觉结构示例，实际数据应以项目测试为准。" data-en="Show how each project works at a glance, then explore the problem, implementation and evidence. This is a layout concept; real results should come from project tests.">用图示先说明项目如何工作，再展开阅读问题、实现方式与验证结果。以下是视觉结构示例，实际数据应以项目测试为准。</p></div>
+    <div class="project-grid">
+      <article class="project-card">
+        <div class="project-visual"><div class="visual-label"><span>AI WORKFLOW</span><span>01 / POI</span></div><div class="visual-flow"><div class="flow-unit"><svg class="icon"><use href="#i-rss"/></svg><span data-zh="信息源" data-en="Sources">信息源</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-filter"/></svg><span data-zh="筛选评分" data-en="Scoring">筛选评分</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-send"/></svg><span data-zh="机会推送" data-en="Alerts">机会推送</span></div></div><div class="visual-index">01</div></div>
+        <div class="card-body"><div class="card-meta"><span class="category">AI / AUTOMATION</span><span class="status" data-zh="个人项目" data-en="Personal project">个人项目</span></div><h3>Personal Opportunity Intelligence</h3><p data-zh="从多个信息源采集机会，按规则初筛并推送到 Telegram 和 Notion，减少反复搜索与手动整理。" data-en="Collect opportunities from multiple feeds, apply rule-based scoring, and send selected items to Telegram and Notion.">从多个信息源采集机会，按规则初筛并推送到 Telegram 和 Notion，减少反复搜索与手动整理。</p><div class="techs"><span class="tech">Python</span><span class="tech">RSS / Atom</span><span class="tech">Telegram</span><span class="tech">Notion API</span></div><button class="text-link case-open" data-case="poi"><span data-zh="查看项目案例" data-en="View case study">查看项目案例</span><svg class="icon"><use href="#i-arrow-right"/></svg></button> <a class="text-link" href="https://github.com/lyf266/personal-opportunity-agent" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
+      </article>
+      <article class="project-card">
+        <div class="project-visual"><div class="visual-label"><span>LEARNING TOOL</span><span>02 / EXAM</span></div><div class="visual-flow"><div class="flow-unit"><svg class="icon"><use href="#i-book"/></svg><span data-zh="模拟答题" data-en="Practice">模拟答题</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-check"/></svg><span data-zh="自动判分" data-en="Grading">自动判分</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-brain"/></svg><span data-zh="错题复习" data-en="Review">错题复习</span></div></div><div class="visual-index">02</div></div>
+        <div class="card-body"><div class="card-meta"><span class="category">WEB / LEARNING</span><span class="status" data-zh="可交互 Demo" data-en="Interactive demo">可交互 Demo</span></div><h3>银行考试模拟系统</h3><p data-zh="整合计时答题、题号导航、自动判分与金融计算器，并支持将错题整理为 Anki 复习卡。题目来源应清楚标注。" data-en="Combines timed practice, question navigation, grading and financial calculators, with Anki export for review. Question sources should be clearly labeled.">整合计时答题、题号导航、自动判分与金融计算器，并支持将错题整理为 Anki 复习卡。题目来源应清楚标注。</p><div class="techs"><span class="tech">JavaScript</span><span class="tech">HTML / CSS</span><span class="tech">Anki / FSRS</span></div><button class="text-link case-open" data-case="exam"><span data-zh="查看项目案例" data-en="View case study">查看项目案例</span><svg class="icon"><use href="#i-arrow-right"/></svg></button> <a class="text-link" href="https://lyf266.github.io/bank-exam-2026-toolkit/" target="_blank" rel="noreferrer"><span data-zh="在线演示" data-en="Live demo">在线演示</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></a> <a class="text-link" href="https://github.com/lyf266/bank-exam-2026-toolkit" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
+      </article>
+      <article class="project-card">
+        <div class="project-visual"><div class="visual-label"><span>LOCAL AI TOOL</span><span>03 / VOICE</span></div><div class="visual-flow"><div class="flow-unit"><svg class="icon"><use href="#i-mic"/></svg><span data-zh="快捷键录音" data-en="Hotkey">快捷键录音</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-brain"/></svg><span data-zh="本地转写" data-en="Local model">本地转写</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-code"/></svg><span data-zh="插入文字" data-en="Insert text">插入文字</span></div></div><div class="visual-index">03</div></div>
+        <div class="card-body"><div class="card-meta"><span class="category">LINUX / DESKTOP</span><span class="status" data-zh="系统工具" data-en="System tool">系统工具</span></div><h3>Linux Whisper Input</h3><p data-zh="通过全局快捷键调用本地语音识别模型，将语音转成文字并输入当前应用，减少每次使用时重新加载模型的等待。" data-en="Trigger local speech recognition with a global hotkey and insert the transcription into the current app, avoiding repeated model loads.">通过全局快捷键调用本地语音识别模型，将语音转成文字并输入当前应用，减少每次使用时重新加载模型的等待。</p><div class="techs"><span class="tech">Python</span><span class="tech">CTranslate2</span><span class="tech">PipeWire</span><span class="tech">Wayland</span></div><button class="text-link case-open" data-case="whisper"><span data-zh="查看项目案例" data-en="View case study">查看项目案例</span><svg class="icon"><use href="#i-arrow-right"/></svg></button> <a class="text-link" href="https://github.com/lyf266/linux-whisper-input" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
+      </article>
+      <article class="project-card">
+        <div class="project-visual"><div class="visual-label"><span>TROUBLESHOOTING</span><span>04 / OBS</span></div><div class="visual-flow"><div class="flow-unit"><svg class="icon"><use href="#i-camera"/></svg><span data-zh="采集画面" data-en="Capture">采集画面</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-sliders"/></svg><span data-zh="调整配置" data-en="Tune">调整配置</span></div><svg class="icon flow-arrow"><use href="#i-arrow-right"/></svg><div class="flow-unit"><svg class="icon"><use href="#i-monitor"/></svg><span data-zh="实测验证" data-en="Verify">实测验证</span></div></div><div class="visual-index">04</div></div>
+        <div class="card-body"><div class="card-meta"><span class="category">LINUX / VIDEO</span><span class="status" data-zh="故障排查" data-en="Troubleshooting">故障排查</span></div><h3>OBS 摄像头与画面叠加修复</h3><p data-zh="针对特定设备遇到的解码崩溃、透明视频显示异常和场景切换后坐标偏移，调整采集与解码配置并进行回归测试。" data-en="Addressed specific capture, alpha-video and scene-coordinate issues by changing capture/decode settings and retesting the setup.">针对特定设备遇到的解码崩溃、透明视频显示异常和场景切换后坐标偏移，调整采集与解码配置并进行回归测试。</p><div class="techs"><span class="tech">OBS Studio</span><span class="tech">V4L2</span><span class="tech">Lua</span><span class="tech">udev</span></div><button class="text-link case-open" data-case="obs"><span data-zh="查看项目案例" data-en="View case study">查看项目案例</span><svg class="icon"><use href="#i-arrow-right"/></svg></button></div>
+      </article>
+    </div>
   </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="按下快捷键" data-en="Hotkey">按下快捷键</span></span><span class="farrow">→</span><span class="step"><span data-zh="捕获音频" data-en="Capture audio">捕获音频</span></span><span class="farrow">→</span><span class="step"><span data-zh="VAD 裁切" data-en="VAD trim">VAD 裁切</span></span><span class="farrow">→</span><span class="step"><span data-zh="本地推理" data-en="Local inference">本地推理</span></span><span class="farrow">→</span><span class="step"><span data-zh="注入文本" data-en="Inject text">注入文本</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="采用 Python + CTranslate2（large-v3-turbo float16）+ PipeWire 管道捕获音频流 + Wayland 虚拟键盘事件注入 + Systemd 用户级守护。模型权重与 CUDA 上下文永久驻留 GPU 显存，快捷键 Meta+H 唤醒瞬时推理，端到端延迟 &lt;300ms。" data-en="Python daemon + CTranslate2 (large-v3-turbo float16) + PipeWire + Wayland virtual key injection.Model &amp; CUDA context permanently resident in GPU VRAM (&lt;300ms end-to-end latency).">采用 Python + CTranslate2（large-v3-turbo float16）+ PipeWire 管道捕获音频流 + Wayland 虚拟键盘事件注入 + Systemd 用户级守护。模型权重与 CUDA 上下文永久驻留 GPU 显存，快捷键 Meta+H 唤醒瞬时推理，端到端延迟 &lt;300ms。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Linux Whisper Input/</span>
-<span data-zh="├── daemon.py ── 常驻监听" data-en="├── daemon.py ── resident listener">├── daemon.py ── 常驻监听</span>
-<span data-zh="├── vad.py ── 语音端点检测" data-en="├── vad.py ── voice activity detection">├── vad.py ── 语音端点检测</span>
-<span data-zh="├── infer.py ── CTranslate2 推理" data-en="├── infer.py ── inference">├── infer.py ── CTranslate2 推理</span>
-<span data-zh="└── wayland-inject.py ── 文本注入" data-en="└── wayland-inject.py ── text injection">└── wayland-inject.py ── 文本注入</span></pre>
-    <p class="sec-body eng-note"><span data-zh="在模型部署时，我重点优化显存占用和响应速度之间的平衡。通过 VAD 判断有效语音区间，减少无意义音频输入，同时将监听和推理拆分为独立进程，避免任务互相影响。" data-en="Strict balance between VRAM allocation and inference speed.Precise VAD trimming prevents trailing repetition artifacts; UDS isolates capture and inference.">在模型部署时，我重点优化显存占用和响应速度之间的平衡。通过 VAD 判断有效语音区间，减少无意义音频输入，同时将监听和推理拆分为独立进程，避免任务互相影响。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。" data-en="Requires dedicated NVIDIA GPU VRAM; long-speech pause segmentation requires further threshold tuning.">硬件绑定 NVIDIA GPU 显存；对极长语音的停顿分段参数需继续调优。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">CTranslate2</span><span class="tag">Wayland</span><span class="tag">PipeWire</span><span class="tag">linux</span></div>
-</article>
 
-<article class="card" id="p03" data-domains="linux tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_03</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/desktop-timetracker" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Desktop TimeTracker (timetrack)" data-en="Desktop TimeTracker (timetrack)">Desktop TimeTracker (timetrack)</span></h2>
-  <p class="oneline"><span data-zh="自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间都去哪了。" data-en="Automatically tracks how long you spend in each window and generates a daily report, so you can see where your time actually goes.">自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间都去哪了。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。" data-en="Wayland security sandbox blocks legacy X11 window loggers; commercial alternatives rely on bloated Electron processes (&gt;300MB RAM) and cloud telemetry.">KDE Plasma 6 Wayland 安全沙箱机制阻断了传统 X11 窗口监听工具；市面商业软件（如 RescueTime）多基于臃肿的 Electron 进程（动辄消耗数百 MB 内存）且依赖闭源云端上传隐私数据。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="监听窗口" data-en="Listen">监听窗口</span></span><span class="farrow">→</span><span class="step"><span data-zh="三级识别" data-en="3-level identify">三级识别</span></span><span class="farrow">→</span><span class="step"><span data-zh="本地存储" data-en="Local store">本地存储</span></span><span class="farrow">→</span><span class="step"><span data-zh="夜间日报" data-en="Nightly report">夜间日报</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="项目尽量保持轻量化，没有引入额外 Python 第三方依赖。窗口识别采用三级匹配策略：1. 用户自定义规则优先；2. 使用系统应用元数据辅助判断；3. 最后根据进程信息进行兜底。" data-en="Pure Python 3 standard library + KWin internal scripts with zero external dependencies.3-tier progressive classification pipeline (user rules → XDG desktop metadata → process fallback).">项目尽量保持轻量化，没有引入额外 Python 第三方依赖。窗口识别采用三级匹配策略：1. 用户自定义规则优先；2. 使用系统应用元数据辅助判断；3. 最后根据进程信息进行兜底。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Desktop TimeTracker (tim/</span>
-<span data-zh="├── kwin-script.js ── 窗口监听" data-en="├── kwin-script.js ── window listener">├── kwin-script.js ── 窗口监听</span>
-<span data-zh="├── identify.py ── 三级识别" data-en="├── identify.py ── 3-level identify">├── identify.py ── 三级识别</span>
-<span data-zh="├── store.db ── SQLite 本地存储" data-en="├── store.db ── local storage">├── store.db ── SQLite 本地存储</span>
-<span data-zh="└── report.py ── 日报生成" data-en="└── report.py ── report generator">└── report.py ── 日报生成</span></pre>
-    <p class="sec-body eng-note"><span data-zh="内存占用极限压缩至 ~13MB，CPU 消耗 &lt;0.1%，全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。" data-en="Ultra-low memory footprint (~13MB RAM) and &lt;0.1% CPU.Nightly automated generation of Markdown activity review reports.">内存占用极限压缩至 ~13MB，CPU 消耗 &lt;0.1%，全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。" data-en="Tightly integrated with KDE Plasma 6 Wayland; adapting to GNOME/Sway requires corresponding IPC bridges.">深度绑定 KDE Plasma 6 Wayland 合成器，跨桌面环境（如 GNOME/Sway）需适配不同合成器 IPC 接口。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">KWin</span><span class="tag">D-Bus</span><span class="tag">SQLite</span><span class="tag">linux</span></div>
-</article>
+  <div class="work-section" id="process"><section class="wrap section"><div class="section-head"><div><div class="section-kicker">02 / How I work</div><h2 data-zh="从问题，到可验证的结果" data-en="From problem to evidence">从问题，到可验证的结果</h2></div><p class="section-note" data-zh="AI 是工具，不是成果本身。重点是明确问题、设计合适的流程，并检查方案在真实环境下是否成立。" data-en="AI is a tool, not the result. The goal is to define the problem, design a useful flow, and verify it in the real environment.">AI 是工具，不是成果本身。重点是明确问题、设计合适的流程，并检查方案在真实环境下是否成立。</p></div>
+  <div class="steps">
+    <div class="step"><div class="step-head"><div class="step-no"><svg class="icon"><use href="#i-search"/></svg></div><span class="step-num">STEP 01</span></div><h3 data-zh="理解场景" data-en="Understand">理解场景</h3><p data-zh="谁遇到问题？目前如何解决？真正的限制是什么？" data-en="Who has the problem? What do they do today? What are the constraints?">谁遇到问题？目前如何解决？真正的限制是什么？</p></div>
+    <div class="step"><div class="step-head"><div class="step-no"><svg class="icon"><use href="#i-git"/></svg></div><span class="step-num">STEP 02</span></div><h3 data-zh="拆解流程" data-en="Map the flow">拆解流程</h3><p data-zh="定义输入、规则、异常情况，以及什么才算完成。" data-en="Define inputs, rules, failure paths, and what counts as done.">定义输入、规则、异常情况，以及什么才算完成。</p></div>
+    <div class="step"><div class="step-head"><div class="step-no"><svg class="icon"><use href="#i-code"/></svg></div><span class="step-num">STEP 03</span></div><h3 data-zh="实现方案" data-en="Build">实现方案</h3><p data-zh="用合适的代码、API 和 AI 工具完成最小可用版本。" data-en="Build a small working version with suitable code, APIs and AI tools.">用合适的代码、API 和 AI 工具完成最小可用版本。</p></div>
+    <div class="step"><div class="step-head"><div class="step-no"><svg class="icon"><use href="#i-chart"/></svg></div><span class="step-num">STEP 04</span></div><h3 data-zh="测试与迭代" data-en="Test & iterate">测试与迭代</h3><p data-zh="记录结果、暴露限制，根据反馈修复真正的问题。" data-en="Record results, surface limitations, and fix issues based on feedback.">记录结果、暴露限制，根据反馈修复真正的问题。</p></div>
+  </div></section></div>
 
-<article class="card" id="p04" data-domains="ai">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_04</span>
-    <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/project-pai" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Personal LifeOS (Project PAI)" data-en="Personal LifeOS (Project PAI)">Personal LifeOS (Project PAI)</span></h2>
-  <p class="oneline"><span data-zh="帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。" data-en="A personal system for goals and journaling that auto-generates periodic review reports.">帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。" data-en="Chatbots suffer from session amnesia, context drift, and lack of persistent modeling of user goals and growth over time.">传统对话式 AI 随会话结束而遗忘，长期对话时产生严重的上下文漂移、多会话历史割裂与幻觉，缺乏对用户真实目标的持续跟踪。</span></p>
+  <section class="wrap archive section" id="archive"><div class="section-head"><div><div class="section-kicker">03 / Project archive</div><h2 data-zh="其他项目与积累" data-en="More projects">其他项目与积累</h2></div><p class="section-note" data-zh="保留完整的项目轨迹，但把更深入的说明留给最能代表当前方向的案例。" data-en="Keep the full trail of experiments, while reserving deeper case studies for the work most relevant to the current direction.">保留完整的项目轨迹，但把更深入的说明留给最能代表当前方向的案例。</p></div>
+    <div class="filter-row" role="group" aria-label="项目分类筛选"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="ai">AI / 工作流</button><button class="filter" data-filter="linux">Linux / 系统</button><button class="filter" data-filter="web">Web / 产品</button><button class="filter" data-filter="data">数据 / 自动化</button><button class="filter" data-filter="archived">已归档</button></div>
+    <div class="archive-list" id="archiveList">
+      <article class="archive-item" data-category="ai"><span class="archive-index">05</span><div><div class="archive-title">Personal Opportunity Intelligence (POI)</div><div class="archive-desc" data-zh="每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。" data-en="Filters dozens of feeds daily and pushes worthwhile reads and opportunities to your phone.">每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。</div></div><span class="archive-type">AI / AUTOMATION</span><a class="archive-link" href="https://github.com/lyf266/personal-opportunity-agent" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="web"><span class="archive-index">06</span><div><div class="archive-title">2026 银行从业全真机考模拟系统 &amp; Anki 智能备考工具包</div><div class="archive-desc" data-zh="银行从业刷题网站：710 道练习题（基于教材考点与典型题型整理，含改编与自编题），错题自动生成 Anki 记忆卡片。" data-en="Banking exam practice site: 710 practice questions compiled from textbook key points; wrong answers become Anki cards.">银行从业刷题网站：710 道练习题（基于教材考点与典型题型整理，含改编与自编题），错题自动生成 Anki 记忆卡片。</div></div><span class="archive-type">WEB / LEARNING</span><a class="archive-link" href="https://lyf266.github.io/bank-exam-2026-toolkit/" target="_blank" rel="noreferrer">在线演示 <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="ai"><span class="archive-index">07</span><div><div class="archive-title">Linux Whisper Input</div><div class="archive-desc" data-zh="Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。" data-en="A rare thing on Linux — a system-wide voice input: hotkey, speak, text appears; model stays resident locally.">Linux 上好用的全局语音输入法很少，所以自己做了一个：按快捷键说话就变成文字，模型常驻本地，无需联网。</div></div><span class="archive-type">LINUX / AI</span><a class="archive-link" href="https://github.com/lyf266/linux-whisper-input" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="linux"><span class="archive-index">08</span><div><div class="archive-title">OBS Studio 推流与摄像头驱动加固</div><div class="archive-desc" data-zh="调好了 Linux 下的推流：针对特定设备的解码与坐标问题做了配置规避，画面上可实时显示时间和待办。" data-en="Tuned Linux streaming: config workarounds for device-specific decode and coordinate issues, with live overlays.">调好了 Linux 下的推流：针对特定设备的解码与坐标问题做了配置规避，画面上可实时显示时间和待办。</div></div><span class="archive-type">LINUX / VIDEO</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
+      <article class="archive-item" data-category="ai"><span class="archive-index">09</span><div><div class="archive-title">Personal LifeOS (Project PAI)</div><div class="archive-desc" data-zh="帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。" data-en="A personal system for goals and journaling that auto-generates periodic review reports.">帮你管目标、记日志的个人系统，还能定时自动生成复盘报告。</div></div><span class="archive-type">AI / KNOWLEDGE</span><a class="archive-link" href="https://github.com/lyf266/project-pai" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="ai"><span class="archive-index">10</span><div><div class="archive-title">知识库同步桥与双智能体工作流 (Knowledge Bridge &amp; Dual-Agent Workflow)</div><div class="archive-desc" data-zh="让本地笔记软件和云端看板自动同步，两边改的内容都不丢。" data-en="Keeps the local note app and cloud dashboard in sync — edits on either side are never lost.">让本地笔记软件和云端看板自动同步，两边改的内容都不丢。</div></div><span class="archive-type">AI / AUTOMATION</span><a class="archive-link" href="https://github.com/lyf266/obsidian-notebooklm-bridge" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="linux"><span class="archive-index">11</span><div><div class="archive-title">Desktop TimeTracker (timetrack)</div><div class="archive-desc" data-zh="自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间去哪了。" data-en="Tracks time per window automatically and generates a daily report of where your time goes.">自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间去哪了。</div></div><span class="archive-type">LINUX / PYTHON</span><a class="archive-link" href="https://github.com/lyf266/desktop-timetracker" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="data"><span class="archive-index">12</span><div><div class="archive-title">Finance-Intel 市场情报管线</div><div class="archive-desc" data-zh="每天开盘前自动生成一份市场早报，行情异动就发提醒。" data-en="Auto-generates a market morning brief before each trading day, with alerts on unusual moves.">每天开盘前自动生成一份市场早报，行情异动就发提醒。</div></div><span class="archive-type">DATA / FINANCE</span><a class="archive-link" href="https://github.com/lyf266/finance-intel" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="ai"><span class="archive-index">13</span><div><div class="archive-title">Hermes 多智能体网络与 Vless 节点</div><div class="archive-desc" data-zh="一台 24 小时在线的云服务器，替我跑定时任务：抓晨报、盯持仓、巡检服务器。" data-en="A 24/7 cloud server running scheduled jobs: morning digests, portfolio watch, health checks.">一台 24 小时在线的云服务器，替我跑定时任务：抓晨报、盯持仓、巡检服务器。</div></div><span class="archive-type">LINUX / OPS</span><a class="archive-link" href="https://github.com/lyf266/hermes" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="web"><span class="archive-index">14</span><div><div class="archive-title">WriteMap (Visual Writing Coach)</div><div class="archive-desc" data-zh="写英语作文没人改？这个应用从词汇、语法、连贯性三个维度打分，告诉你弱在哪。" data-en="No one to grade your English essays? This app scores vocabulary, grammar and coherence.">写英语作文没人改？这个应用从词汇、语法、连贯性三个维度打分，告诉你弱在哪。</div></div><span class="archive-type">WEB / EDUCATION</span><a class="archive-link" href="https://github.com/lyf266/WriteMap" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="data"><span class="archive-index">15</span><div><div class="archive-title">Gaokao 高考志愿填报数据系统</div><div class="archive-desc" data-zh="抓了各大学历年的录取分数，做成干净表格，填志愿时一眼对比。" data-en="Scraped historical university admission scores into clean tables for college-choice comparison.">抓了各大学历年的录取分数，做成干净表格，填志愿时一眼对比。</div></div><span class="archive-type">DATA / PYTHON</span><a class="archive-link" href="https://github.com/lyf266/Gaokao" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="linux"><span class="archive-index">16</span><div><div class="archive-title">Linux 工作站与 VPS 网络搭建 (工程积累)</div><div class="archive-desc" data-zh="自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。" data-en="Hand-built dev environment: Arch Linux workstation plus Debian VPS, with DNS, CDN and auto TLS.">自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。</div></div><span class="archive-type">LINUX / INFRA</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
+      <article class="archive-item" data-category="archived"><span class="archive-index">17</span><div><div class="archive-title">被动式 AI 笔记系统</div><div class="archive-desc" data-zh="想到什么就给 Telegram 机器人发句话，它自动分类成任务或日记，同步到笔记软件。（已归档）" data-en="Message the Telegram bot whatever is on your mind; it sorts messages into tasks or journal entries. (Archived)">想到什么就给 Telegram 机器人发句话，它自动分类成任务或日记，同步到笔记软件。（已归档）</div></div><span class="archive-type">ARCHIVED</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
+      <article class="archive-item" data-category="archived"><span class="archive-index">18</span><div><div class="archive-title">课程录音批量切分与 Whisper 转录</div><div class="archive-desc" data-zh="上课录音丢进去，自动切分转成文字讲义归档。（已归档）" data-en="Drop in lecture recordings; get them split, transcribed and archived as notes. (Archived)">上课录音丢进去，自动切分转成文字讲义归档。（已归档）</div></div><span class="archive-type">ARCHIVED</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
+      <article class="archive-item" data-category="linux"><span class="archive-index">19</span><div><div class="archive-title">mc118-cloud-suite 部署与低带宽优化</div><div class="archive-desc" data-zh="开了个百人 Minecraft 服务器，针对低带宽环境做了网络优化。" data-en="Ran a 100-player Minecraft server, tuned for low-bandwidth environments.">开了个百人 Minecraft 服务器，针对低带宽环境做了网络优化。</div></div><span class="archive-type">OPS / NETWORK</span><a class="archive-link" href="https://github.com/lyf266/mc118-cloud-suite" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="linux"><span class="archive-index">20</span><div><div class="archive-title">WTF 终端看板组件定制</div><div class="archive-desc" data-zh="在终端里一眼看到今天的目标进度，不用打开一堆软件。" data-en="See today&#x27;s goal progress at a glance inside the terminal.">在终端里一眼看到今天的目标进度，不用打开一堆软件。</div></div><span class="archive-type">LINUX / TERMINAL</span><a class="archive-link" href="https://github.com/lyf266/wtf" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="web"><span class="archive-index">21</span><div><div class="archive-title">Vitals-Skill 家庭健康数据管理</div><div class="archive-desc" data-zh="把家人纸质体检报告变成电子档案，标出异常指标，方便对比历年变化。只做数据整理，不做医疗判断。" data-en="Digitizes family paper checkup reports and flags abnormal indicators for comparison. Data organization only.">把家人纸质体检报告变成电子档案，标出异常指标，方便对比历年变化。只做数据整理，不做医疗判断。</div></div><span class="archive-type">DATA / HEALTH</span><a class="archive-link" href="https://github.com/lyf266/vitals-skill" target="_blank" rel="noreferrer">GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></article>
+      <article class="archive-item" data-category="data"><span class="archive-index">22</span><div><div class="archive-title">浏览器反指纹与网络隐私防护套件</div><div class="archive-desc" data-zh="浏览器隐私加固配置：屏蔽 WebRTC 泄漏、隔离 Canvas 指纹，减少网站跨站追踪。" data-en="Browser privacy hardening: blocks WebRTC leaks, isolates canvas fingerprints, reduces cross-site tracking.">浏览器隐私加固配置：屏蔽 WebRTC 泄漏、隔离 Canvas 指纹，减少网站跨站追踪。</div></div><span class="archive-type">PRIVACY / BROWSER</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
+      <article class="archive-item" data-category="web"><span class="archive-index">23</span><div><div class="archive-title">商业演示文稿排版外包</div><div class="archive-desc" data-zh="承接商业 PPT 外包设计；兼职做过校园即时跑腿。" data-en="Freelance commercial slide-deck design; part-time campus errand courier.">承接商业 PPT 外包设计；兼职做过校园即时跑腿。</div></div><span class="archive-type">DESIGN</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
+      <article class="archive-item" data-category="data"><span class="archive-index">24</span><div><div class="archive-title">百人 Minecraft 联机社区网络打通与社群运维</div><div class="archive-desc" data-zh="10 岁时从零运营起一个 100+ 人活跃的 Minecraft 玩家社区；自学宽带拨号和路由器端口映射解决联机问题。" data-en="At age 10, grew and ran a 100+ player Minecraft community from scratch; self-taught networking to get everyone online.">10 岁时从零运营起一个 100+ 人活跃的 Minecraft 玩家社区；自学宽带拨号和路由器端口映射解决联机问题。</div></div><span class="archive-type">NETWORK / COMMUNITY</span><span class="archive-link"><span data-zh="项目档案" data-en="Archive">项目档案</span> <svg class="icon"><use href="#i-arrow-up-right"/></svg></span></article>
+    </div>
   </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="记录日志" data-en="Log">记录日志</span></span><span class="farrow">→</span><span class="step"><span data-zh="检索事实" data-en="Retrieve">检索事实</span></span><span class="farrow">→</span><span class="step"><span data-zh="LLM 复盘" data-en="AI review">LLM 复盘</span></span><span class="farrow">→</span><span class="step"><span data-zh="决策建议" data-en="Advise">决策建议</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="专属个人长期智能体系统（PAI），持续对“用户自身、客观世界及其相互关系”进行建模。Agent 目标不是问答聊天机器人，而是协助用户进行生活日志复盘、个人目标追踪与决策建议。" data-en="Build Personal AI (PAI) continuously modeling the user, the world, and their relation for long-term growth, reflection, and decision support.">专属个人长期智能体系统（PAI），持续对“用户自身、客观世界及其相互关系”进行建模。Agent 目标不是问答聊天机器人，而是协助用户进行生活日志复盘、个人目标追踪与决策建议。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Personal LifeOS (Project/</span>
-<span data-zh="├── api/ ── FastAPI 模块化单体" data-en="├── api/ ── modular monolith">├── api/ ── FastAPI 模块化单体</span>
-<span data-zh="├── web/ ── Next.js 前端" data-en="├── web/ ── frontend">├── web/ ── Next.js 前端</span>
-<span data-zh="├── postgres/ ── 规范事实库" data-en="├── postgres/ ── fact store">├── postgres/ ── 规范事实库</span>
-<span data-zh="└── qdrant/ ── 语义向量检索" data-en="└── qdrant/ ── vector search">└── qdrant/ ── 语义向量检索</span></pre>
-    <p class="sec-body eng-note"><span data-zh="FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。" data-en="FastAPI + PostgreSQL + Qdrant + OpenRouter.Core constraints: &#x27;Retrieval before reasoning&#x27; (structured memory over raw chats); human confirmation for high-impact actions; strict resource bounds.">FastAPI 模块化单体 + Next.js 前端 + PostgreSQL (规范事实) + Qdrant (语义向量) + OpenRouter/LLM。核心硬约束：Retrieval before reasoning（检索先于推理，显式提取结构化记忆）；高影响动作必须人类确认；内存开销严格限制。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="当前版本已经实现了目标记录、行为日志分析和阶段性复盘之间的数据连接。下一阶段主要挑战是如何让系统理解更加复杂的人类行为场景。例如，不同领域的数据（工作、财务、习惯、情绪）之间存在关联，但目前仍缺少一个可靠的方法进行统一建模和长期预测。" data-en="The internal loop of personal goal tracking, journaling, and reflection is fully operational.">当前版本已经实现了目标记录、行为日志分析和阶段性复盘之间的数据连接。下一阶段主要挑战是如何让系统理解更加复杂的人类行为场景。例如，不同领域的数据（工作、财务、习惯、情绪）之间存在关联，但目前仍缺少一个可靠的方法进行统一建模和长期预测。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">SQLite</span><span class="tag">agent</span><span class="tag">MCP</span></div>
-</article>
 
-<article class="card" id="p05" data-domains="ai net">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_05</span>
-    <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/personal-opportunity-agent" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Personal Opportunity Intelligence (POI)" data-en="Personal Opportunity Intelligence (POI)">Personal Opportunity Intelligence (POI)</span></h2>
-  <p class="oneline"><span data-zh="每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。" data-en="Automatically filters dozens of feeds every day and pushes only the worthwhile reads and opportunities to your phone.">每天自动从几十个信息源里筛出值得看的内容和机会，推送到手机上。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="全球官方奖学金（DAAD/Erasmus Mundus）、带薪开源导师（LFX）、黑客松与远程兼职岗位信息极度分散碎片化，人工搜集信噪比低，容易因信息过载陷入决策内耗。" data-en="Global grants, open-source mentorships, and remote jobs are scattered and noisy, causing cognitive overload and decision paralysis.">全球官方奖学金（DAAD/Erasmus Mundus）、带薪开源导师（LFX）、黑客松与远程兼职岗位信息极度分散碎片化，人工搜集信噪比低，容易因信息过载陷入决策内耗。</span></p>
+  <section class="wrap section" id="about"><div class="about"><div><div class="about-label">04 / About</div><h2 data-zh="保持好奇，也尊重证据。" data-en="Stay curious. Respect evidence.">保持好奇，也尊重证据。</h2></div><div><p class="about-copy" data-zh="我喜欢从日常学习和工作中的摩擦点出发，尝试用代码、自动化与 AI 做出轻量工具。相比堆叠技术名词，我更希望清楚说明每个项目解决了什么问题、采用了哪些取舍，以及还有哪些地方需要验证。" data-en="I look for friction in everyday learning and work, then try to build lightweight tools with code, automation and AI. Rather than stacking technical buzzwords, I aim to explain the problem, the trade-offs and what still needs to be verified.">我喜欢从日常学习和工作中的摩擦点出发，尝试用代码、自动化与 AI 做出轻量工具。相比堆叠技术名词，我更希望清楚说明每个项目解决了什么问题、采用了哪些取舍，以及还有哪些地方需要验证。</p><div class="about-points"><div class="about-point"><svg class="icon"><use href="#i-target"/></svg><div><strong data-zh="问题优先" data-en="Problem first">问题优先</strong><span data-zh="先确认真实需求，再决定技术方案。" data-en="Understand the need before choosing a tool.">先确认真实需求，再决定技术方案。</span></div></div><div class="about-point"><svg class="icon"><use href="#i-code"/></svg><div><strong data-zh="小步交付" data-en="Ship in small steps">小步交付</strong><span data-zh="先构建最小可用版本，再逐步改进。" data-en="Build a small working version, then improve it.">先构建最小可用版本，再逐步改进。</span></div></div><div class="about-point"><svg class="icon"><use href="#i-check"/></svg><div><strong data-zh="结果可核验" data-en="Verifiable results">结果可核验</strong><span data-zh="区分已验证成果、假设和计划。" data-en="Separate evidence from assumptions and plans.">区分已验证成果、假设和计划。</span></div></div><div class="about-point"><svg class="icon"><use href="#i-globe"/></svg><div><strong data-zh="持续学习" data-en="Keep learning">持续学习</strong><span data-zh="通过实践、反馈和复盘拓宽能力。" data-en="Grow through practice, feedback and reflection.">通过实践、反馈和复盘拓宽能力。</span></div></div></div></div></div>
+    <div class="contact"><div><h2 data-zh="有真实问题，欢迎交流。" data-en="Have a real problem? Let's talk.">有真实问题，欢迎交流。</h2><p data-zh="合作、项目反馈或技术交流，都欢迎通过 GitHub 联系。" data-en="Open to project feedback, collaboration and technical conversations.">合作、项目反馈或技术交流，都欢迎通过 GitHub 联系。</p></div><a class="btn" href="https://github.com/lyf266" target="_blank" rel="noreferrer"><svg class="icon"><use href="#i-git"/></svg>GitHub <svg class="icon"><use href="#i-arrow-up-right"/></svg></a></div>
   </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="抓取多渠道" data-en="Fetch feeds">抓取多渠道</span></span><span class="farrow">→</span><span class="step"><span data-zh="加权打分" data-en="Weighted score">加权打分</span></span><span class="farrow">→</span><span class="step"><span data-zh="推送高分" data-en="Push top">推送高分</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="专属机会挖掘与量化决策智能体，全天候并发抓取 9 大维度渠道的官方数据源，自动进行多维打分初筛与价值评估。" data-en="Autonomous opportunity radar scanning 9 dimensions, computing deterministic weighted scores to identify high-leverage opportunities.">专属机会挖掘与量化决策智能体，全天候并发抓取 9 大维度渠道的官方数据源，自动进行多维打分初筛与价值评估。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Personal Opportunity Int/</span>
-<span data-zh="├── fetch_feeds.py ── 多源抓取引擎" data-en="├── fetch_feeds.py ── feed fetcher">├── fetch_feeds.py ── 多源抓取引擎</span>
-<span data-zh="├── score.py ── 加权打分" data-en="├── score.py ── scoring">├── score.py ── 加权打分</span>
-<span data-zh="├── server.py ── 轻量 HTTP 服务" data-en="├── server.py ── micro server">├── server.py ── 轻量 HTTP 服务</span>
-<span data-zh="└── radar.svg ── 机会雷达图" data-en="└── radar.svg ── opportunity radar">└── radar.svg ── 机会雷达图</span></pre>
-    <p class="sec-body eng-note"><span data-zh="Python 原生轻量 HTTP 服务 (server.py) + 并发多源 RSS/Atom 抓取引擎 (fetch_feeds.py) + Vanilla CSS/JS 响应式单页 + SVG 蛛网雷达图。核心硬约束：独创 7 维加权决策评估公式 (7D Formula)，长期价值/技能/未来帮助加权正向，时间成本/风险控制惩罚扣减；仅加权得分 ≥ 8.0 的机会才触发 Telegram/Notion 深度推送。" data-en="Native Python server + concurrent feed fetcher + SVG spider radar + Notion sync.Constrained by 7D formula (value 1.5, skill 1.5, future 1.5, network 1.0, income 1.0 vs time -0.8, risk -0.8); threshold ≥ 8.0 triggers alert.">Python 原生轻量 HTTP 服务 (server.py) + 并发多源 RSS/Atom 抓取引擎 (fetch_feeds.py) + Vanilla CSS/JS 响应式单页 + SVG 蛛网雷达图。核心硬约束：独创 7 维加权决策评估公式 (7D Formula)，长期价值/技能/未来帮助加权正向，时间成本/风险控制惩罚扣减；仅加权得分 ≥ 8.0 的机会才触发 Telegram/Notion 深度推送。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="当前已实现全球官方奖学金、开源项目资助与远程岗位的 7 维加权初筛。后续演进规划：1) 新增针对主流招聘平台的‘AI Agent 与大模型领域优质实习机会’定向抓取与动态匹配模块，精准满足青年开发者在 AI 时代的实习与实战积累需求；2) 引入轻量 LLM 对非结构化长文进行意图重排与岗位信噪比深度过滤。" data-en="Currently filters global grants, open-source stipends, and remote jobs.">当前已实现全球官方奖学金、开源项目资助与远程岗位的 7 维加权初筛。后续演进规划：1) 新增针对主流招聘平台的‘AI Agent 与大模型领域优质实习机会’定向抓取与动态匹配模块，精准满足青年开发者在 AI 时代的实习与实战积累需求；2) 引入轻量 LLM 对非结构化长文进行意图重排与岗位信噪比深度过滤。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">Python</span><span class="tag">RSS</span><span class="tag">Telegram</span><span class="tag">agent</span></div>
-</article>
+</main>
+<footer class="wrap"><span>© 2026 F1are / Portfolio</span><span><a href="../portfolio.pdf" data-zh="PDF 简版" data-en="PDF (ZH)">PDF 简版</a> · <a href="../portfolio_en.pdf" data-zh="PDF 英文版" data-en="PDF (EN)">PDF 英文版</a></span><span data-zh="以真实项目为基础 · 不夸大未经验证的结果" data-en="Built around real projects · No unsupported claims">以真实项目为基础 · 不夸大未经验证的结果</span></footer>
 
-<article class="card" id="p06" data-domains="ai linux net">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_06</span>
-    <span class="status featured"><span data-zh="精选" data-en="FEATURED">精选</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/hermes" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Hermes 多智能体网络与 Vless 节点" data-en="Hermes Multi-Agent Network &amp; Vless Node">Hermes 多智能体网络与 Vless 节点</span></h2>
-  <p class="oneline"><span data-zh="一台 24 小时在线的云服务器，替我跑 18 个定时任务：抓晨报、盯持仓、巡检服务器。" data-en="A 24/7 cloud server running 18 scheduled jobs for me: morning news digests, portfolio monitoring, and server health checks.">一台 24 小时在线的云服务器，替我跑 18 个定时任务：抓晨报、盯持仓、巡检服务器。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="云端服务器自动化运维任务（定时抓取晨报、资产异动监控、系统健康巡检）繁杂，单脚本缺乏容错与状态机管理，且复杂网络环境下远程通信需要高抗审查保证。" data-en="Cloud server cron routines lack centralized supervision and state management, requiring reliable, censorship-resistant remote transport.">云端服务器自动化运维任务（定时抓取晨报、资产异动监控、系统健康巡检）繁杂，单脚本缺乏容错与状态机管理，且复杂网络环境下远程通信需要高抗审查保证。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="定时调度" data-en="Schedule">定时调度</span></span><span class="farrow">→</span><span class="step"><span data-zh="执行任务" data-en="Execute">执行任务</span></span><span class="farrow">→</span><span class="step"><span data-zh="异常报警" data-en="Alert">异常报警</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="定制 Hermes 自动化智能体，在云端 VPS 上作为 24/7 不间断的运维参谋与守护者，自主调度托管 18+ 个定时 Cron 管线。" data-en="Custom Hermes autonomous agent operating 24/7 on Debian VPS as ops supervisor, scheduling 18+ automated monitoring pipelines.">定制 Hermes 自动化智能体，在云端 VPS 上作为 24/7 不间断的运维参谋与守护者，自主调度托管 18+ 个定时 Cron 管线。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Hermes Multi-Agent Netwo/</span>
-<span data-zh="├── cron/ ── 18+ 定时管线" data-en="├── cron/ ── scheduled pipelines">├── cron/ ── 18+ 定时管线</span>
-<span data-zh="├── tunnel/ ── 安全传输通道" data-en="├── tunnel/ ── secure tunnel">├── tunnel/ ── 安全传输通道</span>
-<span data-zh="├── watchdog.sh ── 健康巡检" data-en="├── watchdog.sh ── health checks">├── watchdog.sh ── 健康巡检</span>
-<span data-zh="└── webhook ── Telegram 报警" data-en="└── webhook ── alert hook">└── webhook ── Telegram 报警</span></pre>
-    <p class="sec-body eng-note"><span data-zh="Debian VPS + Vless 协议通信网络 + Systemd/Cron + Telegram Webhook 报警管道。践行四核分工边界（Main 战略参谋、Ops 自动化运维、Innovate 前沿实验、Intel 情报感知），任务无异常时绝对静默（杜绝无意义 Token 消耗），一旦异常截断立即全量报警。" data-en="Debian VPS + Vless network + Systemd/Cron + Telegram Webhook.Quad-core role separation (Main, Ops, Innovate, Intel); strict zero-noise policy on routine success, full alerts on interruption.">Debian VPS + Vless 协议通信网络 + Systemd/Cron + Telegram Webhook 报警管道。践行四核分工边界（Main 战略参谋、Ops 自动化运维、Innovate 前沿实验、Intel 情报感知），任务无异常时绝对静默（杜绝无意义 Token 消耗），一旦异常截断立即全量报警。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="节点间多依赖文件系统与消息钩子交互，计划沉淀更统一的跨节点事件总线。" data-en="Nodes currently coordinate via filesystem and webhook hooks; unified lightweight event bus planned.">节点间多依赖文件系统与消息钩子交互，计划沉淀更统一的跨节点事件总线。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">VPS</span><span class="tag">Vless</span><span class="tag">Debian</span><span class="tag">Cron</span><span class="tag">net</span></div>
-</article>
-
-<article class="card" id="p07" data-domains="quant tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_07</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/finance-intel" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Finance-Intel 市场情报管线" data-en="Finance-Intel Market Intelligence Pipeline">Finance-Intel 市场情报管线</span></h2>
-  <p class="oneline"><span data-zh="每天开盘前自动生成一份市场早报，行情异动就发提醒。" data-en="Auto-generates a market morning brief before each trading day and sends alerts on unusual moves.">每天开盘前自动生成一份市场早报，行情异动就发提醒。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="每日清晨需手动逐个打开各大金融终端与资讯网站核对宏观订单流、大宗商品与主要指数走势，耗时耗力且信噪比低。" data-en="Manual tracking of morning macro order flows and global market indices is tedious and fragmented.">每日清晨需手动逐个打开各大金融终端与资讯网站核对宏观订单流、大宗商品与主要指数走势，耗时耗力且信噪比低。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="聚合行情" data-en="Aggregate">聚合行情</span></span><span class="farrow">→</span><span class="step"><span data-zh="检测异动" data-en="Detect anomaly">检测异动</span></span><span class="farrow">→</span><span class="step"><span data-zh="早报推送" data-en="Morning brief">早报推送</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="Python + Freqtrade + Yahoo Finance / 新浪财经 / 金十数据 / TradingView + Telegram Bot Webhook。定时追踪宏观订单流与价格行为，在 &lt;60 秒内全自动生成结构化晨间研报；高波动实时告警，每周节省 15+ 小时人工盯盘时间。" data-en="Python pipeline polling Yahoo Finance, Jin10, and TradingView, automatically compiling structured morning briefings in &lt;60s with anomaly webhooks.">Python + Freqtrade + Yahoo Finance / 新浪财经 / 金十数据 / TradingView + Telegram Bot Webhook。定时追踪宏观订单流与价格行为，在 &lt;60 秒内全自动生成结构化晨间研报；高波动实时告警，每周节省 15+ 小时人工盯盘时间。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Finance-Intel Market Int/</span>
-<span data-zh="├── fetch.py ── 多源行情聚合" data-en="├── fetch.py ── data aggregation">├── fetch.py ── 多源行情聚合</span>
-<span data-zh="├── anomaly.py ── 异动检测" data-en="├── anomaly.py ── anomaly detection">├── anomaly.py ── 异动检测</span>
-<span data-zh="└── brief.py ── 早报生成推送" data-en="└── brief.py ── brief + push">└── brief.py ── 早报生成推送</span></pre>
-    <p class="sec-body eng-note"><span data-zh="单进程轻量无头运行，异常状态自动降级重试，输出纯 Markdown 与卡片化数据源。" data-en="Headless single-process design with graceful error fallback; exports clean Markdown summary feeds.">单进程轻量无头运行，异常状态自动降级重试，输出纯 Markdown 与卡片化数据源。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="痛点在于缺乏金融垂直领域的专业大模型与严格的量化评测工程。目前系统主要实现‘盯盘与数据异常即时报警、新闻事件严重程度初筛推送’；对于深度的宏观归因与研报多因子推演能力依然受限。下一步需引入金融评测 Harness 与高阶意图分级模型，提升极端市场行情下的研判准确度。" data-en="Lacks specialized financial domain LLMs and rigorous Financial Harness evaluation suites.Currently delivers automated price-tracking, anomaly triggers, and news severity filtering; deep macro-factor reasoning remains constrained.">痛点在于缺乏金融垂直领域的专业大模型与严格的量化评测工程。目前系统主要实现‘盯盘与数据异常即时报警、新闻事件严重程度初筛推送’；对于深度的宏观归因与研报多因子推演能力依然受限。下一步需引入金融评测 Harness 与高阶意图分级模型，提升极端市场行情下的研判准确度。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">TradingView</span><span class="tag">金融</span></div>
-</article>
-
-<article class="card" id="p08" data-domains="ai web">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_08</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/obsidian-notebooklm-bridge" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="知识库同步桥与双智能体工作流 (Knowledge Bridge &amp; Dual-Agent Workflow)" data-en="Knowledge Bridge &amp; Dual-Agent Workflow">知识库同步桥与双智能体工作流 (Knowledge Bridge &amp; Dual-Agent Workflow)</span></h2>
-  <p class="oneline"><span data-zh="让本地笔记软件和云端看板自动同步，两边改的内容都不丢。" data-en="Keeps my local note-taking app and cloud dashboard in sync automatically — edits on either side are never lost.">让本地笔记软件和云端看板自动同步，两边改的内容都不丢。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="本地知识文档、云端项目看板与 AI Agent 工具链彼此割裂，手动搬运同步消耗大量认知带宽；本地双链知识库缺乏与云端高阶分析及智能体的自动化实时流转。" data-en="Local knowledge notes, cloud project boards, and AI agents are siloed, creating friction during context handoff and synthesis.">本地知识文档、云端项目看板与 AI Agent 工具链彼此割裂，手动搬运同步消耗大量认知带宽；本地双链知识库缺乏与云端高阶分析及智能体的自动化实时流转。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="本地编辑" data-en="Edit locally">本地编辑</span></span><span class="farrow">→</span><span class="step"><span data-zh="混合写入" data-en="Hybrid write">混合写入</span></span><span class="farrow">→</span><span class="step"><span data-zh="云端同步" data-en="Sync to cloud">云端同步</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="打通‘本地沉淀 + 云端协作’的双智能体端到端协同流：本地以 Obsidian 作为事实底座，由本地 Agent (Antigravity) 负责研发与深度处理；云端以 Notion 负责看板与项目追踪，由云端 Agent (Muse AI) 负责情报感知与整理，通过自动化脚本与 REST API 实现结构化数据回流本地。" data-en="Architect an end-to-end Dual-Agent pipeline: Obsidian as local truth managed by Antigravity (Local Agent), Notion as project tracking managed by Muse AI (Cloud Agent), with automated REST bridges syncing structured context.">打通‘本地沉淀 + 云端协作’的双智能体端到端协同流：本地以 Obsidian 作为事实底座，由本地 Agent (Antigravity) 负责研发与深度处理；云端以 Notion 负责看板与项目追踪，由云端 Agent (Muse AI) 负责情报感知与整理，通过自动化脚本与 REST API 实现结构化数据回流本地。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Knowledge Bridge &amp; Dual-/</span>
-<span data-zh="├── obsidian-api ── 编辑器热写入" data-en="├── obsidian-api ── hot write">├── obsidian-api ── 编辑器热写入</span>
-<span data-zh="├── fallback-fs ── 文件直写降级" data-en="├── fallback-fs ── fs fallback">├── fallback-fs ── 文件直写降级</span>
-<span data-zh="└── notion-sync ── 云端看板同步" data-en="└── notion-sync ── board sync">└── notion-sync ── 云端看板同步</span></pre>
-    <p class="sec-body eng-note"><span data-zh="独创“混合写入策略（Hybrid Write &amp; Fallback）”：Obsidian 运行时走本地 REST API 触发毫秒级编辑器无刷新重载，关闭时安全降级为直接写入文件系统，确保数据一致性且绝不损坏本地索引；本地与云端职责清晰边界隔离。" data-en="Hybrid write strategy: leverages Obsidian Local REST API for zero-reload live editor updates when open; safely falls back to direct filesystem writes when closed; strictly isolates local and cloud agent role boundaries.">独创“混合写入策略（Hybrid Write &amp; Fallback）”：Obsidian 运行时走本地 REST API 触发毫秒级编辑器无刷新重载，关闭时安全降级为直接写入文件系统，确保数据一致性且绝不损坏本地索引；本地与云端职责清晰边界隔离。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="早期脚本依赖 NotebookLM CLI 凭据，当前全面推进升级为统一的 Antigravity (本地) + Muse AI (云端) + Obsidian + Notion 跨端双智能体全自动化工作流。" data-en="Transitioning legacy single-purpose NotebookLM scripts into a unified Antigravity + Muse AI + Obsidian + Notion cross-environment dual-agent pipeline.">早期脚本依赖 NotebookLM CLI 凭据，当前全面推进升级为统一的 Antigravity (本地) + Muse AI (云端) + Obsidian + Notion 跨端双智能体全自动化工作流。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">Python</span><span class="tag">Obsidian</span><span class="tag">REST API</span><span class="tag">agent</span></div>
-</article>
-
-<article class="card" id="p09" data-domains="linux tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_09</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"></span>
-  </div>
-  <h2 class="card-title"><span data-zh="OBS Studio 推流与摄像头驱动加固" data-en="OBS Studio Stream &amp; V4L2 Driver Hardening">OBS Studio 推流与摄像头驱动加固</span></h2>
-  <p class="oneline"><span data-zh="调好了 Linux 下的推流：画面不再崩溃，还能在直播画面上实时显示时间和待办。" data-en="Tuned Linux streaming setup: no more crashes, with live time and todo overlays on the broadcast.">调好了 Linux 下的推流：画面不再崩溃，还能在直播画面上实时显示时间和待办。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="Linux 下 USB 摄像头在默认 MJPG 采集时遇坏包触发 FFmpeg 软件解码崩溃死循环；叠加 WebM 透明动效时 GPU 硬解码（NVDEC）会剥离 alpha 通道导致抠像全黑；OBS 重载场景时坐标漂移到画布中心。" data-en="V4L2 USB camera crash loops in MJPG decode on bus dropouts; NVDEC hardware decode strips WebM alpha channel (rendering black opaque cutouts); OBS pos_rel coordinates drift to screen center on reload.">Linux 下 USB 摄像头在默认 MJPG 采集时遇坏包触发 FFmpeg 软件解码崩溃死循环；叠加 WebM 透明动效时 GPU 硬解码（NVDEC）会剥离 alpha 通道导致抠像全黑；OBS 重载场景时坐标漂移到画布中心。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="YUYV 直采" data-en="Raw capture">YUYV 直采</span></span><span class="farrow">→</span><span class="step"><span data-zh="绕过软解" data-en="Bypass decode">绕过软解</span></span><span class="farrow">→</span><span class="step"><span data-zh="叠加信息" data-en="Overlay">叠加信息</span></span><span class="farrow">→</span><span class="step"><span data-zh="推流" data-en="Stream">推流</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="锁定未压缩 YUYV 4:2:2 原始像素直采（OBS format 1448695129）完全绕过 FFmpeg 软解；配置 udev 规则禁用 USB autosuspend；双向同步计算 pos 绝对像素与 pos_rel 相对归一化坐标；WebM 强制 libvpx 软解保留 32 位全透明通道；进程内 Lua 定时器驱动动态时间。" data-en="Lock uncompressed YUYV 4:2:2 raw copy bypassing FFmpeg; disable USB autosuspend via udev; synchronize pos and pos_rel; force libvpx software decode for WebM transparency; in-process Lua dynamic clock.">锁定未压缩 YUYV 4:2:2 原始像素直采（OBS format 1448695129）完全绕过 FFmpeg 软解；配置 udev 规则禁用 USB autosuspend；双向同步计算 pos 绝对像素与 pos_rel 相对归一化坐标；WebM 强制 libvpx 软解保留 32 位全透明通道；进程内 Lua 定时器驱动动态时间。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">OBS Studio Stream &amp; V4L2/</span>
-<span data-zh="├── yuyv-capture ── 原始像素直采" data-en="├── yuyv-capture ── raw capture">├── yuyv-capture ── 原始像素直采</span>
-<span data-zh="├── udev.rules ── 禁用 USB 休眠" data-en="├── udev.rules ── no autosuspend">├── udev.rules ── 禁用 USB 休眠</span>
-<span data-zh="└── overlay.lua ── 时间/待办叠加" data-en="└── overlay.lua ── overlays">└── overlay.lua ── 时间/待办叠加</span></pre>
-    <p class="sec-body eng-note"><span data-zh="通过减少中间层依赖，降低 USB 采集过程中的丢帧风险。系统不需要额外后台服务，采集和处理流程保持在单一应用内。" data-en="Fewer middleware layers mean fewer dropped frames during USB capture.No extra background services — capture and processing stay inside a single app.">通过减少中间层依赖，降低 USB 采集过程中的丢帧风险。系统不需要额外后台服务，采集和处理流程保持在单一应用内。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="硬件参数针对特定型号深度加固，跨机使用需根据摄像头 VID/PID 重新绑定 udev 规则。" data-en="Hardware parameters tuned for specific webcam VID/PID; multi-device migration requires adapting udev rules.">硬件参数针对特定型号深度加固，跨机使用需根据摄像头 VID/PID 重新绑定 udev 规则。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">V4L2</span><span class="tag">Lua</span><span class="tag">OBS</span><span class="tag">linux</span></div>
-</article>
-
-<article class="card" id="p10" data-domains="linux tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_10</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/wtf" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="WTF 终端看板组件定制" data-en="WTF Terminal Cockpit Widgets (Fork)">WTF 终端看板组件定制</span></h2>
-  <p class="oneline"><span data-zh="在终端里一眼看到今天的目标进度，不用打开一堆软件。" data-en="See today&#x27;s goal progress at a glance inside the terminal — no need to open a bunch of apps.">在终端里一眼看到今天的目标进度，不用打开一堆软件。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="开发过程中频繁切换浏览器查看 PAI 目标进度与 POI 机会榜单容易产生视觉干扰、分散编码心流。" data-en="Switching to browser dashboards to check goals and opportunity feeds interrupts terminal coding flow.">开发过程中频繁切换浏览器查看 PAI 目标进度与 POI 机会榜单容易产生视觉干扰、分散编码心流。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="拉取 API" data-en="Fetch APIs">拉取 API</span></span><span class="farrow">→</span><span class="step"><span data-zh="渲染组件" data-en="Render widgets">渲染组件</span></span><span class="farrow">→</span><span class="step"><span data-zh="终端展示" data-en="Terminal view">终端展示</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="基于 Go 语言著名终端仪表盘 WTF（tview 框架）进行二次开发，定制专用模块消费本地 PAI 与 POI 的 HTTP API 端点，在终端内紧凑聚合呈现今日目标进度与 Top 5 机会榜单。" data-en="Go language TUI engineering on WTF; custom widgets consuming local PAI and POI REST endpoints to render targets and opportunity ranks in terminal.">基于 Go 语言著名终端仪表盘 WTF（tview 框架）进行二次开发，定制专用模块消费本地 PAI 与 POI 的 HTTP API 端点，在终端内紧凑聚合呈现今日目标进度与 Top 5 机会榜单。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">WTF Terminal Cockpit Wid/</span>
-<span data-zh="├── pai.go ── 目标进度组件" data-en="├── pai.go ── goal widget">├── pai.go ── 目标进度组件</span>
-<span data-zh="└── poi.go ── 机会榜单组件" data-en="└── poi.go ── opportunity widget">└── poi.go ── 机会榜单组件</span></pre>
-    <p class="sec-body eng-note"><span data-zh="原生编译为单个轻量二进制，运行于 tmux 终端窗格，内存开销极低、零额外界面渲染负担。" data-en="Statically compiled Go binary running inside tmux; minimal memory footprint and zero GUI overhead.">原生编译为单个轻量二进制，运行于 tmux 终端窗格，内存开销极低、零额外界面渲染负担。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="当前为只读展示卡片，后续可扩展轻量键盘交互式状态勾选。" data-en="Currently read-only; interactive keybinding toggles could be added.">当前为只读展示卡片，后续可扩展轻量键盘交互式状态勾选。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Go</span><span class="tag">TUI</span><span class="tag">linux</span></div>
-</article>
-
-<article class="card" id="p11" data-domains="ai">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_11</span>
-    <span class="status archived"><span data-zh="已归档" data-en="ARCHIVED">已归档</span></span>
-    <span class="card-links"></span>
-  </div>
-  <h2 class="card-title"><span data-zh="被动式 AI 笔记系统" data-en="Passive AI Note-Taking System">被动式 AI 笔记系统</span></h2>
-  <p class="oneline"><span data-zh="想到什么就给 Telegram 机器人发句话，它自动分类成任务或日记，同步到笔记软件。（已归档）" data-en="Send the Telegram bot whatever is on your mind; it auto-sorts messages into tasks or journal entries and syncs them to my notes. (Archived)">想到什么就给 Telegram 机器人发句话，它自动分类成任务或日记，同步到笔记软件。（已归档）</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="随手灵感与临时任务若需打开重型笔记软件手动排版建卡，会产生巨大的启动阻力（Initiation Friction），导致大量关键想法流失遗忘。" data-en="High initiation friction of heavy note apps leads to lost ideas and fragmented fleeting tasks.">随手灵感与临时任务若需打开重型笔记软件手动排版建卡，会产生巨大的启动阻力（Initiation Friction），导致大量关键想法流失遗忘。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="发送消息" data-en="Send message">发送消息</span></span><span class="farrow">→</span><span class="step"><span data-zh="意图分类" data-en="Classify intent">意图分类</span></span><span class="farrow">→</span><span class="step"><span data-zh="分流存储" data-en="Route &amp; store">分流存储</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="打造“极简输入，智能分流”的被动式记笔记机器人。用户在 Telegram 发送语音或文字碎念，后台 AI 自动识别内容意图、提取核心标题并归纳标签。" data-en="Zero-friction passive capture bot via Telegram.AI automatically interprets intent, extracts titles/tags, and dispatches to appropriate vaults.">打造“极简输入，智能分流”的被动式记笔记机器人。用户在 Telegram 发送语音或文字碎念，后台 AI 自动识别内容意图、提取核心标题并归纳标签。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Passive AI Note-Taking S/</span>
-<span data-zh="├── bot.py ── Telegram 接收" data-en="├── bot.py ── receiver">├── bot.py ── Telegram 接收</span>
-<span data-zh="├── classify.py ── Gemini 意图分类" data-en="├── classify.py ── intent sort">├── classify.py ── Gemini 意图分类</span>
-<span data-zh="├── to-notion.py ── 任务分流" data-en="├── to-notion.py ── task route">├── to-notion.py ── 任务分流</span>
-<span data-zh="└── to-obsidian.py ── 日记分流" data-en="└── to-obsidian.py ── journal route">└── to-obsidian.py ── 日记分流</span></pre>
-    <p class="sec-body eng-note"><span data-zh="Python 3.11+ / Docker / Telegram Bot API / Gemini 模型 / Notion API / Obsidian REST API。单一消息单次分类路由——任务项注入 Notion 待办看板，思考日记项注入 Obsidian 每日日记流，让信息记录变成低干扰的后台流程。" data-en="Python + Docker + Telegram Bot + Gemini API + Notion + Obsidian.Single-shot intent classification routing tasks to Notion and reflections to Obsidian daily logs.">Python 3.11+ / Docker / Telegram Bot API / Gemini 模型 / Notion API / Obsidian REST API。单一消息单次分类路由——任务项注入 Notion 待办看板，思考日记项注入 Obsidian 每日日记流，让信息记录变成低干扰的后台流程。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="本项目为 2025 年初构思探索的极简被动记录雏形，探索了意图自动分流机制；后续随着移动端成熟方案（如 OpenCloud 等生态）的普及，核心功能已被更成熟的工具链完整替代，本项目已正式归档（Archived）。" data-en="This project served as an early 2025 proof-of-concept exploring zero-friction passive capture and intent routing.As mature mobile and cloud solutions (such as OpenCloud) evolved to cover this workflow, this project was formally superseded and archived.">本项目为 2025 年初构思探索的极简被动记录雏形，探索了意图自动分流机制；后续随着移动端成熟方案（如 OpenCloud 等生态）的普及，核心功能已被更成熟的工具链完整替代，本项目已正式归档（Archived）。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Telegram</span><span class="tag">Gemini</span><span class="tag">agent</span></div>
-</article>
-
-<article class="card" id="p12" data-domains="tool web">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_12</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/vitals-skill" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Vitals-Skill 家庭健康数据管理" data-en="Vitals-Skill Family Health Data Tracker">Vitals-Skill 家庭健康数据管理</span></h2>
-  <p class="oneline"><span data-zh="把家人纸质体检报告变成电子档案，自动标出异常指标，方便对比历年变化。" data-en="Digitizes family members&#x27; paper medical reports and flags abnormal indicators for year-over-year comparison.">把家人纸质体检报告变成电子档案，自动标出异常指标，方便对比历年变化。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="长辈患有慢性疾病，历年纸质体检报告分散且用药记录混乱，无法直观进行跨年度指标比对与异常预警。" data-en="Family members&#x27; chronic health checkup reports are scattered on paper, making multi-year biomarker comparison difficult.">长辈患有慢性疾病，历年纸质体检报告分散且用药记录混乱，无法直观进行跨年度指标比对与异常预警。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="OCR 提取" data-en="OCR extract">OCR 提取</span></span><span class="farrow">→</span><span class="step"><span data-zh="归一化" data-en="Normalize">归一化</span></span><span class="farrow">→</span><span class="step"><span data-zh="异常标红" data-en="Flag anomaly">异常标红</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="编写 Python 自动化脚本管线，将纸质体检报告通过 OCR 提取并归一化为结构化 Markdown 数据，建立家庭健康档案库。" data-en="Python automation pipeline normalizing OCR scanned paper reports into structured Markdown records with metric trend visualization.">编写 Python 自动化脚本管线，将纸质体检报告通过 OCR 提取并归一化为结构化 Markdown 数据，建立家庭健康档案库。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Vitals-Skill Family Heal/</span>
-<span data-zh="├── ocr.py ── 报告提取" data-en="├── ocr.py ── report OCR">├── ocr.py ── 报告提取</span>
-<span data-zh="├── normalize.py ── 指标归一化" data-en="├── normalize.py ── normalization">├── normalize.py ── 指标归一化</span>
-<span data-zh="└── flag.py ── 异常标红" data-en="└── flag.py ── anomaly flags">└── flag.py ── 异常标红</span></pre>
-    <p class="sec-body eng-note"><span data-zh="数据清洗脚本 + 正则归一化 + Obsidian Health 知识库联动，实现跨年度血压、血脂、血糖指标历史曲线比对与异常红线自动高亮。" data-en="Data cleaning script + regex normalization + Obsidian Health Vault, plotting historical biomarkers and flagging thresholds.">数据清洗脚本 + 正则归一化 + Obsidian Health 知识库联动，实现跨年度血压、血脂、血糖指标历史曲线比对与异常红线自动高亮。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="痛点在于缺乏医药专业领域的垂直大模型，且缺乏严谨的医疗级评估工程（指导意见置信度难以把控）。后续演进规划：构建专业医疗检索与评测框架（Medical Harness），主动对接权威医学指南、药典与权威医学网站，输出必须具备可直接跳转、可追溯查验的官方文献引用，支持严格的人工核验，确保健康建议安全可信。" data-en="The primary pain point is the absence of medical-domain models and a rigorous Medical Agent Harness to guarantee clinical-grade confidence.">痛点在于缺乏医药专业领域的垂直大模型，且缺乏严谨的医疗级评估工程（指导意见置信度难以把控）。后续演进规划：构建专业医疗检索与评测框架（Medical Harness），主动对接权威医学指南、药典与权威医学网站，输出必须具备可直接跳转、可追溯查验的官方文献引用，支持严格的人工核验，确保健康建议安全可信。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">Obsidian</span><span class="tag">OCR</span></div>
-</article>
-
-<article class="card" id="p13" data-domains="linux net tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_13</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/mc118-cloud-suite" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="mc118-cloud-suite 部署与低带宽优化" data-en="mc118-cloud-suite Low-Bandwidth Cloud Deployment">mc118-cloud-suite 部署与低带宽优化</span></h2>
-  <p class="oneline"><span data-zh="开了个百人 Minecraft 服务器，优化网络配置后流量费降了 75%。" data-en="Ran a 100-player Minecraft server; network tuning cut bandwidth bills by 75%.">开了个百人 Minecraft 服务器，优化网络配置后流量费降了 75%。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="国内云主机免费套餐具有严格的 20GB/月 出网流量上限，传统 MC 服务器极度消耗带宽且公网暴露面临扫描渗透风险。" data-en="Strict 20GB/month egress bandwidth cap on cloud instances; public server exposure to scanning and brute-force attacks.">国内云主机免费套餐具有严格的 20GB/月 出网流量上限，传统 MC 服务器极度消耗带宽且公网暴露面临扫描渗透风险。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="安全硬化" data-en="Harden">安全硬化</span></span><span class="farrow">→</span><span class="step"><span data-zh="压缩带宽" data-en="Slim bandwidth">压缩带宽</span></span><span class="farrow">→</span><span class="step"><span data-zh="反向备份" data-en="Reverse backup">反向备份</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="在 1C2G 严苛资源下完成系统安全硬化与带宽极限压调，建立免私钥暴露的安全反向备份流程。" data-en="Hardened paper server setup on 1C2G cloud VPS achieving &gt;75% protocol bandwidth reduction and zero-trust reverse pull backups.">在 1C2G 严苛资源下完成系统安全硬化与带宽极限压调，建立免私钥暴露的安全反向备份流程。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">mc118-cloud-suite Low-Ba/</span>
-<span data-zh="├── paper-1.18.1 ── 服务端" data-en="├── paper-1.18.1 ── game server">├── paper-1.18.1 ── 服务端</span>
-<span data-zh="├── bbr+ufw ── 网络与防火墙" data-en="├── bbr+ufw ── net + firewall">├── bbr+ufw ── 网络与防火墙</span>
-<span data-zh="└── backup.sh ── 反向备份" data-en="└── backup.sh ── reverse backup">└── backup.sh ── 反向备份</span></pre>
-    <p class="sec-body eng-note"><span data-zh="Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 极限压降至 5GB~9GB（降幅超 75%）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。" data-en="Debian 12 + Docker + Paper 1.18.1 + BBR + UFW + Fail2ban.View distance=4, simulation=3, suppressed entity tracking (monsters 24, animals 16, players 32), &gt;75% bandwidth cut; zero-trust reverse SSH pull backup.">Debian 12 + Docker CE + Paper 1.18.1 + Google BBR + UFW + Fail2ban。核心调优：将 view-distance 与 simulation-distance 压至 4，严控实体追踪范围（怪物 24、动物 16、玩家 32），月流量从 30GB+ 极限压降至 5GB~9GB（降幅超 75%）；云端不存远端私钥，由备份端反向 SSH pull 归档快照。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="为降低网络带宽需求，项目限制了远距离场景的数据同步范围，更适合局域网或固定玩家群体使用。" data-en="Compromised extreme render distance for ultra-low bandwidth consumption.">为降低网络带宽需求，项目限制了远距离场景的数据同步范围，更适合局域网或固定玩家群体使用。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Docker</span><span class="tag">Debian</span><span class="tag">Bash</span><span class="tag">linux</span></div>
-</article>
-
-<article class="card" id="p14" data-domains="linux tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_14</span>
-    <span class="status archived"><span data-zh="已归档" data-en="ARCHIVED">已归档</span></span>
-    <span class="card-links"></span>
-  </div>
-  <h2 class="card-title"><span data-zh="课程录音批量切分与 Whisper 转录" data-en="Lecture Audio Batch Chunking &amp; Whisper Transcription">课程录音批量切分与 Whisper 转录</span></h2>
-  <p class="oneline"><span data-zh="上课录音丢进去，自动切分转成文字讲义归档。（已归档）" data-en="Drop in lecture recordings and get them auto-split, transcribed, and archived as study notes. (Archived)">上课录音丢进去，自动切分转成文字讲义归档。（已归档）</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="大学各专业课动辄数小时的随堂录音文件堆积，课后手动重听耗时过长，难以快速定位核心考点与板书笔记。" data-en="Hours of raw university lecture audio recordings accumulate without quick indexing of key lecture points.">大学各专业课动辄数小时的随堂录音文件堆积，课后手动重听耗时过长，难以快速定位核心考点与板书笔记。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="按下快捷键" data-en="Hotkey">按下快捷键</span></span><span class="farrow">→</span><span class="step"><span data-zh="捕获音频" data-en="Capture audio">捕获音频</span></span><span class="farrow">→</span><span class="step"><span data-zh="VAD 裁切" data-en="VAD trim">VAD 裁切</span></span><span class="farrow">→</span><span class="step"><span data-zh="本地推理" data-en="Local inference">本地推理</span></span><span class="farrow">→</span><span class="step"><span data-zh="注入文本" data-en="Inject text">注入文本</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="编写批处理脚本流水线，结合 faster-whisper 与 FFmpeg，根据文件名关键字自动识别课程类别、执行切分转写并归档为带时间戳的结构化笔记。" data-en="Batch processing script combining faster-whisper and FFmpeg, routing audio by keyword rules into timestamped lecture transcripts.">编写批处理脚本流水线，结合 faster-whisper 与 FFmpeg，根据文件名关键字自动识别课程类别、执行切分转写并归档为带时间戳的结构化笔记。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Lecture Audio Batch Chun/</span>
-<span data-zh="├── daemon.py ── 常驻监听" data-en="├── daemon.py ── resident listener">├── daemon.py ── 常驻监听</span>
-<span data-zh="├── vad.py ── 语音端点检测" data-en="├── vad.py ── voice activity detection">├── vad.py ── 语音端点检测</span>
-<span data-zh="├── infer.py ── CTranslate2 推理" data-en="├── infer.py ── inference">├── infer.py ── CTranslate2 推理</span>
-<span data-zh="└── wayland-inject.py ── 文本注入" data-en="└── wayland-inject.py ── text injection">└── wayland-inject.py ── 文本注入</span></pre>
-    <p class="sec-body eng-note"><span data-zh="Python 3 + faster-whisper (CTranslate2) + FFmpeg + Shell 脚本。内置 GPU/CPU 自动探测降级机制、关键字课程分流路由表与 JSONL 运行日志，一键批量转出高质量课堂讲义。" data-en="Python 3 + faster-whisper + FFmpeg + Shell.Hardware auto-detection, keyword routing table, and JSONL run logger for automated transcription.">Python 3 + faster-whisper (CTranslate2) + FFmpeg + Shell 脚本。内置 GPU/CPU 自动探测降级机制、关键字课程分流路由表与 JSONL 运行日志，一键批量转出高质量课堂讲义。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="随着通义千问等现代智能会议软件（具备实时高精度转写与分钟级核心要点提炼）的普及，该离线批处理脚本流水线目前已被现代云端速记工作流完全取代并归档（Archived）；当前重心已全面转移至结构化导出文本的本地知识库沉淀与 AI Agent 自动化管理。" data-en="With the emergence of modern intelligent meeting tools (providing real-time high-accuracy transcription and minute-level key summaries), this local offline batch pipeline has been formally superseded and archived; focus has transitioned to local vault archiving and AI Agent knowledge curation.">随着通义千问等现代智能会议软件（具备实时高精度转写与分钟级核心要点提炼）的普及，该离线批处理脚本流水线目前已被现代云端速记工作流完全取代并归档（Archived）；当前重心已全面转移至结构化导出文本的本地知识库沉淀与 AI Agent 自动化管理。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">Whisper</span><span class="tag">FFmpeg</span></div>
-</article>
-
-<article class="card" id="p15" data-domains="linux net">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_15</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Linux 工作站与 VPS 网络搭建 (工程积累)" data-en="Linux Workstation &amp; VPS Network Infrastructure">Linux 工作站与 VPS 网络搭建 (工程积累)</span></h2>
-  <p class="oneline"><span data-zh="自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。" data-en="Hand-built dev environment: Arch Linux workstation plus Debian cloud VPS, with DNS, CDN, and automated TLS certificates.">自己动手搭的开发环境：主力机 Arch Linux + Debian 云服务器，配好域名解析、CDN 和证书自动化。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。" data-en="Transitioning from Windows to Linux; building a secure, uncensored, high-availability workstation and cloud environment.">脱离 Windows 生态依赖，建立安全、抗审查、高可用的日常开发与云端工作环境。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="装机调优" data-en="Tune system">装机调优</span></span><span class="farrow">→</span><span class="step"><span data-zh="网络配置" data-en="Configure net">网络配置</span></span><span class="farrow">→</span><span class="step"><span data-zh="证书自动化" data-en="Auto TLS">证书自动化</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="将 Arch Linux 配置调校为主力系统，采购运维 Debian VPS；配置 Cloudflare 域名解析、CDN 与 Let&#x27;s Encrypt 证书自动化。" data-en="Tuned Arch Linux as daily driver; deployed Debian VPS with Cloudflare CDN/DNS and automated Let&#x27;s Encrypt SSL/TLS certificates.">将 Arch Linux 配置调校为主力系统，采购运维 Debian VPS；配置 Cloudflare 域名解析、CDN 与 Let&#x27;s Encrypt 证书自动化。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Linux Workstation &amp; VPS /</span>
-<span data-zh="├── arch/ ── Zen 内核调优" data-en="├── arch/ ── tuned kernel">├── arch/ ── Zen 内核调优</span>
-<span data-zh="├── debian-vps/ ── 云服务器" data-en="├── debian-vps/ ── cloud VPS">├── debian-vps/ ── 云服务器</span>
-<span data-zh="└── tls-auto/ ── 证书自动化" data-en="└── tls-auto/ ── cert automation">└── tls-auto/ ── 证书自动化</span></pre>
-    <p class="sec-body eng-note"><span data-zh="pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。" data-en="Arch Linux + Zen kernel + pacman/yay + UFW + end-to-end TLS encryption, establishing a rock-solid developer workstation.">pacman/yay 包管理体系、Zen 性能内核、Systemd 用户服务、UFW 防火墙与全链路 TLS 加密传输，打通全流程无障碍开发网络。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。" data-en="Originally heavily reliant on manual CLI tuning and troubleshooting; now deeply automated via AI Agents for config generation, dependency resolution, validation scripting, and routine health checks, transforming low-level maintenance into high-leverage human-agent workflows.">早期高度依赖人工逐行配置与手工运维排错；现已全面引入 AI Agent 深度协助，驱动 Agent 自动生成复杂配置、排查环境依赖、编写真实验证脚本与日常巡检，将繁琐的系统底层工程转化为高杠杆的人机协同自动化流程。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">Arch Linux</span><span class="tag">Debian</span><span class="tag">Cloudflare</span><span class="tag">SSL/TLS</span><span class="tag">net</span></div>
-</article>
-
-<article class="card" id="p16" data-domains="net tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_16</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"></span>
-  </div>
-  <h2 class="card-title"><span data-zh="浏览器反指纹与网络隐私防护套件" data-en="Browser Anti-Fingerprinting &amp; Privacy Hardening Suite">浏览器反指纹与网络隐私防护套件</span></h2>
-  <p class="oneline"><span data-zh="浏览器隐私加固配置：屏蔽 WebRTC 泄漏、隔离 Canvas 指纹，减少网站跨站追踪。" data-en="Browser privacy hardening: blocks WebRTC leaks and isolates canvas fingerprints to reduce cross-site tracking.">浏览器隐私加固配置：屏蔽 WebRTC 泄漏、隔离 Canvas 指纹，减少网站跨站追踪。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="浏览器会通过 JavaScript、WebRTC、Canvas 与地理位置接口暴露系统与硬件指纹，导致被网站跨站关联追踪。" data-en="Browsers leak system and hardware fingerprints via JavaScript, WebRTC, Canvas, and Geolocation APIs, enabling cross-site correlation tracking.">浏览器会通过 JavaScript、WebRTC、Canvas 与地理位置接口暴露系统与硬件指纹，导致被网站跨站关联追踪。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="封堵泄漏" data-en="Block leaks">封堵泄漏</span></span><span class="farrow">→</span><span class="step"><span data-zh="扰动指纹" data-en="Perturb prints">扰动指纹</span></span><span class="farrow">→</span><span class="step"><span data-zh="保持体验" data-en="Keep UX">保持体验</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="系统化配置与部署浏览器隐私防护扩展链，全面封堵 WebRTC IP 泄漏，深度重写时区与定位偏移，并对 Canvas/WebGL 渲染指纹增加微量扰动噪音，阻断数字身份关联。" data-en="Systematically orchestrates browser privacy protection extensions: plugs WebRTC IP leaks, spoofs timezone and geolocation offsets, and injects subtle noise into Canvas/WebGL render pipelines to prevent fingerprinting.">系统化配置与部署浏览器隐私防护扩展链，全面封堵 WebRTC IP 泄漏，深度重写时区与定位偏移，并对 Canvas/WebGL 渲染指纹增加微量扰动噪音，阻断数字身份关联。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Browser Anti-Fingerprint/</span>
-<span data-zh="├── webrtc-block ── 泄漏封堵" data-en="├── webrtc-block ── leak blocking">├── webrtc-block ── 泄漏封堵</span>
-<span data-zh="├── canvas-noise ── 指纹扰动" data-en="├── canvas-noise ── print noise">├── canvas-noise ── 指纹扰动</span>
-<span data-zh="└── tz-spoof ── 时区模拟" data-en="└── tz-spoof ── timezone spoof">└── tz-spoof ── 时区模拟</span></pre>
-    <p class="sec-body eng-note"><span data-zh="与系统网络环境协同；严格确保在阻断指纹侦测的同时不破坏现代复杂 Web 应用的正常渲染、数学计算与日常使用心流。" data-en="Works alongside the system network setup; ensures robust anti-tracking defense without breaking complex web apps, math operations, or browsing UX.">与系统网络环境协同；严格确保在阻断指纹侦测的同时不破坏现代复杂 Web 应用的正常渲染、数学计算与日常使用心流。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="针对更深层的复杂浏览器指纹追踪（如高级音频上下文枚举与系统字体探测），后续配合专用隔离配置文件（Firefox Profile Isolation / 反指纹多开环境）进一步加固。" data-en="To defend against deeper advanced vector probing (audio context enumeration, installed font inspection), paired with Firefox Profile Isolation and containerized environments on the roadmap.">针对更深层的复杂浏览器指纹追踪（如高级音频上下文枚举与系统字体探测），后续配合专用隔离配置文件（Firefox Profile Isolation / 反指纹多开环境）进一步加固。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">反指纹</span><span class="tag">WebRTC</span><span class="tag">Canvas</span><span class="tag">安全</span></div>
-</article>
-
-<article class="card" id="p17" data-domains="web">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_17</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/WriteMap" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="WriteMap (Visual Writing Coach)" data-en="WriteMap (Visual Writing Coach)">WriteMap (Visual Writing Coach)</span></h2>
-  <p class="oneline"><span data-zh="写英语作文没人改？这个应用从词汇、语法、连贯性三个维度打分，告诉你弱在哪。" data-en="No one to grade your English essays? This app scores vocabulary, grammar, and coherence, showing exactly where you are weak.">写英语作文没人改？这个应用从词汇、语法、连贯性三个维度打分，告诉你弱在哪。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="英语专业学生在练习议论文写作时，传统批改缺乏对词汇多样性、篇章连贯性与论点逻辑的多维度直观量化，反馈周期过长。" data-en="ESL writing students lack multi-dimensional, immediate visual feedback on vocabulary variety, syntax, and discourse coherence.">英语专业学生在练习议论文写作时，传统批改缺乏对词汇多样性、篇章连贯性与论点逻辑的多维度直观量化，反馈周期过长。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="提交作文" data-en="Submit essay">提交作文</span></span><span class="farrow">→</span><span class="step"><span data-zh="多维打分" data-en="Rubric score">多维打分</span></span><span class="farrow">→</span><span class="step"><span data-zh="结构反馈" data-en="Structural feedback">结构反馈</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="结合自身商务英语专业与全栈技术底牌，构建基于 Next.js 的视觉化写作教练系统，提供即时多维能力打分与结构树拆解。" data-en="Full-stack writing coach providing 5-axis radar chart scoring and discourse tree visualization using LLM grading prompts.">结合自身商务英语专业与全栈技术底牌，构建基于 Next.js 的视觉化写作教练系统，提供即时多维能力打分与结构树拆解。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">WriteMap (Visual Writing/</span>
-<span data-zh="├── editor/ ── 编辑器+结构树" data-en="├── editor/ ── editor + tree">├── editor/ ── 编辑器+结构树</span>
-<span data-zh="├── score.ts ── 多维打分" data-en="├── score.ts ── scoring">├── score.ts ── 多维打分</span>
-<span data-zh="└── prisma.db ── 作品存储" data-en="└── prisma.db ── essay storage">└── prisma.db ── 作品存储</span></pre>
-    <p class="sec-body eng-note"><span data-zh="Next.js App Router + React + TypeScript + Tailwind CSS + Recharts + Prisma ORM + SQLite。设计精准的评估 Prompt 规则矩阵，从词汇广度、语法多样性、篇章连贯性、任务完成度等维度输出标准化 JSON 评分与结构树。" data-en="Next.js App Router + React + TypeScript + Recharts + Prisma.Structured rubric prompts extracting standardized JSON scores for radar visualization and tree structures.">Next.js App Router + React + TypeScript + Tailwind CSS + Recharts + Prisma ORM + SQLite。设计精准的评估 Prompt 规则矩阵，从词汇广度、语法多样性、篇章连贯性、任务完成度等维度输出标准化 JSON 评分与结构树。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="当前支持单篇作文批改，后续规划加入长期写作历史演进追踪与同义词替换知识库。" data-en="Supports single-essay grading; longitudinal writing improvement tracking planned.">当前支持单篇作文批改，后续规划加入长期写作历史演进追踪与同义词替换知识库。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Prisma</span><span class="tag">web</span></div>
-</article>
-
-<article class="card" id="p18" data-domains="quant tool">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_18</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"><a class="hlink" href="https://github.com/lyf266/Gaokao" target="_blank" rel="noopener">GitHub ↗</a></span>
-  </div>
-  <h2 class="card-title"><span data-zh="Gaokao 高考志愿填报数据系统" data-en="Gaokao College Admission Data Scraper">Gaokao 高考志愿填报数据系统</span></h2>
-  <p class="oneline"><span data-zh="抓了各大学历年的录取分数，做成干净表格，填志愿时一眼对比。" data-en="Scraped historical university admission scores into clean tables for at-a-glance comparison when choosing colleges.">抓了各大学历年的录取分数，做成干净表格，填志愿时一眼对比。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="高考志愿填报涉及全国数千所高校历年投档分与位次，官方平台数据碎片化且缺乏多维对比工具，信息极度不对称。" data-en="College admissions data is scattered and fragmented across opaque official portals, hindering comparative decision-making.">高考志愿填报涉及全国数千所高校历年投档分与位次，官方平台数据碎片化且缺乏多维对比工具，信息极度不对称。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="抓取接口" data-en="Scrape API">抓取接口</span></span><span class="farrow">→</span><span class="step"><span data-zh="清洗数据" data-en="Clean data">清洗数据</span></span><span class="farrow">→</span><span class="step"><span data-zh="对比决策" data-en="Compare">对比决策</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="爬取 gaokao.cn 接口，清洗各大学专业历年录取最低分、最低位次与招生计划配额，输出清洗后的多维 CSV 便于填报决策。" data-en="Python scraper parsing gaokao.cn API, cleaning historical cutoff scores, percentile rankings, and enrollment quotas into CSVs.">爬取 gaokao.cn 接口，清洗各大学专业历年录取最低分、最低位次与招生计划配额，输出清洗后的多维 CSV 便于填报决策。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Gaokao College Admission/</span>
-<span data-zh="├── scrape.py ── 接口抓取" data-en="├── scrape.py ── API scrape">├── scrape.py ── 接口抓取</span>
-<span data-zh="├── clean.py ── Pandas 清洗" data-en="├── clean.py ── cleaning">├── clean.py ── Pandas 清洗</span>
-<span data-zh="└── compare.csv ── 对比表格" data-en="└── compare.csv ── comparison table">└── compare.csv ── 对比表格</span></pre>
-    <p class="sec-body eng-note"><span data-zh="Python + Requests + Pandas 数据清洗流水线，建立位次换算模型与多维交叉筛选比对逻辑。" data-en="Python + Requests + Pandas pipeline calculating percentile ranges and historical cutoff differentials.">Python + Requests + Pandas 数据清洗流水线，建立位次换算模型与多维交叉筛选比对逻辑。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="为静态单年度抓取分析脚本，接口变动需人工更新解析逻辑。" data-en="Static annual scraping pipeline; API endpoint changes require script maintenance.">为静态单年度抓取分析脚本，接口变动需人工更新解析逻辑。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">小工具</span><span class="tag">Python</span><span class="tag">Requests</span><span class="tag">Pandas</span><span class="tag">数据</span></div>
-</article>
-
-<article class="card" id="p19" data-domains="web">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_19</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"></span>
-  </div>
-  <h2 class="card-title"><span data-zh="商业演示文稿排版外包" data-en="Freelance Information Design">商业演示文稿排版外包</span></h2>
-  <p class="oneline"><span data-zh="承接商业 PPT 外包设计；兼职做过校园即时跑腿。" data-en="Freelance commercial slide-deck design; part-time campus errand courier.">承接商业 PPT 外包设计；兼职做过校园即时跑腿。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="商业汇报缺乏清晰的信息降噪与视觉层级。" data-en="Commercial presentations lack clean information hierarchy.">商业汇报缺乏清晰的信息降噪与视觉层级。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="理解需求" data-en="Read brief">理解需求</span></span><span class="farrow">→</span><span class="step"><span data-zh="网格排版" data-en="Grid layout">网格排版</span></span><span class="farrow">→</span><span class="step"><span data-zh="交付" data-en="Deliver">交付</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="承接商业 PPT 排版外包，践行极简高密度信息设计；兼职做过校园即时跑腿。" data-en="Information design for commercial pitch decks; part-time campus errand courier experience.">承接商业 PPT 排版外包，践行极简高密度信息设计；兼职做过校园即时跑腿。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">Freelance Information De/</span>
-<span data-zh="├── grid/ ── 网格排版系统" data-en="├── grid/ ── grid system">├── grid/ ── 网格排版系统</span>
-<span data-zh="└── type/ ── 思源黑体规范" data-en="└── type/ ── typography spec">└── type/ ── 思源黑体规范</span></pre>
-    <p class="sec-body eng-note"><span data-zh="遵循思源黑体规范与网格排版系统。" data-en="Grid-based typography system.">遵循思源黑体规范与网格排版系统。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="承接商业 PPT 外包设计；兼职做过校园即时跑腿。" data-en="Freelance commercial slide-deck design; part-time campus errand courier.">承接商业 PPT 外包设计；兼职做过校园即时跑腿。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">设计</span><span class="tag">信息排版</span></div>
-</article>
-
-<article class="card" id="p20" data-domains="net">
-  <div class="card-top mono">
-    <span class="proj-num">PROJECT_20</span>
-    <span class="status active"><span data-zh="进行中" data-en="ACTIVE">进行中</span></span>
-    <span class="card-links"></span>
-  </div>
-  <h2 class="card-title"><span data-zh="百人 Minecraft 联机社区网络打通与社群运维" data-en="100-Player Minecraft Server Network &amp; Community Ops">百人 Minecraft 联机社区网络打通与社群运维</span></h2>
-  <p class="oneline"><span data-zh="10 岁时从零运营起一个 100+ 人活跃的 Minecraft 玩家社区（论坛发帖、管服、搞活动）；自学宽带拨号和路由器端口映射解决联机问题。" data-en="At age 10, grew and ran a 100+ active-player Minecraft community from scratch — forum outreach, server ops, events — and self-taught broadband dial-up plus router port forwarding to solve connectivity.">10 岁时从零运营起一个 100+ 人活跃的 Minecraft 玩家社区（论坛发帖、管服、搞活动）；自学宽带拨号和路由器端口映射解决联机问题。</span></p>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="问题" data-en="PROBLEM">问题</span></div>
-    <p class="sec-body"><span data-zh="10 岁小学阶段渴望与众多伙伴联机游戏，受限于资金无法购买昂贵的商业云服务器。" data-en="Childhood initiative to host multi-player gaming without access to expensive cloud hosting.">10 岁小学阶段渴望与众多伙伴联机游戏，受限于资金无法购买昂贵的商业云服务器。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="方法" data-en="APPROACH">方法</span></div>
-    <div class="flow"><span class="step"><span data-zh="拨号组网" data-en="Dial-up net">拨号组网</span></span><span class="farrow">→</span><span class="step"><span data-zh="论坛招募" data-en="Recruit">论坛招募</span></span><span class="farrow">→</span><span class="step"><span data-zh="运营活动" data-en="Operate">运营活动</span></span></div>
-    <p class="sec-body eng-note"><span data-zh="自学网络通信原理，利用家庭宽带 PPPoE 拨号获取动态公网 IP，在路由器/光猫配置 NAT 端口映射实现公网穿透；在各大游戏论坛发帖自主召集伙伴，运营维护 100+ 人活跃社区与节假日活动。" data-en="Self-taught networking using home broadband PPPoE dynamic public IP, configured router NAT port forwarding; recruited players on gaming forums, scaling and managing a 100+ active player community.">自学网络通信原理，利用家庭宽带 PPPoE 拨号获取动态公网 IP，在路由器/光猫配置 NAT 端口映射实现公网穿透；在各大游戏论坛发帖自主召集伙伴，运营维护 100+ 人活跃社区与节假日活动。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="工程" data-en="ENGINEERING">工程</span></div>
-    <pre class="tree"><span class="tdir">100-Player Minecraft Ser/</span>
-<span data-zh="├── pppoe ── 拨号公网 IP" data-en="├── pppoe ── dial-up public IP">├── pppoe ── 拨号公网 IP</span>
-<span data-zh="├── nat-map ── 端口映射" data-en="├── nat-map ── port mapping">├── nat-map ── 端口映射</span>
-<span data-zh="└── forum ── 社区运营" data-en="└── forum ── community ops">└── forum ── 社区运营</span></pre>
-    <p class="sec-body eng-note"><span data-zh="动态公网 IP 嗅探 + 路由器 NAT 多端口映射转发 + 论坛社区自治管理，以零资金投入打通多人联机网络。" data-en="Dynamic public IP routing + router NAT multi-port forwarding + forum community governance, achieving multiplayer connectivity with zero funding.">动态公网 IP 嗅探 + 路由器 NAT 多端口映射转发 + 论坛社区自治管理，以零资金投入打通多人联机网络。</span></p>
-  </section>
-  <section class="sec">
-    <div class="seclab mono"><span class="dot"></span><span data-zh="结果 / 状态" data-en="RESULT">结果 / 状态</span></div>
-    <p class="sec-body"><span data-zh="童年纯网络与社区实践启蒙，奠定了后续计算机网络与系统架构的基础认知。" data-en="Foundational childhood technical exploration, igniting long-term passion for systems and networks.">童年纯网络与社区实践启蒙，奠定了后续计算机网络与系统架构的基础认知。</span></p>
-  </section>
-  <div class="tagrow"><span class="tag">PPPoE</span><span class="tag">端口映射</span><span class="tag">公网穿透</span><span class="tag">社区运营</span><span class="tag">网络启蒙</span></div>
-</article></main>
-  <footer class="mono">
-    <span data-zh="实验性改版 · 由主站内容生成 · neo 分支" data-en="Experimental redesign · generated from main site content · neo branch">实验性改版 · 由主站内容生成 · neo 分支</span><br>
-    <a href="../">← <span data-zh="返回主站" data-en="back to main site">返回主站</span></a>
-  </footer>
+<div class="modal" id="caseModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-panel"><div class="modal-top"><div><div class="modal-eyebrow" id="modalEyebrow">CASE STUDY / PROJECT</div><h2 id="modalTitle">项目案例</h2></div><button class="modal-close" id="modalClose" aria-label="关闭案例"><svg class="icon"><use href="#i-x"/></svg></button></div><div class="modal-content" id="modalContent"></div></div>
 </div>
 <script>
-let lang='zh';
-function setLang(l){
-  lang=l;
-  document.querySelectorAll('[data-zh]').forEach(el=>{
-    el.textContent=el.getAttribute('data-'+l);
-  });
-  document.getElementById('langBtn').textContent = l==='zh' ? 'EN / 英文' : '中文 / ZH';
-  document.documentElement.lang = l==='zh'?'zh-CN':'en';
-  applyFilter();
-}
-document.getElementById('langBtn').addEventListener('click',()=>setLang(lang==='zh'?'en':'zh'));
-applyFilter();
-
-const chips=document.querySelectorAll('.chip');
-const cards=document.querySelectorAll('.card');
-const countEl=document.getElementById('countLine');
-function applyFilter(){
-  const on=document.querySelector('.chip.on');
-  const d=on?on.dataset.domain:'all';
-  let n=0;
-  cards.forEach(c=>{
-    const show = d==='all' || c.dataset.domains.split(' ').includes(d);
-    c.classList.toggle('hide',!show);
-    if(show)n++;
-  });
-  const total=cards.length;
-  countEl.textContent = lang==='zh' ? `显示 ${n} / ${total} 个项目` : `Showing ${n} / ${total} projects`;
-}
-chips.forEach(ch=>ch.addEventListener('click',()=>{
-  chips.forEach(c=>c.classList.remove('on'));
-  ch.classList.add('on');
-  applyFilter();
-}));
+const caseData={"poi": {"zh": {"category": "AI / 工作流 / 01", "title": "Personal Opportunity Intelligence", "intro": "将分散在多个信息源中的机会整理成可筛选、可追踪的清单。重点是减少手动收集和重复浏览，而不是增加 AI 输出。", "problem": "奖学金、开源资助、竞赛与岗位信息分散在不同网站，需要反复搜索、核对资格并记录截止时间，信噪比很低。", "approach": "用 RSS / Atom 采集信息源，解析并去重条目，再按一组明确的规则维度加权评分；达到阈值的机会推送到 Telegram 和 Notion。", "steps": ["多源采集", "解析去重", "规则评分", "推送追踪"], "evidence": "待验证：信息源可用率、去重准确率、推送中被实际点开的比例。在系统性测量之前，不展示命中率。", "limits": "规则评分只是初筛，不代表对机会质量的判断；信息以官方原始页面为准；需要处理失效链接、过期机会和来源格式变化。", "tech": "Python · RSS / Atom · Telegram Bot · Notion API"}, "en": {"category": "AI WORKFLOW / 01", "title": "Personal Opportunity Intelligence", "intro": "Collect scattered opportunities into a filterable, trackable list. The point is less manual searching, not more AI output.", "problem": "Scholarships, open-source grants, competitions and job posts live on different sites; checking eligibility and deadlines by hand is noisy and repetitive.", "approach": "Collect feeds via RSS/Atom, parse and dedupe entries, score them against explicit weighted rules; items above threshold go to Telegram and Notion.", "steps": ["Collect feeds", "Parse & dedupe", "Rule scoring", "Push & track"], "evidence": "To verify: feed availability, dedupe accuracy, share of pushed items actually opened. No hit-rate claims before systematic measurement.", "limits": "Rule scoring is a first pass, not a quality judgment; always check the official source page; handle dead links, expired items and feed format changes.", "tech": "Python · RSS / Atom · Telegram Bot · Notion API"}}, "exam": {"zh": {"category": "WEB / 学习工具 / 02", "title": "银行考试模拟系统", "intro": "为个人备考场景构建的浏览器端练习工具，把模拟答题、自动判分、金融计算器和错题复习放在一个流程里。", "problem": "市面刷题软件广告较多，部分题库的监管条文口径可能过时（如旧银保监会口径），且界面与 ATA 机考的倒计时、题号导航、专用计算器交互有差异。", "approach": "实现计时答题、题号导航、自动判分与 TVM 金融计算器；错题可导出为 Anki FSRS 复习卡。", "steps": ["模拟答题", "自动判分", "定位错题", "复习巩固"], "evidence": "待验证：题目与解析的人工抽检正确率、移动端交互测试、计时与判分边界测试。仅在实际统计后展示数量与正确率。", "limits": "题库共 710 道练习题，基于教材核心考点与典型题型整理，包含改编题与自编模拟题；官方考试不公开历年真题，这里不宣称为“历年真题”。", "tech": "Vanilla JavaScript · HTML / CSS · Anki / FSRS"}, "en": {"category": "WEB / LEARNING TOOL / 02", "title": "Bank Exam Simulator", "intro": "A browser-based practice tool for personal exam prep: timed mock exams, auto-grading, financial calculators and wrong-answer review in one flow.", "problem": "Commercial practice apps carry ads, some question banks use outdated regulatory wording, and their UI differs from the ATA exam countdown, question navigator and calculator interactions.", "approach": "Timed practice, question navigation, auto-grading and TVM financial calculators; wrong answers export as Anki FSRS cards.", "steps": ["Mock exam", "Auto-grading", "Locate mistakes", "Review"], "evidence": "To verify: sampled question/answer accuracy, mobile interaction tests, timer and grading edge cases. Show counts and accuracy only after real measurement.", "limits": "710 practice questions compiled from textbook key points and typical patterns, including adapted and self-written mocks; the official exam does not release past papers, so these are not presented as such.", "tech": "Vanilla JavaScript · HTML / CSS · Anki / FSRS"}}, "whisper": {"zh": {"category": "LINUX / 本地 AI / 03", "title": "Linux Whisper Input", "intro": "通过全局快捷键触发本地语音识别，把结果输入当前应用，减少切换窗口和重复加载模型的等待。", "problem": "在线转写依赖网络且有隐私顾虑；本地模型每次冷启动都要加载数 GB 权重，等待数秒会打断连续输入。", "approach": "模型常驻显存的后台服务；用 PipeWire 采集音频，VAD 裁切有效语音段；快捷键触发，Wayland 注入文本。", "steps": ["快捷键触发", "音频采集", "本地转写", "插入文本"], "evidence": "待验证：端到端延迟需要先定义测量口径（按键到文本出现）、记录设备型号与模型配置，再做多次实测；不把单次观察值当作稳定性能。", "limits": "依赖 NVIDIA GPU；长语音的分段策略、不同应用的输入兼容性仍需单独验证。", "tech": "Python · CTranslate2 · PipeWire · Wayland"}, "en": {"category": "LINUX / LOCAL AI / 03", "title": "Linux Whisper Input", "intro": "Trigger local speech recognition with a global hotkey and insert the result into the current app — less window switching, no repeated model loads.", "problem": "Cloud transcription needs network and raises privacy concerns; loading multi-GB local models on every trigger stalls input for seconds.", "approach": "A resident service keeps the model in VRAM; audio via PipeWire, VAD trims speech segments; hotkey triggers, text injected through Wayland.", "steps": ["Hotkey trigger", "Audio capture", "Local transcription", "Insert text"], "evidence": "To verify: define end-to-end latency (hotkey to text appearing), record device and model config, then measure repeatedly; single observations are not stable performance.", "limits": "Requires NVIDIA GPU; long-speech segmentation and per-app input compatibility still need separate verification.", "tech": "Python · CTranslate2 · PipeWire · Wayland"}}, "obs": {"zh": {"category": "LINUX / 故障排查 / 04", "title": "OBS 摄像头与画面叠加修复", "intro": "排查 Linux 推流环境中特定设备的摄像头解码、透明视频渲染与场景坐标问题，并做回归测试。", "problem": "特定设备上，MJPEG 采集遇到坏包曾触发 FFmpeg 解码异常；透明 WebM 的解码设置影响 alpha 通道；场景切换后叠加元素坐标可能偏移。", "approach": "改用 YUYV 4:2:2 原始像素采集，绕开原先出问题的 MJPEG 解码路径；调整透明视频解码方式；校正绝对/相对坐标；udev 禁用 USB 自动休眠；Lua 显示时间与待办。", "steps": ["摄像头采集", "调整解码配置", "校准叠加坐标", "回归测试"], "evidence": "待补充：摄像头型号、分辨率/帧率、连续推流测试时长与复现记录。没有测试记录前，不宣称“广播级画质”或“彻底免疫故障”。", "limits": "针对当前设备与已观察问题的配置规避，不保证消除所有 USB 传输、硬件或驱动故障；跨设备使用前需重新验证。", "tech": "OBS Studio · V4L2 · Lua · udev"}, "en": {"category": "LINUX / TROUBLESHOOTING / 04", "title": "OBS Camera & Overlay Fixes", "intro": "Diagnose camera decoding, transparent-video rendering and scene-coordinate issues in a Linux streaming setup on specific hardware, then regression-test.", "problem": "On specific hardware, MJPEG capture hit decoder crashes on corrupt packets; transparent WebM decode settings affected the alpha channel; overlay coordinates could drift after scene switches.", "approach": "Switched to YUYV 4:2:2 raw capture to bypass the problematic MJPEG path; adjusted transparent-video decoding; corrected absolute/relative coordinates; disabled USB autosuspend via udev; Lua overlays for time and todos.", "steps": ["Capture", "Tune decode config", "Calibrate overlays", "Regression test"], "evidence": "To add: camera model, resolution/fps, soak-test duration and reproduction notes. No “broadcast-grade” or “immune to failures” claims without test records.", "limits": "Workarounds for observed issues on current hardware; does not guarantee against all USB, hardware or driver failures; re-verify on other devices.", "tech": "OBS Studio · V4L2 · Lua · udev"}}};
+const modal=document.getElementById('caseModal'); const modalTitle=document.getElementById('modalTitle'); const modalEyebrow=document.getElementById('modalEyebrow'); const modalContent=document.getElementById('modalContent'); let previousFocus=null; let currentCase=null;
+function renderCase(){const d=caseData[currentCase];if(!d)return;const t=d[lang]||d.zh;modalEyebrow.textContent=t.category;modalTitle.textContent=t.title;const L=lang==='zh'?['问题场景','实现方式','工作流程','值得补充的验证','限制与取舍','技术栈','这份案例基于现有项目介绍整理。“待验证”标注的是尚未系统测量的项目，不代表已完成的测试结果。','查看项目案例']:['Problem','Approach','Workflow','To verify','Limits & trade-offs','Stack','Case studies are compiled from existing project notes. Items marked “to verify” have not been systematically measured.','View case study'];modalContent.innerHTML=`<p class="modal-intro">${t.intro}</p><div class="case-grid"><section class="case-box"><h3><svg class="icon"><use href="#i-target"/></svg>${L[0]}</h3><p>${t.problem}</p></section><section class="case-box"><h3><svg class="icon"><use href="#i-wrench"/></svg>${L[1]}</h3><p>${t.approach}</p></section><section class="case-box full"><h3><svg class="icon"><use href="#i-git"/></svg>${L[2]}</h3><div class="case-flow">${t.steps.map((s,i)=>`${i?'<svg class="icon"><use href="#i-arrow-right"/></svg>':''}<span>${s}</span>`).join('')}</div></section><section class="case-box"><h3><svg class="icon"><use href="#i-chart"/></svg>${L[3]}</h3><p>${t.evidence}</p></section><section class="case-box"><h3><svg class="icon"><use href="#i-check"/></svg>${L[4]}</h3><p>${t.limits}</p></section><section class="case-box full"><h3><svg class="icon"><use href="#i-code"/></svg>${L[5]}</h3><p>${t.tech}</p></section></div><div class="honesty-note">${L[6]}</div>`;}
+function openCase(key){if(!caseData[key])return;previousFocus=document.activeElement;currentCase=key;renderCase();modal.classList.add('open');document.body.style.overflow='hidden';document.getElementById('modalClose').focus()}
+function closeCase(){modal.classList.remove('open');document.body.style.overflow='';currentCase=null;if(previousFocus)previousFocus.focus()}
+document.querySelectorAll('.case-open').forEach(b=>b.addEventListener('click',()=>openCase(b.dataset.case)));document.getElementById('modalClose').addEventListener('click',closeCase);modal.addEventListener('click',e=>{if(e.target===modal)closeCase()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeCase()});
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===btn));const f=btn.dataset.filter;document.querySelectorAll('.archive-item').forEach(item=>{item.hidden=f!=='all'&&!item.dataset.category.split(' ').includes(f)})}));
+document.getElementById('themeToggle').addEventListener('click',()=>{document.body.classList.toggle('dark');const dark=document.body.classList.contains('dark');document.querySelector('#themeToggle use').setAttribute('href',dark?'#i-sun':'#i-moon');document.getElementById('themeToggle').setAttribute('aria-label',dark?'切换浅色模式':'切换深色模式')});
+let lang='zh'; document.getElementById('langToggle').addEventListener('click',()=>{lang=lang==='zh'?'en':'zh';document.documentElement.lang=lang==='zh'?'zh-CN':'en';document.querySelectorAll('[data-zh][data-en]').forEach(el=>{el.innerHTML=el.dataset[lang]});document.getElementById('langToggle').textContent=lang==='zh'?'EN / 中':'中 / EN';document.getElementById('langToggle').setAttribute('aria-label',lang==='zh'?'Switch language':'切换语言');if(currentCase)renderCase()});
 </script>
 </body>
 </html>
