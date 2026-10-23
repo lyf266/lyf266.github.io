@@ -23,6 +23,11 @@
       --sans: "Source Han Sans SC", "Noto Sans CJK SC", "Noto Sans SC", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
       --radius: 22px;
+      --gh-l0: #ebedf0;
+      --gh-l1: #9be9a8;
+      --gh-l2: #40c463;
+      --gh-l3: #30a14e;
+      --gh-l4: #216e39;
     }
 
     * {
@@ -938,6 +943,184 @@
       line-height: 1.5;
     }
 
+    /* 04.1 GitHub 活跃度面板 */
+    .activity-panel {
+      margin-top: 48px;
+      margin-bottom: 24px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 30px 34px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .activity-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .activity-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .activity-kicker {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .activity-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .activity-badge {
+      font-family: var(--mono);
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .activity-meta-link {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .activity-meta-link:hover {
+      color: var(--accent);
+    }
+
+    .activity-graph-wrap {
+      position: relative;
+      overflow-x: auto;
+      padding: 4px 0 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line) transparent;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .activity-graph-wrap::-webkit-scrollbar {
+      height: 6px;
+    }
+    .activity-graph-wrap::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .activity-graph-wrap::-webkit-scrollbar-thumb {
+      background: var(--line);
+      border-radius: 3px;
+    }
+
+    .activity-svg {
+      display: block;
+      min-width: 728px;
+      width: 100%;
+      height: auto;
+    }
+
+    .gh-label {
+      font-size: 9px;
+      font-family: var(--mono);
+      fill: var(--muted);
+      dominant-baseline: middle;
+      user-select: none;
+    }
+    .gh-month-label { text-anchor: start; }
+    .gh-day-label { text-anchor: start; }
+
+    .gh-cell {
+      rx: 2.2px;
+      ry: 2.2px;
+      cursor: pointer;
+      transition: stroke 0.15s ease, stroke-width 0.15s ease;
+    }
+    .gh-cell:hover {
+      stroke: var(--ink);
+      stroke-width: 1.2px;
+    }
+
+    .gh-l0 { fill: var(--gh-l0); }
+    .gh-l1 { fill: var(--gh-l1); }
+    .gh-l2 { fill: var(--gh-l2); }
+    .gh-l3 { fill: var(--gh-l3); }
+    .gh-l4 { fill: var(--gh-l4); }
+
+    .activity-foot {
+      margin-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    .activity-legend {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .legend-cells {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin: 0 4px;
+    }
+
+    .legend-cell {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .activity-tooltip {
+      position: absolute;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 5px 9px;
+      font-size: 11px;
+      font-family: var(--mono);
+      border-radius: 5px;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -100%) translateY(-6px);
+      transition: opacity 0.12s ease, transform 0.12s ease;
+      white-space: nowrap;
+      z-index: 50;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .activity-tooltip.visible {
+      opacity: 1;
+      transform: translate(-50%, -100%) translateY(-8px);
+    }
+
     .contact {
       margin-top: 60px;
       margin-bottom: 35px;
@@ -1218,6 +1401,11 @@
       --accent-soft: #263a2b;
       --code: #263329;
       --shadow: 0 18px 55px rgba(0, 0, 0, 0.18);
+      --gh-l0: #202a22;
+      --gh-l1: #1f4228;
+      --gh-l2: #2e663d;
+      --gh-l3: #569e6b;
+      --gh-l4: #a6d6ae;
     }
 
     body.dark .brand-mark {
@@ -1313,6 +1501,8 @@
       .archive-actions { grid-column: 2; justify-self: start; margin-top: 4px; }
       .about { padding-top: 36px; }
       .about-points { grid-template-columns: 1fr; }
+      .activity-panel { padding: 20px 16px; margin-top: 36px; }
+      .activity-title { font-size: 18px; }
       .contact { margin-top: 40px; padding: 28px 22px; align-items: flex-start; flex-direction: column; }
       .contact h2 { font-size: 24px; }
       .contact:after { right: -60px; }
@@ -1332,7 +1522,7 @@
     }
 
     @media print {
-      .topbar .actions, .nav, .cta-row, .text-link, .filter-row, .contact, .modal { display: none !important; }
+      .topbar .actions, .nav, .cta-row, .text-link, .filter-row, .contact, .modal, .activity-panel { display: none !important; }
       body { background: white; color: #111; font-size: 12pt; }
       .wrap { width: 100%; max-width: none; }
       .hero { padding: 20px 0; grid-template-columns: 1fr; }
@@ -2117,6 +2307,432 @@
       </div>
     </div>
 
+    <!-- 04.1 / GitHub 开源与代码活跃度 -->
+    <div class="activity-panel" id="ghActivityPanel">
+      <div class="activity-head">
+        <div class="activity-title-group">
+          <div class="activity-kicker" data-zh="04.1 / 开源工程轨迹" data-en="04.1 / Open Source Track Record">04.1 / 开源工程轨迹</div>
+          <div class="activity-title">
+            <span data-zh="GitHub 贡献热力图" data-en="GitHub Contribution Heatmap">GitHub 贡献热力图</span>
+            <span class="activity-badge" id="ghContribBadge" data-zh="过去 1 年 501 次贡献" data-en="501 contributions in the past year">过去 1 年 501 次贡献</span>
+          </div>
+        </div>
+        <a class="activity-meta-link" href="https://github.com/lyf266" target="_blank" rel="noopener noreferrer">
+          <svg class="icon" style="width:14px;height:14px"><use href="#i-git"/></svg>
+          <span>github.com/lyf266</span>
+          <svg class="icon" style="width:12px;height:12px"><use href="#i-arrow-up-right"/></svg>
+        </a>
+      </div>
+
+      <div class="activity-graph-wrap" id="ghHeatmapWrap">
+        <div class="activity-tooltip" id="ghTooltip"></div>
+        <div id="ghHeatmapSvgContainer">
+<svg class="activity-svg" viewBox="0 0 729 115" preserveAspectRatio="xMinYMin meet" aria-label="GitHub Contributions Heatmap">
+  <text class="gh-label gh-month-label" data-zh="11月" data-en="Nov" x="45" y="13">11月</text>
+  <text class="gh-label gh-month-label" data-zh="12月" data-en="Dec" x="110" y="13">12月</text>
+  <text class="gh-label gh-month-label" data-zh="1月" data-en="Jan" x="162" y="13">1月</text>
+  <text class="gh-label gh-month-label" data-zh="2月" data-en="Feb" x="227" y="13">2月</text>
+  <text class="gh-label gh-month-label" data-zh="3月" data-en="Mar" x="279" y="13">3月</text>
+  <text class="gh-label gh-month-label" data-zh="4月" data-en="Apr" x="331" y="13">4月</text>
+  <text class="gh-label gh-month-label" data-zh="5月" data-en="May" x="383" y="13">5月</text>
+  <text class="gh-label gh-month-label" data-zh="6月" data-en="Jun" x="448" y="13">6月</text>
+  <text class="gh-label gh-month-label" data-zh="7月" data-en="Jul" x="500" y="13">7月</text>
+  <text class="gh-label gh-month-label" data-zh="8月" data-en="Aug" x="552" y="13">8月</text>
+  <text class="gh-label gh-month-label" data-zh="9月" data-en="Sep" x="617" y="13">9月</text>
+  <text class="gh-label gh-month-label" data-zh="10月" data-en="Oct" x="669" y="13">10月</text>
+  <text class="gh-label gh-day-label" data-zh="一" data-en="Mon" x="0" y="41">一</text>
+  <text class="gh-label gh-day-label" data-zh="三" data-en="Wed" x="0" y="67">三</text>
+  <text class="gh-label gh-day-label" data-zh="五" data-en="Fri" x="0" y="93">五</text>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="32" y="20" rx="2.2" ry="2.2" data-date="2025-10-19" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="32" y="33" rx="2.2" ry="2.2" data-date="2025-10-20" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="32" y="46" rx="2.2" ry="2.2" data-date="2025-10-21" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="32" y="59" rx="2.2" ry="2.2" data-date="2025-10-22" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="32" y="72" rx="2.2" ry="2.2" data-date="2025-10-23" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="32" y="85" rx="2.2" ry="2.2" data-date="2025-10-24" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="32" y="98" rx="2.2" ry="2.2" data-date="2025-10-25" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="45" y="20" rx="2.2" ry="2.2" data-date="2025-10-26" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="45" y="33" rx="2.2" ry="2.2" data-date="2025-10-27" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="45" y="46" rx="2.2" ry="2.2" data-date="2025-10-28" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="45" y="59" rx="2.2" ry="2.2" data-date="2025-10-29" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="45" y="72" rx="2.2" ry="2.2" data-date="2025-10-30" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="45" y="85" rx="2.2" ry="2.2" data-date="2025-10-31" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="45" y="98" rx="2.2" ry="2.2" data-date="2025-11-01" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="58" y="20" rx="2.2" ry="2.2" data-date="2025-11-02" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="58" y="33" rx="2.2" ry="2.2" data-date="2025-11-03" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="58" y="46" rx="2.2" ry="2.2" data-date="2025-11-04" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="58" y="59" rx="2.2" ry="2.2" data-date="2025-11-05" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="58" y="72" rx="2.2" ry="2.2" data-date="2025-11-06" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="58" y="85" rx="2.2" ry="2.2" data-date="2025-11-07" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="58" y="98" rx="2.2" ry="2.2" data-date="2025-11-08" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="71" y="20" rx="2.2" ry="2.2" data-date="2025-11-09" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="71" y="33" rx="2.2" ry="2.2" data-date="2025-11-10" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="71" y="46" rx="2.2" ry="2.2" data-date="2025-11-11" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="71" y="59" rx="2.2" ry="2.2" data-date="2025-11-12" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="71" y="72" rx="2.2" ry="2.2" data-date="2025-11-13" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="71" y="85" rx="2.2" ry="2.2" data-date="2025-11-14" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="71" y="98" rx="2.2" ry="2.2" data-date="2025-11-15" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="84" y="20" rx="2.2" ry="2.2" data-date="2025-11-16" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="84" y="33" rx="2.2" ry="2.2" data-date="2025-11-17" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="84" y="46" rx="2.2" ry="2.2" data-date="2025-11-18" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="84" y="59" rx="2.2" ry="2.2" data-date="2025-11-19" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="84" y="72" rx="2.2" ry="2.2" data-date="2025-11-20" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="84" y="85" rx="2.2" ry="2.2" data-date="2025-11-21" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="84" y="98" rx="2.2" ry="2.2" data-date="2025-11-22" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="97" y="20" rx="2.2" ry="2.2" data-date="2025-11-23" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="97" y="33" rx="2.2" ry="2.2" data-date="2025-11-24" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="97" y="46" rx="2.2" ry="2.2" data-date="2025-11-25" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="97" y="59" rx="2.2" ry="2.2" data-date="2025-11-26" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="97" y="72" rx="2.2" ry="2.2" data-date="2025-11-27" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="97" y="85" rx="2.2" ry="2.2" data-date="2025-11-28" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="97" y="98" rx="2.2" ry="2.2" data-date="2025-11-29" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="110" y="20" rx="2.2" ry="2.2" data-date="2025-11-30" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="110" y="33" rx="2.2" ry="2.2" data-date="2025-12-01" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="110" y="46" rx="2.2" ry="2.2" data-date="2025-12-02" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="110" y="59" rx="2.2" ry="2.2" data-date="2025-12-03" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="110" y="72" rx="2.2" ry="2.2" data-date="2025-12-04" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="110" y="85" rx="2.2" ry="2.2" data-date="2025-12-05" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="110" y="98" rx="2.2" ry="2.2" data-date="2025-12-06" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="123" y="20" rx="2.2" ry="2.2" data-date="2025-12-07" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="123" y="33" rx="2.2" ry="2.2" data-date="2025-12-08" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="123" y="46" rx="2.2" ry="2.2" data-date="2025-12-09" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="123" y="59" rx="2.2" ry="2.2" data-date="2025-12-10" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="123" y="72" rx="2.2" ry="2.2" data-date="2025-12-11" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="123" y="85" rx="2.2" ry="2.2" data-date="2025-12-12" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="123" y="98" rx="2.2" ry="2.2" data-date="2025-12-13" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="136" y="20" rx="2.2" ry="2.2" data-date="2025-12-14" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="136" y="33" rx="2.2" ry="2.2" data-date="2025-12-15" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="136" y="46" rx="2.2" ry="2.2" data-date="2025-12-16" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="136" y="59" rx="2.2" ry="2.2" data-date="2025-12-17" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="136" y="72" rx="2.2" ry="2.2" data-date="2025-12-18" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="136" y="85" rx="2.2" ry="2.2" data-date="2025-12-19" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="136" y="98" rx="2.2" ry="2.2" data-date="2025-12-20" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="149" y="20" rx="2.2" ry="2.2" data-date="2025-12-21" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="149" y="33" rx="2.2" ry="2.2" data-date="2025-12-22" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="149" y="46" rx="2.2" ry="2.2" data-date="2025-12-23" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="149" y="59" rx="2.2" ry="2.2" data-date="2025-12-24" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="149" y="72" rx="2.2" ry="2.2" data-date="2025-12-25" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="149" y="85" rx="2.2" ry="2.2" data-date="2025-12-26" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="149" y="98" rx="2.2" ry="2.2" data-date="2025-12-27" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="162" y="20" rx="2.2" ry="2.2" data-date="2025-12-28" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="162" y="33" rx="2.2" ry="2.2" data-date="2025-12-29" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="162" y="46" rx="2.2" ry="2.2" data-date="2025-12-30" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="162" y="59" rx="2.2" ry="2.2" data-date="2025-12-31" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="162" y="72" rx="2.2" ry="2.2" data-date="2026-01-01" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="162" y="85" rx="2.2" ry="2.2" data-date="2026-01-02" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="162" y="98" rx="2.2" ry="2.2" data-date="2026-01-03" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="175" y="20" rx="2.2" ry="2.2" data-date="2026-01-04" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="175" y="33" rx="2.2" ry="2.2" data-date="2026-01-05" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="175" y="46" rx="2.2" ry="2.2" data-date="2026-01-06" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="175" y="59" rx="2.2" ry="2.2" data-date="2026-01-07" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="175" y="72" rx="2.2" ry="2.2" data-date="2026-01-08" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="175" y="85" rx="2.2" ry="2.2" data-date="2026-01-09" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="175" y="98" rx="2.2" ry="2.2" data-date="2026-01-10" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="188" y="20" rx="2.2" ry="2.2" data-date="2026-01-11" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="188" y="33" rx="2.2" ry="2.2" data-date="2026-01-12" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="188" y="46" rx="2.2" ry="2.2" data-date="2026-01-13" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="188" y="59" rx="2.2" ry="2.2" data-date="2026-01-14" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="188" y="72" rx="2.2" ry="2.2" data-date="2026-01-15" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="188" y="85" rx="2.2" ry="2.2" data-date="2026-01-16" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="188" y="98" rx="2.2" ry="2.2" data-date="2026-01-17" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="201" y="20" rx="2.2" ry="2.2" data-date="2026-01-18" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="201" y="33" rx="2.2" ry="2.2" data-date="2026-01-19" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="201" y="46" rx="2.2" ry="2.2" data-date="2026-01-20" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="201" y="59" rx="2.2" ry="2.2" data-date="2026-01-21" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="201" y="72" rx="2.2" ry="2.2" data-date="2026-01-22" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="201" y="85" rx="2.2" ry="2.2" data-date="2026-01-23" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="201" y="98" rx="2.2" ry="2.2" data-date="2026-01-24" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="214" y="20" rx="2.2" ry="2.2" data-date="2026-01-25" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="214" y="33" rx="2.2" ry="2.2" data-date="2026-01-26" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="214" y="46" rx="2.2" ry="2.2" data-date="2026-01-27" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="214" y="59" rx="2.2" ry="2.2" data-date="2026-01-28" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="214" y="72" rx="2.2" ry="2.2" data-date="2026-01-29" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="214" y="85" rx="2.2" ry="2.2" data-date="2026-01-30" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="214" y="98" rx="2.2" ry="2.2" data-date="2026-01-31" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="227" y="20" rx="2.2" ry="2.2" data-date="2026-02-01" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="227" y="33" rx="2.2" ry="2.2" data-date="2026-02-02" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="227" y="46" rx="2.2" ry="2.2" data-date="2026-02-03" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="227" y="59" rx="2.2" ry="2.2" data-date="2026-02-04" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="227" y="72" rx="2.2" ry="2.2" data-date="2026-02-05" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="227" y="85" rx="2.2" ry="2.2" data-date="2026-02-06" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="227" y="98" rx="2.2" ry="2.2" data-date="2026-02-07" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="240" y="20" rx="2.2" ry="2.2" data-date="2026-02-08" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="240" y="33" rx="2.2" ry="2.2" data-date="2026-02-09" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="240" y="46" rx="2.2" ry="2.2" data-date="2026-02-10" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="240" y="59" rx="2.2" ry="2.2" data-date="2026-02-11" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="240" y="72" rx="2.2" ry="2.2" data-date="2026-02-12" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="240" y="85" rx="2.2" ry="2.2" data-date="2026-02-13" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="240" y="98" rx="2.2" ry="2.2" data-date="2026-02-14" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="253" y="20" rx="2.2" ry="2.2" data-date="2026-02-15" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="253" y="33" rx="2.2" ry="2.2" data-date="2026-02-16" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="253" y="46" rx="2.2" ry="2.2" data-date="2026-02-17" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="253" y="59" rx="2.2" ry="2.2" data-date="2026-02-18" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="253" y="72" rx="2.2" ry="2.2" data-date="2026-02-19" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="253" y="85" rx="2.2" ry="2.2" data-date="2026-02-20" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="253" y="98" rx="2.2" ry="2.2" data-date="2026-02-21" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="266" y="20" rx="2.2" ry="2.2" data-date="2026-02-22" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="266" y="33" rx="2.2" ry="2.2" data-date="2026-02-23" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="266" y="46" rx="2.2" ry="2.2" data-date="2026-02-24" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="266" y="59" rx="2.2" ry="2.2" data-date="2026-02-25" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="266" y="72" rx="2.2" ry="2.2" data-date="2026-02-26" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="266" y="85" rx="2.2" ry="2.2" data-date="2026-02-27" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="266" y="98" rx="2.2" ry="2.2" data-date="2026-02-28" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="279" y="20" rx="2.2" ry="2.2" data-date="2026-03-01" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="279" y="33" rx="2.2" ry="2.2" data-date="2026-03-02" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="279" y="46" rx="2.2" ry="2.2" data-date="2026-03-03" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="279" y="59" rx="2.2" ry="2.2" data-date="2026-03-04" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="279" y="72" rx="2.2" ry="2.2" data-date="2026-03-05" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="279" y="85" rx="2.2" ry="2.2" data-date="2026-03-06" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="279" y="98" rx="2.2" ry="2.2" data-date="2026-03-07" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="292" y="20" rx="2.2" ry="2.2" data-date="2026-03-08" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="292" y="33" rx="2.2" ry="2.2" data-date="2026-03-09" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="292" y="46" rx="2.2" ry="2.2" data-date="2026-03-10" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="292" y="59" rx="2.2" ry="2.2" data-date="2026-03-11" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="292" y="72" rx="2.2" ry="2.2" data-date="2026-03-12" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="292" y="85" rx="2.2" ry="2.2" data-date="2026-03-13" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="292" y="98" rx="2.2" ry="2.2" data-date="2026-03-14" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="305" y="20" rx="2.2" ry="2.2" data-date="2026-03-15" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="305" y="33" rx="2.2" ry="2.2" data-date="2026-03-16" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="305" y="46" rx="2.2" ry="2.2" data-date="2026-03-17" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="305" y="59" rx="2.2" ry="2.2" data-date="2026-03-18" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="305" y="72" rx="2.2" ry="2.2" data-date="2026-03-19" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="305" y="85" rx="2.2" ry="2.2" data-date="2026-03-20" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="305" y="98" rx="2.2" ry="2.2" data-date="2026-03-21" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="318" y="20" rx="2.2" ry="2.2" data-date="2026-03-22" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="318" y="33" rx="2.2" ry="2.2" data-date="2026-03-23" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="318" y="46" rx="2.2" ry="2.2" data-date="2026-03-24" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="318" y="59" rx="2.2" ry="2.2" data-date="2026-03-25" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="318" y="72" rx="2.2" ry="2.2" data-date="2026-03-26" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="318" y="85" rx="2.2" ry="2.2" data-date="2026-03-27" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="318" y="98" rx="2.2" ry="2.2" data-date="2026-03-28" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="331" y="20" rx="2.2" ry="2.2" data-date="2026-03-29" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="331" y="33" rx="2.2" ry="2.2" data-date="2026-03-30" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="331" y="46" rx="2.2" ry="2.2" data-date="2026-03-31" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="331" y="59" rx="2.2" ry="2.2" data-date="2026-04-01" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="331" y="72" rx="2.2" ry="2.2" data-date="2026-04-02" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="331" y="85" rx="2.2" ry="2.2" data-date="2026-04-03" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="331" y="98" rx="2.2" ry="2.2" data-date="2026-04-04" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="344" y="20" rx="2.2" ry="2.2" data-date="2026-04-05" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="344" y="33" rx="2.2" ry="2.2" data-date="2026-04-06" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="344" y="46" rx="2.2" ry="2.2" data-date="2026-04-07" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="344" y="59" rx="2.2" ry="2.2" data-date="2026-04-08" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="344" y="72" rx="2.2" ry="2.2" data-date="2026-04-09" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="344" y="85" rx="2.2" ry="2.2" data-date="2026-04-10" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="344" y="98" rx="2.2" ry="2.2" data-date="2026-04-11" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="357" y="20" rx="2.2" ry="2.2" data-date="2026-04-12" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="357" y="33" rx="2.2" ry="2.2" data-date="2026-04-13" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="357" y="46" rx="2.2" ry="2.2" data-date="2026-04-14" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="357" y="59" rx="2.2" ry="2.2" data-date="2026-04-15" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="357" y="72" rx="2.2" ry="2.2" data-date="2026-04-16" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="357" y="85" rx="2.2" ry="2.2" data-date="2026-04-17" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="357" y="98" rx="2.2" ry="2.2" data-date="2026-04-18" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="370" y="20" rx="2.2" ry="2.2" data-date="2026-04-19" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="370" y="33" rx="2.2" ry="2.2" data-date="2026-04-20" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="370" y="46" rx="2.2" ry="2.2" data-date="2026-04-21" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="370" y="59" rx="2.2" ry="2.2" data-date="2026-04-22" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="370" y="72" rx="2.2" ry="2.2" data-date="2026-04-23" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="370" y="85" rx="2.2" ry="2.2" data-date="2026-04-24" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="370" y="98" rx="2.2" ry="2.2" data-date="2026-04-25" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="383" y="20" rx="2.2" ry="2.2" data-date="2026-04-26" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="383" y="33" rx="2.2" ry="2.2" data-date="2026-04-27" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="383" y="46" rx="2.2" ry="2.2" data-date="2026-04-28" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="383" y="59" rx="2.2" ry="2.2" data-date="2026-04-29" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="383" y="72" rx="2.2" ry="2.2" data-date="2026-04-30" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="383" y="85" rx="2.2" ry="2.2" data-date="2026-05-01" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="383" y="98" rx="2.2" ry="2.2" data-date="2026-05-02" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="396" y="20" rx="2.2" ry="2.2" data-date="2026-05-03" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="396" y="33" rx="2.2" ry="2.2" data-date="2026-05-04" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="396" y="46" rx="2.2" ry="2.2" data-date="2026-05-05" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="396" y="59" rx="2.2" ry="2.2" data-date="2026-05-06" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="396" y="72" rx="2.2" ry="2.2" data-date="2026-05-07" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="396" y="85" rx="2.2" ry="2.2" data-date="2026-05-08" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="396" y="98" rx="2.2" ry="2.2" data-date="2026-05-09" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="409" y="20" rx="2.2" ry="2.2" data-date="2026-05-10" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="409" y="33" rx="2.2" ry="2.2" data-date="2026-05-11" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="409" y="46" rx="2.2" ry="2.2" data-date="2026-05-12" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="409" y="59" rx="2.2" ry="2.2" data-date="2026-05-13" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="409" y="72" rx="2.2" ry="2.2" data-date="2026-05-14" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="409" y="85" rx="2.2" ry="2.2" data-date="2026-05-15" data-count="3" data-level="1"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="409" y="98" rx="2.2" ry="2.2" data-date="2026-05-16" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="422" y="20" rx="2.2" ry="2.2" data-date="2026-05-17" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="422" y="33" rx="2.2" ry="2.2" data-date="2026-05-18" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="422" y="46" rx="2.2" ry="2.2" data-date="2026-05-19" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="422" y="59" rx="2.2" ry="2.2" data-date="2026-05-20" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="422" y="72" rx="2.2" ry="2.2" data-date="2026-05-21" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="422" y="85" rx="2.2" ry="2.2" data-date="2026-05-22" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="422" y="98" rx="2.2" ry="2.2" data-date="2026-05-23" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="435" y="20" rx="2.2" ry="2.2" data-date="2026-05-24" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="435" y="33" rx="2.2" ry="2.2" data-date="2026-05-25" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="435" y="46" rx="2.2" ry="2.2" data-date="2026-05-26" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="435" y="59" rx="2.2" ry="2.2" data-date="2026-05-27" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="435" y="72" rx="2.2" ry="2.2" data-date="2026-05-28" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="435" y="85" rx="2.2" ry="2.2" data-date="2026-05-29" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="435" y="98" rx="2.2" ry="2.2" data-date="2026-05-30" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="448" y="20" rx="2.2" ry="2.2" data-date="2026-05-31" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="448" y="33" rx="2.2" ry="2.2" data-date="2026-06-01" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="448" y="46" rx="2.2" ry="2.2" data-date="2026-06-02" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l0" width="10" height="10" x="448" y="59" rx="2.2" ry="2.2" data-date="2026-06-03" data-count="0" data-level="0"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="448" y="72" rx="2.2" ry="2.2" data-date="2026-06-04" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l3" width="10" height="10" x="448" y="85" rx="2.2" ry="2.2" data-date="2026-06-05" data-count="8" data-level="3"></rect>
+  <rect class="gh-cell gh-l3" width="10" height="10" x="448" y="98" rx="2.2" ry="2.2" data-date="2026-06-06" data-count="9" data-level="3"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="461" y="20" rx="2.2" ry="2.2" data-date="2026-06-07" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="461" y="33" rx="2.2" ry="2.2" data-date="2026-06-08" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="461" y="46" rx="2.2" ry="2.2" data-date="2026-06-09" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="461" y="59" rx="2.2" ry="2.2" data-date="2026-06-10" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="461" y="72" rx="2.2" ry="2.2" data-date="2026-06-11" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l4" width="10" height="10" x="461" y="85" rx="2.2" ry="2.2" data-date="2026-06-12" data-count="12" data-level="4"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="461" y="98" rx="2.2" ry="2.2" data-date="2026-06-13" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="474" y="20" rx="2.2" ry="2.2" data-date="2026-06-14" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="474" y="33" rx="2.2" ry="2.2" data-date="2026-06-15" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="474" y="46" rx="2.2" ry="2.2" data-date="2026-06-16" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="474" y="59" rx="2.2" ry="2.2" data-date="2026-06-17" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="474" y="72" rx="2.2" ry="2.2" data-date="2026-06-18" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="474" y="85" rx="2.2" ry="2.2" data-date="2026-06-19" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="474" y="98" rx="2.2" ry="2.2" data-date="2026-06-20" data-count="6" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="487" y="20" rx="2.2" ry="2.2" data-date="2026-06-21" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="487" y="33" rx="2.2" ry="2.2" data-date="2026-06-22" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="487" y="46" rx="2.2" ry="2.2" data-date="2026-06-23" data-count="7" data-level="2"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="487" y="59" rx="2.2" ry="2.2" data-date="2026-06-24" data-count="3" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="487" y="72" rx="2.2" ry="2.2" data-date="2026-06-25" data-count="3" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="487" y="85" rx="2.2" ry="2.2" data-date="2026-06-26" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="487" y="98" rx="2.2" ry="2.2" data-date="2026-06-27" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="500" y="20" rx="2.2" ry="2.2" data-date="2026-06-28" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="500" y="33" rx="2.2" ry="2.2" data-date="2026-06-29" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="500" y="46" rx="2.2" ry="2.2" data-date="2026-06-30" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="500" y="59" rx="2.2" ry="2.2" data-date="2026-07-01" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="500" y="72" rx="2.2" ry="2.2" data-date="2026-07-02" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="500" y="85" rx="2.2" ry="2.2" data-date="2026-07-03" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="500" y="98" rx="2.2" ry="2.2" data-date="2026-07-04" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="513" y="20" rx="2.2" ry="2.2" data-date="2026-07-05" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="513" y="33" rx="2.2" ry="2.2" data-date="2026-07-06" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="513" y="46" rx="2.2" ry="2.2" data-date="2026-07-07" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="513" y="59" rx="2.2" ry="2.2" data-date="2026-07-08" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="513" y="72" rx="2.2" ry="2.2" data-date="2026-07-09" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="513" y="85" rx="2.2" ry="2.2" data-date="2026-07-10" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="513" y="98" rx="2.2" ry="2.2" data-date="2026-07-11" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="526" y="20" rx="2.2" ry="2.2" data-date="2026-07-12" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="526" y="33" rx="2.2" ry="2.2" data-date="2026-07-13" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="526" y="46" rx="2.2" ry="2.2" data-date="2026-07-14" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="526" y="59" rx="2.2" ry="2.2" data-date="2026-07-15" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="526" y="72" rx="2.2" ry="2.2" data-date="2026-07-16" data-count="3" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="526" y="85" rx="2.2" ry="2.2" data-date="2026-07-17" data-count="7" data-level="2"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="526" y="98" rx="2.2" ry="2.2" data-date="2026-07-18" data-count="3" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="539" y="20" rx="2.2" ry="2.2" data-date="2026-07-19" data-count="3" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="539" y="33" rx="2.2" ry="2.2" data-date="2026-07-20" data-count="7" data-level="2"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="539" y="46" rx="2.2" ry="2.2" data-date="2026-07-21" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="539" y="59" rx="2.2" ry="2.2" data-date="2026-07-22" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="539" y="72" rx="2.2" ry="2.2" data-date="2026-07-23" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l3" width="10" height="10" x="539" y="85" rx="2.2" ry="2.2" data-date="2026-07-24" data-count="10" data-level="3"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="539" y="98" rx="2.2" ry="2.2" data-date="2026-07-25" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="552" y="20" rx="2.2" ry="2.2" data-date="2026-07-26" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="552" y="33" rx="2.2" ry="2.2" data-date="2026-07-27" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="552" y="46" rx="2.2" ry="2.2" data-date="2026-07-28" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="552" y="59" rx="2.2" ry="2.2" data-date="2026-07-29" data-count="7" data-level="2"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="552" y="72" rx="2.2" ry="2.2" data-date="2026-07-30" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="552" y="85" rx="2.2" ry="2.2" data-date="2026-07-31" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="552" y="98" rx="2.2" ry="2.2" data-date="2026-08-01" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="565" y="20" rx="2.2" ry="2.2" data-date="2026-08-02" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="565" y="33" rx="2.2" ry="2.2" data-date="2026-08-03" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="565" y="46" rx="2.2" ry="2.2" data-date="2026-08-04" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="565" y="59" rx="2.2" ry="2.2" data-date="2026-08-05" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="565" y="72" rx="2.2" ry="2.2" data-date="2026-08-06" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="565" y="85" rx="2.2" ry="2.2" data-date="2026-08-07" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="565" y="98" rx="2.2" ry="2.2" data-date="2026-08-08" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="578" y="20" rx="2.2" ry="2.2" data-date="2026-08-09" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="578" y="33" rx="2.2" ry="2.2" data-date="2026-08-10" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="578" y="46" rx="2.2" ry="2.2" data-date="2026-08-11" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="578" y="59" rx="2.2" ry="2.2" data-date="2026-08-12" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="578" y="72" rx="2.2" ry="2.2" data-date="2026-08-13" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="578" y="85" rx="2.2" ry="2.2" data-date="2026-08-14" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="578" y="98" rx="2.2" ry="2.2" data-date="2026-08-15" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="591" y="20" rx="2.2" ry="2.2" data-date="2026-08-16" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="591" y="33" rx="2.2" ry="2.2" data-date="2026-08-17" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="591" y="46" rx="2.2" ry="2.2" data-date="2026-08-18" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="591" y="59" rx="2.2" ry="2.2" data-date="2026-08-19" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="591" y="72" rx="2.2" ry="2.2" data-date="2026-08-20" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="591" y="85" rx="2.2" ry="2.2" data-date="2026-08-21" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="591" y="98" rx="2.2" ry="2.2" data-date="2026-08-22" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="604" y="20" rx="2.2" ry="2.2" data-date="2026-08-23" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="604" y="33" rx="2.2" ry="2.2" data-date="2026-08-24" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="604" y="46" rx="2.2" ry="2.2" data-date="2026-08-25" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="604" y="59" rx="2.2" ry="2.2" data-date="2026-08-26" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="604" y="72" rx="2.2" ry="2.2" data-date="2026-08-27" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="604" y="85" rx="2.2" ry="2.2" data-date="2026-08-28" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="604" y="98" rx="2.2" ry="2.2" data-date="2026-08-29" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="617" y="20" rx="2.2" ry="2.2" data-date="2026-08-30" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="617" y="33" rx="2.2" ry="2.2" data-date="2026-08-31" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="617" y="46" rx="2.2" ry="2.2" data-date="2026-09-01" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="617" y="59" rx="2.2" ry="2.2" data-date="2026-09-02" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="617" y="72" rx="2.2" ry="2.2" data-date="2026-09-03" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="617" y="85" rx="2.2" ry="2.2" data-date="2026-09-04" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="617" y="98" rx="2.2" ry="2.2" data-date="2026-09-05" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="630" y="20" rx="2.2" ry="2.2" data-date="2026-09-06" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="630" y="33" rx="2.2" ry="2.2" data-date="2026-09-07" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="630" y="46" rx="2.2" ry="2.2" data-date="2026-09-08" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="630" y="59" rx="2.2" ry="2.2" data-date="2026-09-09" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="630" y="72" rx="2.2" ry="2.2" data-date="2026-09-10" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="630" y="85" rx="2.2" ry="2.2" data-date="2026-09-11" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l3" width="10" height="10" x="630" y="98" rx="2.2" ry="2.2" data-date="2026-09-12" data-count="8" data-level="3"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="643" y="20" rx="2.2" ry="2.2" data-date="2026-09-13" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="643" y="33" rx="2.2" ry="2.2" data-date="2026-09-14" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="643" y="46" rx="2.2" ry="2.2" data-date="2026-09-15" data-count="3" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="643" y="59" rx="2.2" ry="2.2" data-date="2026-09-16" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="643" y="72" rx="2.2" ry="2.2" data-date="2026-09-17" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="643" y="85" rx="2.2" ry="2.2" data-date="2026-09-18" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="643" y="98" rx="2.2" ry="2.2" data-date="2026-09-19" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="656" y="20" rx="2.2" ry="2.2" data-date="2026-09-20" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="656" y="33" rx="2.2" ry="2.2" data-date="2026-09-21" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="656" y="46" rx="2.2" ry="2.2" data-date="2026-09-22" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="656" y="59" rx="2.2" ry="2.2" data-date="2026-09-23" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="656" y="72" rx="2.2" ry="2.2" data-date="2026-09-24" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="656" y="85" rx="2.2" ry="2.2" data-date="2026-09-25" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="656" y="98" rx="2.2" ry="2.2" data-date="2026-09-26" data-count="1" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="669" y="20" rx="2.2" ry="2.2" data-date="2026-09-27" data-count="6" data-level="2"></rect>
+  <rect class="gh-cell gh-l4" width="10" height="10" x="669" y="33" rx="2.2" ry="2.2" data-date="2026-09-28" data-count="17" data-level="4"></rect>
+  <rect class="gh-cell gh-l3" width="10" height="10" x="669" y="46" rx="2.2" ry="2.2" data-date="2026-09-29" data-count="8" data-level="3"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="669" y="59" rx="2.2" ry="2.2" data-date="2026-09-30" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="669" y="72" rx="2.2" ry="2.2" data-date="2026-10-01" data-count="6" data-level="2"></rect>
+  <rect class="gh-cell gh-l4" width="10" height="10" x="669" y="85" rx="2.2" ry="2.2" data-date="2026-10-02" data-count="14" data-level="4"></rect>
+  <rect class="gh-cell gh-l4" width="10" height="10" x="669" y="98" rx="2.2" ry="2.2" data-date="2026-10-03" data-count="39" data-level="4"></rect>
+  <rect class="gh-cell gh-l3" width="10" height="10" x="682" y="20" rx="2.2" ry="2.2" data-date="2026-10-04" data-count="8" data-level="3"></rect>
+  <rect class="gh-cell gh-l4" width="10" height="10" x="682" y="33" rx="2.2" ry="2.2" data-date="2026-10-05" data-count="13" data-level="4"></rect>
+  <rect class="gh-cell gh-l4" width="10" height="10" x="682" y="46" rx="2.2" ry="2.2" data-date="2026-10-06" data-count="11" data-level="4"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="682" y="59" rx="2.2" ry="2.2" data-date="2026-10-07" data-count="7" data-level="2"></rect>
+  <rect class="gh-cell gh-l4" width="10" height="10" x="682" y="72" rx="2.2" ry="2.2" data-date="2026-10-08" data-count="17" data-level="4"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="682" y="85" rx="2.2" ry="2.2" data-date="2026-10-09" data-count="7" data-level="2"></rect>
+  <rect class="gh-cell gh-l4" width="10" height="10" x="682" y="98" rx="2.2" ry="2.2" data-date="2026-10-10" data-count="22" data-level="4"></rect>
+  <rect class="gh-cell gh-l3" width="10" height="10" x="695" y="20" rx="2.2" ry="2.2" data-date="2026-10-11" data-count="10" data-level="3"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="695" y="33" rx="2.2" ry="2.2" data-date="2026-10-12" data-count="3" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="695" y="46" rx="2.2" ry="2.2" data-date="2026-10-13" data-count="7" data-level="2"></rect>
+  <rect class="gh-cell gh-l3" width="10" height="10" x="695" y="59" rx="2.2" ry="2.2" data-date="2026-10-14" data-count="8" data-level="3"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="695" y="72" rx="2.2" ry="2.2" data-date="2026-10-15" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="695" y="85" rx="2.2" ry="2.2" data-date="2026-10-16" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="695" y="98" rx="2.2" ry="2.2" data-date="2026-10-17" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="708" y="20" rx="2.2" ry="2.2" data-date="2026-10-18" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="708" y="33" rx="2.2" ry="2.2" data-date="2026-10-19" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="708" y="46" rx="2.2" ry="2.2" data-date="2026-10-20" data-count="5" data-level="2"></rect>
+  <rect class="gh-cell gh-l2" width="10" height="10" x="708" y="59" rx="2.2" ry="2.2" data-date="2026-10-21" data-count="4" data-level="2"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="708" y="72" rx="2.2" ry="2.2" data-date="2026-10-22" data-count="2" data-level="1"></rect>
+  <rect class="gh-cell gh-l1" width="10" height="10" x="708" y="85" rx="2.2" ry="2.2" data-date="2026-10-23" data-count="2" data-level="1"></rect>
+</svg>
+        </div>
+      </div>
+
+      <div class="activity-foot">
+        <span class="activity-footnote" data-zh="数据来源：GitHub GraphQL API (自动化每日同步)" data-en="Source: GitHub GraphQL API (Automated daily sync)">数据来源：GitHub GraphQL API (自动化每日同步)</span>
+        <div class="activity-legend">
+          <span data-zh="少" data-en="Less">少</span>
+          <div class="legend-cells">
+            <span class="legend-cell gh-l0"></span>
+            <span class="legend-cell gh-l1"></span>
+            <span class="legend-cell gh-l2"></span>
+            <span class="legend-cell gh-l3"></span>
+            <span class="legend-cell gh-l4"></span>
+          </div>
+          <span data-zh="多" data-en="More">多</span>
+        </div>
+      </div>
+    </div>
+
     <!-- 联系与沟通卡片 -->
     <div class="contact">
       <div>
@@ -2770,6 +3386,140 @@ document.getElementById('langToggle').addEventListener('click', () => {
   localStorage.setItem('lang', currentLang);
   applyLanguage(currentLang);
 });
+
+// GitHub 热力图 Tooltip 与动态更新模块
+function setupHeatmapTooltip() {
+  const container = document.getElementById('ghHeatmapSvgContainer');
+  const tooltip = document.getElementById('ghTooltip');
+  if (!container || !tooltip) return;
+
+  const cells = container.querySelectorAll('.gh-cell');
+  cells.forEach(cell => {
+    cell.onmouseenter = () => {
+      const date = cell.dataset.date;
+      const count = parseInt(cell.dataset.count, 10);
+      const isZh = (document.documentElement.lang || 'zh-CN').startsWith('zh');
+      const countText = isZh 
+        ? (count === 0 ? '无贡献' : `${count} 次贡献`)
+        : (count === 0 ? 'No contributions' : `${count} contribution${count > 1 ? 's' : ''}`);
+      
+      tooltip.textContent = `${date} · ${countText}`;
+      
+      const rect = cell.getBoundingClientRect();
+      const wrap = container.closest('.activity-graph-wrap');
+      const wrapRect = wrap.getBoundingClientRect();
+      
+      const left = rect.left - wrapRect.left + wrap.scrollLeft + (rect.width / 2);
+      const top = rect.top - wrapRect.top + wrap.scrollTop;
+      
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+      tooltip.classList.add('visible');
+    };
+
+    cell.onmouseleave = () => {
+      tooltip.classList.remove('visible');
+    };
+
+    cell.addEventListener('touchstart', () => {
+      cell.onmouseenter();
+    }, { passive: true });
+  });
+}
+
+// 移动端点击外部区域自动收起浮动气泡
+document.addEventListener('touchstart', (e) => {
+  const tooltip = document.getElementById('ghTooltip');
+  if (tooltip && !e.target.closest('#ghHeatmapWrap')) {
+    tooltip.classList.remove('visible');
+  }
+}, { passive: true });
+
+function renderGitHubHeatmap(data) {
+  const container = document.getElementById('ghHeatmapSvgContainer');
+  if (!container || !data || !data.weeks) return;
+
+  const total = data.totalContributions || 0;
+  const badge = document.getElementById('ghContribBadge');
+  if (badge) {
+    badge.dataset.zh = `过去 1 年 ${total} 次贡献`;
+    badge.dataset.en = `${total} contributions in the past year`;
+    const isZh = (document.documentElement.lang || 'zh-CN').startsWith('zh');
+    badge.textContent = isZh ? badge.dataset.zh : badge.dataset.en;
+  }
+
+  const levelMap = {
+    'NONE': 0,
+    'FIRST_QUARTILE': 1,
+    'SECOND_QUARTILE': 2,
+    'THIRD_QUARTILE': 3,
+    'FOURTH_QUARTILE': 4
+  };
+
+  const monthsEn = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const monthsZh = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+
+  const leftMargin = 32;
+  const topMargin = 20;
+  const cellSize = 10;
+  const pitch = 13;
+
+  const weeks = data.weeks;
+  const svgWidth = leftMargin + weeks.length * pitch + 8;
+  const svgHeight = topMargin + 7 * pitch + 4;
+  const isZh = (document.documentElement.lang || 'zh-CN').startsWith('zh');
+
+  let svgHtml = `<svg class="activity-svg" viewBox="0 0 ${svgWidth} ${svgHeight}" preserveAspectRatio="xMinYMin meet" aria-label="GitHub Contributions Heatmap">\n`;
+
+  // Month labels
+  weeks.forEach((w, wi) => {
+    for (const d of w.contributionDays) {
+      if (d.date.endsWith('-01')) {
+        const monthNum = parseInt(d.date.substring(5, 7), 10);
+        const x = leftMargin + wi * pitch;
+        const zh = monthsZh[monthNum - 1];
+        const en = monthsEn[monthNum - 1];
+        svgHtml += `  <text class="gh-label gh-month-label" data-zh="${zh}" data-en="${en}" x="${x}" y="13">${isZh ? zh : en}</text>\n`;
+        break;
+      }
+    }
+  });
+
+  // Day labels
+  [
+    { day: 1, zh: '一', en: 'Mon' },
+    { day: 3, zh: '三', en: 'Wed' },
+    { day: 5, zh: '五', en: 'Fri' }
+  ].forEach(w => {
+    const y = topMargin + w.day * pitch + 8;
+    svgHtml += `  <text class="gh-label gh-day-label" data-zh="${w.zh}" data-en="${w.en}" x="0" y="${y}">${isZh ? w.zh : w.en}</text>\n`;
+  });
+
+  // Cells
+  weeks.forEach((w, wi) => {
+    const x = leftMargin + wi * pitch;
+    w.contributionDays.forEach(d => {
+      const y = topMargin + d.weekday * pitch;
+      const lvl = levelMap[d.contributionLevel] !== undefined ? levelMap[d.contributionLevel] : 0;
+      svgHtml += `  <rect class="gh-cell gh-l${lvl}" width="${cellSize}" height="${cellSize}" x="${x}" y="${y}" rx="2.2" ry="2.2" data-date="${d.date}" data-count="${d.contributionCount}" data-level="${lvl}"></rect>\n`;
+    });
+  });
+
+  svgHtml += `</svg>`;
+  container.innerHTML = svgHtml;
+  setupHeatmapTooltip();
+}
+
+// 立即绑定现存 DOM Tooltip
+setupHeatmapTooltip();
+
+// 异步拉取更新（同源部署与 GitHub Pages）
+fetch('../data/github-contributions.json')
+  .then(res => res.ok ? res.json() : Promise.reject())
+  .then(data => renderGitHubHeatmap(data))
+  .catch(() => {
+    // 降级使用静态预渲染点阵
+  });
 </script>
 </body>
 </html>

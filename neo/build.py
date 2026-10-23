@@ -5,10 +5,23 @@
 - Data: neo/projects.json (extracted from main index.html)
 - Applies fact-check fixes: no fabricated numbers, honest question-bank labeling.
 """
-import json, re, html as htmllib
+import json, re, os, html as htmllib
 
-REF = '/home/hatch/workspace/user/files/portfolio-ui-reference.html'
-P = json.load(open('neo/projects.json', encoding='utf-8'))
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, '..'))
+
+REF_CANDIDATES = [
+    os.path.join(SCRIPT_DIR, 'portfolio-ui-reference.html'),
+    '/home/f1are/下载/portfolio-ui-reference.html',
+    os.path.expanduser('~/下载/portfolio-ui-reference.html'),
+    '/home/hatch/workspace/user/files/portfolio-ui-reference.html',
+]
+REF = next((p for p in REF_CANDIDATES if os.path.exists(p)), None)
+if not REF:
+    raise FileNotFoundError("portfolio-ui-reference.html not found in candidates: " + str(REF_CANDIDATES))
+
+PROJECTS_JSON = os.path.join(SCRIPT_DIR, 'projects.json')
+P = json.load(open(PROJECTS_JSON, encoding='utf-8'))
 html = open(REF, encoding='utf-8').read()
 
 def esc(s):
@@ -16,7 +29,15 @@ def esc(s):
 
 # ---------------------------------------------------------------- links
 def extract_links():
-    src = open('/home/hatch/workspace/portfolio-site/index.html', encoding='utf-8').read()
+    INDEX_CANDIDATES = [
+        os.path.join(REPO_DIR, 'index.html'),
+        os.path.join(os.getcwd(), 'index.html'),
+        '/home/hatch/workspace/portfolio-site/index.html',
+    ]
+    index_path = next((p for p in INDEX_CANDIDATES if os.path.exists(p)), None)
+    if not index_path:
+        raise FileNotFoundError("index.html not found in candidate locations")
+    src = open(index_path, encoding='utf-8').read()
     items = re.findall(r'<li class="project-item[^"]*"[^>]*>.*?</li>', src, re.S)
     out = {}
     for it in items:
@@ -326,5 +347,10 @@ html = html.replace(old_toggle,
 print('lang toggle patched for modal re-render')
 
 # ---------------------------------------------------------------- write
-open('neo/index.html', 'w', encoding='utf-8').write(html)
-print(f'wrote neo/index.html ({len(html)} chars)')
+out_file = os.path.join(SCRIPT_DIR, 'index.html')
+if os.path.exists(out_file):
+    existing = open(out_file, encoding='utf-8').read()
+    if 'ghHeatmapSvgContainer' in existing and 'ghHeatmapSvgContainer' not in html:
+        raise RuntimeError("Refusing to overwrite neo/index.html: heatmap component missing from template source.")
+open(out_file, 'w', encoding='utf-8').write(html)
+print(f'wrote {out_file} ({len(html)} chars)')
