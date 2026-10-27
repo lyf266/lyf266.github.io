@@ -2,8 +2,8 @@
  {
   "title_zh": "2026 银行从业全真机考模拟系统 & Anki 智能备考工具包",
   "title_en": "Bank Exam 2026 ATA Simulator & Anki Intelligent Toolkit",
-  "desc_zh": "做了个和真实考场一模一样的银行从业刷题网站：710 道真题，手机电脑都能用，做错的题自动生成 Anki 记忆卡片。",
-  "desc_en": "A web-based mock exam replicating the real banking certification interface: 710 real questions, mobile-friendly, with wrong answers auto-converted into Anki flashcards.",
+  "desc_zh": "做了个和真实考场一模一样的银行从业机考网站：全量 1003 题矩阵，集成官方四大系数表与科学/TVM 金融双计算器，错题一键导出 Anki FSRS。",
+  "desc_en": "A web-based mock exam replicating the real banking certification interface: full 1003-question matrix, official 4-factor tables, TVM financial calculators, exportable to Anki FSRS.",
   "data_tags": [
    "web",
    "quant",
@@ -30,18 +30,18 @@
    },
    {
     "label": "AI 目标、规划与提示词设定",
-    "zh": "设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融计算器；2) 批量清洗 710+ 真题，按 2026 现行规范全量校准（监管主体更正为金监总局 NFRA、央行 2025 年 1 月 M1 统计新口径计入个人活期存款）；3) 驱动 AI 统一推导理财题出版级 KaTeX 四步推导公式。",
-    "en": "Set 3 goals: 1) End-to-end zero-dependency native JS exam & TVM calculator generation; 2) Clean 710+ questions to 2026 NFRA & M1 regulatory standards; 3) Standardize KaTeX 4-step math derivations."
+    "zh": "设定三阶段目标：1) 端到端生成零依赖原生 JS 机考与考场科学/TVM 金融双计算器；2) 批量清洗与扩容全量 1003 题矩阵（2 套全国统考真题 + 考场回忆/改编自编题 + 110 张反过拟合对比卡 + 规定数字时限记忆包），按 2026 现行金监总局 NFRA 规章与央行 M1 统计新口径全量校准；3) 仿真 ATA 官方机考专用四大货币时间价值系数表 (P/F, F/P, P/A, F/A) 浮窗速查与 KaTeX 出版级四步推导公式。",
+    "en": "Set 3 goals: 1) End-to-end zero-dependency native JS exam & TVM calculators; 2) Clean & expand to full 1003-question matrix (2 past exam papers, 110 anti-overfitting cards, statutory numbers) calibrated to 2026 NFRA & PBOC M1 rules; 3) Replicate official ATA 4-factor tables and KaTeX derivations."
    },
    {
     "label": "架构设计与硬性约束",
-    "zh": "纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；配套 Anki FSRS 记忆卡包。",
-    "en": "Pure Vanilla JS/HTML5 zero-dependency architecture. Fisher-Yates in-browser shuffle prevents position-memorization. TVM calculator with END/BGN modes. Paired with Anki FSRS decks."
+    "zh": "纯原生 HTML5/CSS3/Vanilla JS，免安装本地双击即用或 GitHub Pages 极速访问；严格约束在浏览器端执行 Fisher-Yates 动态随机洗牌算法，阻断“记选项位置”作弊；TVM 计算器支持 END/BGN 模式切换；内置快捷键 Alt+T/T 秒级唤出四大系数表；配套 Anki FSRS 记忆卡包。",
+    "en": "Pure Vanilla JS/HTML5 zero-dependency architecture. Fisher-Yates in-browser shuffle prevents position-memorization. TVM calculator with END/BGN modes. Floating 4-factor table shortcut (Alt+T). Paired with Anki FSRS decks."
    },
    {
     "label": "局限权衡与后续演进",
-    "zh": "核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于教材核心考点与母题进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线，精准定位薄弱考点；2) 驱动 AI 针对薄弱环节靶向自适应出题，并在后续模考中持续追踪提分效果与认知迁移。",
-    "en": "Official exams do not release past papers and commercial question banks are paywalled; questions are currently synthesized from textbook paradigms. Roadmap: 1) Build an adaptive evaluation agent plotting knowledge growth curves to pinpoint weak domains; 2) Drive AI to target weaknesses with dynamic generative quizzes, tracking performance improvement over time."
+    "zh": "核心痛点在于官方考试不公开历年真题且商业题库昂贵封闭，目前主要基于统考母题与核心考点进行提炼自创，题目覆盖存在上限。后续演进规划：1) 构建自适应能力评测 Agent，根据做题数据动态绘制知识点能力成长曲线；2) 驱动 AI 针对薄弱环节自适应出题并在后续模考中持续追踪提分效果。",
+    "en": "Official exams do not release past papers and commercial banks are paywalled; questions are synthesized from textbook paradigms. Roadmap: 1) Adaptive evaluation agent plotting knowledge growth curves; 2) Dynamic generative quizzes targeting weak domains."
    }
   ]
  },
@@ -92,8 +92,8 @@
  {
   "title_zh": "Desktop TimeTracker (timetrack)",
   "title_en": "Desktop TimeTracker (timetrack)",
-  "desc_zh": "自动记录每天在每个窗口上花了多少时间，生成日报，帮你看清时间都去哪了。",
-  "desc_en": "Automatically tracks how long you spend in each window and generates a daily report, so you can see where your time actually goes.",
+  "desc_zh": "自动记录每天在每个窗口上花了多少时间，集成 WAL 存储与零痕迹硬件键鼠活跃追踪，生成精准复盘日报。",
+  "desc_en": "Automatically tracks window time and zero-trace hardware keyboard/mouse activity via WAL-checkpointed SQLite; auto-generates daily reports.",
   "data_tags": [
    "linux",
    "tool"
@@ -103,7 +103,7 @@
    "Python",
    "KWin",
    "D-Bus",
-   "SQLite",
+   "SQLite (WAL)",
    "linux"
   ],
   "links": [
@@ -122,8 +122,8 @@
    },
    {
     "label": "架构设计与关键约束",
-    "zh": "内存占用极限压缩至 ~13MB，CPU 消耗 <0.1%，全本地存储；夜间自动离线生成图文并茂的 Markdown 时间复盘报告。",
-    "en": "Ultra-low memory footprint (~13MB RAM) and <0.1% CPU. Nightly automated generation of Markdown activity review reports."
+    "zh": "内存占用极限压缩至 ~13MB，CPU 消耗 <0.1%，全本地存储；引入 SQLite WAL 检查点机制与防抖动索引范围查询，搭配硬件级键鼠无痕迹活跃度检测，夜间自动离线生成图文并茂的 Markdown 时间复盘报告。",
+    "en": "Ultra-low memory footprint (~13MB RAM) and <0.1% CPU. Features SQLite WAL checkpointing, debounced range indexing, and zero-trace hardware input tracker. Nightly automated generation of Markdown activity review reports."
    },
    {
     "label": "局限权衡与后续演进",
@@ -818,6 +818,93 @@
     "label": "局限权衡与后续演进",
     "zh": "童年纯网络与社区实践启蒙，奠定了后续计算机网络与系统架构的基础认知。",
     "en": "Foundational childhood technical exploration, igniting long-term passion for systems and networks."
+   }
+  ]
+ },
+ {
+  "title_zh": "Smart-Language-Learning (Praat 声学纠音)",
+  "title_en": "Smart-Language-Learning (Praat Acoustic Shadowing)",
+  "desc_zh": "英语口语纠音工作台：基于 Praat 底层提取基频 F0 与共振峰 F1/F2，结合 TextGrid 音素对齐，在 Anki 卡片内快捷键一键唤出声学可视化对比。",
+  "desc_en": "Acoustic phonetics pronunciation workbench extracting F0 and formants via Praat/Parselmouth with TextGrid phoneme alignment, embedded into Anki cards via shortcut P.",
+  "data_tags": [
+   "ai",
+   "featured"
+  ],
+  "tag_labels": [
+   "★ 精选",
+   "Python",
+   "Praat / Parselmouth",
+   "Anki / FSRS",
+   "FastAPI",
+   "语音学",
+   "ai"
+  ],
+  "links": [
+   "https://github.com/lyf266/Smart-Language-Learning"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "英语专业口语与语音学实训中，传统纠音过度依赖教师或主观听感，缺乏客观声学量化依据；商业打分软件多为黑盒综合评分，无法可视化指出具体元音共振峰（F1/F2）偏移或声调基频（F0）起伏。",
+    "en": "ESL pronunciation training relies on subjective evaluation; commercial speech apps use black-box percentage scores without pinpointing formant (F1/F2) shifts or pitch (F0) contour deviations."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "基于 Praat 官方底层声学分析库与 TextGrid 智能音素对齐，毫秒级提取用户跟读与原声的基频 (F0)、前两阶共振峰 (F1/F2)、音强及语速时长；在 Anki 卡片内深度集成快捷键 P 一键呼出声学对比工作台与频谱图。",
+    "en": "Utilizes Praat/Parselmouth engines and TextGrid alignment to extract pitch (F0), formants (F1/F2), intensity, and timing; integrates shortcut P into Anki cards for instant acoustic visual comparison."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "纯本地 Python 后端常驻守护 + 极简 Web 前端，零云端隐私上传；Praat 算法毫秒级生成声学特征比对图，配合 Anki FSRS 算法实现发音薄弱点的长周期科学复训。",
+    "en": "Pure local Python daemon + lightweight Web UI with zero cloud telemetry. Generates millisecond-accurate acoustic overlays, paired with Anki FSRS for long-term targeted phonetic training."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "当前依赖本地 Praat/Parselmouth Python 运行环境；后续规划将轻量声学分析编译为 WebAssembly，实现纯浏览器端零安装运行。",
+    "en": "Currently requires a local Python/Praat runtime; future roadmap targets WebAssembly compilation for zero-install in-browser execution."
+   }
+  ]
+ },
+ {
+  "title_zh": "通义千问导出助手 (qianwen-export-helper)",
+  "title_en": "Qianwen Export Helper",
+  "desc_zh": "专为通义千问音视频速读打造的油猴自动化脚本：彻底消除下载导致页面跳转中断，大音频自动以文档同名重命名，三文件全量落盘守卫。",
+  "desc_en": "Tampermonkey automation userscript for Tongyi Qianwen meeting recordings: eliminates download redirects, auto-renames audio to match document title, and guards 3-file download integrity.",
+  "data_tags": [
+   "web",
+   "tool"
+  ],
+  "tag_labels": [
+   "小工具",
+   "JavaScript",
+   "Tampermonkey",
+   "GM_download",
+   "自动化",
+   "web"
+  ],
+  "links": [
+   "https://github.com/lyf266/qianwen-export-helper"
+  ],
+  "detail_rows": [
+   {
+    "label": "核心痛点与问题",
+    "zh": "通义千问速读导出会议纪要时，官方弹窗需频繁繁琐点选格式；导出音频直链会触发浏览器重定向或留下空白标签页打断工作流；大音频传输中断易导致漏文件，且 OSS 文件名为乱码哈希。",
+    "en": "Exporting Qianwen meeting digests requires repetitive manual option toggling. Audio links trigger disruptive page redirects, large downloads fail silently upon navigation, and files save as obscure UUIDs."
+   },
+   {
+    "label": "方法策略与工程实现",
+    "zh": "监听弹窗 Hydrate 挂载并自动勾选配置三项格式；底层拦截 window.open 与 a 标签跳转，采用 GM_download 静默流式下载；智能提取文档真实主题对音频同名重命名；悬浮面板实时守卫三文件全量落盘。",
+    "en": "Automates modal configuration upon hydration. Intercepts window.open to enable zero-redirect GM_download streams, auto-renames audio to match document title, and displays a floating download guard panel."
+   },
+   {
+    "label": "架构设计与关键约束",
+    "zh": "原生纯 JS 实现，零外部框架依赖；构建多文件（原文、纪要、音频）全量下载完成进度守卫悬浮面板，暴露全局自定义 DOM 事件以支持上层自动化批量调度。",
+    "en": "Pure native JS zero-dependency userscript. Real-time floating progress guard ensures all 3 artifacts finish downloading; dispatches custom DOM events for upstream batch automation."
+   },
+   {
+    "label": "局限权衡与后续演进",
+    "zh": "强依赖千问 Web 端 DOM 结构与 Tampermonkey 运行环境；官方前端版本重大重构时需跟进更新选择器。",
+    "en": "Tightly coupled to Qianwen Web DOM selectors and Tampermonkey API; interface redesigns require corresponding selector updates."
    }
   ]
  }
